@@ -1,0 +1,330 @@
+events_code,event_name,url,discipline_code,sport_name
+0,Men's Individual,https://olympics.com/en/paris-2024/sports/archery,ARC,Archery
+1,Women's Individual,https://olympics.com/en/paris-2024/sports/archery,ARC,Archery
+2,Men's Team,https://olympics.com/en/paris-2024/sports/archery,ARC,Archery
+3,Women's Team,https://olympics.com/en/paris-2024/sports/archery,ARC,Archery
+4,Mixed Team,https://olympics.com/en/paris-2024/sports/archery,ARC,Archery
+5,Men's Team,https://olympics.com/en/paris-2024/sports/artistic-gymnastics,GAR,Artistic Gymnastics
+6,Men's All-Around,https://olympics.com/en/paris-2024/sports/artistic-gymnastics,GAR,Artistic Gymnastics
+7,Men's Floor Exercise,https://olympics.com/en/paris-2024/sports/artistic-gymnastics,GAR,Artistic Gymnastics
+8,Men's Pommel Horse,https://olympics.com/en/paris-2024/sports/artistic-gymnastics,GAR,Artistic Gymnastics
+9,Men's Rings,https://olympics.com/en/paris-2024/sports/artistic-gymnastics,GAR,Artistic Gymnastics
+10,Men's Vault,https://olympics.com/en/paris-2024/sports/artistic-gymnastics,GAR,Artistic Gymnastics
+11,Men's Parallel Bars,https://olympics.com/en/paris-2024/sports/artistic-gymnastics,GAR,Artistic Gymnastics
+12,Men's Horizontal Bar,https://olympics.com/en/paris-2024/sports/artistic-gymnastics,GAR,Artistic Gymnastics
+13,Women's Team,https://olympics.com/en/paris-2024/sports/artistic-gymnastics,GAR,Artistic Gymnastics
+14,Women's All-Around,https://olympics.com/en/paris-2024/sports/artistic-gymnastics,GAR,Artistic Gymnastics
+15,Women's Vault,https://olympics.com/en/paris-2024/sports/artistic-gymnastics,GAR,Artistic Gymnastics
+16,Women's Uneven Bars,https://olympics.com/en/paris-2024/sports/artistic-gymnastics,GAR,Artistic Gymnastics
+17,Women's Balance Beam,https://olympics.com/en/paris-2024/sports/artistic-gymnastics,GAR,Artistic Gymnastics
+18,Women's Floor Exercise,https://olympics.com/en/paris-2024/sports/artistic-gymnastics,GAR,Artistic Gymnastics
+19,Duet,https://olympics.com/en/paris-2024/sports/artistic-swimming,SWA,Artistic Swimming
+20,Team,https://olympics.com/en/paris-2024/sports/artistic-swimming,SWA,Artistic Swimming
+21,Men's 100m,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+22,Men's 200m,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+23,Men's 400m,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+24,Men's 800m,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+25,Men's 1500m,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+26,Men's 5000m,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+27,"Men's 10,000m",https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+28,Men's Marathon,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+29,Men's 3000m Steeplechase,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+30,Men's 110m Hurdles,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+31,Men's 400m Hurdles,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+32,Men's High Jump,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+33,Men's Pole Vault,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+34,Men's Long Jump,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+35,Men's Triple Jump,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+36,Men's Shot Put,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+37,Men's Discus Throw,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+38,Men's Hammer Throw,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+39,Men's Javelin Throw,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+40,Men's Decathlon,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+41,Men's 20km Race Walk,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+42,Men's 4 x 100m Relay,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+43,Men's 4 x 400m Relay,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+44,Women's 100m,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+45,Women's 200m,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+46,Women's 400m,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+47,Women's 800m,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+48,Women's 1500m,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+49,Women's 5000m,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+50,"Women's 10,000m",https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+51,Women's Marathon,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+52,Women's 3000m Steeplechase,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+53,Women's 100m Hurdles,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+54,Women's 400m Hurdles,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+55,Women's High Jump,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+56,Women's Pole Vault,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+57,Women's Long Jump,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+58,Women's Triple Jump,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+59,Women's Shot Put,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+60,Women's Discus Throw,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+61,Women's Hammer Throw,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+62,Women's Javelin Throw,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+63,Women's Heptathlon,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+64,Women's 20km Race Walk,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+65,Women's 4 x 100m Relay,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+66,Women's 4 x 400m Relay,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+67,4 x 400m Relay Mixed,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+68,Marathon Race Walk Relay Mixed,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+69,Men's Singles,https://olympics.com/en/paris-2024/sports/badminton,BDM,Badminton
+70,Women's Singles,https://olympics.com/en/paris-2024/sports/badminton,BDM,Badminton
+71,Men's Doubles,https://olympics.com/en/paris-2024/sports/badminton,BDM,Badminton
+72,Women's Doubles,https://olympics.com/en/paris-2024/sports/badminton,BDM,Badminton
+73,Mixed Doubles,https://olympics.com/en/paris-2024/sports/badminton,BDM,Badminton
+74,Men,https://olympics.com/en/paris-2024/sports/basketball,BKB,Basketball
+75,Women,https://olympics.com/en/paris-2024/sports/basketball,BKB,Basketball
+76,Men,https://olympics.com/en/paris-2024/sports/3x3-basketball,BK3,3x3 Basketball
+77,Women,https://olympics.com/en/paris-2024/sports/3x3-basketball,BK3,3x3 Basketball
+78,Men,https://olympics.com/en/paris-2024/sports/beach-volleyball,VBV,Beach Volleyball
+79,Women,https://olympics.com/en/paris-2024/sports/beach-volleyball,VBV,Beach Volleyball
+80,Men's 51kg,https://olympics.com/en/paris-2024/sports/boxing,BOX,Boxing
+81,Men's 57kg,https://olympics.com/en/paris-2024/sports/boxing,BOX,Boxing
+82,Men's 63.5kg,https://olympics.com/en/paris-2024/sports/boxing,BOX,Boxing
+83,Men's 71kg,https://olympics.com/en/paris-2024/sports/boxing,BOX,Boxing
+84,Men's 80kg,https://olympics.com/en/paris-2024/sports/boxing,BOX,Boxing
+85,Men's 92kg,https://olympics.com/en/paris-2024/sports/boxing,BOX,Boxing
+86,Men's +92kg,https://olympics.com/en/paris-2024/sports/boxing,BOX,Boxing
+87,Women's 50kg,https://olympics.com/en/paris-2024/sports/boxing,BOX,Boxing
+88,Women's 54kg,https://olympics.com/en/paris-2024/sports/boxing,BOX,Boxing
+89,Women's 57kg,https://olympics.com/en/paris-2024/sports/boxing,BOX,Boxing
+90,Women's 60kg,https://olympics.com/en/paris-2024/sports/boxing,BOX,Boxing
+91,Women's 66kg,https://olympics.com/en/paris-2024/sports/boxing,BOX,Boxing
+92,Women's 75kg,https://olympics.com/en/paris-2024/sports/boxing,BOX,Boxing
+93,B-Boys,https://olympics.com/en/paris-2024/sports/breaking,BKG,Breaking
+94,B-Girls,https://olympics.com/en/paris-2024/sports/breaking,BKG,Breaking
+95,Men's Kayak Single,https://olympics.com/en/paris-2024/sports/canoe-kayak-slalom,CSL,Canoe Slalom
+96,Women's Kayak Single,https://olympics.com/en/paris-2024/sports/canoe-kayak-slalom,CSL,Canoe Slalom
+97,Men's Canoe Single,https://olympics.com/en/paris-2024/sports/canoe-kayak-slalom,CSL,Canoe Slalom
+98,Women's Canoe Single,https://olympics.com/en/paris-2024/sports/canoe-kayak-slalom,CSL,Canoe Slalom
+99,Men's Kayak Cross,https://olympics.com/en/paris-2024/sports/canoe-kayak-slalom,CSL,Canoe Slalom
+100,Women's Kayak Cross,https://olympics.com/en/paris-2024/sports/canoe-kayak-slalom,CSL,Canoe Slalom
+101,Men's Kayak Single 1000m,https://olympics.com/en/paris-2024/sports/canoe-kayak-flatwater,CSP,Canoe Sprint
+102,Men's Kayak Double 500m,https://olympics.com/en/paris-2024/sports/canoe-kayak-flatwater,CSP,Canoe Sprint
+103,Men's Kayak Four 500m,https://olympics.com/en/paris-2024/sports/canoe-kayak-flatwater,CSP,Canoe Sprint
+104,Men's Canoe Single 1000m,https://olympics.com/en/paris-2024/sports/canoe-kayak-flatwater,CSP,Canoe Sprint
+105,Men's Canoe Double 500m,https://olympics.com/en/paris-2024/sports/canoe-kayak-flatwater,CSP,Canoe Sprint
+106,Women's Kayak Single 500m,https://olympics.com/en/paris-2024/sports/canoe-kayak-flatwater,CSP,Canoe Sprint
+107,Women's Kayak Double 500m,https://olympics.com/en/paris-2024/sports/canoe-kayak-flatwater,CSP,Canoe Sprint
+108,Women's Kayak Four 500m,https://olympics.com/en/paris-2024/sports/canoe-kayak-flatwater,CSP,Canoe Sprint
+109,Women's Canoe Single 200m,https://olympics.com/en/paris-2024/sports/canoe-kayak-flatwater,CSP,Canoe Sprint
+110,Women's Canoe Double 500m,https://olympics.com/en/paris-2024/sports/canoe-kayak-flatwater,CSP,Canoe Sprint
+111,Women's Park,https://olympics.com/en/paris-2024/sports/cycling-bmx-freestyle,BMF,Cycling BMX Freestyle
+112,Men's Park,https://olympics.com/en/paris-2024/sports/cycling-bmx-freestyle,BMF,Cycling BMX Freestyle
+113,Women,https://olympics.com/en/paris-2024/sports/cycling-bmx-racing,BMX,Cycling BMX Racing
+114,Men,https://olympics.com/en/paris-2024/sports/cycling-bmx-racing,BMX,Cycling BMX Racing
+115,Men's Cross-country,https://olympics.com/en/paris-2024/sports/cycling-mountain-bike,MTB,Cycling Mountain Bike
+116,Women's Cross-country,https://olympics.com/en/paris-2024/sports/cycling-mountain-bike,MTB,Cycling Mountain Bike
+117,Men's Road Race,https://olympics.com/en/paris-2024/sports/cycling-road,CRD,Cycling Road
+118,Women's Road Race,https://olympics.com/en/paris-2024/sports/cycling-road,CRD,Cycling Road
+119,Men's Individual Time Trial,https://olympics.com/en/paris-2024/sports/cycling-road,CRD,Cycling Road
+120,Women's Individual Time Trial,https://olympics.com/en/paris-2024/sports/cycling-road,CRD,Cycling Road
+121,Men's Team Sprint,https://olympics.com/en/paris-2024/sports/cycling-track,CTR,Cycling Track
+122,Men's Sprint,https://olympics.com/en/paris-2024/sports/cycling-track,CTR,Cycling Track
+123,Men's Keirin,https://olympics.com/en/paris-2024/sports/cycling-track,CTR,Cycling Track
+124,Men's Team Pursuit,https://olympics.com/en/paris-2024/sports/cycling-track,CTR,Cycling Track
+125,Men's Omnium,https://olympics.com/en/paris-2024/sports/cycling-track,CTR,Cycling Track
+126,Men's Madison,https://olympics.com/en/paris-2024/sports/cycling-track,CTR,Cycling Track
+127,Women's Team Sprint,https://olympics.com/en/paris-2024/sports/cycling-track,CTR,Cycling Track
+128,Women's Sprint,https://olympics.com/en/paris-2024/sports/cycling-track,CTR,Cycling Track
+129,Women's Keirin,https://olympics.com/en/paris-2024/sports/cycling-track,CTR,Cycling Track
+130,Women's Team Pursuit,https://olympics.com/en/paris-2024/sports/cycling-track,CTR,Cycling Track
+131,Women's Omnium,https://olympics.com/en/paris-2024/sports/cycling-track,CTR,Cycling Track
+132,Women's Madison,https://olympics.com/en/paris-2024/sports/cycling-track,CTR,Cycling Track
+133,Women's 3m Springboard,https://olympics.com/en/paris-2024/sports/diving,DIV,Diving
+134,Women's 10m Platform,https://olympics.com/en/paris-2024/sports/diving,DIV,Diving
+135,Women's Synchronised 3m Springboard,https://olympics.com/en/paris-2024/sports/diving,DIV,Diving
+136,Women's Synchronised 10m Platform,https://olympics.com/en/paris-2024/sports/diving,DIV,Diving
+137,Men's 3m Springboard,https://olympics.com/en/paris-2024/sports/diving,DIV,Diving
+138,Men's 10m Platform,https://olympics.com/en/paris-2024/sports/diving,DIV,Diving
+139,Men's Synchronised 3m Springboard,https://olympics.com/en/paris-2024/sports/diving,DIV,Diving
+140,Men's Synchronised 10m Platform,https://olympics.com/en/paris-2024/sports/diving,DIV,Diving
+141,Eventing Team,https://olympics.com/en/paris-2024/sports/equestrian,EQU,Equestrian
+142,Eventing Individual,https://olympics.com/en/paris-2024/sports/equestrian,EQU,Equestrian
+143,Dressage Team,https://olympics.com/en/paris-2024/sports/equestrian,EQU,Equestrian
+144,Dressage Individual,https://olympics.com/en/paris-2024/sports/equestrian,EQU,Equestrian
+145,Jumping Team,https://olympics.com/en/paris-2024/sports/equestrian,EQU,Equestrian
+146,Jumping Individual,https://olympics.com/en/paris-2024/sports/equestrian,EQU,Equestrian
+147,Women's Épée Individual,https://olympics.com/en/paris-2024/sports/fencing,FEN,Fencing
+148,Women's Foil Individual,https://olympics.com/en/paris-2024/sports/fencing,FEN,Fencing
+149,Women's Sabre Individual,https://olympics.com/en/paris-2024/sports/fencing,FEN,Fencing
+150,Men's Épée Individual,https://olympics.com/en/paris-2024/sports/fencing,FEN,Fencing
+151,Men's Foil Individual,https://olympics.com/en/paris-2024/sports/fencing,FEN,Fencing
+152,Men's Sabre Individual,https://olympics.com/en/paris-2024/sports/fencing,FEN,Fencing
+153,Women's Épée Team,https://olympics.com/en/paris-2024/sports/fencing,FEN,Fencing
+154,Women's Foil Team,https://olympics.com/en/paris-2024/sports/fencing,FEN,Fencing
+155,Women's Sabre Team,https://olympics.com/en/paris-2024/sports/fencing,FEN,Fencing
+156,Men's Épée Team,https://olympics.com/en/paris-2024/sports/fencing,FEN,Fencing
+157,Men's Foil Team,https://olympics.com/en/paris-2024/sports/fencing,FEN,Fencing
+158,Men's Sabre Team,https://olympics.com/en/paris-2024/sports/fencing,FEN,Fencing
+159,Men,https://olympics.com/en/paris-2024/sports/football,FBL,Football
+160,Women,https://olympics.com/en/paris-2024/sports/football,FBL,Football
+161,Men's Individual Stroke Play,https://olympics.com/en/paris-2024/sports/golf,GLF,Golf
+162,Women's Individual Stroke Play,https://olympics.com/en/paris-2024/sports/golf,GLF,Golf
+163,Men,https://olympics.com/en/paris-2024/sports/handball,HBL,Handball
+164,Women,https://olympics.com/en/paris-2024/sports/handball,HBL,Handball
+165,Men,https://olympics.com/en/paris-2024/sports/hockey,HOC,Hockey
+166,Women,https://olympics.com/en/paris-2024/sports/hockey,HOC,Hockey
+167,Women -48 kg,https://olympics.com/en/paris-2024/sports/judo,JUD,Judo
+168,Women -52 kg,https://olympics.com/en/paris-2024/sports/judo,JUD,Judo
+169,Women -57 kg,https://olympics.com/en/paris-2024/sports/judo,JUD,Judo
+170,Women -63 kg,https://olympics.com/en/paris-2024/sports/judo,JUD,Judo
+171,Women -70 kg,https://olympics.com/en/paris-2024/sports/judo,JUD,Judo
+172,Women -78 kg,https://olympics.com/en/paris-2024/sports/judo,JUD,Judo
+173,Women +78 kg,https://olympics.com/en/paris-2024/sports/judo,JUD,Judo
+174,Men -60 kg,https://olympics.com/en/paris-2024/sports/judo,JUD,Judo
+175,Men -66 kg,https://olympics.com/en/paris-2024/sports/judo,JUD,Judo
+176,Men -73 kg,https://olympics.com/en/paris-2024/sports/judo,JUD,Judo
+177,Men -81 kg,https://olympics.com/en/paris-2024/sports/judo,JUD,Judo
+178,Men -90 kg,https://olympics.com/en/paris-2024/sports/judo,JUD,Judo
+179,Men -100 kg,https://olympics.com/en/paris-2024/sports/judo,JUD,Judo
+180,Men +100 kg,https://olympics.com/en/paris-2024/sports/judo,JUD,Judo
+181,Mixed Team,https://olympics.com/en/paris-2024/sports/judo,JUD,Judo
+182,Women's 10km,https://olympics.com/en/paris-2024/sports/marathon-swimming,OWS,Marathon Swimming
+183,Men's 10km,https://olympics.com/en/paris-2024/sports/marathon-swimming,OWS,Marathon Swimming
+184,Women's Individual,https://olympics.com/en/paris-2024/sports/modern-pentathlon,MPN,Modern Pentathlon
+185,Men's Individual,https://olympics.com/en/paris-2024/sports/modern-pentathlon,MPN,Modern Pentathlon
+186,Individual All-Around,https://olympics.com/en/paris-2024/sports/rhythmic-gymnastics,GRY,Rhythmic Gymnastics
+187,Group All-Around,https://olympics.com/en/paris-2024/sports/rhythmic-gymnastics,GRY,Rhythmic Gymnastics
+188,Women's Pair,https://olympics.com/en/paris-2024/sports/rowing,ROW,Rowing
+189,Men's Pair,https://olympics.com/en/paris-2024/sports/rowing,ROW,Rowing
+190,Women's Double Sculls,https://olympics.com/en/paris-2024/sports/rowing,ROW,Rowing
+191,Men's Double Sculls,https://olympics.com/en/paris-2024/sports/rowing,ROW,Rowing
+192,Women's Four,https://olympics.com/en/paris-2024/sports/rowing,ROW,Rowing
+193,Men's Four,https://olympics.com/en/paris-2024/sports/rowing,ROW,Rowing
+194,Women's Single Sculls,https://olympics.com/en/paris-2024/sports/rowing,ROW,Rowing
+195,Men's Single Sculls,https://olympics.com/en/paris-2024/sports/rowing,ROW,Rowing
+196,Lightweight Women's Double Sculls,https://olympics.com/en/paris-2024/sports/rowing,ROW,Rowing
+197,Lightweight Men's Double Sculls,https://olympics.com/en/paris-2024/sports/rowing,ROW,Rowing
+198,Women's Quadruple Sculls,https://olympics.com/en/paris-2024/sports/rowing,ROW,Rowing
+199,Men's Quadruple Sculls,https://olympics.com/en/paris-2024/sports/rowing,ROW,Rowing
+200,Women's Eight,https://olympics.com/en/paris-2024/sports/rowing,ROW,Rowing
+201,Men's Eight,https://olympics.com/en/paris-2024/sports/rowing,ROW,Rowing
+202,Men,https://olympics.com/en/paris-2024/sports/rugby-sevens,RU7,Rugby Sevens
+203,Women,https://olympics.com/en/paris-2024/sports/rugby-sevens,RU7,Rugby Sevens
+204,Men's Windsurfing,https://olympics.com/en/paris-2024/sports/sailing,SAL,Sailing
+205,Men's Kite,https://olympics.com/en/paris-2024/sports/sailing,SAL,Sailing
+206,Men's Dinghy,https://olympics.com/en/paris-2024/sports/sailing,SAL,Sailing
+207,Men's Skiff,https://olympics.com/en/paris-2024/sports/sailing,SAL,Sailing
+208,Women's Windsurfing,https://olympics.com/en/paris-2024/sports/sailing,SAL,Sailing
+209,Women's Kite,https://olympics.com/en/paris-2024/sports/sailing,SAL,Sailing
+210,Women's Dinghy,https://olympics.com/en/paris-2024/sports/sailing,SAL,Sailing
+211,Women's Skiff,https://olympics.com/en/paris-2024/sports/sailing,SAL,Sailing
+212,Mixed Dinghy,https://olympics.com/en/paris-2024/sports/sailing,SAL,Sailing
+213,Mixed Multihull,https://olympics.com/en/paris-2024/sports/sailing,SAL,Sailing
+214,10m Air Rifle Men,https://olympics.com/en/paris-2024/sports/shooting,SHO,Shooting
+215,50m Rifle 3 Positions Men,https://olympics.com/en/paris-2024/sports/shooting,SHO,Shooting
+216,10m Air Pistol Men,https://olympics.com/en/paris-2024/sports/shooting,SHO,Shooting
+217,25m Rapid Fire Pistol Men,https://olympics.com/en/paris-2024/sports/shooting,SHO,Shooting
+218,Trap Men,https://olympics.com/en/paris-2024/sports/shooting,SHO,Shooting
+219,Skeet Men,https://olympics.com/en/paris-2024/sports/shooting,SHO,Shooting
+220,10m Air Rifle Women,https://olympics.com/en/paris-2024/sports/shooting,SHO,Shooting
+221,50m Rifle 3 Positions Women,https://olympics.com/en/paris-2024/sports/shooting,SHO,Shooting
+222,10m Air Pistol Women,https://olympics.com/en/paris-2024/sports/shooting,SHO,Shooting
+223,25m Pistol Women,https://olympics.com/en/paris-2024/sports/shooting,SHO,Shooting
+224,Trap Women,https://olympics.com/en/paris-2024/sports/shooting,SHO,Shooting
+225,Skeet Women,https://olympics.com/en/paris-2024/sports/shooting,SHO,Shooting
+226,10m Air Rifle Mixed Team,https://olympics.com/en/paris-2024/sports/shooting,SHO,Shooting
+227,10m Air Pistol Mixed Team,https://olympics.com/en/paris-2024/sports/shooting,SHO,Shooting
+228,Skeet Mixed Team,https://olympics.com/en/paris-2024/sports/shooting,SHO,Shooting
+229,Women's Street,https://olympics.com/en/paris-2024/sports/skateboarding,SKB,Skateboarding
+230,Men's Street,https://olympics.com/en/paris-2024/sports/skateboarding,SKB,Skateboarding
+231,Women's Park,https://olympics.com/en/paris-2024/sports/skateboarding,SKB,Skateboarding
+232,Men's Park,https://olympics.com/en/paris-2024/sports/skateboarding,SKB,Skateboarding
+233,Women's Boulder & Lead,https://olympics.com/en/paris-2024/sports/sport-climbing,CLB,Sport Climbing
+234,Women's Speed,https://olympics.com/en/paris-2024/sports/sport-climbing,CLB,Sport Climbing
+235,Men's Boulder & Lead,https://olympics.com/en/paris-2024/sports/sport-climbing,CLB,Sport Climbing
+236,Men's Speed,https://olympics.com/en/paris-2024/sports/sport-climbing,CLB,Sport Climbing
+237,Men,https://olympics.com/en/paris-2024/sports/surfing,SRF,Surfing
+238,Women,https://olympics.com/en/paris-2024/sports/surfing,SRF,Surfing
+239,Women's 50m Freestyle,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+240,Women's 100m Freestyle,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+241,Women's 200m Freestyle,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+242,Women's 400m Freestyle,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+243,Women's 800m Freestyle,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+244,Women's 1500m Freestyle,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+245,Women's 100m Backstroke,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+246,Women's 200m Backstroke,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+247,Women's 100m Breaststroke,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+248,Women's 200m Breaststroke,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+249,Women's 100m Butterfly,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+250,Women's 200m Butterfly,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+251,Women's 200m Individual Medley,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+252,Women's 400m Individual Medley,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+253,Women's 4 x 100m Freestyle Relay,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+254,Women's 4 x 200m Freestyle Relay,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+255,Women's 4 x 100m Medley Relay,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+256,Men's 50m Freestyle,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+257,Men's 100m Freestyle,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+258,Men's 200m Freestyle,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+259,Men's 400m Freestyle,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+260,Men's 800m Freestyle,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+261,Men's 1500m Freestyle,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+262,Men's 100m Backstroke,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+263,Men's 200m Backstroke,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+264,Men's 100m Breaststroke,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+265,Men's 200m Breaststroke,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+266,Men's 100m Butterfly,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+267,Men's 200m Butterfly,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+268,Men's 200m Individual Medley,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+269,Men's 400m Individual Medley,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+270,Men's 4 x 100m Freestyle Relay,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+271,Men's 4 x 200m Freestyle Relay,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+272,Men's 4 x 100m Medley Relay,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+273,Mixed 4 x 100m Medley Relay,https://olympics.com/en/paris-2024/sports/swimming,SWM,Swimming
+274,Men's Singles,https://olympics.com/en/paris-2024/sports/table-tennis,TTE,Table Tennis
+275,Women's Singles,https://olympics.com/en/paris-2024/sports/table-tennis,TTE,Table Tennis
+276,Mixed Doubles,https://olympics.com/en/paris-2024/sports/table-tennis,TTE,Table Tennis
+277,Men's Team,https://olympics.com/en/paris-2024/sports/table-tennis,TTE,Table Tennis
+278,Women's Team,https://olympics.com/en/paris-2024/sports/table-tennis,TTE,Table Tennis
+279,Men -58kg,https://olympics.com/en/paris-2024/sports/taekwondo,TKW,Taekwondo
+280,Men -68kg,https://olympics.com/en/paris-2024/sports/taekwondo,TKW,Taekwondo
+281,Men -80kg,https://olympics.com/en/paris-2024/sports/taekwondo,TKW,Taekwondo
+282,Men +80kg,https://olympics.com/en/paris-2024/sports/taekwondo,TKW,Taekwondo
+283,Women -49kg,https://olympics.com/en/paris-2024/sports/taekwondo,TKW,Taekwondo
+284,Women -57kg,https://olympics.com/en/paris-2024/sports/taekwondo,TKW,Taekwondo
+285,Women -67kg,https://olympics.com/en/paris-2024/sports/taekwondo,TKW,Taekwondo
+286,Women +67kg,https://olympics.com/en/paris-2024/sports/taekwondo,TKW,Taekwondo
+287,Men's Singles,https://olympics.com/en/paris-2024/sports/tennis,TEN,Tennis
+288,Women's Singles,https://olympics.com/en/paris-2024/sports/tennis,TEN,Tennis
+289,Men's Doubles,https://olympics.com/en/paris-2024/sports/tennis,TEN,Tennis
+290,Women's Doubles,https://olympics.com/en/paris-2024/sports/tennis,TEN,Tennis
+291,Mixed Doubles,https://olympics.com/en/paris-2024/sports/tennis,TEN,Tennis
+292,Men,https://olympics.com/en/paris-2024/sports/trampoline-gymnastics,GTR,Trampoline Gymnastics
+293,Women,https://olympics.com/en/paris-2024/sports/trampoline-gymnastics,GTR,Trampoline Gymnastics
+294,Women's Individual,https://olympics.com/en/paris-2024/sports/triathlon,TRI,Triathlon
+295,Men's Individual,https://olympics.com/en/paris-2024/sports/triathlon,TRI,Triathlon
+296,Mixed Relay,https://olympics.com/en/paris-2024/sports/triathlon,TRI,Triathlon
+297,Men,https://olympics.com/en/paris-2024/sports/volleyball,VVO,Volleyball
+298,Women,https://olympics.com/en/paris-2024/sports/volleyball,VVO,Volleyball
+299,Men,https://olympics.com/en/paris-2024/sports/water-polo,WPO,Water Polo
+300,Women,https://olympics.com/en/paris-2024/sports/water-polo,WPO,Water Polo
+301,Women's 49kg,https://olympics.com/en/paris-2024/sports/weightlifting,WLF,Weightlifting
+302,Women's 59kg,https://olympics.com/en/paris-2024/sports/weightlifting,WLF,Weightlifting
+303,Women's 71kg,https://olympics.com/en/paris-2024/sports/weightlifting,WLF,Weightlifting
+304,Women's 81kg,https://olympics.com/en/paris-2024/sports/weightlifting,WLF,Weightlifting
+305,Women's +81kg,https://olympics.com/en/paris-2024/sports/weightlifting,WLF,Weightlifting
+306,Men's 61kg,https://olympics.com/en/paris-2024/sports/weightlifting,WLF,Weightlifting
+307,Men's 73kg,https://olympics.com/en/paris-2024/sports/weightlifting,WLF,Weightlifting
+308,Men's 89kg,https://olympics.com/en/paris-2024/sports/weightlifting,WLF,Weightlifting
+309,Men's 102kg,https://olympics.com/en/paris-2024/sports/weightlifting,WLF,Weightlifting
+310,Men's +102kg,https://olympics.com/en/paris-2024/sports/weightlifting,WLF,Weightlifting
+311,Men's Greco-Roman 60kg,https://olympics.com/en/paris-2024/sports/wrestling,WRE,Wrestling
+312,Men's Greco-Roman 67kg,https://olympics.com/en/paris-2024/sports/wrestling,WRE,Wrestling
+313,Men's Greco-Roman 77kg,https://olympics.com/en/paris-2024/sports/wrestling,WRE,Wrestling
+314,Men's Greco-Roman 87kg,https://olympics.com/en/paris-2024/sports/wrestling,WRE,Wrestling
+315,Men's Greco-Roman 97kg,https://olympics.com/en/paris-2024/sports/wrestling,WRE,Wrestling
+316,Men's Greco-Roman 130kg,https://olympics.com/en/paris-2024/sports/wrestling,WRE,Wrestling
+317,Women's Freestyle 50kg,https://olympics.com/en/paris-2024/sports/wrestling,WRE,Wrestling
+318,Women's Freestyle 53kg,https://olympics.com/en/paris-2024/sports/wrestling,WRE,Wrestling
+319,Women's Freestyle 57kg,https://olympics.com/en/paris-2024/sports/wrestling,WRE,Wrestling
+320,Women's Freestyle 62kg,https://olympics.com/en/paris-2024/sports/wrestling,WRE,Wrestling
+321,Women's Freestyle 68kg,https://olympics.com/en/paris-2024/sports/wrestling,WRE,Wrestling
+322,Women's Freestyle 76kg,https://olympics.com/en/paris-2024/sports/wrestling,WRE,Wrestling
+323,Men's Freestyle 57kg,https://olympics.com/en/paris-2024/sports/wrestling,WRE,Wrestling
+324,Men's Freestyle 65kg,https://olympics.com/en/paris-2024/sports/wrestling,WRE,Wrestling
+325,Men's Freestyle 74kg,https://olympics.com/en/paris-2024/sports/wrestling,WRE,Wrestling
+326,Men's Freestyle 86kg,https://olympics.com/en/paris-2024/sports/wrestling,WRE,Wrestling
+327,Men's Freestyle 97kg,https://olympics.com/en/paris-2024/sports/wrestling,WRE,Wrestling
+328,Men's Freestyle 125kg,https://olympics.com/en/paris-2024/sports/wrestling,WRE,Wrestling
