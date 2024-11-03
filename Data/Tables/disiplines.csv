@@ -1,46 +1,46 @@
-name;disipline_code;id
-Archery;ARC;1
-Artistic Gymnastics;GAR;2
-Artistic Swimming;SWA;3
-Athletics;ATH;4
-Badminton;BDM;5
-Basketball;BKB;6
-3x3 Basketball;BK3;7
-Beach Volleyball;VBV;8
-Boxing;BOX;9
-Breaking;BKG;10
-Canoe Slalom;CSL;11
-Canoe Sprint;CSP;12
-Cycling BMX Freestyle;BMF;13
-Cycling BMX Racing;BMX;14
-Cycling Mountain Bike;MTB;15
-Cycling Road;CRD;16
-Cycling Track;CTR;17
-Diving;DIV;18
-Equestrian;EQU;19
-Fencing;FEN;20
-Football;FBL;21
-Golf;GLF;22
-Handball;HBL;23
-Hockey;HOC;24
-Judo;JUD;25
-Marathon Swimming;OWS;26
-Modern Pentathlon;MPN;27
-Rhythmic Gymnastics;GRY;28
-Rowing;ROW;29
-Rugby Sevens;RU7;30
-Sailing;SAL;31
-Shooting;SHO;32
-Skateboarding;SKB;33
-Sport Climbing;CLB;34
-Surfing;SRF;35
-Swimming;SWM;36
-Table Tennis;TTE;37
-Taekwondo;TKW;38
-Tennis;TEN;39
-Trampoline Gymnastics;GTR;40
-Triathlon;TRI;41
-Volleyball;VVO;42
-Water Polo;WPO;43
-Weightlifting;WLF;44
-Wrestling;WRE;45
+﻿name,disipline_code,id
+Archery,ARC,1
+Artistic Gymnastics,GAR,2
+Artistic Swimming,SWA,3
+Athletics,ATH,4
+Badminton,BDM,5
+Basketball,BKB,6
+3x3 Basketball,BK3,7
+Beach Volleyball,VBV,8
+Boxing,BOX,9
+Breaking,BKG,10
+Canoe Slalom,CSL,11
+Canoe Sprint,CSP,12
+Cycling BMX Freestyle,BMF,13
+Cycling BMX Racing,BMX,14
+Cycling Mountain Bike,MTB,15
+Cycling Road,CRD,16
+Cycling Track,CTR,17
+Diving,DIV,18
+Equestrian,EQU,19
+Fencing,FEN,20
+Football,FBL,21
+Golf,GLF,22
+Handball,HBL,23
+Hockey,HOC,24
+Judo,JUD,25
+Marathon Swimming,OWS,26
+Modern Pentathlon,MPN,27
+Rhythmic Gymnastics,GRY,28
+Rowing,ROW,29
+Rugby Sevens,RU7,30
+Sailing,SAL,31
+Shooting,SHO,32
+Skateboarding,SKB,33
+Sport Climbing,CLB,34
+Surfing,SRF,35
+Swimming,SWM,36
+Table Tennis,TTE,37
+Taekwondo,TKW,38
+Tennis,TEN,39
+Trampoline Gymnastics,GTR,40
+Triathlon,TRI,41
+Volleyball,VVO,42
+Water Polo,WPO,43
+Weightlifting,WLF,44
+Wrestling,WRE,45
