@@ -1,7 +1,8 @@
 -- Drop existing tables to avoid conflicts
 DROP TABLE IF EXISTS `Schedule`;
 DROP TABLE IF EXISTS `Discipline`;
-
+DROP TABLE IF EXISTS `Country`;
+DROP TABLE IF EXISTS `Events`;
 
 -- Create Schedule Table
 CREATE TABLE `Schedule` (
@@ -33,4 +34,27 @@ CREATE TABLE `Discipline` (
     PRIMARY KEY (`id`),
     UNIQUE KEY `unique_discipline_code` (`discipline_code`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+
+-- Create Country Table
+CREATE TABLE `Country` (
+    `country_code` CHAR(3) NOT NULL,
+    `country_name` VARCHAR(255) NOT NULL,
+    `country_long` VARCHAR(255),
+    `gold_medal` INT DEFAULT 0,
+    `silver_medal` INT DEFAULT 0,
+    `bronze_medal` INT DEFAULT 0,
+    `total` INT GENERATED ALWAYS AS (`gold_medal` + `silver_medal` + `bronze_medal`) STORED,
+    PRIMARY KEY (`country_code`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+
+-- Create Events Table
+CREATE TABLE `Events` (
+    `events_code` INT NOT NULL AUTO_INCREMENT,
+    `event_name` VARCHAR(255) NOT NULL,
+    `url` VARCHAR(255),
+    `discipline_code` CHAR(3),
+    `sport_name` VARCHAR(255),
+    PRIMARY KEY (`events_code`),
+    FOREIGN KEY (`discipline_code`) REFERENCES `Discipline`(`id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci AUTO_INCREMENT = 0;
 
