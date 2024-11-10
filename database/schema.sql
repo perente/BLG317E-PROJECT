@@ -58,3 +58,17 @@ CREATE TABLE `Events` (
     FOREIGN KEY (`discipline_code`) REFERENCES `Discipline`(`id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci AUTO_INCREMENT = 0;
 
+-- Create Teams Table
+CREATE TABLE  `Teams` (
+    `team_code` VARCHAR(10) PRIMARY KEY,
+    `team_name` VARCHAR(100),
+    `team_gender` CHAR(1),
+    `country_code` VARCHAR(10),
+    `discipline_code` INT,
+    `athletes_code` INT,
+    `num_athletes` INT,
+    
+    FOREIGN KEY (`country_code`) REFERENCES Country(`country_code`),
+    FOREIGN KEY (`discipline_code`) REFERENCES Discipline(`discipline_code`),
+    FOREIGN KEY (`athletes_code`) REFERENCES Athletes(`athletes_code`)
+)ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
