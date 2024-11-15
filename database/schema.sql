@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS `Schedule`;
 DROP TABLE IF EXISTS `Discipline`;
 DROP TABLE IF EXISTS `Country`;
 DROP TABLE IF EXISTS `Events`;
+DROP TABLE IF EXISTS `Medallist`;
 
 -- Create Schedule Table
 CREATE TABLE `Schedule` (
@@ -72,3 +73,23 @@ CREATE TABLE  `Teams` (
     FOREIGN KEY (`discipline_code`) REFERENCES Discipline(`discipline_code`),
     FOREIGN KEY (`athletes_code`) REFERENCES Athletes(`athletes_code`)
 )ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+
+-- Create Medallist Table
+CREATE TABLE `Medallist` (
+    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `medal_date` DATE NOT NULL,
+    `medal_code` INT NOT NULL,
+    `name` VARCHAR(255) NOT NULL,
+    `gender` ENUM('M', 'F') NOT NULL,
+    `country_code` CHAR(3) NOT NULL,
+    `team_gender` ENUM('M', 'F', 'Mixed'),
+    `discipline` VARCHAR(100) NOT NULL,
+    `event` VARCHAR(255) NOT NULL,
+    `code_athlete` VARCHAR(50) NOT NULL,
+    `code_team` VARCHAR(50),
+    `is_medallist` BOOLEAN NOT NULL DEFAULT FALSE,
+    FOREIGN KEY (`country_code`) REFERENCES Country(`country_code`) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (`discipline`) REFERENCES Discipline(`discipline_code`) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (`code_athletes`) REFERENCES Athletes(`athletes_code`) ON DELETE SET NULL ON UPDATE CASCADE,
+	FOREIGN KEY (`code_team`) REFERENCES Teams(`team_code`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
