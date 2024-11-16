@@ -20,3 +20,10 @@ export const getSchedules = async function () {
         url: API_ROUTE.schedules,
     });
 }
+
+export const getDisciplines = async function () {
+    return await axios({
+        method: "get",
+        url: API_ROUTE.disciplines,
+    });
+}

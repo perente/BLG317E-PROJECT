@@ -42,7 +42,30 @@ def get_schedules():
             cursor.close()
             connection.close()
 
+@app.route('/disciplines', methods=['GET'])
+def get_disciplines():
+    try:
+        # Establish database connection
+        connection = db_connection()
 
+        if connection.is_connected():
+            cursor = connection.cursor(dictionary=True)
+            cursor.execute("SELECT * FROM Discipline")
+            disciplines = cursor.fetchall()
+
+            # Return data as JSON
+            return jsonify(disciplines), 200
+        else:
+            return jsonify({'error': 'Failed to connect to the database'}), 500
+
+    except Error as e:
+        return jsonify({'error': str(e)}), 500
+
+    finally:
+        # Close the connection
+        if 'connection' in locals() and connection.is_connected():
+            cursor.close()
+            connection.close()
 
 
 

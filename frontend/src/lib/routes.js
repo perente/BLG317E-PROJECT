@@ -7,4 +7,6 @@ export const APP_ROUTES = {
 
 export const API_ROUTE = {
     schedules: BASE_URL + 'schedules',
+    events: BASE_URL + 'events',
+    disciplines: BASE_URL + 'disciplines',
 }
