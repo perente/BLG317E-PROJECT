@@ -4,6 +4,11 @@ DROP TABLE IF EXISTS `Discipline`;
 DROP TABLE IF EXISTS `Country`;
 DROP TABLE IF EXISTS `Events`;
 DROP TABLE IF EXISTS `Medallist`;
+DROP TABLE IF EXISTS `Athlete`;
+DROP TABLE IF EXISTS `Coach`;
+DROP TABLE IF EXISTS `Athlete_Disciplines`;
+
+
 
 -- Create Schedule Table
 CREATE TABLE `Schedule` (
@@ -93,3 +98,40 @@ CREATE TABLE `Medallist` (
     FOREIGN KEY (`code_athletes`) REFERENCES Athletes(`athletes_code`) ON DELETE SET NULL ON UPDATE CASCADE,
 	FOREIGN KEY (`code_team`) REFERENCES Teams(`team_code`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+
+
+-- Create Coach Table
+CREATE TABLE  `Coach` (
+    `coach_code` INT PRIMARY KEY,
+    `name` VARCHAR(100) NOT NULL,
+    `gender` CHAR(1) NOT NULL,
+    `function` VARCHAR(20) NOT NULL,
+    `birth_date` DATE,
+    `country_code` VARCHAR(3) NOT NULL,
+    `disciplines` VARCHAR(50) NOT NULL,
+    
+    FOREIGN KEY (`country_code`) REFERENCES Country(`country_code`) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (`disciplines`) REFERENCES Discipline(`discipline_code`) ON DELETE SET NULL ON UPDATE CASCADE
+)ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+
+-- Create Athlete Table
+CREATE TABLE  `Athlete` (
+    `athlete_code` INT PRIMARY KEY,
+    `name` VARCHAR(100) NOT NULL,
+    `gender` CHAR(1) NOT NULL,
+    `country_code` VARCHAR(3) NOT NULL,
+    `nationality` VARCHAR(50),
+    `birth_date` DATE NOT NULL,
+    
+    FOREIGN KEY (`country_code`) REFERENCES Country(`country_code`) ON DELETE SET NULL ON UPDATE CASCADE,
+)ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+
+-- Create Athlete_Disciplines Join Table
+CREATE TABLE Athlete_Disciplines (
+    `athlete_code` INT,
+    `discipline_code` VARCHAR(50),
+    
+    PRIMARY KEY (`athlete_code`, `discipline_code`),
+    FOREIGN KEY (`athlete_code`) REFERENCES Athlete(`athlete_code`), ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (`discipline_code`) REFERENCES Discipline(`discipline_code`) ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
