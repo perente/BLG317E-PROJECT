@@ -29,7 +29,7 @@ export default function Home() {
       <main className="w-full flex-1 flex flex-col justify-center items-center z-10">
         <h1 className="text-xl mb-4">Welcome to The Olympic Games</h1>
         <div>
-          <ul className="grid grid-cols-3 gap-2">
+          <ul className="grid grid-cols-3 gap-3">
             <Button onClick={() => routerPush("/schedules")}>Schedules</Button>
             <Button onClick={() => routerPush("/events")}>Events</Button>
             <Button onClick={() => routerPush("/medals")}>Medals</Button>
