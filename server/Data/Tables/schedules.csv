@@ -45,9 +45,9 @@
 25.07.2024 21:30,25.07.2024 21:46,FINISHED,RU7,Men,Men's Quarter-finals,M,Stade de France,202,/en/paris-2024/results/rugby-sevens/men/qfnl000200--,44
 25.07.2024 22:00,25.07.2024 22:16,FINISHED,RU7,Men,Men's Quarter-finals,M,Stade de France,202,/en/paris-2024/results/rugby-sevens/men/qfnl000300--,45
 25.07.2024 22:30,25.07.2024 22:46,FINISHED,RU7,Men,Men's Quarter-finals,M,Stade de France,202,/en/paris-2024/results/rugby-sevens/men/qfnl000400--,46
-26.07.2024 09:00,26.07.2024 09:30,FINISHED,SHO,10m Air Rifle Mixed Team,10m Air Rifle Mixed Team Training,X,Chateauroux Shooting Ctr,226,47
-26.07.2024 10:00,26.07.2024 11:15,FINISHED,SHO,10m Air Pistol Men,10m Air Pistol Men's Training,M,Chateauroux Shooting Ctr,216,48
-26.07.2024 11:45,26.07.2024 13:00,FINISHED,SHO,10m Air Pistol Women,10m Air Pistol Women Training,W,Chateauroux Shooting Ctr,222,49
+26.07.2024 09:00,26.07.2024 09:30,FINISHED,SHO,10m Air Rifle Mixed Team,10m Air Rifle Mixed Team Training,X,Chateauroux Shooting Ctr,226,null,47
+26.07.2024 10:00,26.07.2024 11:15,FINISHED,SHO,10m Air Pistol Men,10m Air Pistol Men's Training,M,Chateauroux Shooting Ctr,216,null,48
+26.07.2024 11:45,26.07.2024 13:00,FINISHED,SHO,10m Air Pistol Women,10m Air Pistol Women Training,W,Chateauroux Shooting Ctr,222,null,49
 27.07.2024 08:30,27.07.2024 09:10,FINISHED,BDM,Mixed Doubles,Mixed Doubles Group Play Stage - Grp D,X,La Chapelle Arena,73,/en/paris-2024/results/badminton/mixed-doubles/gpd-000600--,50
 27.07.2024 08:30,27.07.2024 09:10,FINISHED,BDM,Women's Singles,Women's Singles Group Play Stage - Grp N,W,La Chapelle Arena,70,/en/paris-2024/results/badminton/women-s-singles/gpn-000300--,51
 27.07.2024 08:30,27.07.2024 09:10,FINISHED,BDM,Mixed Doubles,Mixed Doubles Group Play Stage - Grp B,X,La Chapelle Arena,73,/en/paris-2024/results/badminton/mixed-doubles/gpb-000300--,52
@@ -99,7 +99,6 @@
 27.07.2024 10:50,27.07.2024 11:15,FINISHED,FEN,Women's Épée Individual,Women's Épée Individual Table of 32,W,Grand Palais,147,/en/paris-2024/results/fencing/women-s-epee-individual/r32-001300--,98
 27.07.2024 10:54,27.07.2024 11:00,FINISHED,JUD,Women -48 kg,Women -48 kg Elimination Round of 32,W,Champ-de-Mars Arena,167,/en/paris-2024/results/judo/women--48-kg/r32-001100--,99
 27.07.2024 10:54,27.07.2024 11:00,FINISHED,JUD,Men -60 kg,Men -60 kg Elimination Round of 16,M,Champ-de-Mars Arena,174,/en/paris-2024/results/judo/men--60-kg/8fnl000100--,100
-27.07.2024 11:00,27.07.2024 13:33,FINISHED,GAR,Men,Men's Qualification,M,Bercy Arena,/en/paris-2024/results/artistic-gymnastics/men/qual000001--,101
 27.07.2024 11:00,27.07.2024 12:00,FINISHED,BDM,Men's Singles,Men's Singles Group Play Stage - Grp C,M,La Chapelle Arena,69,/en/paris-2024/results/badminton/men-s-singles/gpc-000100--,102
 27.07.2024 11:00,27.07.2024 12:00,FINISHED,BDM,Men's Singles,Men's Singles Group Play Stage - Grp A,M,La Chapelle Arena,69,/en/paris-2024/results/badminton/men-s-singles/gpa-000300--,103
 27.07.2024 11:00,27.07.2024 12:00,FINISHED,BDM,Women's Doubles,Women's Doubles Group Play Stage - Grp A,W,La Chapelle Arena,72,/en/paris-2024/results/badminton/women-s-doubles/gpa-000400--,104
@@ -195,7 +194,7 @@
 27.07.2024 14:10,27.07.2024 14:35,FINISHED,FEN,Women's Épée Individual,Women's Épée Individual Table of 16,W,Grand Palais,147,/en/paris-2024/results/fencing/women-s-epee-individual/8fnl000300--,194
 27.07.2024 14:10,27.07.2024 14:35,FINISHED,FEN,Women's Épée Individual,Women's Épée Individual Table of 16,W,Grand Palais,147,/en/paris-2024/results/fencing/women-s-epee-individual/8fnl000500--,195
 27.07.2024 14:10,27.07.2024 14:35,FINISHED,FEN,Women's Épée Individual,Women's Épée Individual Table of 16,W,Grand Palais,147,/en/paris-2024/results/fencing/women-s-epee-individual/8fnl000700--,196
-27.07.2024 14:15,27.07.2024 15:30,FINISHED,SHO,10m Air Rifle Women,10m Air Rifle Women's Training,W,Chateauroux Shooting Ctr,220,197
+27.07.2024 14:15,27.07.2024 15:30,FINISHED,SHO,10m Air Rifle Women,10m Air Rifle Women's Training,W,Chateauroux Shooting Ctr,220,null,197
 27.07.2024 14:30,27.07.2024 15:59,FINISHED,CRD,Women's Individual Time Trial,Women's Individual Time Trial,W,Pont Alexandre III,120,/en/paris-2024/results/cycling-road/women-s-individual-time-trial/fnl-000100--,198
 27.07.2024 14:30,27.07.2024 14:46,FINISHED,RU7,Men,Men's Placing 5-8,M,Stade de France,202,/en/paris-2024/results/rugby-sevens/men/sf5-000100--,199
 27.07.2024 14:35,27.07.2024 15:00,FINISHED,FEN,Women's Épée Individual,Women's Épée Individual Table of 16,W,Grand Palais,147,/en/paris-2024/results/fencing/women-s-epee-individual/8fnl000200--,200
@@ -221,7 +220,6 @@
 27.07.2024 15:25,27.07.2024 15:50,FINISHED,FEN,Men's Sabre Individual,Men's Sabre Individual Table of 16,M,Grand Palais,152,/en/paris-2024/results/fencing/men-s-sabre-individual/8fnl000400--,220
 27.07.2024 15:25,27.07.2024 15:50,FINISHED,FEN,Men's Sabre Individual,Men's Sabre Individual Table of 16,M,Grand Palais,152,/en/paris-2024/results/fencing/men-s-sabre-individual/8fnl000600--,221
 27.07.2024 15:25,27.07.2024 15:50,FINISHED,FEN,Men's Sabre Individual,Men's Sabre Individual Table of 16,M,Grand Palais,152,/en/paris-2024/results/fencing/men-s-sabre-individual/8fnl000800--,222
-27.07.2024 15:30,27.07.2024 18:03,FINISHED,GAR,Men,Men's Qualification,M,Bercy Arena,/en/paris-2024/results/artistic-gymnastics/men/qual000002--,223
 27.07.2024 15:30,27.07.2024 15:41,FINISHED,BOX,Women's 54kg,Women's 54kg - Prelims - Round of 32,W,North Paris Arena,88,/en/paris-2024/results/boxing/women-s-54kg/r32-000200--,224
 27.07.2024 15:30,27.07.2024 15:46,FINISHED,RU7,Men,Men's Semi-finals,M,Stade de France,202,/en/paris-2024/results/rugby-sevens/men/sfnl000100--,225
 27.07.2024 15:35,27.07.2024 17:00,FINISHED,WPO,Women,Women's Preliminary Round - Group B,W,Aquatics Centre,300,/en/paris-2024/results/water-polo/women/gpb-000100--,226
@@ -240,7 +238,7 @@
 27.07.2024 16:00,27.07.2024 17:30,FINISHED,HBL,Men,Men's Preliminary Round Group B,M,South Paris Arena 6,163,/en/paris-2024/results/handball/men/gpb-000200--,239
 27.07.2024 16:00,27.07.2024 16:06,FINISHED,JUD,Women -48 kg,Women -48 kg Repechage,W,Champ-de-Mars Arena,167,/en/paris-2024/results/judo/women--48-kg/rep1000100--,240
 27.07.2024 16:00,27.07.2024 16:16,FINISHED,RU7,Men,Men's Semi-finals,M,Stade de France,202,/en/paris-2024/results/rugby-sevens/men/sfnl000200--,241
-27.07.2024 16:00,27.07.2024 17:15,FINISHED,SHO,10m Air Rifle Men,10m Air Rifle Men's Training,M,Chateauroux Shooting Ctr,214,242
+27.07.2024 16:00,27.07.2024 17:15,FINISHED,SHO,10m Air Rifle Men,10m Air Rifle Men's Training,M,Chateauroux Shooting Ctr,214,null,242
 27.07.2024 16:02,27.07.2024 16:13,FINISHED,BOX,Women's 54kg,Women's 54kg - Prelims - Round of 32,W,North Paris Arena,88,/en/paris-2024/results/boxing/women-s-54kg/r32-000700--,243
 27.07.2024 16:06,27.07.2024 16:12,FINISHED,JUD,Women -48 kg,Women -48 kg Repechage,W,Champ-de-Mars Arena,167,/en/paris-2024/results/judo/women--48-kg/rep1000200--,244
 27.07.2024 16:12,27.07.2024 16:18,FINISHED,JUD,Women -48 kg,Women -48 kg Semifinals,W,Champ-de-Mars Arena,167,/en/paris-2024/results/judo/women--48-kg/sfnl000200--,245
@@ -307,7 +305,6 @@
 27.07.2024 19:45,27.07.2024 21:15,FINISHED,HOC,Women,Women's Pool B,W,Yves-du-Manoir Stadium,166,/en/paris-2024/results/hockey/women/gpb-000100--,306
 27.07.2024 19:45,27.07.2024 20:01,FINISHED,RU7,Men,Men's Finals,M,Stade de France,202,/en/paris-2024/results/rugby-sevens/men/fnl-000100--,307
 27.07.2024 19:50,27.07.2024 20:15,FINISHED,FEN,Men's Sabre Individual,Men's Sabre Individual Semifinals,M,Grand Palais,152,/en/paris-2024/results/fencing/men-s-sabre-individual/sfnl000100--,308
-27.07.2024 20:00,27.07.2024 22:33,FINISHED,GAR,Men,Men's Qualification,M,Bercy Arena,/en/paris-2024/results/artistic-gymnastics/men/qual000003--,309
 27.07.2024 20:00,27.07.2024 20:11,FINISHED,BOX,Women's 54kg,Women's 54kg - Prelims - Round of 32,W,North Paris Arena,88,/en/paris-2024/results/boxing/women-s-54kg/r32-001000--,310
 27.07.2024 20:00,27.07.2024 20:45,FINISHED,TTE,Men's Singles,Men's Singles Round of 64,M,South Paris Arena 4,274,/en/paris-2024/results/table-tennis/men-s-singles/r64-000200--,311
 27.07.2024 20:00,27.07.2024 20:45,FINISHED,TTE,Women's Singles,Women's Singles Round of 64,W,South Paris Arena 4,275,/en/paris-2024/results/table-tennis/women-s-singles/r64-000700--,312
@@ -383,14 +380,13 @@
 28.07.2024 09:00,28.07.2024 09:50,FINISHED,VBV,Women,Women's Preliminary - Pool A - Matches,W,Eiffel Tower Stadium,79,/en/paris-2024/results/beach-volleyball/women/gpa-000100--,382
 28.07.2024 09:00,28.07.2024 10:30,FINISHED,HBL,Women,Women's Preliminary Round Group B,W,South Paris Arena 6,164,/en/paris-2024/results/handball/women/gpb-000400--,383
 28.07.2024 09:00,28.07.2024 09:31,FINISHED,ROW,Women's Single Sculls,Women's Single Sculls Repechages,W,Nautical St - Flat water,194,/en/paris-2024/results/rowing/women-s-single-sculls/rep---------,384
-28.07.2024 09:00,28.07.2024 15:00,FINISHED,SHO,Trap Men,Trap Men's Training,M,Chateauroux Shooting Ctr,218,385
+28.07.2024 09:00,28.07.2024 15:00,FINISHED,SHO,Trap Men,Trap Men's Training,M,Chateauroux Shooting Ctr,218,null,385
 28.07.2024 09:00,28.07.2024 11:15,FINISHED,VVO,Women,Women's Preliminary Round - Pool C,W,South Paris Arena 1,298,/en/paris-2024/results/volleyball/women/gpc-000100--,386
 28.07.2024 09:15,28.07.2024 10:30,FINISHED,SHO,10m Air Rifle Women,10m Air Rifle Women's Qualification,W,Chateauroux Shooting Ctr,220,/en/paris-2024/results/shooting/10m-air-rifle-women/qual000100--,387
 28.07.2024 09:20,28.07.2024 10:00,FINISHED,BDM,Women's Singles,Women's Singles Group Play Stage - Grp E,W,La Chapelle Arena,70,/en/paris-2024/results/badminton/women-s-singles/gpe-000100--,388
 28.07.2024 09:20,28.07.2024 10:00,FINISHED,BDM,Women's Singles,Women's Singles Group Play Stage - Grp M,W,La Chapelle Arena,70,/en/paris-2024/results/badminton/women-s-singles/gpm-000100--,389
 28.07.2024 09:20,28.07.2024 10:00,FINISHED,BDM,Men's Doubles,Men's Doubles Group Play Stage - Grp A,M,La Chapelle Arena,71,/en/paris-2024/results/badminton/men-s-doubles/gpa-000400--,390
 28.07.2024 09:30,28.07.2024 09:53,FINISHED,ARC,Women's Team,Women's Team 1/8 Elimination Round,W,Invalides,3,/en/paris-2024/results/archery/women-s-team/8fnl000200--,391
-28.07.2024 09:30,28.07.2024 11:06,FINISHED,GAR,Women,Women's Qualification,W,Bercy Arena,/en/paris-2024/results/artistic-gymnastics/women/qual000001--,392
 28.07.2024 09:30,28.07.2024 10:00,FINISHED,FEN,Women's Foil Individual,Women's Foil Individual Table of 64,W,Grand Palais,148,/en/paris-2024/results/fencing/women-s-foil-individual/r64-000200--,393
 28.07.2024 09:30,28.07.2024 10:00,FINISHED,FEN,Women's Foil Individual,Women's Foil Individual Table of 64,W,Grand Palais,148,/en/paris-2024/results/fencing/women-s-foil-individual/r64-003100--,394
 28.07.2024 09:30,28.07.2024 10:15,FINISHED,SHO,10m Air Pistol Men,10m Air Pistol Men's Final,M,Chateauroux Shooting Ctr,216,/en/paris-2024/results/shooting/10m-air-pistol-men/fnl-000100--,395
@@ -486,7 +482,6 @@
 28.07.2024 11:32,28.07.2024 11:43,FINISHED,BOX,Men's 71kg,Men's 71kg - Prelims - Round of 32,M,North Paris Arena,83,/en/paris-2024/results/boxing/men-s-71kg/r32-000700--,485
 28.07.2024 11:36,28.07.2024 11:42,FINISHED,JUD,Men -66 kg,Men -66 kg Elimination Round of 16,M,Champ-de-Mars Arena,175,/en/paris-2024/results/judo/men--66-kg/8fnl000600--,486
 28.07.2024 11:36,28.07.2024 11:42,FINISHED,JUD,Women -52 kg,Women -52 kg Elimination Round of 16,W,Champ-de-Mars Arena,168,/en/paris-2024/results/judo/women--52-kg/8fnl000700--,487
-28.07.2024 11:40,28.07.2024 13:18,FINISHED,GAR,Women,Women's Qualification,W,Bercy Arena,/en/paris-2024/results/artistic-gymnastics/women/qual000002--,488
 28.07.2024 11:42,28.07.2024 11:48,FINISHED,JUD,Men -66 kg,Men -66 kg Elimination Round of 16,M,Champ-de-Mars Arena,175,/en/paris-2024/results/judo/men--66-kg/8fnl000700--,489
 28.07.2024 11:42,28.07.2024 11:48,FINISHED,JUD,Women -52 kg,Women -52 kg Elimination Round of 16,W,Champ-de-Mars Arena,168,/en/paris-2024/results/judo/women--52-kg/8fnl000800--,490
 28.07.2024 11:43,28.07.2024 11:59,FINISHED,SWM,Men's 100m Backstroke,Men's 100m Backstroke - Heats,M,Paris La Defense Arena,262,/en/paris-2024/results/swimming/men-s-100m-backstroke/heat--------,491
@@ -614,7 +609,7 @@
 28.07.2024 14:00,28.07.2024 14:40,FINISHED,BDM,Mixed Doubles,Mixed Doubles Group Play Stage - Grp A,X,La Chapelle Arena,73,/en/paris-2024/results/badminton/mixed-doubles/gpa-000100--,613
 28.07.2024 14:00,28.07.2024 14:40,FINISHED,BDM,Men's Singles,Men's Singles Group Play Stage - Grp H,M,La Chapelle Arena,69,/en/paris-2024/results/badminton/men-s-singles/gph-000100--,614
 28.07.2024 14:00,28.07.2024 15:30,FINISHED,HBL,Women,Women's Preliminary Round Group A,W,South Paris Arena 6,164,/en/paris-2024/results/handball/women/gpa-000500--,615
-28.07.2024 14:00,28.07.2024 14:30,FINISHED,SHO,10m Air Pistol Mixed Team,10m Air Pistol Mixed Team Training,X,Chateauroux Shooting Ctr,227,616
+28.07.2024 14:00,28.07.2024 14:30,FINISHED,SHO,10m Air Pistol Mixed Team,10m Air Pistol Mixed Team Training,X,Chateauroux Shooting Ctr,227,null,616
 28.07.2024 14:05,28.07.2024 14:35,FINISHED,FEN,Women's Foil Individual,Women's Foil Individual Table of 16,W,Grand Palais,148,/en/paris-2024/results/fencing/women-s-foil-individual/8fnl000100--,617
 28.07.2024 14:05,28.07.2024 14:35,FINISHED,FEN,Women's Foil Individual,Women's Foil Individual Table of 16,W,Grand Palais,148,/en/paris-2024/results/fencing/women-s-foil-individual/8fnl000300--,618
 28.07.2024 14:05,28.07.2024 14:35,FINISHED,FEN,Women's Foil Individual,Women's Foil Individual Table of 16,W,Grand Palais,148,/en/paris-2024/results/fencing/women-s-foil-individual/8fnl000500--,619
@@ -627,7 +622,6 @@
 28.07.2024 14:35,28.07.2024 15:05,FINISHED,FEN,Women's Foil Individual,Women's Foil Individual Table of 16,W,Grand Palais,148,/en/paris-2024/results/fencing/women-s-foil-individual/8fnl000600--,626
 28.07.2024 14:35,28.07.2024 15:05,FINISHED,FEN,Women's Foil Individual,Women's Foil Individual Table of 16,W,Grand Palais,148,/en/paris-2024/results/fencing/women-s-foil-individual/8fnl000800--,627
 28.07.2024 14:38,28.07.2024 15:01,FINISHED,ARC,Women's Team,Women's Team Quarterfinals,W,Invalides,3,/en/paris-2024/results/archery/women-s-team/qfnl000100--,628
-28.07.2024 14:50,28.07.2024 16:29,FINISHED,GAR,Women,Women's Qualification,W,Bercy Arena,/en/paris-2024/results/artistic-gymnastics/women/qual000003--,629
 28.07.2024 14:50,28.07.2024 15:30,FINISHED,BDM,Mixed Doubles,Mixed Doubles Group Play Stage - Grp A,X,La Chapelle Arena,73,/en/paris-2024/results/badminton/mixed-doubles/gpa-000200--,630
 28.07.2024 14:50,28.07.2024 15:30,FINISHED,BDM,Women's Singles,Women's Singles Group Play Stage - Grp P,W,La Chapelle Arena,70,/en/paris-2024/results/badminton/women-s-singles/gpp-000100--,631
 28.07.2024 14:50,28.07.2024 15:30,FINISHED,BDM,Women's Singles,Women's Singles Group Play Stage - Grp G,W,La Chapelle Arena,70,/en/paris-2024/results/badminton/women-s-singles/gpg-000300--,632
@@ -706,7 +700,6 @@
 28.07.2024 17:30,28.07.2024 19:00,FINISHED,HOC,Men,Men's Pool B,M,Yves-du-Manoir Stadium,165,/en/paris-2024/results/hockey/men/gpb-000400--,705
 28.07.2024 17:30,28.07.2024 17:46,FINISHED,RU7,Women,Women's Pool A,W,Stade de France,203,/en/paris-2024/results/rugby-sevens/women/gpa-000100--,706
 28.07.2024 17:45,28.07.2024 18:29,FINISHED,CSL,Women's Kayak Single,Women's Kayak Single Final,W,Nautical St - White water,96,/en/paris-2024/results/canoe-slalom/women-s-kayak-single/fnl-000100--,707
-28.07.2024 18:00,28.07.2024 19:39,FINISHED,GAR,Women,Women's Qualification,W,Bercy Arena,/en/paris-2024/results/artistic-gymnastics/women/qual000004--,708
 28.07.2024 18:00,28.07.2024 18:16,FINISHED,RU7,Women,Women's Pool A,W,Stade de France,203,/en/paris-2024/results/rugby-sevens/women/gpa-000200--,709
 28.07.2024 19:00,28.07.2024 19:30,FINISHED,FEN,Women's Foil Individual,Women's Foil Individual Semifinals,W,Grand Palais,148,/en/paris-2024/results/fencing/women-s-foil-individual/sfnl000100--,710
 28.07.2024 19:00,28.07.2024 20:45,FINISHED,FBL,Women,Women's Group B,W,Nice Stadium,160,/en/paris-2024/results/football/women/gpb-000400--,711
@@ -760,7 +753,6 @@
 28.07.2024 21:00,28.07.2024 23:15,FINISHED,VVO,Men,Men's Preliminary Round - Pool A,M,South Paris Arena 1,297,/en/paris-2024/results/volleyball/men/gpa-000200--,759
 28.07.2024 21:04,28.07.2024 21:15,FINISHED,BOX,Women's 50kg,Women's 50kg - Prelims - Round of 32,W,North Paris Arena,87,/en/paris-2024/results/boxing/women-s-50kg/r32-001100--,760
 28.07.2024 21:05,28.07.2024 22:30,FINISHED,WPO,Men,Men's Preliminary Round - Group A,M,Aquatics Centre,299,/en/paris-2024/results/water-polo/men/gpa-000300--,761
-28.07.2024 21:10,28.07.2024 22:49,FINISHED,GAR,Women,Women's Qualification,W,Bercy Arena,/en/paris-2024/results/artistic-gymnastics/women/qual000005--,762
 28.07.2024 21:10,28.07.2024 23:00,FINISHED,BDM,Mixed Doubles,Mixed Doubles Group Play Stage - Grp B,X,La Chapelle Arena,73,/en/paris-2024/results/badminton/mixed-doubles/gpb-000100--,763
 28.07.2024 21:10,28.07.2024 23:00,FINISHED,BDM,Men's Doubles,Men's Doubles Group Play Stage - Grp D,M,La Chapelle Arena,71,/en/paris-2024/results/badminton/men-s-doubles/gpd-000300--,764
 28.07.2024 21:10,28.07.2024 23:00,FINISHED,BDM,Mixed Doubles,Mixed Doubles Group Play Stage - Grp C,X,La Chapelle Arena,73,/en/paris-2024/results/badminton/mixed-doubles/gpc-000600--,765
@@ -794,7 +786,7 @@
 29.07.2024 04:20,29.07.2024 04:50,FINISHED,SRF,Men,Men's Round 2,M,Teahupo'o  Tahiti,237,/en/paris-2024/results/surfing/men/rep---------,793
 29.07.2024 08:30,29.07.2024 09:10,FINISHED,BDM,Mixed Doubles,Mixed Doubles Group Play Stage - Grp D,X,La Chapelle Arena,73,/en/paris-2024/results/badminton/mixed-doubles/gpd-000300--,794
 29.07.2024 08:30,29.07.2024 09:10,FINISHED,BDM,Women's Singles,Women's Singles Group Play Stage - Grp N,W,La Chapelle Arena,70,/en/paris-2024/results/badminton/women-s-singles/gpn-000200--,795
-29.07.2024 08:30,29.07.2024 08:30,CANCELLED,BDM,Men's Doubles,Men's Doubles Group Play Stage - Grp C,M,La Chapelle Arena,71,796
+29.07.2024 08:30,29.07.2024 08:30,CANCELLED,BDM,Men's Doubles,Men's Doubles Group Play Stage - Grp C,M,La Chapelle Arena,71,null,796
 29.07.2024 09:00,29.07.2024 09:50,FINISHED,VBV,Men,Men's Preliminary - Pool A - Matches,M,Eiffel Tower Stadium,78,/en/paris-2024/results/beach-volleyball/men/gpa-000300--,797
 29.07.2024 09:00,29.07.2024 09:25,FINISHED,FEN,Women's Sabre Individual,Women's Sabre Individual Table of 64,W,Grand Palais,149,/en/paris-2024/results/fencing/women-s-sabre-individual/r64-000200--,798
 29.07.2024 09:00,29.07.2024 09:25,FINISHED,FEN,Women's Sabre Individual,Women's Sabre Individual Table of 64,W,Grand Palais,149,/en/paris-2024/results/fencing/women-s-sabre-individual/r64-001500--,799
@@ -1014,7 +1006,7 @@
 29.07.2024 13:35,29.07.2024 14:10,FINISHED,SAL,Women's Skiff,Women's Skiff Opening Series,W,Marseille Marina,211,/en/paris-2024/results/sailing/women-s-skiff/prel000600--,1013
 29.07.2024 13:49,29.07.2024 14:24,FINISHED,SAL,Men's Skiff,Men's Skiff Opening Series,M,Marseille Marina,207,/en/paris-2024/results/sailing/men-s-skiff/prel000600--,1014
 29.07.2024 14:00,29.07.2024 14:40,FINISHED,BDM,Mixed Doubles,Mixed Doubles Group Play Stage - Grp B,X,La Chapelle Arena,73,/en/paris-2024/results/badminton/mixed-doubles/gpb-000600--,1015
-29.07.2024 14:00,29.07.2024 14:00,CANCELLED,BDM,Men's Singles,Men's Singles Group Play Stage - Grp L,M,La Chapelle Arena,69,1016
+29.07.2024 14:00,29.07.2024 14:00,CANCELLED,BDM,Men's Singles,Men's Singles Group Play Stage - Grp L,M,La Chapelle Arena,69,null,1016
 29.07.2024 14:00,29.07.2024 14:40,FINISHED,BDM,Women's Singles,Women's Singles Group Play Stage - Grp H,W,La Chapelle Arena,70,/en/paris-2024/results/badminton/women-s-singles/gph-000200--,1017
 29.07.2024 14:00,29.07.2024 14:40,FINISHED,BDM,Men's Singles,Men's Singles Group Play Stage - Grp L,M,La Chapelle Arena,69,/en/paris-2024/results/badminton/men-s-singles/gpl-000400--,1018
 29.07.2024 14:00,29.07.2024 15:30,FINISHED,HBL,Men,Men's Preliminary Round Group B,M,South Paris Arena 6,163,/en/paris-2024/results/handball/men/gpb-000400--,1019
@@ -1031,7 +1023,7 @@
 29.07.2024 14:30,29.07.2024 14:55,FINISHED,FEN,Women's Sabre Individual,Women's Sabre Individual Table of 16,W,Grand Palais,149,/en/paris-2024/results/fencing/women-s-sabre-individual/8fnl000600--,1030
 29.07.2024 14:30,29.07.2024 14:55,FINISHED,FEN,Women's Sabre Individual,Women's Sabre Individual Table of 16,W,Grand Palais,149,/en/paris-2024/results/fencing/women-s-sabre-individual/8fnl000800--,1031
 29.07.2024 14:30,29.07.2024 14:46,FINISHED,RU7,Women,Women's Pool B,W,Stade de France,203,/en/paris-2024/results/rugby-sevens/women/gpb-000600--,1032
-29.07.2024 14:30,29.07.2024 18:15,FINISHED,SHO,Trap Women,Trap Women's Training,W,Chateauroux Shooting Ctr,224,1033
+29.07.2024 14:30,29.07.2024 18:15,FINISHED,SHO,Trap Women,Trap Women's Training,W,Chateauroux Shooting Ctr,224,null,1033
 29.07.2024 14:38,29.07.2024 15:01,FINISHED,ARC,Men's Team,Men's Team Quarterfinals,M,Invalides,2,/en/paris-2024/results/archery/men-s-team/qfnl000100--,1034
 29.07.2024 14:50,29.07.2024 15:30,FINISHED,BDM,Women's Doubles,Women's Doubles Group Play Stage - Grp D,W,La Chapelle Arena,72,/en/paris-2024/results/badminton/women-s-doubles/gpd-000100--,1035
 29.07.2024 14:50,29.07.2024 15:30,FINISHED,BDM,Mixed Doubles,Mixed Doubles Group Play Stage - Grp B,X,La Chapelle Arena,73,/en/paris-2024/results/badminton/mixed-doubles/gpb-000500--,1036
@@ -1363,7 +1355,7 @@
 30.07.2024 14:36,30.07.2024 14:49,FINISHED,ARC,Men's Individual,Men's Individual 1/32 Elimination Round,M,Invalides,0,/en/paris-2024/results/archery/men-s-individual/r64-000100--,1362
 30.07.2024 14:37,30.07.2024 14:58,FINISHED,SAL,Women's Windsurfing,Women's Windsurfing Opening Series,W,Marseille Marina,208,/en/paris-2024/results/sailing/women-s-windsurfing/prel000700--,1363
 30.07.2024 14:49,30.07.2024 15:02,FINISHED,ARC,Men's Individual,Men's Individual 1/32 Elimination Round,M,Invalides,0,/en/paris-2024/results/archery/men-s-individual/r64-000200--,1364
-30.07.2024 14:50,30.07.2024 14:50,CANCELLED,BDM,Men's Doubles,Men's Doubles Group Play Stage - Grp C,M,La Chapelle Arena,71,1365
+30.07.2024 14:50,30.07.2024 14:50,CANCELLED,BDM,Men's Doubles,Men's Doubles Group Play Stage - Grp C,M,La Chapelle Arena,71,null,1365
 30.07.2024 14:50,30.07.2024 15:30,FINISHED,BDM,Women's Singles,Women's Singles Group Play Stage - Grp P,W,La Chapelle Arena,70,/en/paris-2024/results/badminton/women-s-singles/gpp-000200--,1366
 30.07.2024 14:50,30.07.2024 15:30,FINISHED,BDM,Men's Singles,Men's Singles Group Play Stage - Grp J,M,La Chapelle Arena,69,/en/paris-2024/results/badminton/men-s-singles/gpj-000200--,1367
 30.07.2024 14:50,30.07.2024 15:30,FINISHED,BDM,Women's Doubles,Women's Doubles Group Play Stage - Grp C,W,La Chapelle Arena,72,/en/paris-2024/results/badminton/women-s-doubles/gpc-000500--,1368
@@ -1433,7 +1425,7 @@
 30.07.2024 17:30,30.07.2024 18:10,FINISHED,CSL,Men's Kayak Single,Men's Kayak Single Heats 1st and 2nd Run,M,Nautical St - White water,95,/en/paris-2024/results/canoe-slalom/men-s-kayak-single/heat000200--,1432
 30.07.2024 17:38,30.07.2024 17:49,FINISHED,BOX,Women's 57kg,Women's 57kg - Prelims - Round of 32,W,North Paris Arena,89,/en/paris-2024/results/boxing/women-s-57kg/r32-000700--,1433
 30.07.2024 17:45,30.07.2024 17:58,FINISHED,ARC,Men's Individual,Men's Individual 1/32 Elimination Round,M,Invalides,0,/en/paris-2024/results/archery/men-s-individual/r64-000700--,1434
-30.07.2024 17:45,30.07.2024 19:15,FINISHED,SHO,50m Rifle 3 Positions Men,50m Rifle 3 Positions Men's Training,M,Chateauroux Shooting Ctr,215,1435
+30.07.2024 17:45,30.07.2024 19:15,FINISHED,SHO,50m Rifle 3 Positions Men,50m Rifle 3 Positions Men's Training,M,Chateauroux Shooting Ctr,215,null,1435
 30.07.2024 17:54,30.07.2024 18:05,FINISHED,BOX,Women's 57kg,Women's 57kg - Prelims - Round of 32,W,North Paris Arena,89,/en/paris-2024/results/boxing/women-s-57kg/r32-001000--,1436
 30.07.2024 17:58,30.07.2024 18:11,FINISHED,ARC,Men's Individual,Men's Individual 1/32 Elimination Round,M,Invalides,0,/en/paris-2024/results/archery/men-s-individual/r64-000800--,1437
 30.07.2024 18:00,30.07.2024 18:25,FINISHED,BK3,Women,Women's Pool Round,W,La Concorde 1,77,/en/paris-2024/results/3x3-basketball/women/gpa-000200--,1438
@@ -1513,7 +1505,7 @@
 31.07.2024 09:00,31.07.2024 11:15,FINISHED,VVO,Men,Men's Preliminary Round - Pool B,M,South Paris Arena 1,297,/en/paris-2024/results/volleyball/men/gpb-000400--,1512
 31.07.2024 09:20,31.07.2024 10:00,FINISHED,BDM,Women's Singles,Women's Singles Group Play Stage - Grp M,W,La Chapelle Arena,70,/en/paris-2024/results/badminton/women-s-singles/gpm-000300--,1513
 31.07.2024 09:20,31.07.2024 10:00,FINISHED,BDM,Men's Singles,Men's Singles Group Play Stage - Grp P,M,La Chapelle Arena,69,/en/paris-2024/results/badminton/men-s-singles/gpp-000500--,1514
-31.07.2024 09:20,31.07.2024 09:20,CANCELLED,BDM,Men's Singles,Men's Singles Group Play Stage - Grp L,M,La Chapelle Arena,69,1515
+31.07.2024 09:20,31.07.2024 09:20,CANCELLED,BDM,Men's Singles,Men's Singles Group Play Stage - Grp L,M,La Chapelle Arena,69,null,1515
 31.07.2024 09:20,31.07.2024 10:00,FINISHED,BDM,Men's Singles,Men's Singles Group Play Stage - Grp P,M,La Chapelle Arena,69,/en/paris-2024/results/badminton/men-s-singles/gpp-000600--,1516
 31.07.2024 09:30,31.07.2024 09:37,FINISHED,ROW,Lightweight Men's Double Sculls,LWT Men's Double Sculls Finals,M,Nautical St - Flat water,197,/en/paris-2024/results/rowing/lightweight-men-s-double-sculls/fnl---------,1517
 31.07.2024 09:42,31.07.2024 09:49,FINISHED,ROW,Lightweight Women's Double Sculls,LWT Women's Double Sculls Finals,W,Nautical St - Flat water,196,/en/paris-2024/results/rowing/lightweight-women-s-double-sculls/fnl---------,1518
@@ -1751,7 +1743,7 @@
 31.07.2024 17:30,31.07.2024 19:00,FINISHED,HOC,Men,Men's Pool A,M,Yves-du-Manoir Stadium,165,/en/paris-2024/results/hockey/men/gpa-001000--,1750
 31.07.2024 17:38,31.07.2024 17:49,FINISHED,BOX,Women's 60kg,Women's 60kg - Quarterfinals,W,North Paris Arena,90,/en/paris-2024/results/boxing/women-s-60kg/qfnl000200--,1751
 31.07.2024 17:45,31.07.2024 17:58,FINISHED,ARC,Men's Individual,Men's Individual 1/32 Elimination Round,M,Invalides,0,/en/paris-2024/results/archery/men-s-individual/r64-001900--,1752
-31.07.2024 17:45,31.07.2024 19:15,FINISHED,SHO,50m Rifle 3 Positions Women,50m Rifle 3 Pos. Women's Training,W,Chateauroux Shooting Ctr,221,1753
+31.07.2024 17:45,31.07.2024 19:15,FINISHED,SHO,50m Rifle 3 Positions Women,50m Rifle 3 Pos. Women's Training,W,Chateauroux Shooting Ctr,221,null,1753
 31.07.2024 17:54,31.07.2024 18:05,FINISHED,BOX,Women's 60kg,Women's 60kg - Quarterfinals,W,North Paris Arena,90,/en/paris-2024/results/boxing/women-s-60kg/qfnl000300--,1754
 31.07.2024 17:58,31.07.2024 18:11,FINISHED,ARC,Men's Individual,Men's Individual 1/32 Elimination Round,M,Invalides,0,/en/paris-2024/results/archery/men-s-individual/r64-002000--,1755
 31.07.2024 18:00,31.07.2024 18:25,FINISHED,BK3,Women,Women's Pool Round,W,La Concorde 1,77,/en/paris-2024/results/3x3-basketball/women/gpa-000600--,1756
@@ -1824,8 +1816,8 @@
 1.08.2024 09:00,1.08.2024 09:50,FINISHED,VBV,Men,Men's Preliminary - Pool C - Matches,M,Eiffel Tower Stadium,78,/en/paris-2024/results/beach-volleyball/men/gpc-000300--,1823
 1.08.2024 09:00,1.08.2024 18:00,FINISHED,GLF,Men's Individual Stroke Play,Men's Individual Stroke Play,M,Le Golf National,161,/en/paris-2024/results/golf/men-s-individual-stroke-play/fnl---------,1824
 1.08.2024 09:00,1.08.2024 10:30,FINISHED,HBL,Women,Women's Preliminary Round Group B,W,South Paris Arena 6,164,/en/paris-2024/results/handball/women/gpb-001000--,1825
-1.08.2024 09:00,1.08.2024 14:00,FINISHED,SHO,25m Pistol Women,25m Pistol Women's Training,W,Chateauroux Shooting Ctr,223,1826
-1.08.2024 09:00,1.08.2024 14:00,FINISHED,SHO,Skeet Men,Skeet Men's Training,M,Chateauroux Shooting Ctr,219,1827
+1.08.2024 09:00,1.08.2024 14:00,FINISHED,SHO,25m Pistol Women,25m Pistol Women's Training,W,Chateauroux Shooting Ctr,223,null,1826
+1.08.2024 09:00,1.08.2024 14:00,FINISHED,SHO,Skeet Men,Skeet Men's Training,M,Chateauroux Shooting Ctr,219,null,1827
 1.08.2024 09:00,1.08.2024 11:15,FINISHED,VVO,Women,Women's Preliminary Round - Pool C,W,South Paris Arena 1,298,/en/paris-2024/results/volleyball/women/gpc-000300--,1828
 1.08.2024 09:30,1.08.2024 09:55,FINISHED,BK3,Women,Women's Pool Round,W,La Concorde 1,77,/en/paris-2024/results/3x3-basketball/women/gpa-001000--,1829
 1.08.2024 09:30,1.08.2024 09:43,FINISHED,ARC,Men's Individual,Men's Individual 1/32 Elimination Round,M,Invalides,0,/en/paris-2024/results/archery/men-s-individual/r64-002100--,1830
@@ -1965,19 +1957,19 @@
 1.08.2024 13:25,1.08.2024 14:16,FINISHED,SAL,Men's Dinghy,Men's Dinghy Opening Series,M,Marseille Marina,206,/en/paris-2024/results/sailing/men-s-dinghy/prel000200--,1964
 1.08.2024 13:30,1.08.2024 15:15,FINISHED,BKB,Women,Women's Group Phase - Group B,W,Pierre Mauroy Stadium,75,/en/paris-2024/results/basketball/women/gpb-000300--,1965
 1.08.2024 13:35,1.08.2024 14:00,FINISHED,BK3,Men,Men's Pool Round,M,La Concorde 1,76,/en/paris-2024/results/3x3-basketball/men/gpa-001100--,1966
-1.08.2024 13:36,1.08.2024 13:57,CANCELLED,SAL,Men's Windsurfing,Men's Windsurfing Opening Series,M,Marseille Marina,204,1967
+1.08.2024 13:36,1.08.2024 13:57,CANCELLED,SAL,Men's Windsurfing,Men's Windsurfing Opening Series,M,Marseille Marina,204,null,1967
 1.08.2024 13:40,1.08.2024 14:50,FINISHED,FEN,Women's Foil Team,Women's Foil Team Classifications 5-8,W,Grand Palais,154,/en/paris-2024/results/fencing/women-s-foil-team/sf5-000100--,1968
 1.08.2024 13:40,1.08.2024 14:50,FINISHED,FEN,Women's Foil Team,Women's Foil Team Classifications 5-8,W,Grand Palais,154,/en/paris-2024/results/fencing/women-s-foil-team/sf5-000200--,1969
-1.08.2024 13:56,1.08.2024 14:17,CANCELLED,SAL,Women's Windsurfing,Women's Windsurfing Opening Series,W,Marseille Marina,208,1970
+1.08.2024 13:56,1.08.2024 14:17,CANCELLED,SAL,Women's Windsurfing,Women's Windsurfing Opening Series,W,Marseille Marina,208,null,1970
 1.08.2024 14:00,1.08.2024 15:30,FINISHED,HBL,Women,Women's Preliminary Round Group B,W,South Paris Arena 6,164,/en/paris-2024/results/handball/women/gpb-001100--,1971
 1.08.2024 14:00,1.08.2024 15:30,FINISHED,TEN,Mixed Doubles,Mixed Doubles Semi-finals,X,Roland-Garros Stadium,291,/en/paris-2024/results/tennis/mixed-doubles/sfnl000200--,1972
 1.08.2024 14:00,1.08.2024 17:00,FINISHED,TEN,Women's Doubles,Women's Doubles Quarter-finals,W,Roland-Garros Stadium,290,/en/paris-2024/results/tennis/women-s-doubles/qfnl000400--,1973
 1.08.2024 14:05,1.08.2024 14:30,FINISHED,BK3,Men,Men's Pool Round,M,La Concorde 1,76,/en/paris-2024/results/3x3-basketball/men/gpa-001200--,1974
-1.08.2024 14:07,1.08.2024 14:28,CANCELLED,SAL,Men's Windsurfing,Men's Windsurfing Opening Series,M,Marseille Marina,204,1975
+1.08.2024 14:07,1.08.2024 14:28,CANCELLED,SAL,Men's Windsurfing,Men's Windsurfing Opening Series,M,Marseille Marina,204,null,1975
 1.08.2024 14:10,1.08.2024 15:00,FINISHED,BDM,Men's Doubles,Men's Doubles Quarterfinals,M,La Chapelle Arena,71,/en/paris-2024/results/badminton/men-s-doubles/qfnl000400--,1976
 1.08.2024 14:10,1.08.2024 15:00,FINISHED,BDM,Men's Singles,Men's Singles Round of 16,M,La Chapelle Arena,69,/en/paris-2024/results/badminton/men-s-singles/8fnl000400--,1977
 1.08.2024 14:10,1.08.2024 15:00,FINISHED,BDM,Men's Singles,Men's Singles Round of 16,M,La Chapelle Arena,69,/en/paris-2024/results/badminton/men-s-singles/8fnl000600--,1978
-1.08.2024 14:27,1.08.2024 14:48,CANCELLED,SAL,Women's Windsurfing,Women's Windsurfing Opening Series,W,Marseille Marina,208,1979
+1.08.2024 14:27,1.08.2024 14:48,CANCELLED,SAL,Women's Windsurfing,Women's Windsurfing Opening Series,W,Marseille Marina,208,null,1979
 1.08.2024 14:50,1.08.2024 16:00,FINISHED,FEN,Women's Foil Team,Women's Foil Team Semifinals,W,Grand Palais,154,/en/paris-2024/results/fencing/women-s-foil-team/sfnl000100--,1980
 1.08.2024 14:50,1.08.2024 16:00,FINISHED,FEN,Women's Foil Team,Women's Foil Team Semifinals,W,Grand Palais,154,/en/paris-2024/results/fencing/women-s-foil-team/sfnl000200--,1981
 1.08.2024 15:00,1.08.2024 15:50,FINISHED,VBV,Men,Men's Preliminary - Pool D - Matches,M,Eiffel Tower Stadium,78,/en/paris-2024/results/beach-volleyball/men/gpd-000600--,1982
@@ -2032,27 +2024,27 @@
 1.08.2024 17:30,1.08.2024 18:14,FINISHED,CSL,Men's Kayak Single,Men's Kayak Single Final,M,Nautical St - White water,95,/en/paris-2024/results/canoe-slalom/men-s-kayak-single/fnl-000100--,2031
 1.08.2024 17:30,1.08.2024 19:00,FINISHED,HOC,Women,Women's Pool B,W,Yves-du-Manoir Stadium,166,/en/paris-2024/results/hockey/women/gpb-001100--,2032
 1.08.2024 17:38,1.08.2024 17:49,FINISHED,BOX,Men's 63.5kg,Men's 63.5kg - Quarterfinals,M,North Paris Arena,82,/en/paris-2024/results/boxing/men-s-63-5kg/qfnl000200--,2033
-1.08.2024 17:38,1.08.2024 17:59,CANCELLED,SAL,Women's Windsurfing,Women's Windsurfing Opening Series,W,Marseille Marina,208,2034
-1.08.2024 17:38,1.08.2024 17:59,CANCELLED,SAL,Women's Windsurfing,Women's Windsurfing Opening Series,W,Marseille Marina,208,2035
+1.08.2024 17:38,1.08.2024 17:59,CANCELLED,SAL,Women's Windsurfing,Women's Windsurfing Opening Series,W,Marseille Marina,208,null,2034
+1.08.2024 17:38,1.08.2024 17:59,CANCELLED,SAL,Women's Windsurfing,Women's Windsurfing Opening Series,W,Marseille Marina,208,null,2035
 1.08.2024 17:40,1.08.2024 17:53,FINISHED,ARC,Men's Individual,Men's Individual 1/16 Elimination Round,M,Invalides,0,/en/paris-2024/results/archery/men-s-individual/r32-001500--,2036
 1.08.2024 17:53,1.08.2024 18:06,FINISHED,ARC,Women's Individual,Women's Individual 1/16 Elimination Rnd,W,Invalides,1,/en/paris-2024/results/archery/women-s-individual/r32-000700--,2037
 1.08.2024 17:54,1.08.2024 18:05,FINISHED,BOX,Men's 92kg,Men's 92kg - Quarterfinals,M,North Paris Arena,85,/en/paris-2024/results/boxing/men-s-92kg/qfnl000200--,2038
 1.08.2024 18:00,1.08.2024 18:25,FINISHED,BK3,Women,Women's Pool Round,W,La Concorde 1,77,/en/paris-2024/results/3x3-basketball/women/gpa-001300--,2039
 1.08.2024 18:06,1.08.2024 18:19,FINISHED,ARC,Men's Individual,Men's Individual 1/32 Elimination Round,M,Invalides,0,/en/paris-2024/results/archery/men-s-individual/r64-002300--,2040
-1.08.2024 18:09,1.08.2024 18:30,CANCELLED,SAL,Women's Windsurfing,Women's Windsurfing Opening Series,W,Marseille Marina,208,2041
+1.08.2024 18:09,1.08.2024 18:30,CANCELLED,SAL,Women's Windsurfing,Women's Windsurfing Opening Series,W,Marseille Marina,208,null,2041
 1.08.2024 18:15,1.08.2024 20:10,FINISHED,GAR,Women's All-Around,Women's All-Around Final,W,Bercy Arena,14,/en/paris-2024/results/artistic-gymnastics/women-s-all-around/fnl-000001--,2042
 1.08.2024 18:19,1.08.2024 18:32,FINISHED,ARC,Men's Individual,Men's Individual 1/32 Elimination Round,M,Invalides,0,/en/paris-2024/results/archery/men-s-individual/r64-002400--,2043
-1.08.2024 18:28,1.08.2024 18:49,CANCELLED,SAL,Men's Windsurfing,Men's Windsurfing Opening Series,M,Marseille Marina,204,2044
-1.08.2024 18:28,1.08.2024 18:49,CANCELLED,SAL,Men's Windsurfing,Men's Windsurfing Opening Series,M,Marseille Marina,204,2045
+1.08.2024 18:28,1.08.2024 18:49,CANCELLED,SAL,Men's Windsurfing,Men's Windsurfing Opening Series,M,Marseille Marina,204,null,2044
+1.08.2024 18:28,1.08.2024 18:49,CANCELLED,SAL,Men's Windsurfing,Men's Windsurfing Opening Series,M,Marseille Marina,204,null,2045
 1.08.2024 18:30,1.08.2024 18:55,FINISHED,BK3,Women,Women's Pool Round,W,La Concorde 1,77,/en/paris-2024/results/3x3-basketball/women/gpa-001400--,2046
 1.08.2024 18:30,1.08.2024 19:20,FINISHED,BDM,Women's Singles,Women's Singles Round of 16,W,La Chapelle Arena,70,/en/paris-2024/results/badminton/women-s-singles/8fnl000200--,2047
 1.08.2024 18:30,1.08.2024 19:20,FINISHED,BDM,Women's Singles,Women's Singles Round of 16,W,La Chapelle Arena,70,/en/paris-2024/results/badminton/women-s-singles/8fnl000600--,2048
 1.08.2024 18:30,1.08.2024 19:20,FINISHED,BDM,Women's Singles,Women's Singles Round of 16,W,La Chapelle Arena,70,/en/paris-2024/results/badminton/women-s-singles/8fnl000700--,2049
 1.08.2024 18:32,1.08.2024 18:45,FINISHED,ARC,Women's Individual,Women's Individual 1/32 Elimination Rnd,W,Invalides,1,/en/paris-2024/results/archery/women-s-individual/r64-000100--,2050
-1.08.2024 18:40,1.08.2024 19:01,CANCELLED,SAL,Women's Windsurfing,Women's Windsurfing Opening Series,W,Marseille Marina,208,2051
+1.08.2024 18:40,1.08.2024 19:01,CANCELLED,SAL,Women's Windsurfing,Women's Windsurfing Opening Series,W,Marseille Marina,208,null,2051
 1.08.2024 18:45,1.08.2024 18:58,FINISHED,ARC,Women's Individual,Women's Individual 1/32 Elimination Rnd,W,Invalides,1,/en/paris-2024/results/archery/women-s-individual/r64-000200--,2052
 1.08.2024 18:58,1.08.2024 19:11,FINISHED,ARC,Men's Individual,Men's Individual 1/16 Elimination Round,M,Invalides,0,/en/paris-2024/results/archery/men-s-individual/r32-001200--,2053
-1.08.2024 18:59,1.08.2024 19:20,CANCELLED,SAL,Men's Windsurfing,Men's Windsurfing Opening Series,M,Marseille Marina,204,2054
+1.08.2024 18:59,1.08.2024 19:20,CANCELLED,SAL,Men's Windsurfing,Men's Windsurfing Opening Series,M,Marseille Marina,204,null,2054
 1.08.2024 19:00,1.08.2024 20:30,FINISHED,HBL,Women,Women's Preliminary Round Group A,W,South Paris Arena 6,164,/en/paris-2024/results/handball/women/gpa-001100--,2055
 1.08.2024 19:00,1.08.2024 19:30,FINISHED,SRF,Women,Women's Round 3,W,Teahupo'o  Tahiti,238,/en/paris-2024/results/surfing/women/8fnl--------,2056
 1.08.2024 19:00,1.08.2024 20:30,FINISHED,TEN,Men's Singles,Men's Singles Quarter-finals,M,Roland-Garros Stadium,287,/en/paris-2024/results/tennis/men-s-singles/qfnl000100--,2057
@@ -2064,7 +2056,7 @@
 1.08.2024 19:30,1.08.2024 20:20,FINISHED,BDM,Women's Singles,Women's Singles Round of 16,W,La Chapelle Arena,70,/en/paris-2024/results/badminton/women-s-singles/8fnl000400--,2063
 1.08.2024 19:30,1.08.2024 20:20,FINISHED,BDM,Women's Singles,Women's Singles Round of 16,W,La Chapelle Arena,70,/en/paris-2024/results/badminton/women-s-singles/8fnl000500--,2064
 1.08.2024 19:30,1.08.2024 20:20,FINISHED,BDM,Mixed Doubles,Mixed Doubles Semifinals,X,La Chapelle Arena,73,/en/paris-2024/results/badminton/mixed-doubles/sfnl000200--,2065
-1.08.2024 19:30,1.08.2024 19:51,CANCELLED,SAL,Men's Windsurfing,Men's Windsurfing Opening Series,M,Marseille Marina,204,2066
+1.08.2024 19:30,1.08.2024 19:51,CANCELLED,SAL,Men's Windsurfing,Men's Windsurfing Opening Series,M,Marseille Marina,204,null,2066
 1.08.2024 19:30,1.08.2024 20:55,FINISHED,WPO,Men,Men's Preliminary Round - Group A,M,Aquatics Centre,299,/en/paris-2024/results/water-polo/men/gpa-000900--,2067
 1.08.2024 19:35,1.08.2024 20:00,FINISHED,BK3,Men,Men's Pool Round,M,La Concorde 1,76,/en/paris-2024/results/3x3-basketball/men/gpa-001400--,2068
 1.08.2024 19:36,1.08.2024 20:06,FINISHED,SRF,Women,Women's Round 3,W,Teahupo'o  Tahiti,238,/en/paris-2024/results/surfing/women/8fnl--------,2069
@@ -2075,7 +2067,7 @@
 1.08.2024 20:00,1.08.2024 20:11,FINISHED,BOX,Women's 50kg,Women's 50kg - Prelims - Round of 16,W,North Paris Arena,87,/en/paris-2024/results/boxing/women-s-50kg/8fnl000700--,2074
 1.08.2024 20:00,1.08.2024 20:15,FINISHED,BMX,Men,Men  Quarterfinals,M,BMX Stadium,114,/en/paris-2024/results/cycling-bmx-racing/men/qfnl--------,2075
 1.08.2024 20:00,1.08.2024 21:00,FINISHED,TTE,Women's Singles,Women's Singles Quarterfinals,W,South Paris Arena 4,275,/en/paris-2024/results/table-tennis/women-s-singles/qfnl000200--,2076
-1.08.2024 20:01,1.08.2024 20:22,CANCELLED,SAL,Men's Windsurfing,Men's Windsurfing Opening Series,M,Marseille Marina,204,2077
+1.08.2024 20:01,1.08.2024 20:22,CANCELLED,SAL,Men's Windsurfing,Men's Windsurfing Opening Series,M,Marseille Marina,204,null,2077
 1.08.2024 20:03,1.08.2024 20:16,FINISHED,ARC,Women's Individual,Women's Individual 1/32 Elimination Rnd,W,Invalides,1,/en/paris-2024/results/archery/women-s-individual/r64-001000--,2078
 1.08.2024 20:12,1.08.2024 20:42,FINISHED,SRF,Women,Women's Round 3,W,Teahupo'o  Tahiti,238,/en/paris-2024/results/surfing/women/8fnl--------,2079
 1.08.2024 20:15,1.08.2024 21:45,FINISHED,HOC,Women,Women's Pool B,W,Yves-du-Manoir Stadium,166,/en/paris-2024/results/hockey/women/gpb-001200--,2080
@@ -2264,7 +2256,7 @@
 2.08.2024 14:00,2.08.2024 15:25,FINISHED,WPO,Women,Women's Preliminary Round - Group A,W,Aquatics Centre,300,/en/paris-2024/results/water-polo/women/gpa-000700--,2263
 2.08.2024 14:05,2.08.2024 14:30,FINISHED,BK3,Men,Men's Pool Round,M,La Concorde 1,76,/en/paris-2024/results/3x3-basketball/men/gpa-002000--,2264
 2.08.2024 14:15,2.08.2024 14:34,FINISHED,ARC,Mixed Team,Mixed Team Quarterfinals,X,Invalides,4,/en/paris-2024/results/archery/mixed-team/qfnl000200--,2265
-2.08.2024 14:15,2.08.2024 17:30,FINISHED,SHO,Skeet Women,Skeet Women's Training,W,Chateauroux Shooting Ctr,225,2266
+2.08.2024 14:15,2.08.2024 17:30,FINISHED,SHO,Skeet Women,Skeet Women's Training,W,Chateauroux Shooting Ctr,225,null,2266
 2.08.2024 14:30,2.08.2024 15:30,FINISHED,TTE,Men's Singles,Men's Singles Semifinals,M,South Paris Arena 4,274,/en/paris-2024/results/table-tennis/men-s-singles/sfnl000100--,2267
 2.08.2024 14:34,2.08.2024 14:53,FINISHED,ARC,Mixed Team,Mixed Team Quarterfinals,X,Invalides,4,/en/paris-2024/results/archery/mixed-team/qfnl000100--,2268
 2.08.2024 14:53,2.08.2024 15:12,FINISHED,ARC,Mixed Team,Mixed Team Quarterfinals,X,Invalides,4,/en/paris-2024/results/archery/mixed-team/qfnl000300--,2269
@@ -2369,7 +2361,6 @@
 2.08.2024 21:05,2.08.2024 22:30,FINISHED,BDM,Men's Singles,Men's Singles Quarterfinals,M,La Chapelle Arena,69,/en/paris-2024/results/badminton/men-s-singles/qfnl000400--,2368
 2.08.2024 21:05,2.08.2024 21:19,FINISHED,SWM,Men's 100m Butterfly,Men's 100m Butterfly Semifinals,M,Paris La Defense Arena,266,/en/paris-2024/results/swimming/men-s-100m-butterfly/sfnl--------,2369
 2.08.2024 21:15,2.08.2024 21:25,FINISHED,BMX,Women,Women  Semifinals,W,BMX Stadium,113,/en/paris-2024/results/cycling-bmx-racing/women/sfnl000300--,2370
-2.08.2024 21:20,2.08.2024 21:50,FINISHED,ATH,Men's 10 000m,Men's 10 000m Final,M,Stade de France,/en/paris-2024/results/athletics/men-s-10-000m/fnl-000100--,2371
 2.08.2024 21:20,2.08.2024 21:31,FINISHED,BOX,Men's 51kg,Men's 51kg - Quarterfinals,M,North Paris Arena,80,/en/paris-2024/results/boxing/men-s-51kg/qfnl000400--,2372
 2.08.2024 21:30,2.08.2024 21:55,FINISHED,BK3,Women,Women's Pool Round,W,La Concorde 1,77,/en/paris-2024/results/3x3-basketball/women/gpa-002400--,2373
 2.08.2024 21:31,2.08.2024 21:47,FINISHED,SWM,Women's 200m Individual Medley,Women's 200m Ind. Medley Semifinals,W,Paris La Defense Arena,251,/en/paris-2024/results/swimming/women-s-200m-individual-medley/sfnl--------,2374
@@ -2428,7 +2419,7 @@
 3.08.2024 11:00,3.08.2024 11:50,FINISHED,VBV,Women,Women's Preliminary - Pool D - Matches,W,Eiffel Tower Stadium,79,/en/paris-2024/results/beach-volleyball/women/gpd-000500--,2427
 3.08.2024 11:00,3.08.2024 17:50,FINISHED,CRD,Men's Road Race,Men's Road Race,M,Trocadéro,117,/en/paris-2024/results/cycling-road/men-s-road-race/fnl-000100--,2428
 3.08.2024 11:00,3.08.2024 12:30,FINISHED,HBL,Women,Women's Preliminary Round Group B,W,South Paris Arena 6,164,/en/paris-2024/results/handball/women/gpb-001400--,2429
-3.08.2024 11:00,3.08.2024 16:00,FINISHED,SHO,25m Rapid Fire Pistol Men,25m Rapid Fire Pistol Men's Training,M,Chateauroux Shooting Ctr,217,2430
+3.08.2024 11:00,3.08.2024 16:00,FINISHED,SHO,25m Rapid Fire Pistol Men,25m Rapid Fire Pistol Men's Training,M,Chateauroux Shooting Ctr,217,null,2430
 3.08.2024 11:00,3.08.2024 11:27,FINISHED,SWM,Women's 50m Freestyle,Women's 50m Freestyle - Heats,W,Paris La Defense Arena,239,/en/paris-2024/results/swimming/women-s-50m-freestyle/heat--------,2431
 3.08.2024 11:01,3.08.2024 11:14,FINISHED,ARC,Women's Individual,Women's Individual 1/8 Elimination Round,W,Invalides,1,/en/paris-2024/results/archery/women-s-individual/8fnl000800--,2432
 3.08.2024 11:10,3.08.2024 11:17,FINISHED,ROW,Men's Eight,Men's Eight Finals,M,Nautical St - Flat water,201,/en/paris-2024/results/rowing/men-s-eight/fnl---------,2433
@@ -2578,7 +2569,7 @@
 4.08.2024 09:00,4.08.2024 18:00,FINISHED,GLF,Men's Individual Stroke Play,Men's Individual Stroke Play,M,Le Golf National,161,/en/paris-2024/results/golf/men-s-individual-stroke-play/fnl---------,2577
 4.08.2024 09:00,4.08.2024 10:30,FINISHED,HBL,Men,Men's Preliminary Round Group A,M,South Paris Arena 6,163,/en/paris-2024/results/handball/men/gpa-001300--,2578
 4.08.2024 09:00,4.08.2024 12:30,FINISHED,SHO,25m Rapid Fire Pistol Men,25m Rapid Fire Pistol Men's Qual.,M,Chateauroux Shooting Ctr,217,/en/paris-2024/results/shooting/25m-rapid-fire-pistol-men/qual--------,2579
-4.08.2024 09:00,4.08.2024 10:00,FINISHED,SHO,Skeet Mixed Team,Skeet Mixed Team Training,X,Chateauroux Shooting Ctr,228,2580
+4.08.2024 09:00,4.08.2024 10:00,FINISHED,SHO,Skeet Mixed Team,Skeet Mixed Team Training,X,Chateauroux Shooting Ctr,228,null,2580
 4.08.2024 09:00,4.08.2024 11:15,FINISHED,VVO,Women,Women's Preliminary Round - Pool C,W,South Paris Arena 1,298,/en/paris-2024/results/volleyball/women/gpc-000600--,2581
 4.08.2024 09:30,4.08.2024 09:43,FINISHED,ARC,Men's Individual,Men's Individual 1/8 Elimination Round,M,Invalides,0,/en/paris-2024/results/archery/men-s-individual/8fnl000200--,2582
 4.08.2024 09:30,4.08.2024 14:30,FINISHED,SHO,Skeet Women,Skeet Women's Qualification,W,Chateauroux Shooting Ctr,225,/en/paris-2024/results/shooting/skeet-women/qual--------,2583
@@ -2748,7 +2739,7 @@
 5.08.2024 13:00,5.08.2024 13:50,FINISHED,VBV,Women,Women's Round of 16,W,Eiffel Tower Stadium,79,/en/paris-2024/results/beach-volleyball/women/8fnl000700--,2747
 5.08.2024 13:00,5.08.2024 13:25,FINISHED,CLB,Women's Speed,Women's Speed Qualification,W,Le Bourget Climbing Venue,234,/en/paris-2024/results/sport-climbing/women-s-speed/qual0001sd--,2748
 5.08.2024 13:00,5.08.2024 15:15,FINISHED,VVO,Men,Men's Quarterfinals,M,South Paris Arena 1,297,/en/paris-2024/results/volleyball/men/qfnl000100--,2749
-5.08.2024 13:23,5.08.2024 14:14,CANCELLED,SAL,Women's Dinghy,Women's Dinghy Opening Series,W,Marseille Marina,210,2750
+5.08.2024 13:23,5.08.2024 14:14,CANCELLED,SAL,Women's Dinghy,Women's Dinghy Opening Series,W,Marseille Marina,210,null,2750
 5.08.2024 13:33,5.08.2024 14:08,FINISHED,GAR,Men's Horizontal Bar,Men's Horizontal Bar Final,M,Bercy Arena,12,/en/paris-2024/results/artistic-gymnastics/men-s-horizontal-bar/fnl-000001--,2751
 5.08.2024 13:35,5.08.2024 13:55,FINISHED,CLB,Women's Speed,Women's Speed Qualification,W,Le Bourget Climbing Venue,234,/en/paris-2024/results/sport-climbing/women-s-speed/qual0002el00,2752
 5.08.2024 13:35,5.08.2024 15:00,FINISHED,WPO,Men,Men's Preliminary Round - Group B,M,Paris La Defense Arena,299,/en/paris-2024/results/water-polo/men/gpb-001400--,2753
@@ -2757,7 +2748,7 @@
 5.08.2024 14:00,5.08.2024 18:00,FINISHED,EQU,Jumping Individual,Jumping Individual Qualification,O,Château de Versailles,146,/en/paris-2024/results/equestrian/jumping-individual/qual000100--,2756
 5.08.2024 14:23,5.08.2024 15:03,FINISHED,GAR,Women's Floor Exercise,Women's Floor Exercise Final,W,Bercy Arena,18,/en/paris-2024/results/artistic-gymnastics/women-s-floor-exercise/fnl-000001--,2757
 5.08.2024 14:30,5.08.2024 17:30,FINISHED,BDM,Men's Singles,Men's Singles Finals,M,La Chapelle Arena,69,/en/paris-2024/results/badminton/men-s-singles/fnl-000200--,2758
-5.08.2024 14:45,5.08.2024 15:36,CANCELLED,SAL,Men's Dinghy,Men's Dinghy Opening Series,M,Marseille Marina,206,2759
+5.08.2024 14:45,5.08.2024 15:36,CANCELLED,SAL,Men's Dinghy,Men's Dinghy Opening Series,M,Marseille Marina,206,null,2759
 5.08.2024 15:00,5.08.2024 16:35,FINISHED,DIV,Women's 10m Platform,Women's 10m Platform Semifinal,W,Aquatics Centre,134,/en/paris-2024/results/diving/women-s-10m-platform/sfnl000100--,2760
 5.08.2024 15:00,5.08.2024 15:30,FINISHED,SHO,Skeet Mixed Team,Skeet Mixed Team Final,X,Chateauroux Shooting Ctr,228,/en/paris-2024/results/shooting/skeet-mixed-team/fnl-000200--,2761
 5.08.2024 15:00,5.08.2024 15:30,FINISHED,SHO,Skeet Mixed Team,Skeet Mixed Team Final,X,Chateauroux Shooting Ctr,228,/en/paris-2024/results/shooting/skeet-mixed-team/fnl-000100--,2762
@@ -2792,7 +2783,7 @@
 5.08.2024 15:49,5.08.2024 15:56,FINISHED,WRE,Men's Greco-Roman 60kg,MGR 60kg 1/8 Finals,M,Champ-de-Mars Arena,311,/en/paris-2024/results/wrestling/men-s-greco-roman-60kg/8fnl000300--,2791
 5.08.2024 15:49,5.08.2024 15:56,FINISHED,WRE,Women's Freestyle 68kg,WFS 68kg 1/8 Finals,W,Champ-de-Mars Arena,321,/en/paris-2024/results/wrestling/women-s-freestyle-68kg/8fnl000800--,2792
 5.08.2024 15:49,5.08.2024 15:56,FINISHED,WRE,Men's Greco-Roman 130kg,MGR 130kg 1/8 Finals,M,Champ-de-Mars Arena,316,/en/paris-2024/results/wrestling/men-s-greco-roman-130kg/8fnl000800--,2793
-5.08.2024 15:50,5.08.2024 16:41,CANCELLED,SAL,Men's Dinghy,Men's Dinghy Opening Series,M,Marseille Marina,206,2794
+5.08.2024 15:50,5.08.2024 16:41,CANCELLED,SAL,Men's Dinghy,Men's Dinghy Opening Series,M,Marseille Marina,206,null,2794
 5.08.2024 15:52,5.08.2024 16:12,FINISHED,CSL,Men's Kayak Cross,Men's Kayak Cross Quarterfinal,M,Nautical St - White water,99,/en/paris-2024/results/canoe-slalom/men-s-kayak-cross/qfnl--------,2795
 5.08.2024 15:56,5.08.2024 16:03,FINISHED,WRE,Men's Greco-Roman 60kg,MGR 60kg 1/8 Finals,M,Champ-de-Mars Arena,311,/en/paris-2024/results/wrestling/men-s-greco-roman-60kg/8fnl000400--,2796
 5.08.2024 15:56,5.08.2024 16:03,FINISHED,WRE,Women's Freestyle 68kg,WFS 68kg 1/4 Finals,W,Champ-de-Mars Arena,321,/en/paris-2024/results/wrestling/women-s-freestyle-68kg/qfnl000100--,2797
@@ -2954,14 +2945,14 @@
 6.08.2024 14:00,6.08.2024 15:45,FINISHED,HOC,Men,Men's Semi-finals,M,Yves-du-Manoir Stadium,165,/en/paris-2024/results/hockey/men/sfnl000200--,2953
 6.08.2024 14:00,6.08.2024 15:25,FINISHED,WPO,Women,Women's Quarterfinals,W,Paris La Defense Arena,300,/en/paris-2024/results/water-polo/women/qfnl000400--,2954
 6.08.2024 14:10,6.08.2024 14:27,FINISHED,CSP,Women's Kayak Double 500m,Women's Kayak Double 500m Quarterfinals,W,Nautical St - Flat water,107,/en/paris-2024/results/canoe-sprint/women-s-kayak-double-500m/qfnl--------,2955
-6.08.2024 14:29,6.08.2024 15:19,CANCELLED,SAL,Mixed Dinghy,Mixed Dinghy Opening Series,X,Marseille Marina,212,2956
+6.08.2024 14:29,6.08.2024 15:19,CANCELLED,SAL,Mixed Dinghy,Mixed Dinghy Opening Series,X,Marseille Marina,212,null,2956
 6.08.2024 14:30,6.08.2024 16:15,FINISHED,BKB,Men,Men's Quarterfinals,M,Bercy Arena,74,/en/paris-2024/results/basketball/men/qfnl000400--,2957
 6.08.2024 14:30,6.08.2024 14:47,FINISHED,CSP,Men's Kayak Double 500m,Men's Kayak Double 500m Quarterfinals,M,Nautical St - Flat water,102,/en/paris-2024/results/canoe-sprint/men-s-kayak-double-500m/qfnl--------,2958
 6.08.2024 15:00,6.08.2024 16:18,FINISHED,DIV,Women's 10m Platform,Women's 10m Platform Final,W,Aquatics Centre,134,/en/paris-2024/results/diving/women-s-10m-platform/fnl-000100--,2959
 6.08.2024 15:00,6.08.2024 18:00,FINISHED,TTE,Men's Team,Men's Team Quarterfinals,M,South Paris Arena 4,277,/en/paris-2024/results/table-tennis/men-s-team/qfnl00030000,2960
 6.08.2024 15:00,6.08.2024 18:00,FINISHED,TTE,Women's Team,Women's Team Quarterfinals,W,South Paris Arena 4,278,/en/paris-2024/results/table-tennis/women-s-team/qfnl00020000,2961
 6.08.2024 15:35,6.08.2024 17:00,FINISHED,WPO,Women,Women's Quarterfinals,W,Paris La Defense Arena,300,/en/paris-2024/results/water-polo/women/qfnl000300--,2962
-6.08.2024 15:36,6.08.2024 16:26,CANCELLED,SAL,Mixed Dinghy,Mixed Dinghy Opening Series,X,Marseille Marina,212,2963
+6.08.2024 15:36,6.08.2024 16:26,CANCELLED,SAL,Mixed Dinghy,Mixed Dinghy Opening Series,X,Marseille Marina,212,null,2963
 6.08.2024 17:00,6.08.2024 17:50,FINISHED,VBV,Men,Men's Quarterfinals,M,Eiffel Tower Stadium,78,/en/paris-2024/results/beach-volleyball/men/qfnl000300--,2964
 6.08.2024 17:00,6.08.2024 19:15,FINISHED,VVO,Women,Women's Quarterfinals,W,South Paris Arena 1,298,/en/paris-2024/results/volleyball/women/qfnl000200--,2965
 6.08.2024 17:30,6.08.2024 18:59,FINISHED,CTR,Women's Team Pursuit,Women's Team Pursuit  Qualifying,W,National Velodrome,130,/en/paris-2024/results/cycling-track/women-s-team-pursuit/qual000100--,2966
@@ -3077,7 +3068,7 @@
 7.08.2024 11:56,7.08.2024 12:03,FINISHED,WRE,Women's Freestyle 53kg,WFS 53kg 1/8 Finals,W,Champ-de-Mars Arena,318,/en/paris-2024/results/wrestling/women-s-freestyle-53kg/8fnl000800--,3076
 7.08.2024 11:56,7.08.2024 12:03,FINISHED,WRE,Men's Greco-Roman 87kg,MGR 87kg 1/8 Finals,M,Champ-de-Mars Arena,314,/en/paris-2024/results/wrestling/men-s-greco-roman-87kg/8fnl000700--,3077
 7.08.2024 12:00,7.08.2024 12:13,FINISHED,TKW,Women -49kg,Women -49kg Round of 16,W,Grand Palais,283,/en/paris-2024/results/taekwondo/women--49kg/8fnl000700--,3078
-7.08.2024 12:03,7.08.2024 12:20,CANCELLED,SAL,Women's Kite,Women's Kite Opening Series,W,Marseille Marina,209,3079
+7.08.2024 12:03,7.08.2024 12:20,CANCELLED,SAL,Women's Kite,Women's Kite Opening Series,W,Marseille Marina,209,null,3079
 7.08.2024 12:03,7.08.2024 12:10,FINISHED,WRE,Men's Greco-Roman 67kg,MGR 67kg 1/8 Finals,M,Champ-de-Mars Arena,312,/en/paris-2024/results/wrestling/men-s-greco-roman-67kg/8fnl000800--,3080
 7.08.2024 12:03,7.08.2024 12:10,FINISHED,WRE,Women's Freestyle 53kg,WFS 53kg 1/4 Finals,W,Champ-de-Mars Arena,318,/en/paris-2024/results/wrestling/women-s-freestyle-53kg/qfnl000100--,3081
 7.08.2024 12:03,7.08.2024 12:10,FINISHED,WRE,Men's Greco-Roman 87kg,MGR 87kg 1/8 Finals,M,Champ-de-Mars Arena,314,/en/paris-2024/results/wrestling/men-s-greco-roman-87kg/8fnl000800--,3082
@@ -3089,7 +3080,7 @@
 7.08.2024 12:17,7.08.2024 12:24,FINISHED,WRE,Men's Greco-Roman 67kg,MGR 67kg 1/4 Finals,M,Champ-de-Mars Arena,312,/en/paris-2024/results/wrestling/men-s-greco-roman-67kg/qfnl000200--,3088
 7.08.2024 12:17,7.08.2024 12:24,FINISHED,WRE,Women's Freestyle 53kg,WFS 53kg 1/4 Finals,W,Champ-de-Mars Arena,318,/en/paris-2024/results/wrestling/women-s-freestyle-53kg/qfnl000300--,3089
 7.08.2024 12:17,7.08.2024 12:24,FINISHED,WRE,Men's Greco-Roman 87kg,MGR 87kg 1/4 Finals,M,Champ-de-Mars Arena,314,/en/paris-2024/results/wrestling/men-s-greco-roman-87kg/qfnl000200--,3090
-7.08.2024 12:23,7.08.2024 12:40,CANCELLED,SAL,Men's Kite,Men's Kite Opening Series,M,Marseille Marina,205,3091
+7.08.2024 12:23,7.08.2024 12:40,CANCELLED,SAL,Men's Kite,Men's Kite Opening Series,M,Marseille Marina,205,null,3091
 7.08.2024 12:24,7.08.2024 12:31,FINISHED,WRE,Men's Greco-Roman 67kg,MGR 67kg 1/4 Finals,M,Champ-de-Mars Arena,312,/en/paris-2024/results/wrestling/men-s-greco-roman-67kg/qfnl000300--,3092
 7.08.2024 12:24,7.08.2024 12:31,FINISHED,WRE,Women's Freestyle 53kg,WFS 53kg 1/4 Finals,W,Champ-de-Mars Arena,318,/en/paris-2024/results/wrestling/women-s-freestyle-53kg/qfnl000400--,3093
 7.08.2024 12:24,7.08.2024 12:31,FINISHED,WRE,Men's Greco-Roman 87kg,MGR 87kg 1/4 Finals,M,Champ-de-Mars Arena,314,/en/paris-2024/results/wrestling/men-s-greco-roman-87kg/qfnl000300--,3094
@@ -3099,31 +3090,31 @@
 7.08.2024 12:31,7.08.2024 12:38,FINISHED,WRE,Men's Greco-Roman 87kg,MGR 87kg 1/4 Finals,M,Champ-de-Mars Arena,314,/en/paris-2024/results/wrestling/men-s-greco-roman-87kg/qfnl000400--,3098
 7.08.2024 12:35,7.08.2024 12:41,FINISHED,CLB,Women's Speed,Women's Speed Quarterfinals,W,Le Bourget Climbing Venue,234,/en/paris-2024/results/sport-climbing/women-s-speed/------------,3099
 7.08.2024 12:37,7.08.2024 12:49,FINISHED,TKW,Men -58kg,Men -58kg Round of 16,M,Grand Palais,279,/en/paris-2024/results/taekwondo/men--58kg/8fnl000800--,3100
-7.08.2024 12:43,7.08.2024 13:00,CANCELLED,SAL,Women's Kite,Women's Kite Opening Series,W,Marseille Marina,209,3101
+7.08.2024 12:43,7.08.2024 13:00,CANCELLED,SAL,Women's Kite,Women's Kite Opening Series,W,Marseille Marina,209,null,3101
 7.08.2024 12:45,7.08.2024 13:02,FINISHED,ATH,Women's 1500m,Women's 1500m Repechage Round,W,Stade de France,48,/en/paris-2024/results/athletics/women-s-1500m/rep---------,3102
 7.08.2024 12:45,7.08.2024 13:26,FINISHED,CTR,Men's Sprint,Men's Sprint  Qualifying,M,National Velodrome,122,/en/paris-2024/results/cycling-track/men-s-sprint/qual000100--,3103
 7.08.2024 12:46,7.08.2024 12:48,FINISHED,CLB,Women's Speed,Women's Speed Semifinals,W,Le Bourget Climbing Venue,234,/en/paris-2024/results/sport-climbing/women-s-speed/------------,3104
-7.08.2024 12:48,7.08.2024 13:05,CANCELLED,SAL,Men's Kite,Men's Kite Opening Series,M,Marseille Marina,205,3105
+7.08.2024 12:48,7.08.2024 13:05,CANCELLED,SAL,Men's Kite,Men's Kite Opening Series,M,Marseille Marina,205,null,3105
 7.08.2024 12:54,7.08.2024 12:57,FINISHED,CLB,Women's Speed,Women's Speed Final,W,Le Bourget Climbing Venue,234,/en/paris-2024/results/sport-climbing/women-s-speed/------------,3106
-7.08.2024 13:13,7.08.2024 13:30,CANCELLED,SAL,Men's Kite,Men's Kite Opening Series,M,Marseille Marina,205,3107
+7.08.2024 13:13,7.08.2024 13:30,CANCELLED,SAL,Men's Kite,Men's Kite Opening Series,M,Marseille Marina,205,null,3107
 7.08.2024 13:13,7.08.2024 13:33,FINISHED,SAL,Men's Dinghy,Men's Dinghy Medal Race,M,Marseille Marina,206,/en/paris-2024/results/sailing/men-s-dinghy/fnl-000100--,3108
-7.08.2024 13:23,7.08.2024 13:40,CANCELLED,SAL,Women's Kite,Women's Kite Opening Series,W,Marseille Marina,209,3109
+7.08.2024 13:23,7.08.2024 13:40,CANCELLED,SAL,Women's Kite,Women's Kite Opening Series,W,Marseille Marina,209,null,3109
 7.08.2024 13:26,7.08.2024 13:52,FINISHED,CTR,Women's Keirin,Women's Keirin  First Round,W,National Velodrome,129,/en/paris-2024/results/cycling-track/women-s-keirin/rnd1--------,3110
 7.08.2024 13:30,7.08.2024 14:07,FINISHED,CSP,Women's Kayak Single 500m,Women's Kayak Single 500m Quarterfinals,W,Nautical St - Flat water,106,/en/paris-2024/results/canoe-sprint/women-s-kayak-single-500m/qfnl--------,3111
 7.08.2024 13:30,7.08.2024 15:30,FINISHED,HBL,Men,Men's Quarterfinals,M,Pierre Mauroy Stadium,163,/en/paris-2024/results/handball/men/qfnl000100--,3112
-7.08.2024 13:38,7.08.2024 13:55,CANCELLED,SAL,Men's Kite,Men's Kite Opening Series,M,Marseille Marina,205,3113
+7.08.2024 13:38,7.08.2024 13:55,CANCELLED,SAL,Men's Kite,Men's Kite Opening Series,M,Marseille Marina,205,null,3113
 7.08.2024 13:52,7.08.2024 14:30,FINISHED,CTR,Women's Team Pursuit,Women's Team Pursuit  First Round,W,National Velodrome,130,/en/paris-2024/results/cycling-track/women-s-team-pursuit/rnd1--------,3114
 7.08.2024 14:00,7.08.2024 15:45,FINISHED,HOC,Women,Women's Semi-finals,W,Yves-du-Manoir Stadium,166,/en/paris-2024/results/hockey/women/sfnl000100--,3115
 7.08.2024 14:00,7.08.2024 15:25,FINISHED,WPO,Men,Men's Quarterfinals,M,Paris La Defense Arena,299,/en/paris-2024/results/water-polo/men/qfnl000400--,3116
-7.08.2024 14:03,7.08.2024 14:20,CANCELLED,SAL,Men's Kite,Men's Kite Opening Series,M,Marseille Marina,205,3117
-7.08.2024 14:03,7.08.2024 14:20,CANCELLED,SAL,Women's Kite,Women's Kite Opening Series,W,Marseille Marina,209,3118
+7.08.2024 14:03,7.08.2024 14:20,CANCELLED,SAL,Men's Kite,Men's Kite Opening Series,M,Marseille Marina,205,null,3117
+7.08.2024 14:03,7.08.2024 14:20,CANCELLED,SAL,Women's Kite,Women's Kite Opening Series,W,Marseille Marina,209,null,3118
 7.08.2024 14:10,7.08.2024 14:37,FINISHED,CSP,Men's Kayak Single 1000m,Men's Kayak Single 1000m Quarterfinals,M,Nautical St - Flat water,101,/en/paris-2024/results/canoe-sprint/men-s-kayak-single-1000m/qfnl--------,3119
 7.08.2024 14:30,7.08.2024 16:15,FINISHED,BKB,Women,Women's Quarterfinals,W,Bercy Arena,75,/en/paris-2024/results/basketball/women/qfnl000200--,3120
 7.08.2024 14:30,7.08.2024 15:10,FINISHED,CTR,Men's Sprint,Men's Sprint  1/32 Finals,M,National Velodrome,122,/en/paris-2024/results/cycling-track/men-s-sprint/r64---------,3121
 7.08.2024 14:30,7.08.2024 14:40,FINISHED,TKW,Women -49kg,Women -49kg Quarterfinals,W,Grand Palais,283,/en/paris-2024/results/taekwondo/women--49kg/qfnl000100--,3122
 7.08.2024 14:40,7.08.2024 15:07,FINISHED,CSP,Men's Canoe Single 1000m,Men's Canoe Single 1000m Quarterfinals,M,Nautical St - Flat water,104,/en/paris-2024/results/canoe-sprint/men-s-canoe-single-1000m/qfnl--------,3123
 7.08.2024 14:40,7.08.2024 14:53,FINISHED,TKW,Men -58kg,Men -58kg Quarterfinals,M,Grand Palais,279,/en/paris-2024/results/taekwondo/men--58kg/qfnl000100--,3124
-7.08.2024 14:43,7.08.2024 15:00,CANCELLED,SAL,Women's Kite,Women's Kite Opening Series,W,Marseille Marina,209,3125
+7.08.2024 14:43,7.08.2024 15:00,CANCELLED,SAL,Women's Kite,Women's Kite Opening Series,W,Marseille Marina,209,null,3125
 7.08.2024 14:53,7.08.2024 15:06,FINISHED,TKW,Women -49kg,Women -49kg Quarterfinals,W,Grand Palais,283,/en/paris-2024/results/taekwondo/women--49kg/qfnl000200--,3126
 7.08.2024 15:00,7.08.2024 16:57,FINISHED,DIV,Women's 3m Springboard,Women's 3m Springboard Preliminary,W,Aquatics Centre,133,/en/paris-2024/results/diving/women-s-3m-springboard/prel000100--,3127
 7.08.2024 15:00,7.08.2024 18:00,FINISHED,TTE,Women's Team,Women's Team Quarterfinals,W,South Paris Arena 4,278,/en/paris-2024/results/table-tennis/women-s-team/qfnl00010000,3128
@@ -3137,15 +3128,15 @@
 7.08.2024 15:35,7.08.2024 17:00,FINISHED,WPO,Men,Men's Quarterfinals,M,Paris La Defense Arena,299,/en/paris-2024/results/water-polo/men/qfnl000100--,3136
 7.08.2024 15:45,7.08.2024 15:58,FINISHED,TKW,Women -49kg,Women -49kg Quarterfinals,W,Grand Palais,283,/en/paris-2024/results/taekwondo/women--49kg/qfnl000400--,3137
 7.08.2024 15:58,7.08.2024 16:11,FINISHED,TKW,Men -58kg,Men -58kg Quarterfinals,M,Grand Palais,279,/en/paris-2024/results/taekwondo/men--58kg/qfnl000400--,3138
-7.08.2024 16:00,7.08.2024 16:17,CANCELLED,SAL,Men's Kite,Men's Kite Opening Series,M,Marseille Marina,205,3139
-7.08.2024 16:00,7.08.2024 16:17,CANCELLED,SAL,Men's Kite,Men's Kite Opening Series,M,Marseille Marina,205,3140
-7.08.2024 16:00,7.08.2024 16:17,CANCELLED,SAL,Men's Kite,Men's Kite Opening Series,M,Marseille Marina,205,3141
-7.08.2024 16:00,7.08.2024 16:17,CANCELLED,SAL,Women's Kite,Women's Kite Opening Series,W,Marseille Marina,209,3142
-7.08.2024 16:00,7.08.2024 16:17,CANCELLED,SAL,Men's Kite,Men's Kite Opening Series,M,Marseille Marina,205,3143
-7.08.2024 16:00,7.08.2024 16:17,CANCELLED,SAL,Women's Kite,Women's Kite Opening Series,W,Marseille Marina,209,3144
-7.08.2024 16:00,7.08.2024 16:17,CANCELLED,SAL,Women's Kite,Women's Kite Opening Series,W,Marseille Marina,209,3145
-7.08.2024 16:00,7.08.2024 16:17,CANCELLED,SAL,Women's Kite,Women's Kite Opening Series,W,Marseille Marina,209,3146
-7.08.2024 16:00,7.08.2024 16:17,CANCELLED,SAL,Women's Kite,Women's Kite Opening Series,W,Marseille Marina,209,3147
+7.08.2024 16:00,7.08.2024 16:17,CANCELLED,SAL,Men's Kite,Men's Kite Opening Series,M,Marseille Marina,205,null,3139
+7.08.2024 16:00,7.08.2024 16:17,CANCELLED,SAL,Men's Kite,Men's Kite Opening Series,M,Marseille Marina,205,null,3140
+7.08.2024 16:00,7.08.2024 16:17,CANCELLED,SAL,Men's Kite,Men's Kite Opening Series,M,Marseille Marina,205,null,3141
+7.08.2024 16:00,7.08.2024 16:17,CANCELLED,SAL,Women's Kite,Women's Kite Opening Series,W,Marseille Marina,209,null,3142
+7.08.2024 16:00,7.08.2024 16:17,CANCELLED,SAL,Men's Kite,Men's Kite Opening Series,M,Marseille Marina,205,null,3143
+7.08.2024 16:00,7.08.2024 16:17,CANCELLED,SAL,Women's Kite,Women's Kite Opening Series,W,Marseille Marina,209,null,3144
+7.08.2024 16:00,7.08.2024 16:17,CANCELLED,SAL,Women's Kite,Women's Kite Opening Series,W,Marseille Marina,209,null,3145
+7.08.2024 16:00,7.08.2024 16:17,CANCELLED,SAL,Women's Kite,Women's Kite Opening Series,W,Marseille Marina,209,null,3146
+7.08.2024 16:00,7.08.2024 16:17,CANCELLED,SAL,Women's Kite,Women's Kite Opening Series,W,Marseille Marina,209,null,3147
 7.08.2024 16:00,7.08.2024 18:15,FINISHED,VVO,Men,Men's Semifinals,M,South Paris Arena 1,297,/en/paris-2024/results/volleyball/men/sfnl000200--,3148
 7.08.2024 16:21,7.08.2024 16:36,FINISHED,TKW,Women -49kg,Women -49kg Semifinals,W,Grand Palais,283,/en/paris-2024/results/taekwondo/women--49kg/sfnl000100--,3149
 7.08.2024 16:36,7.08.2024 16:49,FINISHED,TKW,Men -58kg,Men -58kg Semifinals,M,Grand Palais,279,/en/paris-2024/results/taekwondo/men--58kg/sfnl000100--,3150
@@ -3315,37 +3306,37 @@
 8.08.2024 13:50,8.08.2024 13:57,FINISHED,CSP,Men's Kayak Four 500m,Men's Kayak Four 500m Finals,M,Nautical St - Flat water,103,/en/paris-2024/results/canoe-sprint/men-s-kayak-four-500m/fnl---------,3314
 8.08.2024 13:57,8.08.2024 14:03,FINISHED,SAL,Men's Kite,Men's Kite Semifinals,M,Marseille Marina,205,/en/paris-2024/results/sailing/men-s-kite/sfnl00010002,3315
 8.08.2024 14:00,8.08.2024 15:45,FINISHED,HOC,Men,Men's Finals,M,Yves-du-Manoir Stadium,165,/en/paris-2024/results/hockey/men/fnl-000200--,3316
-8.08.2024 14:06,8.08.2024 14:12,CANCELLED,SAL,Men's Kite,Men's Kite Semifinals,M,Marseille Marina,205,3317
-8.08.2024 14:09,8.08.2024 14:15,CANCELLED,SAL,Women's Kite,Women's Kite Semifinals,W,Marseille Marina,209,3318
-8.08.2024 14:18,8.08.2024 14:24,CANCELLED,SAL,Women's Kite,Women's Kite Semifinals,W,Marseille Marina,209,3319
+8.08.2024 14:06,8.08.2024 14:12,CANCELLED,SAL,Men's Kite,Men's Kite Semifinals,M,Marseille Marina,205,null,3317
+8.08.2024 14:09,8.08.2024 14:15,CANCELLED,SAL,Women's Kite,Women's Kite Semifinals,W,Marseille Marina,209,null,3318
+8.08.2024 14:18,8.08.2024 14:24,CANCELLED,SAL,Women's Kite,Women's Kite Semifinals,W,Marseille Marina,209,null,3319
 8.08.2024 14:30,8.08.2024 17:30,FINISHED,MPN,Women's Individual,Women's Individual Ranking Round,W,North Paris Arena,184,/en/paris-2024/results/modern-pentathlon/women-s-individual/rank0001fe--,3320
 8.08.2024 14:30,8.08.2024 14:40,FINISHED,TKW,Women -57kg,Women -57kg Quarterfinals,W,Grand Palais,284,/en/paris-2024/results/taekwondo/women--57kg/qfnl000100--,3321
-8.08.2024 14:33,8.08.2024 14:39,CANCELLED,SAL,Men's Kite,Men's Kite Semifinals,M,Marseille Marina,205,3322
+8.08.2024 14:33,8.08.2024 14:39,CANCELLED,SAL,Men's Kite,Men's Kite Semifinals,M,Marseille Marina,205,null,3322
 8.08.2024 14:35,8.08.2024 16:00,FINISHED,WPO,Women,Women's Semifinals,W,Paris La Defense Arena,300,/en/paris-2024/results/water-polo/women/sfnl000200--,3323
 8.08.2024 14:40,8.08.2024 14:53,FINISHED,TKW,Men -68kg,Men -68kg Quarterfinals,M,Grand Palais,280,/en/paris-2024/results/taekwondo/men--68kg/qfnl000100--,3324
-8.08.2024 14:42,8.08.2024 14:48,CANCELLED,SAL,Men's Kite,Men's Kite Semifinals,M,Marseille Marina,205,3325
-8.08.2024 14:45,8.08.2024 14:51,CANCELLED,SAL,Women's Kite,Women's Kite Semifinals,W,Marseille Marina,209,3326
+8.08.2024 14:42,8.08.2024 14:48,CANCELLED,SAL,Men's Kite,Men's Kite Semifinals,M,Marseille Marina,205,null,3325
+8.08.2024 14:45,8.08.2024 14:51,CANCELLED,SAL,Women's Kite,Women's Kite Semifinals,W,Marseille Marina,209,null,3326
 8.08.2024 14:53,8.08.2024 15:06,FINISHED,TKW,Women -57kg,Women -57kg Quarterfinals,W,Grand Palais,284,/en/paris-2024/results/taekwondo/women--57kg/qfnl000200--,3327
-8.08.2024 14:54,8.08.2024 15:00,CANCELLED,SAL,Women's Kite,Women's Kite Semifinals,W,Marseille Marina,209,3328
-8.08.2024 14:56,8.08.2024 15:02,CANCELLED,SAL,Men's Kite,Men's Kite Semifinals,M,Marseille Marina,205,3329
+8.08.2024 14:54,8.08.2024 15:00,CANCELLED,SAL,Women's Kite,Women's Kite Semifinals,W,Marseille Marina,209,null,3328
+8.08.2024 14:56,8.08.2024 15:02,CANCELLED,SAL,Men's Kite,Men's Kite Semifinals,M,Marseille Marina,205,null,3329
 8.08.2024 15:00,8.08.2024 16:19,FINISHED,DIV,Men's 3m Springboard,Men's 3m Springboard Final,M,Aquatics Centre,137,/en/paris-2024/results/diving/men-s-3m-springboard/fnl-000100--,3330
 8.08.2024 15:00,8.08.2024 18:00,FINISHED,GRY,Individual All-Around,Individual All-Around Qualification,W,La Chapelle Arena,186,/en/paris-2024/results/rhythmic-gymnastics/individual-all-around/qual--------,3331
-8.08.2024 15:00,8.08.2024 15:06,CANCELLED,SAL,Men's Kite,Men's Kite Semifinals,M,Marseille Marina,205,3332
+8.08.2024 15:00,8.08.2024 15:06,CANCELLED,SAL,Men's Kite,Men's Kite Semifinals,M,Marseille Marina,205,null,3332
 8.08.2024 15:00,8.08.2024 18:00,FINISHED,TTE,Women's Team,Women's Team Semifinals,W,South Paris Arena 4,278,/en/paris-2024/results/table-tennis/women-s-team/sfnl00010000,3333
 8.08.2024 15:00,8.08.2024 17:30,FINISHED,WLF,Women's 59kg,Women's 59kg,W,South Paris Arena 6,302,/en/paris-2024/results/weightlifting/women-s-59kg/fnl-000100--,3334
-8.08.2024 15:03,8.08.2024 15:09,CANCELLED,SAL,Women's Kite,Women's Kite Semifinals,W,Marseille Marina,209,3335
+8.08.2024 15:03,8.08.2024 15:09,CANCELLED,SAL,Women's Kite,Women's Kite Semifinals,W,Marseille Marina,209,null,3335
 8.08.2024 15:06,8.08.2024 15:19,FINISHED,TKW,Men -68kg,Men -68kg Quarterfinals,M,Grand Palais,280,/en/paris-2024/results/taekwondo/men--68kg/qfnl000200--,3336
-8.08.2024 15:12,8.08.2024 15:18,CANCELLED,SAL,Women's Kite,Women's Kite Semifinals,W,Marseille Marina,209,3337
-8.08.2024 15:15,8.08.2024 15:21,CANCELLED,SAL,Men's Kite,Men's Kite Semifinals,M,Marseille Marina,205,3338
-8.08.2024 15:18,8.08.2024 15:24,CANCELLED,SAL,Men's Kite,Men's Kite Semifinals,M,Marseille Marina,205,3339
+8.08.2024 15:12,8.08.2024 15:18,CANCELLED,SAL,Women's Kite,Women's Kite Semifinals,W,Marseille Marina,209,null,3337
+8.08.2024 15:15,8.08.2024 15:21,CANCELLED,SAL,Men's Kite,Men's Kite Semifinals,M,Marseille Marina,205,null,3338
+8.08.2024 15:18,8.08.2024 15:24,CANCELLED,SAL,Men's Kite,Men's Kite Semifinals,M,Marseille Marina,205,null,3339
 8.08.2024 15:19,8.08.2024 15:32,FINISHED,TKW,Women -57kg,Women -57kg Quarterfinals,W,Grand Palais,284,/en/paris-2024/results/taekwondo/women--57kg/qfnl000300--,3340
-8.08.2024 15:21,8.08.2024 15:27,CANCELLED,SAL,Women's Kite,Women's Kite Semifinals,W,Marseille Marina,209,3341
-8.08.2024 15:26,8.08.2024 15:32,CANCELLED,SAL,Women's Kite,Women's Kite Semifinals,W,Marseille Marina,209,3342
-8.08.2024 15:27,8.08.2024 15:33,CANCELLED,SAL,Men's Kite,Men's Kite Semifinals,M,Marseille Marina,205,3343
-8.08.2024 15:28,8.08.2024 15:34,CANCELLED,SAL,Men's Kite,Men's Kite Semifinals,M,Marseille Marina,205,3344
+8.08.2024 15:21,8.08.2024 15:27,CANCELLED,SAL,Women's Kite,Women's Kite Semifinals,W,Marseille Marina,209,null,3341
+8.08.2024 15:26,8.08.2024 15:32,CANCELLED,SAL,Women's Kite,Women's Kite Semifinals,W,Marseille Marina,209,null,3342
+8.08.2024 15:27,8.08.2024 15:33,CANCELLED,SAL,Men's Kite,Men's Kite Semifinals,M,Marseille Marina,205,null,3343
+8.08.2024 15:28,8.08.2024 15:34,CANCELLED,SAL,Men's Kite,Men's Kite Semifinals,M,Marseille Marina,205,null,3344
 8.08.2024 15:32,8.08.2024 15:45,FINISHED,TKW,Men -68kg,Men -68kg Quarterfinals,M,Grand Palais,280,/en/paris-2024/results/taekwondo/men--68kg/qfnl000300--,3345
-8.08.2024 15:39,8.08.2024 15:45,CANCELLED,SAL,Women's Kite,Women's Kite Semifinals,W,Marseille Marina,209,3346
-8.08.2024 15:39,8.08.2024 15:45,CANCELLED,SAL,Women's Kite,Women's Kite Semifinals,W,Marseille Marina,209,3347
+8.08.2024 15:39,8.08.2024 15:45,CANCELLED,SAL,Women's Kite,Women's Kite Semifinals,W,Marseille Marina,209,null,3346
+8.08.2024 15:39,8.08.2024 15:45,CANCELLED,SAL,Women's Kite,Women's Kite Semifinals,W,Marseille Marina,209,null,3347
 8.08.2024 15:40,8.08.2024 15:46,FINISHED,SAL,Men's Kite,Men's Kite Final,M,Marseille Marina,205,/en/paris-2024/results/sailing/men-s-kite/fnl-000100--,3348
 8.08.2024 15:45,8.08.2024 15:58,FINISHED,TKW,Women -57kg,Women -57kg Quarterfinals,W,Grand Palais,284,/en/paris-2024/results/taekwondo/women--57kg/qfnl000400--,3349
 8.08.2024 15:58,8.08.2024 16:11,FINISHED,TKW,Men -68kg,Men -68kg Quarterfinals,M,Grand Palais,280,/en/paris-2024/results/taekwondo/men--68kg/qfnl000400--,3350
@@ -3357,14 +3348,14 @@
 8.08.2024 16:37,8.08.2024 16:50,FINISHED,TKW,Women -57kg,Women -57kg Semifinals,W,Grand Palais,284,/en/paris-2024/results/taekwondo/women--57kg/sfnl000200--,3356
 8.08.2024 16:46,8.08.2024 16:52,FINISHED,SAL,Women's Kite,Women's Kite Final,W,Marseille Marina,209,/en/paris-2024/results/sailing/women-s-kite/fnl-000200--,3357
 8.08.2024 16:50,8.08.2024 17:03,FINISHED,TKW,Men -68kg,Men -68kg Semifinals,M,Grand Palais,280,/en/paris-2024/results/taekwondo/men--68kg/sfnl000200--,3358
-8.08.2024 16:55,8.08.2024 17:01,CANCELLED,SAL,Women's Kite,Women's Kite Final,W,Marseille Marina,209,3359
+8.08.2024 16:55,8.08.2024 17:01,CANCELLED,SAL,Women's Kite,Women's Kite Final,W,Marseille Marina,209,null,3359
 8.08.2024 17:00,8.08.2024 17:50,FINISHED,VBV,Women,Women's Semifinals,W,Eiffel Tower Stadium,79,/en/paris-2024/results/beach-volleyball/women/sfnl000200--,3360
 8.08.2024 17:00,8.08.2024 17:18,FINISHED,CTR,Men's Omnium,Men's Omnium  Scratch Race 1/4,M,National Velodrome,125,/en/paris-2024/results/cycling-track/men-s-omnium/scr-000100--,3361
 8.08.2024 17:00,8.08.2024 18:45,FINISHED,FBL,Men,Men's Finals,M,La Beaujoire Stadium,159,/en/paris-2024/results/football/men/fnl-000200--,3362
-8.08.2024 17:04,8.08.2024 17:10,CANCELLED,SAL,Women's Kite,Women's Kite Final,W,Marseille Marina,209,3363
-8.08.2024 17:13,8.08.2024 17:19,CANCELLED,SAL,Women's Kite,Women's Kite Final,W,Marseille Marina,209,3364
+8.08.2024 17:04,8.08.2024 17:10,CANCELLED,SAL,Women's Kite,Women's Kite Final,W,Marseille Marina,209,null,3363
+8.08.2024 17:13,8.08.2024 17:19,CANCELLED,SAL,Women's Kite,Women's Kite Final,W,Marseille Marina,209,null,3364
 8.08.2024 17:18,8.08.2024 17:38,FINISHED,CTR,Women's Keirin,Women's Keirin  Quarterfinals,W,National Velodrome,129,/en/paris-2024/results/cycling-track/women-s-keirin/qfnl--------,3365
-8.08.2024 17:22,8.08.2024 17:28,CANCELLED,SAL,Women's Kite,Women's Kite Final,W,Marseille Marina,209,3366
+8.08.2024 17:22,8.08.2024 17:28,CANCELLED,SAL,Women's Kite,Women's Kite Final,W,Marseille Marina,209,null,3366
 8.08.2024 17:30,8.08.2024 19:15,FINISHED,BKB,Men,Men's Semifinals,M,Bercy Arena,74,/en/paris-2024/results/basketball/men/sfnl000100--,3367
 8.08.2024 17:38,8.08.2024 18:01,FINISHED,CTR,Men's Omnium,Men's Omnium  Tempo Race 2/4,M,National Velodrome,125,/en/paris-2024/results/cycling-track/men-s-omnium/temp000100--,3368
 8.08.2024 18:00,8.08.2024 18:50,FINISHED,VBV,Men,Men's Semifinals,M,Eiffel Tower Stadium,78,/en/paris-2024/results/beach-volleyball/men/sfnl000200--,3369
@@ -3505,7 +3496,7 @@
 9.08.2024 12:24,9.08.2024 12:31,FINISHED,WRE,Men's Freestyle 74kg,MFS 74kg 1/4 Finals,M,Champ-de-Mars Arena,325,/en/paris-2024/results/wrestling/men-s-freestyle-74kg/qfnl000200--,3504
 9.08.2024 12:24,9.08.2024 12:31,FINISHED,WRE,Women's Freestyle 62kg,WFS 62kg 1/4 Finals,W,Champ-de-Mars Arena,320,/en/paris-2024/results/wrestling/women-s-freestyle-62kg/qfnl000300--,3505
 9.08.2024 12:24,9.08.2024 12:31,FINISHED,WRE,Men's Freestyle 125kg,MFS 125kg 1/4 Finals,M,Champ-de-Mars Arena,328,/en/paris-2024/results/wrestling/men-s-freestyle-125kg/qfnl000300--,3506
-9.08.2024 12:31,9.08.2024 12:37,CANCELLED,SAL,Men's Kite,Men's Kite Final,M,Marseille Marina,205,3507
+9.08.2024 12:31,9.08.2024 12:37,CANCELLED,SAL,Men's Kite,Men's Kite Final,M,Marseille Marina,205,null,3507
 9.08.2024 12:31,9.08.2024 12:38,FINISHED,WRE,Men's Freestyle 74kg,MFS 74kg 1/4 Finals,M,Champ-de-Mars Arena,325,/en/paris-2024/results/wrestling/men-s-freestyle-74kg/qfnl000300--,3508
 9.08.2024 12:31,9.08.2024 12:38,FINISHED,WRE,Women's Freestyle 62kg,WFS 62kg 1/4 Finals,W,Champ-de-Mars Arena,320,/en/paris-2024/results/wrestling/women-s-freestyle-62kg/qfnl000400--,3509
 9.08.2024 12:31,9.08.2024 12:38,FINISHED,WRE,Men's Freestyle 125kg,MFS 125kg 1/4 Finals,M,Champ-de-Mars Arena,328,/en/paris-2024/results/wrestling/men-s-freestyle-125kg/qfnl000400--,3510
@@ -3513,8 +3504,8 @@
 9.08.2024 12:35,9.08.2024 13:20,FINISHED,CLB,Men's Boulder & Lead,Men's Boulder & Lead Final,M,Le Bourget Climbing Venue,235,/en/paris-2024/results/sport-climbing/men-s-boulder-and-lead/fnl-000200--,3512
 9.08.2024 12:38,9.08.2024 12:45,FINISHED,WRE,Men's Freestyle 74kg,MFS 74kg 1/4 Finals,M,Champ-de-Mars Arena,325,/en/paris-2024/results/wrestling/men-s-freestyle-74kg/qfnl000400--,3513
 9.08.2024 12:40,9.08.2024 12:47,FINISHED,CSP,Women's Canoe Double 500m,Women's Canoe Double 500m Finals,W,Nautical St - Flat water,110,/en/paris-2024/results/canoe-sprint/women-s-canoe-double-500m/fnl---------,3514
-9.08.2024 12:40,9.08.2024 12:46,CANCELLED,SAL,Men's Kite,Men's Kite Final,M,Marseille Marina,205,3515
-9.08.2024 12:49,9.08.2024 12:55,CANCELLED,SAL,Men's Kite,Men's Kite Final,M,Marseille Marina,205,3516
+9.08.2024 12:40,9.08.2024 12:46,CANCELLED,SAL,Men's Kite,Men's Kite Final,M,Marseille Marina,205,null,3515
+9.08.2024 12:49,9.08.2024 12:55,CANCELLED,SAL,Men's Kite,Men's Kite Final,M,Marseille Marina,205,null,3516
 9.08.2024 12:50,9.08.2024 12:57,FINISHED,CSP,Women's Canoe Double 500m,Women's Canoe Double 500m Finals,W,Nautical St - Flat water,110,/en/paris-2024/results/canoe-sprint/women-s-canoe-double-500m/fnl---------,3517
 9.08.2024 13:00,9.08.2024 13:07,FINISHED,CSP,Women's Kayak Double 500m,Women's Kayak Double 500m Finals,W,Nautical St - Flat water,107,/en/paris-2024/results/canoe-sprint/women-s-kayak-double-500m/fnl---------,3518
 9.08.2024 13:00,9.08.2024 13:35,FINISHED,MPN,Men's Individual,Men's Individual Semi-finals,M,Château de Versailles,185,/en/paris-2024/results/modern-pentathlon/men-s-individual/sfnl0001eq--,3519
@@ -3546,7 +3537,7 @@
 9.08.2024 15:32,9.08.2024 15:45,FINISHED,TKW,Men -80kg,Men -80kg Quarterfinals,M,Grand Palais,281,/en/paris-2024/results/taekwondo/men--80kg/qfnl000300--,3545
 9.08.2024 15:38,9.08.2024 15:52,FINISHED,CTR,Women's Sprint,Women's Sprint  1/32 Finals Repechages,W,National Velodrome,128,/en/paris-2024/results/cycling-track/women-s-sprint/rep1--------,3546
 9.08.2024 15:45,9.08.2024 15:58,FINISHED,TKW,Women -67kg,Women -67kg Quarterfinals,W,Grand Palais,285,/en/paris-2024/results/taekwondo/women--67kg/qfnl000400--,3547
-9.08.2024 15:52,9.08.2024 15:52,CANCELLED,CTR,Men's Sprint,Men's Sprint  Semifinals,M,National Velodrome,122,3548
+9.08.2024 15:52,9.08.2024 15:52,CANCELLED,CTR,Men's Sprint,Men's Sprint  Semifinals,M,National Velodrome,122,null,3548
 9.08.2024 15:58,9.08.2024 16:11,FINISHED,TKW,Men -80kg,Men -80kg Quarterfinals,M,Grand Palais,281,/en/paris-2024/results/taekwondo/men--80kg/qfnl000400--,3549
 9.08.2024 16:00,9.08.2024 16:07,FINISHED,BKG,B-Girls,B-Girls Pre-Qualifier,W,La Concorde 1,94,/en/paris-2024/results/breaking/b-girls/r32-000100--,3550
 9.08.2024 16:00,9.08.2024 18:15,FINISHED,VVO,Men,Men's Finals,M,South Paris Arena 1,297,/en/paris-2024/results/volleyball/men/fnl-000200--,3551
@@ -3630,7 +3621,6 @@
 9.08.2024 20:47,9.08.2024 20:54,FINISHED,BKG,B-Girls,B-Girls Semifinals,W,La Concorde 1,94,/en/paris-2024/results/breaking/b-girls/sfnl000100--,3629
 9.08.2024 20:49,9.08.2024 21:04,FINISHED,TKW,Women -67kg,Women -67kg Bronze Medal Contests,W,Grand Palais,285,/en/paris-2024/results/taekwondo/women--67kg/repf000200--,3630
 9.08.2024 20:55,9.08.2024 21:02,FINISHED,BKG,B-Girls,B-Girls Semifinals,W,La Concorde 1,94,/en/paris-2024/results/breaking/b-girls/sfnl000200--,3631
-9.08.2024 20:57,9.08.2024 21:31,FINISHED,ATH,Women's 10 000m,Women's 10 000m Final,W,Stade de France,/en/paris-2024/results/athletics/women-s-10-000m/fnl-000100--,3632
 9.08.2024 21:00,9.08.2024 22:45,FINISHED,BKB,Women,Women's Semifinals,W,Bercy Arena,75,/en/paris-2024/results/basketball/women/sfnl000100--,3633
 9.08.2024 21:00,9.08.2024 21:50,FINISHED,VBV,Women,Women's Finals,W,Eiffel Tower Stadium,79,/en/paris-2024/results/beach-volleyball/women/fnl-000200--,3634
 9.08.2024 21:04,9.08.2024 21:19,FINISHED,TKW,Men -80kg,Men -80kg Bronze Medal Contests,M,Grand Palais,281,/en/paris-2024/results/taekwondo/men--80kg/repf000200--,3635
@@ -3821,7 +3811,7 @@
 10.08.2024 20:05,10.08.2024 20:15,FINISHED,WRE,Men's Freestyle 125kg,MFS 125kg Final,M,Champ-de-Mars Arena,328,/en/paris-2024/results/wrestling/men-s-freestyle-125kg/fnl-000100--,3820
 10.08.2024 20:06,10.08.2024 20:19,FINISHED,TKW,Women +67kg,Women +67kg Repechages,W,Grand Palais,286,/en/paris-2024/results/taekwondo/women--plus-67kg/rep1000300--,3821
 10.08.2024 20:07,10.08.2024 20:14,FINISHED,BKG,B-Boys,B-Boys Quarterfinals,M,La Concorde 1,93,/en/paris-2024/results/breaking/b-boys/qfnl000200--,3822
-10.08.2024 20:14,10.08.2024 20:14,CANCELLED,CTR,Women's Sprint,Women's Sprint  Quarterfinals,W,National Velodrome,128,3823
+10.08.2024 20:14,10.08.2024 20:14,CANCELLED,CTR,Women's Sprint,Women's Sprint  Quarterfinals,W,National Velodrome,128,null,3823
 10.08.2024 20:15,10.08.2024 20:19,FINISHED,ATH,Women's 1500m,Women's 1500m Final,W,Stade de France,48,/en/paris-2024/results/athletics/women-s-1500m/fnl-000100--,3824
 10.08.2024 20:15,10.08.2024 20:22,FINISHED,BKG,B-Boys,B-Boys Quarterfinals,M,La Concorde 1,93,/en/paris-2024/results/breaking/b-boys/qfnl000300--,3825
 10.08.2024 20:15,10.08.2024 20:25,FINISHED,WRE,Women's Freestyle 62kg,WFS 62kg Bronze Medal Matches,W,Champ-de-Mars Arena,320,/en/paris-2024/results/wrestling/women-s-freestyle-62kg/repf000100--,3826
@@ -3888,7 +3878,7 @@
 11.08.2024 13:30,11.08.2024 13:40,FINISHED,WRE,Women's Freestyle 76kg,WFS 76kg Bronze Medal Matches,W,Champ-de-Mars Arena,322,/en/paris-2024/results/wrestling/women-s-freestyle-76kg/repf000200--,3887
 11.08.2024 13:32,11.08.2024 13:44,FINISHED,CTR,Men's Keirin,Men's Keirin  Finals,M,National Velodrome,123,/en/paris-2024/results/cycling-track/men-s-keirin/fnl---------,3888
 11.08.2024 13:40,11.08.2024 13:50,FINISHED,WRE,Women's Freestyle 76kg,WFS 76kg Final,W,Champ-de-Mars Arena,322,/en/paris-2024/results/wrestling/women-s-freestyle-76kg/fnl-000100--,3889
-11.08.2024 13:44,11.08.2024 13:44,CANCELLED,CTR,Women's Sprint,Women's Sprint  Finals,W,National Velodrome,128,3890
+11.08.2024 13:44,11.08.2024 13:44,CANCELLED,CTR,Women's Sprint,Women's Sprint  Finals,W,National Velodrome,128,null,3890
 11.08.2024 13:56,11.08.2024 14:28,FINISHED,CTR,Women's Omnium,Women's Omnium  Points Race 4/4,W,National Velodrome,131,/en/paris-2024/results/cycling-track/women-s-omnium/pts-000100--,3891
 11.08.2024 14:00,11.08.2024 15:25,FINISHED,WPO,Men,Men's Finals,M,Paris La Defense Arena,299,/en/paris-2024/results/water-polo/men/fnl-000100--,3892
-11.08.2024 15:30,11.08.2024 17:15,FINISHED,BKB,Women,Women's Finals,W,Bercy Arena,75,/en/paris-2024/results/basketball/women/fnl-000100--,3893
+11.08.2024 15:30,11.08.2024 17:15,FINISHED,BKB,Women,Women's Finals,W,Bercy Arena,75,null,3893
