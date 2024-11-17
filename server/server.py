@@ -1,4 +1,4 @@
-from flask import Flask,jsonify
+from flask import Flask, jsonify
 import mysql.connector
 from mysql.connector import Error
 from settings import db_user,db_password,db_host,db_name  
@@ -116,6 +116,33 @@ def get_countries():
         if 'connection' in locals() and connection.is_connected():
             cursor.close()
             connection.close()
+
+
+@app.route('/teams_athlete', methods=['GET'])
+def get_teams_athlete():
+    try:
+        # Establish database connection
+        connection = db_connection()
+
+        if connection.is_connected():
+            cursor = connection.cursor(dictionary=True)
+            cursor.execute("SELECT * FROM Teams")
+            countries = cursor.fetchall()
+
+            # Return data as JSON
+            return jsonify(countries), 200
+        else:
+            return jsonify({'error': 'Failed to connect to the database'}), 500
+
+    except Error as e:
+        return jsonify({'error': str(e)}), 500
+
+    finally:
+        # Close the connection
+        if 'connection' in locals() and connection.is_connected():
+            cursor.close()
+            connection.close()
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080, debug=True)
