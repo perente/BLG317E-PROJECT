@@ -74,6 +74,10 @@ try:
     insertData('schedule', command)
     command = """INSERT INTO Discipline (discipline_code,name,id) VALUES (%s,%s, %s)"""
     insertData('discipline', command)
+    command = """INSERT INTO Events (event_name,url,discipline_code,sport_name) VALUES (%s,%s,%s,%s)"""
+    insertData('events', command)
+    command = """INSERT INTO Country (country_code,country_name,country_long,gold_medal,silver_medal,bronze_medal) VALUES (%s,%s,%s,%s,%s,%s)"""
+    insertData('country', command)
 
 except Exception as err:
     print("There was an error creating the database: ", err)
