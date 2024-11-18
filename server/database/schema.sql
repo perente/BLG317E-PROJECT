@@ -65,19 +65,34 @@ CREATE TABLE `Events` (
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci AUTO_INCREMENT = 0;
 
 -- Create Teams Table
-CREATE TABLE  `Teams` (
-    `team_code` VARCHAR(10) PRIMARY KEY,
-    `team_name` VARCHAR(100),
-    `team_gender` CHAR(1),
-    `country_code` VARCHAR(10),
-    `discipline_code` INT,
-    `athletes_code` INT,
+CREATE TABLE `Teams` (
+    `team_code` VARCHAR(255) PRIMARY KEY,
+    `team_name` VARCHAR(255),
+    `team_gender` CHAR(1) NOT NULL,
+    `country_code` CHAR(3) NOT NULL,
+    `discipline_code` CHAR(3) NOT NULL,
     `num_athletes` INT,
-    
-    FOREIGN KEY (`country_code`) REFERENCES Country(`country_code`),
-    FOREIGN KEY (`discipline_code`) REFERENCES Discipline(`discipline_code`),
-    FOREIGN KEY (`athletes_code`) REFERENCES Athletes(`athletes_code`)
-)ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+    FOREIGN KEY (`country_code`) REFERENCES Country(`country_code`) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (`discipline_code`) REFERENCES Discipline(`discipline_code`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+
+-- Create Team_Athlete Join Table
+CREATE TABLE `Team_Athlete` (
+    team_code VARCHAR(255),
+    athlete_code INT,
+    PRIMARY KEY (team_code, athlete_code),
+    FOREIGN KEY (team_code) REFERENCES Teams(team_code) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (athlete_code) REFERENCES Athlete(athlete_code) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- Create Team_Coach Join Table
+CREATE TABLE `Team_Coach` (
+    team_code VARCHAR(255),
+    coach_code INT,
+    PRIMARY KEY (team_code, coach_code),
+    FOREIGN KEY (team_code) REFERENCES Teams(team_code) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (coach_code) REFERENCES Coach(coach_code) ON DELETE CASCADE ON UPDATE CASCADE
+);
 
 -- Create Medallist Table
 CREATE TABLE `Medallist` (
