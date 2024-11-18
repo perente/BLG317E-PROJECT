@@ -117,8 +117,7 @@ def get_countries():
             cursor.close()
             connection.close()
 
-
-@app.route('/teams_athlete', methods=['GET'])
+@app.route('/team_athlete', methods=['GET'])
 def get_teams_athlete():
     try:
         # Establish database connection
@@ -126,11 +125,36 @@ def get_teams_athlete():
 
         if connection.is_connected():
             cursor = connection.cursor(dictionary=True)
-            cursor.execute("SELECT * FROM Teams")
-            countries = cursor.fetchall()
+            cursor.execute("SELECT * FROM Team_Athlete")
+            team_athlete = cursor.fetchall()
 
             # Return data as JSON
-            return jsonify(countries), 200
+            return jsonify(team_athlete), 200
+        else:
+            return jsonify({'error': 'Failed to connect to the database'}), 500
+
+    except Error as e:
+        return jsonify({'error': str(e)}), 500
+
+    finally:
+        # Close the connection
+        if 'connection' in locals() and connection.is_connected():
+            cursor.close()
+            connection.close()
+
+@app.route('/team_coach', methods=['GET'])
+def get_teams_coach():
+    try:
+        # Establish database connection
+        connection = db_connection()
+
+        if connection.is_connected():
+            cursor = connection.cursor(dictionary=True)
+            cursor.execute("SELECT * FROM Team_Coach")
+            team_coach = cursor.fetchall()
+
+            # Return data as JSON
+            return jsonify(team_coach), 200
         else:
             return jsonify({'error': 'Failed to connect to the database'}), 500
 

@@ -53,7 +53,6 @@ try:
 
     cursor = ins.cursor()
 
-
     def insertData(filename, command):
         with open('./Data/Tables/{}.csv'.format(filename), 'r') as open_file:
             csv_file = csv.reader(open_file, delimiter=';')  # Specify the correct delimiter
@@ -79,29 +78,34 @@ try:
     command = """INSERT INTO Country (country_code,country_name,country_long,gold_medal,silver_medal,bronze_medal) VALUES (%s,%s,%s,%s,%s,%s)"""
     insertData('country', command)
 
-
     def insertData_JoinTable(filename, command):
         with open('./Data/Tables/{}.csv'.format(filename), 'r') as open_file:
-            csv_file = csv.reader(open_file, delimiter=';')  # Specify the correct delimiter
-            header = next(csv_file)  # Read the header row
-            for line in csv_file:
-                team_code, athletes_codes = line.strip().split(",")
-                team_code = team_code.strip()
-                athletes = ast.literal_eval(athletes_codes.strip())
+            csv_file = csv.reader(open_file, delimiter=',') 
+            header = next(csv_file) 
 
-                for athlete_code in athletes:
-                    try:
-                        cursor.execute(command, (team_code, athlete_code))
-                    except Exception as e:
-                        print(command)
-                        print(line)
-                        print(f"Error inserting row {line}: {e}")
-                        break
+            for line in csv_file:
+                try:
+                    team_code = line[0].strip() 
+                    coach_codes = line[1].strip() if len(line) > 1 else ""  
+                    
+                   
+                    if not coach_codes:
+                        print(f"Skipping line for team {team_code} as second column is empty.")
+                        continue
+                    
+                    coaches = ast.literal_eval(coach_codes) if coach_codes else []
+
+                    for coach_code in coaches:
+                        cursor.execute(command, (team_code, coach_code))
+
+                except Exception as e:
+                    print(f"Error processing line {line}: {e}")
+                    continue
         ins.commit()
     command = """INSERT INTO Team_Athlete (team_code,athlete_code) VALUES (%s,%s)"""
     insertData_JoinTable('teams_athlete', command)
     command = """INSERT INTO Team_Coach (team_code,coach_code) VALUES (%s,%s)"""
     insertData_JoinTable('teams_coach', command)
-    
+
 except Exception as err:
     print("There was an error creating the database: ", err)

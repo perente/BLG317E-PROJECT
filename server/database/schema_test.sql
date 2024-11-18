@@ -1,8 +1,9 @@
-DROP TABLE IF EXISTS `Schedules`;
+DROP TABLE IF EXISTS `Schedule`;
 DROP TABLE IF EXISTS `Discipline`;
 DROP TABLE IF EXISTS `Country`;
 DROP TABLE IF EXISTS `Events`;
-
+DROP TABLE IF EXISTS `Team_Athlete`;
+DROP TABLE IF EXISTS `Team_Coach`;
 
 CREATE TABLE `Schedule` (
     `schedule_code` INT NOT NULL AUTO_INCREMENT,
@@ -45,4 +46,16 @@ CREATE TABLE `Events` (
     `discipline_code` CHAR(3),
     `sport_name` VARCHAR(255),
     PRIMARY KEY (`events_code`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci AUTO_INCREMENT = 0;
+
+CREATE TABLE `Team_Athlete` (
+    team_code VARCHAR(255),
+    athlete_code VARCHAR(255),
+    PRIMARY KEY (team_code, athlete_code)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci AUTO_INCREMENT = 0;
+
+CREATE TABLE `Team_Coach` (
+    team_code VARCHAR(255),
+    coach_code INT,
+    PRIMARY KEY (team_code, coach_code)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci AUTO_INCREMENT = 0;
