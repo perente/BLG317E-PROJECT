@@ -11,6 +11,9 @@ module.exports = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        'paris': ["Paris2024", "sans-serif"],
+      },
     },
   },
   plugins: [],
