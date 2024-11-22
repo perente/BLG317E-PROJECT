@@ -73,9 +73,9 @@ try:
     insertData('schedule', command)
     command = """INSERT INTO Discipline (discipline_code,name,id) VALUES (%s,%s, %s)"""
     insertData('discipline', command)
-    command = """INSERT INTO Events (event_name,url,discipline_code,sport_name) VALUES (%s,%s,%s,%s)"""
+    command = """INSERT INTO Events (events_code,event_name,url,discipline_code,sport_name) VALUES (%s,%s,%s,%s,%s)"""
     insertData('events', command)
-    command = """INSERT INTO Country (country_code,country_name,country_long,gold_medal,silver_medal,bronze_medal) VALUES (%s,%s,%s,%s,%s,%s)"""
+    command = """INSERT INTO Country (gold_medal,silver_medal,bronze_medal,country_code,country_name,country_long) VALUES (%s,%s,%s,%s,%s,%s)"""
     insertData('country', command)
 
     def insertData_JoinTable(filename, command):
@@ -90,7 +90,7 @@ try:
                     
                    
                     if not coach_codes:
-                        print(f"Skipping line for team {team_code} as second column is empty.")
+                        # print(f"Skipping line for team {team_code} as second column is empty.")
                         continue
                     
                     coaches = ast.literal_eval(coach_codes) if coach_codes else []
@@ -99,7 +99,7 @@ try:
                         cursor.execute(command, (team_code, coach_code))
 
                 except Exception as e:
-                    print(f"Error processing line {line}: {e}")
+                    # print(f"Error processing line {line}: {e}")
                     continue
         ins.commit()
     command = """INSERT INTO Team_Athlete (team_code,athlete_code) VALUES (%s,%s)"""

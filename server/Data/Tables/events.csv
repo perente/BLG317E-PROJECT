@@ -1,5 +1,5 @@
 events_code,event_name,url,discipline_code,sport_name
-0,Men's Individual,https://olympics.com/en/paris-2024/sports/archery,ARC,Archery
+329,Men's Individual,https://olympics.com/en/paris-2024/sports/archery,ARC,Archery
 1,Women's Individual,https://olympics.com/en/paris-2024/sports/archery,ARC,Archery
 2,Men's Team,https://olympics.com/en/paris-2024/sports/archery,ARC,Archery
 3,Women's Team,https://olympics.com/en/paris-2024/sports/archery,ARC,Archery
@@ -26,7 +26,7 @@ events_code,event_name,url,discipline_code,sport_name
 24,Men's 800m,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
 25,Men's 1500m,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
 26,Men's 5000m,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
-27,"Men's 10,000m",https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+27,"Men's 10000m",https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
 28,Men's Marathon,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
 29,Men's 3000m Steeplechase,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
 30,Men's 110m Hurdles,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
@@ -49,7 +49,7 @@ events_code,event_name,url,discipline_code,sport_name
 47,Women's 800m,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
 48,Women's 1500m,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
 49,Women's 5000m,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
-50,"Women's 10,000m",https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
+50,"Women's 10000m",https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
 51,Women's Marathon,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
 52,Women's 3000m Steeplechase,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
 53,Women's 100m Hurdles,https://olympics.com/en/paris-2024/sports/athletics,ATH,Athletics
