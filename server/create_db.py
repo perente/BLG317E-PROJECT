@@ -41,7 +41,7 @@ try:
                     cursor.execute(command)
             except ValueError as msg:
                 print("Command skipped: ", msg)
-    executeScriptsFromFile('./database/schema_test.sql')
+    executeScriptsFromFile('./database/schema_test_relational.sql')
     cnx.commit()
 
     ins = mysql.connector.connect(
@@ -69,14 +69,14 @@ try:
                     print(f"Error inserting row {row}: {e}")
                     break
         ins.commit()
-    command = """INSERT INTO Schedule (start_date,end_date,status,discipline_code,event_name,phase,gender,venue,event_code,url) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
-    insertData('schedule', command)
-    command = """INSERT INTO Discipline (discipline_code,name,id) VALUES (%s,%s, %s)"""
+    command = """INSERT INTO Country (gold_medal,silver_medal,bronze_medal,country_code,country_name,country_long) VALUES (%s,%s,%s,%s,%s,%s)"""
+    insertData('country', command)
+    command = """INSERT INTO Discipline (name,discipline_code,id) VALUES (%s,%s, %s)"""
     insertData('discipline', command)
     command = """INSERT INTO Events (events_code,event_name,url,discipline_code,sport_name) VALUES (%s,%s,%s,%s,%s)"""
     insertData('events', command)
-    command = """INSERT INTO Country (gold_medal,silver_medal,bronze_medal,country_code,country_name,country_long) VALUES (%s,%s,%s,%s,%s,%s)"""
-    insertData('country', command)
+    command = """INSERT INTO Schedule (start_date,end_date,status,discipline_code,event_name,phase,gender,venue,event_code,url) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+    insertData('schedule', command)
 
     def insertData_JoinTable(filename, command):
         with open('./Data/Tables/{}.csv'.format(filename), 'r') as open_file:
