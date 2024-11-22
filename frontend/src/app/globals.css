@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 
+@font-face {
+  font-family: "Paris2024";
+  src: url("./fonts/Paris2024.ttf");
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+
