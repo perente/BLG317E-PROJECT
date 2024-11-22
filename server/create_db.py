@@ -77,7 +77,11 @@ try:
     insertData('events', command)
     command = """INSERT INTO Schedule (start_date,end_date,status,discipline_code,event_name,phase,gender,venue,event_code,url) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
     insertData('schedule', command)
-
+    command = """INSERT INTO Athlete (athlete_code,name,gender,country_code,nationality,birth_date) VALUES (%s,%s,%s,%s,%s,%s)  """
+    insertData('athlete',command)
+    command= """INSERT INTO Coach (coach_code,name,gender,function,country_code,disciplines,birth_date) VALUES (%s,%s,%s,%s,%s,%s,%s) """
+    insertData('coach',command)
+    
     def insertData_JoinTable(filename, command):
         with open('./Data/Tables/{}.csv'.format(filename), 'r') as open_file:
             csv_file = csv.reader(open_file, delimiter=',') 

@@ -39,8 +39,6 @@ const Athletes = () => {
 
             </div>
 
-
-
             <div className="w-full" >
                 <div className="w-full flex justify-around items-center px-20 py-6 text-lg" >
                     <p>Name</p>
@@ -49,7 +47,6 @@ const Athletes = () => {
                 </div>
                 <div className="shadow-md h-2 bg-white"></div>
             </div>
-
 
         </div>
 

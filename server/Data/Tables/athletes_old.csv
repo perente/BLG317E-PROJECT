@@ -1,4 +1,4 @@
-code,name,gender,country_code,nationality,disciplines,birth_date
+athlete_code,name,gender,country_code,nationality,disciplines,birth_date
 1532872,ALEKSANYAN Artur,Male,ARM,Armenia,['Wrestling'],21.10.1991
 1532873,AMOYAN Malkhas,Male,ARM,Armenia,['Wrestling'],22.01.1999
 1532874,GALSTYAN Slavik,Male,ARM,Armenia,['Wrestling'],21.12.1996

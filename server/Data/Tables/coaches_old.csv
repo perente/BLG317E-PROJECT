@@ -1,4 +1,4 @@
-code,name,gender,function,country_code,disciplines,birth_date
+coach_code,name,gender,function,country_code,disciplines,birth_date
 1533246,PEDRERO Ofelia,Female,Coach,MEX,Artistic Swimming,28.03.1988
 1535775,RADHI SHENAISHIL,Male,Head Coach,IRQ,Football,1.07.1965
 1536055,AFLAKIKHAMSEH Majid,Male,Coach,IRI,Taekwondo,26.08.1973
