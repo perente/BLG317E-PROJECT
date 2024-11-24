@@ -81,7 +81,9 @@ try:
     insertData('athlete',command)
     command= """INSERT INTO Coach (coach_code,name,gender,function,country_code,disciplines,birth_date) VALUES (%s,%s,%s,%s,%s,%s,%s) """
     insertData('coach',command)
-    
+    command = """INSERT INTO Medallist (id, name, medal_date, medal_code, gender, country_code, code_team, code_athlete, discipline)  VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+    insertData('medallist',command)
+
     def insertData_JoinTable(filename, command):
         with open('./Data/Tables/{}.csv'.format(filename), 'r') as open_file:
             csv_file = csv.reader(open_file, delimiter=',') 
