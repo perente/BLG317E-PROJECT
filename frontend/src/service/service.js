@@ -21,6 +21,14 @@ export const getSchedules = async function () {
     });
 }
 
+export const createNewSchedule = async function (data) {
+    return await axios({
+        method: "post",
+        url: API_ROUTE.schedules,
+        data: data,
+    });
+}
+
 export const getDisciplines = async function () {
     return await axios({
         method: "get",

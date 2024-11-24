@@ -1,4 +1,6 @@
 "use client";
+import { Button } from "@/components/button";
+import { useModalStore } from "@/lib/store";
 import { getSchedules } from "@/service/service";
 import { useEffect, useState } from "react";
 
@@ -27,6 +29,8 @@ export default function Page() {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = schedules.slice(indexOfFirstItem, indexOfLastItem);
 
+  const toggleNewScheduleModal = useModalStore((state) => state.toggleNewScheduleModal);
+
   // Generate page numbers
   const pageNumbers = [];
   for (let i = 1; i <= totalPages; i++) {
@@ -44,6 +48,9 @@ export default function Page() {
   return (
     <div className="container m-auto">
       <h1 className="text-3xl my-4">Schedules</h1>
+      <Button onClick={toggleNewScheduleModal} className="mb-4">
+        Create New Schedule
+      </Button>
       <table className="table-auto w-full border-collapse border border-gray-400 mt-4">
         <thead>
           <tr className="bg-gray-200">

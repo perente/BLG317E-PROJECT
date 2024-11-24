@@ -1,7 +1,7 @@
 export const Button = ({ children, onClick }) => {
   return (
     <button
-      className="bg-blue-500 hover:bg-blue-700 text-white text-lg font-bold px-8 py-3 rounded-xl duration-300"
+      className="bg-blue-500 hover:bg-blue-700 text-white  font-bold px-4 py-2 rounded-lg duration-300"
       onClick={onClick}
     >
       {children}

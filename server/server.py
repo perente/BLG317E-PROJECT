@@ -3,6 +3,7 @@ import mysql.connector
 from mysql.connector import Error
 from settings import db_user,db_password,db_host,db_name  
 from flask_cors import CORS, cross_origin
+from schedules import get_schedules, new_schedules
 
 connection = mysql.connector.connect(host=db_host, database=db_name, user=db_user, password=db_password)    
 
@@ -18,29 +19,13 @@ def db_connection():
 
 # example get request
 @app.route('/schedules', methods=['GET'])
-def get_schedules():
-    try:
-        # Establish database connection
-        connection = db_connection()
+def schedules():
+    return get_schedules()
 
-        if connection.is_connected():
-            cursor = connection.cursor(dictionary=True)
-            cursor.execute("SELECT * FROM Schedule")
-            schedules = cursor.fetchall()
+@app.route('/schedules', methods=['POST'])
+def create_schedule():
+    return new_schedules()
 
-            # Return data as JSON
-            return jsonify(schedules), 200
-        else:
-            return jsonify({'error': 'Failed to connect to the database'}), 500
-
-    except Error as e:
-        return jsonify({'error': str(e)}), 500
-
-    finally:
-        # Close the connection
-        if 'connection' in locals() and connection.is_connected():
-            cursor.close()
-            connection.close()
 
 @app.route('/disciplines', methods=['GET'])
 def get_disciplines():

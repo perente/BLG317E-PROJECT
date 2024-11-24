@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import NewScheduleModal from "@/components/modals/newScheduleModal";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+      <NewScheduleModal />
         <header className="bg-slate-700">
           <div className="container relativer m-auto flex items-center justify-between min-h-28">
             <h1 className="text-4xl font-paris text-white">

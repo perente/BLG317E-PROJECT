@@ -10,6 +10,9 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+              modalBackground: 'rgba(53, 65, 84, 0.7)',
+      card: '#FFFFFF',
+
       },
       fontFamily: {
         'paris': ["Paris2024", "sans-serif"],
