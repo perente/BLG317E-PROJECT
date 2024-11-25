@@ -79,7 +79,7 @@ const NewScheduleModal = () => {
               <option value="waiting">Waiting</option>
               <option value="active">Active</option>
               <option value="finished">Finished</option>
-              <option value="cancelled">Cancelled</option>
+              <option value="canceled">Cancelled</option>
             </select>
           </div>
           <div className="flex items-center gap-2">

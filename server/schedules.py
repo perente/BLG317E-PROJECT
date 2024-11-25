@@ -22,10 +22,69 @@ def get_schedules():
 
         if connection.is_connected():
             cursor = connection.cursor(dictionary=True)
-            cursor.execute(
-                "SELECT * FROM Schedule left join Discipline on Schedule.discipline_code = Discipline.discipline_code")
-            schedules = cursor.fetchall()
+            
+            # Get query parameters
+            discipline_code = request.args.get('discipline_code')
+            start_date = request.args.get('start_date')
+            end_date = request.args.get('end_date')
+            venue = request.args.get('venue')
+            phase = request.args.get('phase')
+            event_code = request.args.get('event_code')
+            status = request.args.get('status')
+            gender = request.args.get('gender')
 
+            print(discipline_code, start_date, end_date, venue, phase, status, gender)
+
+            # Base query
+            query = """
+                SELECT * FROM Schedule
+                LEFT JOIN Discipline ON Schedule.discipline_code = Discipline.discipline_code
+            """
+            
+            # Where clause conditions
+            filters = []
+            params = []
+            
+            if discipline_code:
+                filters.append("Schedule.discipline_code = %s")
+                params.append(discipline_code)
+            
+            if start_date:
+                filters.append("Schedule.start_date >= %s")
+                params.append(start_date)
+            
+            if end_date:
+                filters.append("Schedule.end_date <= %s")
+                params.append(end_date)
+            
+            if venue:
+                filters.append("Schedule.venue LIKE %s")
+                params.append(f"%{venue}%")  # Use LIKE for partial matching
+            
+            if phase:
+                filters.append("Schedule.phase LIKE %s")
+                params.append(f"%{phase}%")  # Use LIKE for partial matching
+
+            if event_code:
+                filters.append("Schedule.event_code = %s")
+                params.append(event_code)
+            
+            if status:
+                filters.append("Schedule.status = %s")
+                params.append(status)
+
+            if gender:
+                filters.append("Schedule.gender = %s")
+                params.append(gender)
+            
+            # Add filters to query
+            if filters:
+                query += " WHERE " + " AND ".join(filters)
+            
+            # Execute query with parameters
+            cursor.execute(query, params)
+            schedules = cursor.fetchall()
+            
             # Return data as JSON
             return jsonify(schedules), 200
         else:
@@ -39,7 +98,6 @@ def get_schedules():
         if 'connection' in locals() and connection.is_connected():
             cursor.close()
             connection.close()
-
 
 def new_schedules():
     try:

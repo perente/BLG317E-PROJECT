@@ -16,12 +16,14 @@ const axios = async function () {
     }
 };
 
-export const getSchedules = async function () {
+
+export const getSchedules = async function (filters = {}) {
+    const queryParams = new URLSearchParams(filters).toString();
     return await axios({
         method: "get",
-        url: API_ROUTE.schedules,
+        url: `${API_ROUTE.schedules}?${queryParams}`,
     });
-}
+};
 
 export const createNewSchedule = async function (data) {
     return await axios({
