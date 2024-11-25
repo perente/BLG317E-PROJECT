@@ -4,6 +4,7 @@ from mysql.connector import Error
 from settings import db_user,db_password,db_host,db_name  
 from flask_cors import CORS, cross_origin
 from schedules import get_schedules, new_schedules, delete_schedules
+from disciplines import  get_disciplines, delete_disciplines, create_discipline, update_discipline
 
 connection = mysql.connector.connect(host=db_host, database=db_name, user=db_user, password=db_password)    
 
@@ -31,29 +32,22 @@ def delete_schedule(schedule_id):
     return delete_schedules(schedule_id)
 
 @app.route('/disciplines', methods=['GET'])
-def get_disciplines():
-    try:
-        # Establish database connection
-        connection = db_connection()
+def disciplines():
+    return get_disciplines()
 
-        if connection.is_connected():
-            cursor = connection.cursor(dictionary=True)
-            cursor.execute("SELECT * FROM Discipline")
-            disciplines = cursor.fetchall()
+@app.route('/disciplines/<int:discipline_id>', methods=['DELETE'])
+def delete_discipline(discipline_id):
+    return delete_disciplines(discipline_id) 
 
-            # Return data as JSON
-            return jsonify(disciplines), 200
-        else:
-            return jsonify({'error': 'Failed to connect to the database'}), 500
+@app.route('/disciplines', methods=['POST'])
+def new_discipline():
+    return create_discipline()
 
-    except Error as e:
-        return jsonify({'error': str(e)}), 500
+@app.route('/disciplines/<int:discipline_id>', methods=['PATCH'])
+def updateDiscipline(discipline_id):
+    return update_discipline(discipline_id)
 
-    finally:
-        # Close the connection
-        if 'connection' in locals() and connection.is_connected():
-            cursor.close()
-            connection.close()
+
 
 @app.route('/events', methods=['GET'])
 def get_events():

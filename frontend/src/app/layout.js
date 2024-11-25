@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import NewScheduleModal from "@/components/modals/newScheduleModal";
+import NewDisciplineModal from "@/components/modals/newDisciplineModal";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,13 +23,11 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      {/* <header>
-        <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
-      </header> */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-      <NewScheduleModal />
+        <NewScheduleModal />
+        <NewDisciplineModal />
         <header className="bg-slate-700">
           <div className="container relativer m-auto flex items-center justify-between min-h-28">
             <h1 className="text-4xl font-paris text-white">
@@ -38,12 +37,12 @@ export default function RootLayout({ children }) {
             <img className="w-20" src="	https://olympics.com/images/static/b2p-images/logo_color.svg" />
           </div>
           {<div className="container m-auto">
-              <nav>
-                <a href="/schedules" className="text-white">Schedules</a>
-                <a href="/events" className="text-white">Events</a>
-                <a href="/athletes" className="text-white">Athletes</a>
-                <a href="/medals" className="text-white">Medals</a>
-              </nav>
+            <nav>
+              <a href="/schedules" className="text-white">Schedules</a>
+              <a href="/events" className="text-white">Events</a>
+              <a href="/athletes" className="text-white">Athletes</a>
+              <a href="/medals" className="text-white">Medals</a>
+            </nav>
           </div>}
         </header>
         {children}

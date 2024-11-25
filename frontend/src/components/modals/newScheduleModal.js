@@ -127,17 +127,11 @@ const NewScheduleModal = () => {
         </div>
         <div className="w-full flex justify-center gap-4 mt-4">
           <Button
-            fullWidth
-            type="solid"
-            className="w-64 font-semibold leading-7"
             onClick={toggleNewScheduleModal}
           >
             Close
           </Button>
           <Button
-            fullWidth
-            type="primary"
-            className="w-64 font-semibold leading-7"
             onClick={() => {
               handleNewSchedule()
             }}

@@ -7,8 +7,8 @@ export const useModalStore = create(
     newScheduleModal: false,
     toggleNewScheduleModal: () => set(state => ({ newScheduleModal: !state.newScheduleModal })),
 
-    // reviewModalData: {},
-    // setReviewModalData: (payload) => set(_ => ({ reviewModalData: payload })),
+    newDisciplineModalData: null,
+    setNewDisciplineModalData: (data) => set({ newDisciplineModalData: data }),
 
   }),
   { name: 'modalStore' }

@@ -36,6 +36,7 @@ export default function Home() {
             <Button onClick={() => routerPush("/athletes")}>Athletes</Button>
             <Button onClick={() => routerPush("/teams")}>Teams</Button>
             <Button onClick={() => routerPush("/leaderboard")}>Leaderboard</Button>
+            <Button onClick={() => routerPush("/disciplines")}>Disciplines</Button>
           </ul>
         </div>
       </main>

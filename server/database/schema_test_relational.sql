@@ -28,7 +28,7 @@ CREATE TABLE `Country` (
 -- Create Discipline Table
 CREATE TABLE `Discipline` (
     `id` INT NOT NULL AUTO_INCREMENT,
-    `discipline_code` VARCHAR(50) NOT NULL,
+    `discipline_code` VARCHAR(50) NOT NULL UNIQUE,
     `name` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id`),
     UNIQUE KEY `unique_discipline_code` (`discipline_code`)
