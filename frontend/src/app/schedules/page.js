@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import { FaExternalLinkSquareAlt } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { TiArrowSortedDown } from "react-icons/ti";
 
 function Schedules() {
   const [schedules, setSchedules] = useState([]);
@@ -24,6 +25,8 @@ function Schedules() {
   const [event_code, setEventCode] = useState(params.get("event_code") ?? "");
   const [discipline, setDiscipline] = useState(params.get("discipline") ?? "");
   const [gender, setGender] = useState(params.get("gender") ?? "");
+  const [order, setOrder] = useState(params.get("order") ?? "");
+  const [orderBy, setOrderBy] = useState(params.get("order_by") ?? "");
 
   useEffect(() => {
     handleGetSchedules();
@@ -36,6 +39,8 @@ function Schedules() {
     setEventCode(params.get("event_code") ?? "");
     setDiscipline(params.get("discipline") ?? "");
     setGender(params.get("gender") ?? "");
+    setOrder(params.get("order") ?? "");
+    setOrderBy(params.get("order_by") ?? "");
   }, [params]);
 
 
@@ -50,7 +55,8 @@ function Schedules() {
     if (params.get("event_code")) filter.event_code = params.get("event_code");
     if (params.get("status")) filter.status = params.get("status");
     if (params.get("gender")) filter.gender = params.get("gender");
-
+    if (params.get("order")) filter.order = params.get("order");
+    if (params.get("order_by")) filter.order_by = params.get("order_by");
 
     setLoading(true);
     getSchedules(filter)
@@ -101,6 +107,30 @@ function Schedules() {
     const query = search ? `?${search}` : "";
     router.push(`${pathname}${query}`)
   };
+
+
+  const orderSchedules = (orderBy) => {
+    const current = new URLSearchParams(Array.from(params.entries())); // -> has to use this form
+    const value = orderBy;
+    if (!value) {
+      current.delete("order_by");
+      current.delete("order");
+    } else {
+      if (order === "asc") {
+        setOrderBy("");
+        setOrder("");
+        current.delete("order_by");
+        current.delete("order");
+      } else {
+        current.set("order_by", orderBy);
+        current.set("order", order === "" ? "desc" : order === "desc" ? "asc" : "");
+      }
+    }
+    const search = current.toString();
+    const query = search ? `?${search}` : "";
+    router.push(`${pathname}${query}`)
+  };
+
 
 
   if (loading && params.size === 0) {
@@ -243,54 +273,148 @@ function Schedules() {
         : <table className="table-auto w-full border-collapse border border-gray-400 mt-4">
           <thead>
             <tr className="bg-gray-200">
-              {/* Table headers remain the same */}
-              <th className="border border-gray-400 px-2 py-1">Start Date</th>
-              <th className="border border-gray-400 px-2 py-1">End Date</th>
-              <th className="border border-gray-400 px-2 py-1">Gender</th>
-              <th className="border border-gray-400 px-2 py-1">Status</th>
-              <th className="border border-gray-400 px-2 py-1">Event Name</th>
-              <th className="border border-gray-400 px-2 py-1">Venue</th>
-              <th className="border border-gray-400 px-2 py-1">Phase</th>
-              <th className="border border-gray-400 px-2 py-1">Discipline Name</th>
-              <th className="border border-gray-400 px-2 py-1"></th>
+              <th
+                onClick={() => orderSchedules("start_date")}
+                className="border border-gray-400 px-2 py-1 cursor-pointer">
+                <div className="flex items-center justify-center">
+                  <span>Start Date</span>
+                  <div className="opcity-10 flex items-center justify-center flex-col ">
+                    <TiArrowSortedDown className={"w-5 h-5 mt-[6px] " + (orderBy === "start_date" && order === "asc" ? "opacity-100" : "opacity-30")}
+                      style={{ rotate: "180deg" }} />
+                    <TiArrowSortedDown className={"w-5 h-5 mt-[-10px] " + (orderBy === "start_date" && order === "desc" ? "opacity-100" : "opacity-30")}
+                      style={{ rotate: "0deg" }} />
+                  </div>
+                </div>
+              </th>
+              <th
+                onClick={() => orderSchedules("end_date")}
+                className="border border-gray-400 px-2 py-1 cursor-pointer">
+                <div className="flex items-center justify-center">
+                  <span>End Date</span>
+                  <div className="opcity-10 flex items-center justify-center flex-col">
+                    <TiArrowSortedDown className={"w-5 h-5 mt-[6px] " + (orderBy === "end_date" && order === "asc" ? "opacity-100" : "opacity-30")}
+                      style={{ rotate: "180deg" }} />
+                    <TiArrowSortedDown className={"w-5 h-5 mt-[-10px] " + (orderBy === "end_date" && order === "desc" ? "opacity-100" : "opacity-30")}
+                      style={{ rotate: "0deg" }} />
+                  </div>
+                </div>
+              </th>
+              <th
+                onClick={() => orderSchedules("gender")}
+                className="border border-gray-400 px-2 py-1 cursor-pointer">
+                <div className="flex items-center justify-center">
+                  <span>Gender</span>
+                  <div className="opcity-10 flex items-center justify-center flex-col">
+                    <TiArrowSortedDown className={"w-5 h-5 mt-[6px] " + (orderBy === "gender" && order === "asc" ? "opacity-100" : "opacity-30")}
+                      style={{ rotate: "180deg" }} />
+                    <TiArrowSortedDown className={"w-5 h-5 mt-[-10px] " + (orderBy === "gender" && order === "desc" ? "opacity-100" : "opacity-30")}
+                      style={{ rotate: "0deg" }} />
+                  </div>
+                </div>
+              </th>
+              <th
+                onClick={() => orderSchedules("status")}
+                className="border border-gray-400 px-2 py-1 cursor-pointer">
+                <div className="flex items-center justify-center">
+                  <span>Status</span>
+                  <div className="opcity-10 flex items-center justify-center flex-col">
+                    <TiArrowSortedDown className={"w-5 h-5 mt-[6px] " + (orderBy === "status" && order === "asc" ? "opacity-100" : "opacity-30")}
+                      style={{ rotate: "180deg" }} />
+                    <TiArrowSortedDown className={"w-5 h-5 mt-[-10px] " + (orderBy === "status" && order === "desc" ? "opacity-100" : "opacity-30")}
+                      style={{ rotate: "0deg" }} />
+                  </div>
+                </div>
+              </th>
+              <th
+                onClick={() => orderSchedules("event_name")}
+                className="border border-gray-400 px-2 py-1 cursor-pointer">
+                <div className="flex items-center justify-center">
+                  <span>Event Name</span>
+                  <div className="opcity-10 flex items-center justify-center flex-col">
+                    <TiArrowSortedDown className={"w-5 h-5 mt-[6px] " + (orderBy === "event_name" && order === "asc" ? "opacity-100" : "opacity-30")}
+                      style={{ rotate: "180deg" }} />
+                    <TiArrowSortedDown className={"w-5 h-5 mt-[-10px] " + (orderBy === "event_name" && order === "desc" ? "opacity-100" : "opacity-30")}
+                      style={{ rotate: "0deg" }} />
+                  </div>
+                </div>
+              </th>
+              <th
+                onClick={() => orderSchedules("venue")}
+                className="border border-gray-400 px-2 py-1 cursor-pointer">
+                <div className="flex items-center justify-center">
+                  <span>Venue</span>
+                  <div className="opcity-10 flex items-center justify-center flex-col">
+                    <TiArrowSortedDown className={"w-5 h-5 mt-[6px] " + (orderBy === "venue" && order === "asc" ? "opacity-100" : "opacity-30")}
+                      style={{ rotate: "180deg" }} />
+                    <TiArrowSortedDown className={"w-5 h-5 mt-[-10px] " + (orderBy === "venue" && order === "desc" ? "opacity-100" : "opacity-30")}
+                      style={{ rotate: "0deg" }} />
+                  </div>
+                </div>
+              </th>
+              <th
+                onClick={() => orderSchedules("phase")}
+                className="border border-gray-400 px-2 py-1 cursor-pointer">
+                <div className="flex items-center justify-center">
+                  <span>Phase</span>
+                  <div className="opcity-10 flex items-center justify-center flex-col">
+                    <TiArrowSortedDown className={"w-5 h-5 mt-[6px] " + (orderBy === "phase" && order === "asc" ? "opacity-100" : "opacity-30")}
+                      style={{ rotate: "180deg" }} />
+                    <TiArrowSortedDown className={"w-5 h-5 mt-[-10px] " + (orderBy === "phase" && order === "desc" ? "opacity-100" : "opacity-30")}
+                      style={{ rotate: "0deg" }} />
+                  </div>
+                </div>
+              </th>
+              <th
+                onClick={() => orderSchedules("name")}
+                className="border border-gray-400 px-2 py-1 cursor-pointer">
+                <div className="flex items-center justify-center">
+                  <span>Discipline Name</span>
+                  <div className="opcity-10 flex items-center justify-center flex-col">
+                    <TiArrowSortedDown className={"w-5 h-5 mt-[6px] " + (orderBy === "name" && order === "asc" ? "opacity-100" : "opacity-30")}
+                      style={{ rotate: "180deg" }} />
+                    <TiArrowSortedDown className={"w-5 h-5 mt-[-10px] " + (orderBy === "name" && order === "desc" ? "opacity-100" : "opacity-30")}
+                      style={{ rotate: "0deg" }} />
+                  </div>
+                </div>
+              </th>
+              <th className="border border-gray-400 px-2 py-1 cursor-pointer"></th>
             </tr>
           </thead>
           <tbody>
             {currentItems.map((schedule) => (
               <tr key={schedule.schedule_code} className="border-b">
-                {/* Table data remains the same */}
-                <td className="border border-gray-400 px-2 py-1">
+                <td className="border border-gray-400 px-2 py-1 cursor-pointer">
                   {schedule.start_date}
                 </td>
-                <td className="border border-gray-400 px-2 py-1">
+                <td className="border border-gray-400 px-2 py-1 cursor-pointer">
                   {schedule.end_date}
                 </td>
-                <td className="border border-gray-400 px-2 py-1">
+                <td className="border border-gray-400 px-2 py-1 cursor-pointer">
                   {schedule.gender}
                 </td>
-                <td className="border border-gray-400 px-2 py-1">
+                <td className="border border-gray-400 px-2 py-1 cursor-pointer">
                   {schedule.status}
                 </td>
-                <td className="border border-gray-400 px-2 py-1">
+                <td className="border border-gray-400 px-2 py-1 cursor-pointer">
                   {schedule.event_name}
                 </td>
-                <td className="border border-gray-400 px-2 py-1">
+                <td className="border border-gray-400 px-2 py-1 cursor-pointer">
                   {schedule.venue}
                 </td>
-                <td className="border border-gray-400 px-2 py-1">
+                <td className="border border-gray-400 px-2 py-1 cursor-pointer">
                   {schedule.phase}
                 </td>
-                <td className="border border-gray-400 px-2 py-1">
+                <td className="border border-gray-400 px-2 py-1 cursor-pointer">
                   {schedule.name}
                 </td>
-                <td className="border border-gray-400 px-2 py-1">
+                <td className="border border-gray-400 px-2 py-1 cursor-pointer">
                   <div className="flex gap-1">
                     <a
                       href={"https://olympics.com" + schedule.url}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <FaExternalLinkSquareAlt className="w-5 h-5 mt-[2px]" />
+                      <FaExternalLinkSquareAlt className="w-5 h-5 mt-[6px] " />
                     </a>
                     <div className="cursor-pointer" onClick={() => { handleDeleteSchedule(schedule.schedule_code) }}>
                       <MdDelete className="w-6 h-6" />
@@ -334,7 +458,7 @@ function Schedules() {
           Next
         </button>
       </div>
-    </div>
+    </div >
   );
 }
 
