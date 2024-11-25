@@ -1,8 +1,10 @@
 "use client";
 import { Button } from "@/components/button";
 import { useModalStore } from "@/lib/store";
-import { getSchedules } from "@/service/service";
+import { deleteSchedule, getSchedules } from "@/service/service";
 import { useEffect, useState } from "react";
+import { FaExternalLinkSquareAlt } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
 export default function Page() {
   const [schedules, setSchedules] = useState([]);
@@ -11,6 +13,10 @@ export default function Page() {
   const itemsPerPage = 10; // Number of items per page
 
   useEffect(() => {
+    handleGetSchedules();
+  }, []);
+
+  const handleGetSchedules = async () => {
     setLoading(true);
     getSchedules()
       .then((res) => {
@@ -19,7 +25,7 @@ export default function Page() {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }
 
   // Calculate total pages
   const totalPages = Math.ceil(schedules.length / itemsPerPage);
@@ -36,6 +42,21 @@ export default function Page() {
   for (let i = 1; i <= totalPages; i++) {
     pageNumbers.push(i);
   }
+
+  const handleDeleteSchedule = async (id) => {
+    deleteSchedule(id).then((res) => {
+      if (res.status === 200) {
+        setSchedules(schedules.filter((schedule) => schedule.schedule_code !== id));
+      }
+    }).catch((error) => {
+      alert(error);
+    }).finally(() => {
+      handleGetSchedules();
+    });
+  }
+
+
+
 
   if (loading) {
     return (
@@ -60,12 +81,10 @@ export default function Page() {
             <th className="border border-gray-400 px-2 py-1">Gender</th>
             <th className="border border-gray-400 px-2 py-1">Status</th>
             <th className="border border-gray-400 px-2 py-1">Event Name</th>
-            <th className="border border-gray-400 px-2 py-1">Event Code</th>
             <th className="border border-gray-400 px-2 py-1">Venue</th>
             <th className="border border-gray-400 px-2 py-1">Phase</th>
-            <th className="border border-gray-400 px-2 py-1">Schedule Code</th>
-            <th className="border border-gray-400 px-2 py-1">Discipline Code</th>
-            <th className="border border-gray-400 px-2 py-1">URL</th>
+            <th className="border border-gray-400 px-2 py-1">Discipline Name</th>
+            <th className="border border-gray-400 px-2 py-1"></th>
           </tr>
         </thead>
         <tbody>
@@ -88,28 +107,27 @@ export default function Page() {
                 {schedule.event_name}
               </td>
               <td className="border border-gray-400 px-2 py-1">
-                {schedule.event_code}
-              </td>
-              <td className="border border-gray-400 px-2 py-1">
                 {schedule.venue}
               </td>
               <td className="border border-gray-400 px-2 py-1">
                 {schedule.phase}
               </td>
               <td className="border border-gray-400 px-2 py-1">
-                {schedule.schedule_code}
+                {schedule.name}
               </td>
               <td className="border border-gray-400 px-2 py-1">
-                {schedule.discipline_code}
-              </td>
-              <td className="border border-gray-400 px-2 py-1">
-                <a
-                  href={"https://olympics.com" + schedule.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Go to details
-                </a>
+                <div className="flex gap-1">
+                  <a
+                    href={"https://olympics.com" + schedule.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaExternalLinkSquareAlt className="w-5 h-5 mt-[2px]" />
+                  </a>
+                  <div className="cursor-pointer" onClick={() => { handleDeleteSchedule(schedule.schedule_code) }}>
+                    <MdDelete className="w-6 h-6" />
+                  </div>
+                </div>
               </td>
             </tr>
           ))}

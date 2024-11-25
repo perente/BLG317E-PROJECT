@@ -28,6 +28,12 @@ export const createNewSchedule = async function (data) {
         data: data,
     });
 }
+export const deleteSchedule = async function (id) {
+    return await axios({
+        method: "delete",
+        url: `${API_ROUTE.schedules}/${id}`,
+    });
+}
 
 export const getDisciplines = async function () {
     return await axios({
@@ -35,3 +41,4 @@ export const getDisciplines = async function () {
         url: API_ROUTE.disciplines,
     });
 }
+
