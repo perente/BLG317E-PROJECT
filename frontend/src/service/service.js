@@ -88,3 +88,17 @@ export const updateDiscipline = async function ({ discipline_code, name, id }) {
         alert(error)
     }
 }
+
+export const getEvents = async function () {
+    try {
+        const response = await axios({
+            method: "GET",
+            url: API_ROUTE.events,
+        });
+        return response;
+    }
+    catch (error) {
+        console.log(error)
+        alert(error)
+    }
+}

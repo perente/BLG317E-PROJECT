@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/button";
 import { useModalStore } from "@/lib/store";
-import { deleteSchedule, getSchedules } from "@/service/service";
+import { deleteSchedule, getDisciplines, getEvents, getSchedules } from "@/service/service";
 import { useParams, usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
@@ -27,9 +27,21 @@ function Schedules() {
   const [gender, setGender] = useState(params.get("gender") ?? "");
   const [order, setOrder] = useState(params.get("order") ?? "");
   const [orderBy, setOrderBy] = useState(params.get("order_by") ?? "");
+  const [disciplines, setDisciplines] = useState([]);
+  const [events, setEvents] = useState([]);
 
   useEffect(() => {
     handleGetSchedules();
+    getDisciplines().then((res) => {
+      setDisciplines(res.data);
+    }).catch((error) => {
+      alert(error);
+    });
+    getEvents().then((res) => {
+      setEvents(res.data);
+    }).catch((error) => {
+      alert(error);
+    });
     setCurrentPage(1);
     setStartDate(params.get("start_date") ?? "");
     setEndDate(params.get("end_date") ?? "");
@@ -143,10 +155,12 @@ function Schedules() {
 
   return (
     <div className="container m-auto">
-      <h1 className="text-3xl my-4">Schedules</h1>
-      <Button onClick={toggleNewScheduleModal} className="mb-4">
-        Create New Schedule
-      </Button>
+      <div className="flex items-center justify-between my-4">
+        <h1 className="text-3xl">Schedules</h1>
+        <Button onClick={toggleNewScheduleModal} className="">
+          Create New Schedule
+        </Button>
+      </div>
       <div>
         <h3 className="text-xl font-semibold inline-block mr-4">Filters</h3>
         <Button size="xs" onClick={() => router.push(pathname)} className="mb-4 inline-block text-xs px-2 py-1">
@@ -220,8 +234,10 @@ function Schedules() {
               }}
             >
               <option value="">All</option>
-              <option value="ARC">ARC</option>
-              <option value="GAR">GAR</option>
+              {disciplines.map((discipline) => (
+                <option key={discipline.discipline_code} value={discipline.discipline_code}>{discipline.name}</option>
+              ))
+              }
             </select>
           </div>
           <div className="">
@@ -234,8 +250,14 @@ function Schedules() {
               }}
             >
               <option value="">All</option>
-              <option value="1">E1</option>
-              <option value="2">E2</option>
+              {events.filter((event) => {
+                if (discipline !== "") return event.discipline_code === discipline;
+                return true;
+              }).
+                map((event) => (
+                  <option key={event.events_code} value={event.events_code}>{event.sport_name} / {event.event_name}</option>
+                ))
+              }
             </select>
           </div>
           <div className="">
