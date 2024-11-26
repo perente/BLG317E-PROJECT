@@ -14,7 +14,7 @@ const ModalSkeleton = ({ show, outsideClick, children, bgClass, modalStyle, padd
           onClick={e => e.stopPropagation()}
           style={modalStyle}
           className={
-            "absolute max-h-[85vh] overflow-y-auto lg:w-[600px] max-w-full rounded-2xl m-auto top-32 inset-x-2 " +
+            "absolute max-h-[85vh] overflow-y-auto lg:max-w-[700px] max-w-full rounded-2xl m-auto top-32 inset-x-2 " +
             (bgClass ? bgClass : "bg-card ") +
             (padding ? " p-3 lg:p-6 " : "")
           }

@@ -13,6 +13,7 @@ const axios = async function () {
     } catch (error) {
         console.log(error)
         alert(error)
+        throw error
     }
 };
 
@@ -26,11 +27,17 @@ export const getSchedules = async function (filters = {}) {
 };
 
 export const createNewSchedule = async function (data) {
-    return await axios({
-        method: "post",
-        url: API_ROUTE.schedules,
-        data: data,
-    });
+     try {
+        const response = await axios({
+            method: "POST",
+            url: API_ROUTE.schedules,
+            data: data
+        });
+        return response;
+    }
+    catch (error) {
+        throw error
+    }
 }
 export const deleteSchedule = async function (id) {
     return await axios({
@@ -38,6 +45,22 @@ export const deleteSchedule = async function (id) {
         url: `${API_ROUTE.schedules}/${id}`,
     });
 }
+
+export const updateSchedule = async function (id, data) {
+    try {
+        const response = await axios({
+            method: "patch",
+            url: `${API_ROUTE.schedules}/${id}`,
+            data: data
+        });
+        return response;
+    }
+    catch (error) {
+        throw error
+    }
+}
+
+
 
 export const getDisciplines = async function () {
     return await axios({
@@ -66,8 +89,8 @@ export const newDiscipline = async function ({ discipline_code, name }) {
         return response;
     }
     catch (error) {
-        console.log(error)
-        alert(error)
+        throw error
+
     }
 }
 
@@ -84,8 +107,7 @@ export const updateDiscipline = async function ({ discipline_code, name, id }) {
         return response;
     }
     catch (error) {
-        console.log(error)
-        alert(error)
+        throw error
     }
 }
 
@@ -98,7 +120,6 @@ export const getEvents = async function () {
         return response;
     }
     catch (error) {
-        console.log(error)
-        alert(error)
+        throw error
     }
 }

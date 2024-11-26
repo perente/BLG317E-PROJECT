@@ -204,3 +204,70 @@ def delete_schedules(scheduleID):
         # Ensure the connection is closed properly
         if 'connection' in locals() and connection.is_connected():
             connection.close()
+
+
+def update_schedule(scheduleID):
+    try:
+        # Get data from PATCH request
+        data = request.get_json()
+
+        if not data:
+            return jsonify({'error': 'Invalid input: No JSON payload provided'}), 400
+
+        # Extract values from JSON payload
+        start_date = data.get('start_date')
+        end_date = data.get('end_date')
+        phase = data.get('phase')
+        venue = data.get('venue')
+        eventID = data.get('event')
+        gender = data.get('gender')
+        status = data.get('status')
+
+        # Validate required fields
+        if not scheduleID:
+            return jsonify({'error': 'Missing required fields'}), 400
+
+        # Establish database connection
+        connection = db_connection()
+    
+        event_data = ""
+        if connection.is_connected():
+            with connection.cursor(dictionary=True) as cursor:
+                # Query to fetch event details by eventID
+                query = "SELECT * FROM Events WHERE events_code = %s"
+                cursor.execute(query, (eventID,))
+
+                # Fetch the event data
+                event_data = cursor.fetchone()
+                if event_data:
+                    pass
+                else:
+                    return jsonify({'error': f'No event found with eventID: {eventID}'}), 404
+
+        else:
+            return jsonify({'error': 'Failed to connect to the database'}), 500
+
+        if connection.is_connected():
+            with connection.cursor(dictionary=True) as cursor:
+                # Update schedule in the database
+                query = """UPDATE Schedule SET start_date = %s, end_date = %s, phase = %s, venue = %s, event_code = %s, gender = %s, status = %s , event_name = %s , discipline_code = %s , url = %s WHERE schedule_code = %s"""
+                values = (start_date, end_date, phase, venue,
+                          eventID, gender, status, event_data['event_name'], event_data['discipline_code'], event_data['url'], scheduleID)
+                cursor.execute(query, values)
+                connection.commit()
+
+                return jsonify({'message': 'Schedule updated successfully'}), 200
+
+        else:
+            return jsonify({'error': 'Failed to connect to the database'}), 500
+
+    except mysql.connector.Error as e:
+        return jsonify({'error': f'Database error: {str(e)}'}), 500
+
+    except Exception as e:
+        return jsonify({'error': f'Unexpected error: {str(e)}'}), 500
+
+    finally:
+        # Ensure the connection is closed properly
+        if 'connection' in locals() and connection.is_connected():
+            connection.close()

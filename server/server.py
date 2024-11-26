@@ -3,7 +3,7 @@ import mysql.connector
 from mysql.connector import Error
 from settings import db_user,db_password,db_host,db_name  
 from flask_cors import CORS, cross_origin
-from schedules import get_schedules, new_schedules, delete_schedules
+from schedules import get_schedules, new_schedules, delete_schedules, update_schedule
 from disciplines import  get_disciplines, delete_disciplines, create_discipline, update_discipline
 
 connection = mysql.connector.connect(host=db_host, database=db_name, user=db_user, password=db_password)    
@@ -26,6 +26,9 @@ def schedules():
 @app.route('/schedules', methods=['POST'])
 def create_schedule():
     return new_schedules()
+@app.route('/schedules/<int:schedule_id>', methods=['PATCH'])
+def updateSchedule(schedule_id):
+    return update_schedule(schedule_id)
 
 @app.route('/schedules/<int:schedule_id>', methods=['DELETE'])
 def delete_schedule(schedule_id):

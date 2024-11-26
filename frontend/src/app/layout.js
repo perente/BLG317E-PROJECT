@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import NewScheduleModal from "@/components/modals/newScheduleModal";
 import NewDisciplineModal from "@/components/modals/newDisciplineModal";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Toaster />
         <NewScheduleModal />
         <NewDisciplineModal />
         <header className="bg-slate-700">

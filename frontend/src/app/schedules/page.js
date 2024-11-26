@@ -5,7 +5,7 @@ import { deleteSchedule, getDisciplines, getEvents, getSchedules } from "@/servi
 import { useParams, usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
-import { FaExternalLinkSquareAlt } from "react-icons/fa";
+import { FaEdit, FaExternalLinkSquareAlt } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { TiArrowSortedDown } from "react-icons/ti";
 
@@ -88,7 +88,7 @@ function Schedules() {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = schedules.slice(indexOfFirstItem, indexOfLastItem);
 
-  const toggleNewScheduleModal = useModalStore((state) => state.toggleNewScheduleModal);
+  const setNewScheduleModal = useModalStore((state) => state.setNewScheduleModal);
 
   // Generate page numbers
   const pageNumbers = [];
@@ -157,7 +157,7 @@ function Schedules() {
     <div className="container m-auto">
       <div className="flex items-center justify-between my-4">
         <h1 className="text-3xl">Schedules</h1>
-        <Button onClick={toggleNewScheduleModal} className="">
+        <Button onClick={()=>setNewScheduleModal({update: handleGetSchedules, events: events, disciplines: disciplines})} className="">
           Create New Schedule
         </Button>
       </div>
@@ -436,11 +436,16 @@ function Schedules() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <FaExternalLinkSquareAlt className="w-5 h-5 mt-[6px] " />
+                      <FaExternalLinkSquareAlt className="w-5 h-5 mt-[2px] " />
                     </a>
                     <div className="cursor-pointer" onClick={() => { handleDeleteSchedule(schedule.schedule_code) }}>
                       <MdDelete className="w-6 h-6" />
                     </div>
+                    <div className="cursor-pointer" onClick={() => {setNewScheduleModal({update: handleGetSchedules, schedule: schedule, edit: true, events: events, disciplines: disciplines})}}
+                    >
+                      <FaEdit className="w-6 h-6" />
+                    </div>
+
                   </div>
                 </td>
               </tr>
