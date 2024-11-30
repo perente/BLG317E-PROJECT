@@ -55,7 +55,7 @@ try:
 
     def insertData(filename, command):
         with open('./Data/Tables/{}.csv'.format(filename), 'r') as open_file:
-            csv_file = csv.reader(open_file, delimiter=';')  # Specify the correct delimiter
+            csv_file = csv.reader(open_file, delimiter=',')  # Specify the correct delimiter
             header = next(csv_file)  # Read the header row
             for row in csv_file:
                 row = row[0].split(',')
@@ -67,7 +67,7 @@ try:
                     print(command)
                     print(row)
                     print(f"Error inserting row {row}: {e}")
-                    break
+                    continue
         ins.commit()
     command = """INSERT INTO Country (gold_medal,silver_medal,bronze_medal,country_code,country_name,country_long) VALUES (%s,%s,%s,%s,%s,%s)"""
     insertData('country', command)
@@ -83,6 +83,8 @@ try:
     insertData('coach',command)
     command = """INSERT INTO Medallist (id, name, medal_date, medal_code, gender, country_code, code_team, code_athlete, discipline)  VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"""
     insertData('medallist',command)
+    command = """INSERT INTO Teams (team_code,team_name,team_gender,country_code, discipline_code,num_athletes) VALUES (%s, %s, %s, %s, %s, %s)"""
+    insertData('teams_simplified',command)
 
     def insertData_JoinTable(filename, command):
         with open('./Data/Tables/{}.csv'.format(filename), 'r') as open_file:
