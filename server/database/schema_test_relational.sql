@@ -131,7 +131,7 @@ CREATE TABLE `Medallist` (
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
 -- Create Athlete_Disciplines Join Table
-CREATE TABLE Athlete_Disciplines (
+CREATE TABLE `Athlete_Disciplines` (
     `athlete_code` INT,
     `discipline_code` VARCHAR(50),
     
@@ -139,3 +139,15 @@ CREATE TABLE Athlete_Disciplines (
     FOREIGN KEY (`athlete_code`) REFERENCES Athlete(`athlete_code`) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (`discipline_code`) REFERENCES Discipline(`discipline_code`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+
+CREATE TABLE `Team_Athlete` (
+    `team_code` VARCHAR(255),
+    `athlete_code` VARCHAR(255),
+    PRIMARY KEY (`team_code`, `athlete_code`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci AUTO_INCREMENT = 0;
+
+CREATE TABLE `Team_Coach` (
+    `team_code` VARCHAR(255),
+    `coach_code` INT,
+    PRIMARY KEY (`team_code`, `coach_code`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci AUTO_INCREMENT = 0;
