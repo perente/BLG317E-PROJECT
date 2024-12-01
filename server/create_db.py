@@ -58,8 +58,6 @@ try:
             csv_file = csv.reader(open_file, delimiter=';')  # Specify the correct delimiter
             header = next(csv_file)  # Read the header row
             for row in csv_file:
-                row = row[0].split(',')
-                print(row)
                 try:
                     # Execute the query with row values
                     cursor.execute(command, row)
