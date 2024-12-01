@@ -55,11 +55,26 @@ try:
 
     def insertData(filename, command):
         with open('./Data/Tables/{}.csv'.format(filename), 'r') as open_file:
-            csv_file = csv.reader(open_file, delimiter=';')  # Specify the correct delimiter
+            csv_file = csv.reader(open_file, delimiter=',')  # Specify the correct delimiter
             header = next(csv_file)  # Read the header row
             for row in csv_file:
-                row = row[0].split(',')
-                print(row)
+                try:
+                    # Execute the query with row values
+                    cursor.execute(command, row)
+                except Exception as e:
+                    print(command)
+                    print(row)
+                    print(f"Error inserting row {row}: {e}")
+                    continue
+        ins.commit()
+    def insertDataMedallist(filename, command):
+        with open('./Data/Tables/{}.csv'.format(filename), 'r') as open_file:
+            csv_file = csv.reader(open_file, delimiter=',')  # Specify the correct delimiter
+            header = next(csv_file)  # Read the header row
+            # assign null for empty team_code
+            for row in csv_file:
+                if row[8] == '':
+                    row[8] = None
                 try:
                     # Execute the query with row values
                     cursor.execute(command, row)
@@ -78,13 +93,13 @@ try:
     command = """INSERT INTO Schedule (start_date,end_date,status,discipline_code,event_name,phase,gender,venue,event_code,url) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
     insertData('schedule', command)
     command = """INSERT INTO Athlete (athlete_code,name,gender,country_code,nationality,birth_date) VALUES (%s,%s,%s,%s,%s,%s)  """
-    insertData('athlete',command)
-    command= """INSERT INTO Coach (coach_code,name,gender,function,country_code,disciplines,birth_date) VALUES (%s,%s,%s,%s,%s,%s,%s) """
-    insertData('coach',command)
-    command = """INSERT INTO Medallist (id, name, medal_date, medal_code, gender, country_code, code_team, code_athlete, discipline)  VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"""
-    insertData('medallist',command)
+    insertData('athlete', command)
+    command = """INSERT INTO Coach (coach_code,name,gender,function,country_code,disciplines,birth_date) VALUES (%s,%s,%s,%s,%s,%s,%s) """
+    insertData('coach', command)
     command = """INSERT INTO Teams (team_code,team_name,team_gender,country_code, discipline_code,num_athletes) VALUES (%s, %s, %s, %s, %s, %s)"""
-    insertData('teams_simplified',command)
+    insertData('teams_simplified', command)
+    command = """INSERT INTO Medallist (medal_date, medal_code, gender,country_code,team_gender,discipline,event,code_athlete,code_team,id)  VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+    insertDataMedallist('medallist_updated', command)
 
     def insertData_JoinTable(filename, command):
         with open('./Data/Tables/{}.csv'.format(filename), 'r') as open_file:
