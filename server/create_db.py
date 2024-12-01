@@ -55,7 +55,7 @@ try:
 
     def insertData(filename, command):
         with open('./Data/Tables/{}.csv'.format(filename), 'r') as open_file:
-            csv_file = csv.reader(open_file, delimiter=',')  # Specify the correct delimiter
+            csv_file = csv.reader(open_file, delimiter=';')  # Specify the correct delimiter
             header = next(csv_file)  # Read the header row
             for row in csv_file:
                 row = row[0].split(',')
