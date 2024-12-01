@@ -1,18 +1,3 @@
-SET FOREIGN_KEY_CHECKS = 0; 
-
-SET @tables = NULL;
-SELECT GROUP_CONCAT('`', table_name, '`') INTO @tables
-FROM information_schema.tables
-WHERE table_schema = 'db'; 
-
-SET @query = CONCAT('DROP TABLE IF EXISTS ', @tables);
-PREPARE stmt FROM @query;
-EXECUTE stmt;
-DEALLOCATE PREPARE stmt;
-
-SET FOREIGN_KEY_CHECKS = 1; 
-
-
 -- Create Country Table
 CREATE TABLE `Country` (
     `country_code` CHAR(3) NOT NULL,
