@@ -17,7 +17,6 @@ const axios = async function () {
     }
 };
 
-
 export const getSchedules = async function (filters = {}) {
     const queryParams = new URLSearchParams(filters).toString();
     return await axios({
@@ -39,6 +38,7 @@ export const createNewSchedule = async function (data) {
         throw error
     }
 }
+
 export const deleteSchedule = async function (id) {
     return await axios({
         method: "delete",
@@ -59,8 +59,6 @@ export const updateSchedule = async function (id, data) {
         throw error
     }
 }
-
-
 
 export const getDisciplines = async function () {
     return await axios({
@@ -111,15 +109,100 @@ export const updateDiscipline = async function ({ discipline_code, name, id }) {
     }
 }
 
-export const getEvents = async function () {
+export const getEvents = async function (filters = {}) {
+    const queryParams = new URLSearchParams(filters).toString();
     try {
         const response = await axios({
             method: "GET",
+            url: `${API_ROUTE.events}?${queryParams}`,
+        });
+        return response;
+    } 
+    catch (error) {
+        throw error;
+    }
+}
+
+export const createNewEvent = async function (data) {
+    try {
+        const response = await axios({
+            method: "POST",
             url: API_ROUTE.events,
+            data: data,
+        });
+        return response;
+    } 
+    catch (error) {
+        throw error;
+    }
+}
+
+export const deleteEvent = async function (id) {
+    return await axios({
+        method: "DELETE",
+        url: `${API_ROUTE.events}/${id}`,
+    });
+}
+
+export const updateEvent = async function (id, data) {
+    try {
+        const response = await axios({
+            method: "PATCH",
+            url: `${API_ROUTE.events}/${id}`,
+            data: data,
+        });
+        return response;
+    } 
+    catch (error) {
+        throw error;
+    }
+}
+
+export const getCountries = async function (filters = {}) {
+    const queryParams = new URLSearchParams(filters).toString();
+    try {
+        const response = await axios({
+            method: "GET",
+            url: `${API_ROUTE.countries}?${queryParams}`,
+        });
+        return response;
+    } 
+    catch (error) {
+        throw error;
+    }
+}
+
+export const createNewCountry = async function (data) {
+    try {
+        const response = await axios({
+            method: "POST",
+            url: API_ROUTE.countries,
+            data: data,
+        });
+        return response;
+    } 
+    catch (error) {
+        throw error;
+    }
+}
+
+export const deleteCountry = async function (id) {
+    return await axios({
+        method: "DELETE",
+        url: `${API_ROUTE.countries}/${id}`,
+    });
+}
+
+export const updateCountry = async function (id, data) {
+    try {
+        const response = await axios({
+            method: "PATCH",
+            url: `${API_ROUTE.countries}/${id}`,
+            data: data,
         });
         return response;
     }
     catch (error) {
-        throw error
+        throw error;
     }
 }
