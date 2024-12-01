@@ -1,18 +1,3 @@
-SET FOREIGN_KEY_CHECKS = 0; 
-
-SET @tables = NULL;
-SELECT GROUP_CONCAT('`', table_name, '`') INTO @tables
-FROM information_schema.tables
-WHERE table_schema = 'db'; 
-
-SET @query = CONCAT('DROP TABLE IF EXISTS ', @tables);
-PREPARE stmt FROM @query;
-EXECUTE stmt;
-DEALLOCATE PREPARE stmt;
-
-SET FOREIGN_KEY_CHECKS = 1; 
-
-
 -- Create Country Table
 CREATE TABLE `Country` (
     `country_code` CHAR(3) NOT NULL,
@@ -29,7 +14,7 @@ CREATE TABLE `Country` (
 CREATE TABLE `Discipline` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `discipline_code` VARCHAR(50) NOT NULL UNIQUE,
-    `name` VARCHAR(255) NOT NULL,
+    `name` VARCHAR(255) NOT NULL UNIQUE,
     PRIMARY KEY (`id`),
     UNIQUE KEY `unique_discipline_code` (`discipline_code`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
@@ -112,20 +97,18 @@ CREATE TABLE  `Coach` (
 
 -- Create Medallist Table
 CREATE TABLE `Medallist` (
-    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `id` INT NOT NULL PRIMARY KEY,
     `medal_date` DATE NOT NULL,
     `medal_code` INT NOT NULL,
-    `name` VARCHAR(255) NOT NULL,
     `gender` ENUM('M', 'F') NOT NULL,
     `country_code` CHAR(3),
-    `team_gender` ENUM('M', 'F', 'Mixed'),
+    `team_gender` ENUM('M', 'W', 'Mixed', 'No Team') default 'No Team',
     `discipline` VARCHAR(50),
     `event` VARCHAR(255),
     `code_athlete` INT,
     `code_team` VARCHAR(50),
-    `is_medallist` BOOLEAN NOT NULL DEFAULT FALSE,
     FOREIGN KEY (`country_code`) REFERENCES Country(`country_code`) ON DELETE SET NULL ON UPDATE CASCADE,
-    FOREIGN KEY (`discipline`) REFERENCES Discipline(`discipline_code`) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (`discipline`) REFERENCES Discipline(`name`) ON DELETE SET NULL ON UPDATE CASCADE,
     FOREIGN KEY (`code_athlete`) REFERENCES Athlete(`athlete_code`) ON DELETE SET NULL ON UPDATE CASCADE,
 	FOREIGN KEY (`code_team`) REFERENCES Teams(`team_code`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
