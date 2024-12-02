@@ -92,7 +92,7 @@ CREATE TABLE  `Coach` (
     `disciplines` VARCHAR(50),
     
     FOREIGN KEY (`country_code`) REFERENCES Country(`country_code`) ON DELETE SET NULL ON UPDATE CASCADE,
-    FOREIGN KEY (`disciplines`) REFERENCES Discipline(`discipline_code`) ON DELETE SET NULL ON UPDATE CASCADE
+    FOREIGN KEY (`disciplines`) REFERENCES Discipline(`name`) ON DELETE SET NULL ON UPDATE CASCADE
 )ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
 -- Create Medallist Table
