@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
         <Toaster />
         <NewScheduleModal />
         <NewDisciplineModal />
-        <header className="bg-slate-700">
+        <header className="bg-slate-700 sticky top-0 z-50">
           <div className="container relativer m-auto flex items-center justify-between min-h-28">
             <h1 className="text-4xl font-paris text-white">
               Olympic Games 2024
