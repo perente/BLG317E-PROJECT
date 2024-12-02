@@ -27,9 +27,9 @@ export default function Home() {
     <div className="flex h-[100vh]">
       <Script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js" />
       <main className="w-full flex-1 flex flex-col justify-center items-center z-10">
-        <h1 className="text-xl mb-4">Welcome to The Olympic Games</h1>
+        <h1 className="text-xl mb-4 text-slate-700">Welcome to The Olympic Games</h1>
         <div>
-          <ul className="grid grid-cols-3 gap-3">
+          <ul className="grid grid-cols-4 gap-3">
             <Button onClick={() => routerPush("/schedules")}>Schedules</Button>
             <Button onClick={() => routerPush("/events")}>Events</Button>
             <Button onClick={() => routerPush("/medals")}>Medals</Button>
@@ -37,6 +37,7 @@ export default function Home() {
             <Button onClick={() => routerPush("/teams")}>Teams</Button>
             <Button onClick={() => routerPush("/leaderboard")}>Leaderboard</Button>
             <Button onClick={() => routerPush("/disciplines")}>Disciplines</Button>
+            <Button onClick={() => routerPush("/disciplines")}>Countries</Button>
           </ul>
         </div>
       </main>

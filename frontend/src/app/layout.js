@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
         <Toaster />
         <NewScheduleModal />
         <NewDisciplineModal />
-        <header className="bg-slate-700">
+        <header className="bg-slate-700 sticky top-0 z-50">
           <div className="container relativer m-auto flex items-center justify-between min-h-28">
             <h1 className="text-4xl font-paris text-white">
               Olympic Games 2024
@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
             <img className="w-20" src="	https://olympics.com/images/static/b2p-images/logo_color.svg" />
           </div>
           {<div className="container m-auto">
-            <nav>
+            <nav className="flex space-x-4">
               <a href="/schedules" className="text-white">Schedules</a>
               <a href="/events" className="text-white">Events</a>
               <a href="/athletes" className="text-white">Athletes</a>

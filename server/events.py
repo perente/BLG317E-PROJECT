@@ -68,7 +68,7 @@ def new_event():
                 
                 # Fetch the discipline data
                 discipline_data = cursor.fetchone()
-                if discipline_data_data:
+                if discipline_data:
                     pass
                 else:
                     return jsonify({'error': f'No discipline found with discipline_code: {discipline_code}'}), 404
