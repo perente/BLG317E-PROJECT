@@ -125,12 +125,16 @@ CREATE TABLE `Athlete_Disciplines` (
 
 CREATE TABLE `Team_Athlete` (
     `team_code` VARCHAR(255),
-    `athlete_code` VARCHAR(255),
-    PRIMARY KEY (`team_code`, `athlete_code`)
+    `athlete_code` INT,
+    PRIMARY KEY (`team_code`, `athlete_code`),
+    FOREIGN KEY (`team_code`) REFERENCES Teams(`team_code`) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (`athlete_code`) REFERENCES Athlete(`athlete_code`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci AUTO_INCREMENT = 0;
 
 CREATE TABLE `Team_Coach` (
     `team_code` VARCHAR(255),
     `coach_code` INT,
-    PRIMARY KEY (`team_code`, `coach_code`)
+    PRIMARY KEY (`team_code`, `coach_code`),
+    FOREIGN KEY (`team_code`) REFERENCES Teams(`team_code`) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (`coach_code`) REFERENCES Coach(`coach_code`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci AUTO_INCREMENT = 0;
