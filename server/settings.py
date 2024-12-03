@@ -1,4 +1,4 @@
 db_host = "localhost"
-db_password = "nurefsan5559"
+db_password = "rabia"
 db_user = "root"
 db_name = "Olympics1"

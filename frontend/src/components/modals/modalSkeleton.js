@@ -1,4 +1,3 @@
-
 const ModalSkeleton = ({ show, outsideClick, children, bgClass, modalStyle, padding = true, mobileFullScreen = false, title }) => {
   let classAdd = show
     ? "modal-transition-show opacity-100"

@@ -50,8 +50,6 @@ def new_discipline():
 def updateDiscipline(discipline_id):
     return update_discipline(discipline_id)
 
-
-
 @app.route('/events', methods=['GET'])
 def get_events():
     try:
