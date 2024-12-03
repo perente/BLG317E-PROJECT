@@ -117,8 +117,14 @@ function Schedules() {
     }
     const search = current.toString();
     const query = search ? `?${search}` : "";
-    router.push(`${pathname}${query}`)
+    router.replace(`${pathname}${query}`)
   };
+
+  function updateSearchParamForCurrentPage({key, value}) {
+    const {replace} = useRouter();
+    const newUrl = updateSearchParam({key, value})
+    replace(newUrl)
+}
 
 
   const orderSchedules = (orderBy) => {
