@@ -155,6 +155,31 @@ try:
     
     command = """INSERT INTO Coach (coach_code,name,gender,`function`,country_code,disciplines,birth_date) VALUES (%s,%s,%s,%s,%s,%s,%s) """
     insertDataCoach('coach', command)
+    
+    def insertDataAthlete_Disciplines(filename, command):
+        with open('./Data/Tables/{}.csv'.format(filename), 'r') as open_file:
+            csv_file = csv.reader(open_file, delimiter=',') 
+            header = next(csv_file) 
+
+            for line in csv_file:
+                try:
+                    athlete_code = line[0].strip() 
+                    disciplineList = line[1].strip() if len(line) > 1 else "" 
+                    
+                   
+                    disciplines = ast.literal_eval(disciplineList) if disciplineList else []
+
+                    for discipline in disciplines:
+                        discipline = discipline.strip()
+                        cursor.execute(command, (athlete_code, discipline))
+
+                except Exception as e:
+                    print(f"Error processing line {line}: {e}")
+                    continue
+        ins.commit()
+    
+    command = """INSERT INTO Athlete_Disciplines (athlete_code, discipline) VALUES (%s,%s) """
+    insertDataAthlete_Disciplines('athlete_discipline',command)
 
 
 except Exception as err:

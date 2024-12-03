@@ -116,11 +116,11 @@ CREATE TABLE `Medallist` (
 -- Create Athlete_Disciplines Join Table
 CREATE TABLE `Athlete_Disciplines` (
     `athlete_code` INT,
-    `discipline_code` VARCHAR(50),
+    `discipline` VARCHAR(50),
     
-    PRIMARY KEY (`athlete_code`, `discipline_code`),
+    PRIMARY KEY (`athlete_code`, `discipline`),
     FOREIGN KEY (`athlete_code`) REFERENCES Athlete(`athlete_code`) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (`discipline_code`) REFERENCES Discipline(`discipline_code`) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (`discipline`) REFERENCES Discipline(`name`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
 CREATE TABLE `Team_Athlete` (
