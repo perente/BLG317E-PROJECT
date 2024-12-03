@@ -1,9 +1,17 @@
 "use client";
-import { Button } from "@/components/button";
+import { CustomButton } from "@/components/custom-button";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Script from "next/script";
 import { useEffect } from "react";
+import { GrSchedule } from "react-icons/gr";
+import { GiPartyFlags } from "react-icons/gi";
+import { FaMedal } from "react-icons/fa";
+import { MdSportsHandball } from "react-icons/md";
+import { RiTeamFill } from "react-icons/ri";
+import { MdLeaderboard } from "react-icons/md";
+import { MdOutlineSportsBaseball } from "react-icons/md";
+import { BsFillFlagFill } from "react-icons/bs";
 
 export default function Home() {
   const router = useRouter();
@@ -22,22 +30,111 @@ export default function Home() {
     router.push(path);
   };
 
+const sports = [
+  "Archery",
+  "Artistic Gymnastics",
+  "Artistic Swimming",
+  "Athletics",
+  "Badminton",
+  "Basketball",
+  "Basketball 3x3",
+  "Beach Volleyball",
+  "Boxing",
+  "Breaking",
+  "Canoe Slalom",
+  "Canoe Sprint",
+  "Cycling BMX Freestyle",
+  "Cycling BMX Racing",
+  "Cycling Mountain Bike",
+  "Cycling Road",
+  "Cycling Track",
+  "Diving",
+  "Equestrian",
+  "Fencing",
+  "Football",
+  "Golf",
+  "Handball",
+  "Hockey",
+  "Judo",
+  "Marathon Swimming",
+  "Modern Pentathlon",
+  "Rhythmic Gymnastics",
+  "Rowing",
+  "Rugby Sevens",
+  "Sailing",
+  "Shooting",
+  "Skateboarding",
+  "Sport Climbing",
+  "Surfing",
+  "Swimming",
+  "Table Tennis",
+  "Taekwondo",
+  "Tennis",
+  "Trampoline",
+  "Triathlon",
+  "Volleyball",
+  "Water Polo",
+  "Weightlifting",
+  "Wrestling"
+];
+
 
   return (
-    <div className="flex h-[100vh]">
+    <div className="flex py-12 flex-1 bg-[#f5f5f5]">
       <Script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js" />
-      <main className="w-full flex-1 flex flex-col justify-center items-center z-10">
-        <h1 className="text-xl mb-4 text-slate-700">Welcome to The Olympic Games</h1>
+      <main className="w-full flex-1 flex flex-col  items-center z-10 ">
+        <img className="max-w-[240px]  mb-4 " src="img/logo.png" />
+        <h1 className="text-3xl mb-6 font-paris font-semibold text-black ">Welcome to The Olympic Games</h1>
         <div>
           <ul className="grid grid-cols-4 gap-3">
-            <Button onClick={() => routerPush("/schedules")}>Schedules</Button>
-            <Button onClick={() => routerPush("/events")}>Events</Button>
-            <Button onClick={() => routerPush("/medals")}>Medals</Button>
-            <Button onClick={() => routerPush("/athletes")}>Athletes</Button>
-            <Button onClick={() => routerPush("/teams")}>Teams</Button>
-            <Button onClick={() => routerPush("/leaderboard")}>Leaderboard</Button>
-            <Button onClick={() => routerPush("/disciplines")}>Disciplines</Button>
-            <Button onClick={() => routerPush("/disciplines")}>Countries</Button>
+            <CustomButton
+              color="#54458C"
+              bgLight="#877FB3"
+              size="lg"
+              icon={<GrSchedule className="scale-150" />}
+              onClick={() => routerPush("/schedules")}>Schedules</CustomButton>
+            <CustomButton
+              size="lg"
+              color="#077F86"
+              bgLight="#5FBBBB"
+              icon={<GiPartyFlags className="scale-150" />}
+              onClick={() => routerPush("/events")}>Events</CustomButton>
+            <CustomButton
+              size="lg"
+              color="#81154C"
+              bgLight="#BC5D85"
+              icon={<FaMedal className="scale-150" />}
+              onClick={() => routerPush("/medals")}>Medals</CustomButton>
+            <CustomButton
+              size="lg"
+              color="#8C5B45"
+              bgLight="#B78F73"
+              icon={<MdSportsHandball className="scale-150" />}
+              onClick={() => routerPush("/athletes")}>Athletes</CustomButton>
+            <CustomButton
+              size="lg"
+              color="#86B007"
+              bgLight="#B4D356"
+              icon={<RiTeamFill className="scale-150" />}
+              onClick={() => routerPush("/teams")}>Teams</CustomButton>
+            <CustomButton
+              size="lg"
+              color="#4C8115"
+              bgLight="#7BBF5A"
+              icon={<MdLeaderboard className="scale-150" />}
+              onClick={() => routerPush("/leaderboard")}>Leaderboard</CustomButton>
+            <CustomButton
+              size="lg"
+              color="#6654B4"
+              bgLight="#8A83D1"
+              icon={<MdOutlineSportsBaseball className="scale-150" />}
+              onClick={() => routerPush("/disciplines")}>Disciplines</CustomButton>
+            <CustomButton
+              size="lg"
+              color="#045B70"
+              bgLight="#3A8799"
+              icon={<BsFillFlagFill className="scale-150" />}
+              onClick={() => routerPush("/disciplines")}>Countries</CustomButton>
           </ul>
         </div>
       </main>

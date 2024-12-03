@@ -34,3 +34,34 @@ body {
   transform: scale(0);
 }
 
+
+.relative {
+  perspective: 1000px;
+  width: 140px;
+  height: 60px;
+}
+
+.relative > div {
+  backface-visibility: hidden;
+  transition: transform 0.3s ease;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.relative > div:first-child {
+  transform: rotateX(0deg);
+}
+
+.relative > div:last-child {
+  transform: rotateX(-90deg);
+}
+
+.relative:hover > div:first-child {
+  transform: rotateX(90deg);
+}
+
+.relative:hover > div:last-child {
+  transform: rotateX(0deg);
+}
+
