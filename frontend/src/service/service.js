@@ -26,7 +26,7 @@ export const getSchedules = async function (filters = {}) {
 };
 
 export const createNewSchedule = async function (data) {
-     try {
+    try {
         const response = await axios({
             method: "POST",
             url: API_ROUTE.schedules,
@@ -117,7 +117,7 @@ export const getEvents = async function (filters = {}) {
             url: `${API_ROUTE.events}?${queryParams}`,
         });
         return response;
-    } 
+    }
     catch (error) {
         throw error;
     }
@@ -131,7 +131,7 @@ export const createNewEvent = async function (data) {
             data: data,
         });
         return response;
-    } 
+    }
     catch (error) {
         throw error;
     }
@@ -152,7 +152,7 @@ export const updateEvent = async function (id, data) {
             data: data,
         });
         return response;
-    } 
+    }
     catch (error) {
         throw error;
     }
@@ -166,7 +166,7 @@ export const getCountries = async function (filters = {}) {
             url: `${API_ROUTE.countries}?${queryParams}`,
         });
         return response;
-    } 
+    }
     catch (error) {
         throw error;
     }
@@ -180,7 +180,7 @@ export const createNewCountry = async function (data) {
             data: data,
         });
         return response;
-    } 
+    }
     catch (error) {
         throw error;
     }
@@ -206,3 +206,11 @@ export const updateCountry = async function (id, data) {
         throw error;
     }
 }
+
+export const getAthletes = async function (filters = {}) {
+    const queryParams = new URLSearchParams(filters).toString();
+    return await axios({
+        method: "get",
+        url: `${API_ROUTE.athletes}?${queryParams}`,
+    });
+};
