@@ -438,7 +438,7 @@ function Schedules() {
                 <td className="border border-gray-400 px-2 py-1 cursor-pointer">
                   <div className="flex gap-1">
                     <a
-                      href={"https://olympics.com" + schedule.url}
+                      href={schedule.url.startsWith("http") ? schedule.url : ("https://olympics.com" + schedule.url)} 
                       target="_blank"
                       rel="noopener noreferrer"
                     >

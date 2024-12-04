@@ -35,8 +35,8 @@ CREATE TABLE `Events` (
 -- Create Schedule Table
 CREATE TABLE `Schedule` (
     `schedule_code` INT NOT NULL AUTO_INCREMENT,
-    `start_date` VARCHAR(255) NOT NULL,
-    `end_date` VARCHAR(255) NOT NULL,
+    `start_date` DATETIME NOT NULL,
+    `end_date` DATETIME NOT NULL,
     `status` VARCHAR(255),
     `discipline_code` VARCHAR(50), 
     `event_name` VARCHAR(255),
