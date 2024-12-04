@@ -24,12 +24,12 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <Toaster />
+      <NewScheduleModal />
+      <NewDisciplineModal />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Toaster />
-        <NewScheduleModal />
-        <NewDisciplineModal />
         <div className="w-full h-[100vh] flex flex-col">
           <header className="bg-slate-700 sticky top-0 z-50">
             <div className="container relativer m-auto flex items-center justify-between min-h-28">
