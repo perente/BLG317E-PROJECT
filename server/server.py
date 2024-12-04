@@ -101,6 +101,10 @@ def get_countries():
             cursor.close()
             connection.close()
 
+@app.route('/countries/<string:code>', methods=['DELETE'])
+def delete_countries(code):
+    return delete_country(code)
+
 @app.route('/team_athlete', methods=['GET'])
 def get_teams_athlete():
     try:

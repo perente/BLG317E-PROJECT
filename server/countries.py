@@ -113,7 +113,7 @@ def delete_country(country_code):
         connection = db_connection()
         if connection.is_connected():
             with connection.cursor(dictionary=True) as cursor:
-                cursor.execute("DELETE FROM Country WHERE code = %s", (country_code,))
+                cursor.execute("DELETE FROM Country WHERE country_code = %s", (country_code,))
                 connection.commit()
                 # Return success message
                 return jsonify({'message': 'Country deleted successfully'}), 200
