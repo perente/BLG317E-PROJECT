@@ -134,7 +134,7 @@ const sports = [
               color="#045B70"
               bgLight="#3A8799"
               icon={<BsFillFlagFill className="scale-150" />}
-              onClick={() => routerPush("/disciplines")}>Countries</CustomButton>
+              onClick={() => routerPush("/countries")}>Countries</CustomButton>
           </ul>
         </div>
       </main>

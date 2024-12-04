@@ -1,4 +1,3 @@
-
 import { create } from 'zustand';
 
 
@@ -9,6 +8,9 @@ export const useModalStore = create(
 
     newDisciplineModalData: null,
     setNewDisciplineModalData: (data) => set({ newDisciplineModalData: data }),
+
+    newCountryModalData: null,
+    setNewCountryModalData: (data) => set({ newCountryModalData: data }),
 
   }),
   { name: 'modalStore' }

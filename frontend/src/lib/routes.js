@@ -6,6 +6,7 @@ export const APP_ROUTES = {
     events: '/events',
     athletes: '/athletes',
     coaches: '/coaches',
+    countries: '/countries'
 }
 
 export const API_ROUTE = {
