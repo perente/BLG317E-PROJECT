@@ -5,6 +5,7 @@ from settings import db_user,db_password,db_host,db_name
 from flask_cors import CORS, cross_origin
 from schedules import get_schedules, new_schedules, delete_schedules, update_schedule
 from disciplines import  get_disciplines, delete_disciplines, create_discipline, update_discipline
+from countries import get_countries, delete_country, update_country, create_country
 
 connection = mysql.connector.connect(host=db_host, database=db_name, user=db_user, password=db_password)    
 

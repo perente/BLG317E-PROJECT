@@ -11,7 +11,6 @@ export const useModalStore = create(
 
     newCountryModalData: null,
     setNewCountryModalData: (data) => set({ newCountryModalData: data }),
-
   }),
   { name: 'modalStore' }
 );

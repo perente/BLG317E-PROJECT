@@ -186,14 +186,14 @@ export const createNewCountry = async function (data) {
     }
 }
 
-export const deleteCountry = async function (id) {
+export const deleteCountry = async function (country_code) {
     return await axios({
         method: "DELETE",
-        url: `${API_ROUTE.countries}/${id}`,
+        url: `${API_ROUTE.countries}/${country_code}`,
     });
 }
 
-export const updateCountry = async function (id, data) {
+export const updateCountry = async function (country_code, data) {
     try {
         const response = await axios({
             method: "PATCH",
