@@ -46,6 +46,7 @@ export default function RootLayout({ children }) {
                 <a href="/events" className="text-white hover:tracking-wider duration-300 px-4 box-border">Events</a>
                 <a href="/athletes" className="text-white hover:tracking-wider duration-300 px-4 box-border">Athletes</a>
                 <a href="/medals" className="text-white hover:tracking-wider duration-300 px-4 box-border">Medals</a>
+                <a href="/teams" className="text-white hover:tracking-wider duration-300 px-4 box-border">Teams</a>
               </nav>
             </div>}
           </header>

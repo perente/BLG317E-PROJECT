@@ -5,7 +5,8 @@ export const APP_ROUTES = {
     events: '/events',
     athletes: '/athletes',
     coaches: '/coaches',
-    countries: '/countries'
+    countries: '/countries',
+    teams: '/teams',
 }
 
 export const API_ROUTE = {
@@ -14,5 +15,5 @@ export const API_ROUTE = {
     disciplines: BASE_URL + 'disciplines',
     countries: BASE_URL + 'countries',
     athletes: BASE_URL + 'athletes',
-    coaches: BASE_URL + 'coaches',
+    teams: BASE_URL + '/teams',
 }

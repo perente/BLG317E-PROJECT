@@ -1,13 +1,17 @@
 from flask import Flask, jsonify
+from flask_cors import CORS, cross_origin
 import mysql.connector
 from mysql.connector import Error
-from settings import db_user,db_password,db_host,db_name  
-from flask_cors import CORS, cross_origin
+from settings import db_user,db_password, db_port, db_host,db_name  
 from schedules import get_schedules, new_schedules, delete_schedules, update_schedule
 from disciplines import  get_disciplines, delete_disciplines, create_discipline, update_discipline
+<<<<<<< HEAD
 from countries import get_countries, delete_country, update_country, create_country
+=======
+from teams import get_teams, new_teams, delete_team, update_team
+>>>>>>> 66fb23d (teams page designed, teams backend works)
 
-connection = mysql.connector.connect(host=db_host, database=db_name, user=db_user, password=db_password)    
+connection = mysql.connector.connect(host=db_host, database=db_name, port = db_port, user=db_user, password=db_password)    
 
 
 app = Flask(__name__)
@@ -15,7 +19,7 @@ CORS(app, support_credentials=True)
 
 
 def db_connection():
-    connection = mysql.connector.connect(host=db_host, database=db_name, user=db_user, password=db_password)
+    connection = mysql.connector.connect(host=db_host, database=db_name, port = db_port, user=db_user, password=db_password)
     return connection
 
 
@@ -104,6 +108,24 @@ def get_countries():
 @app.route('/countries/<string:code>', methods=['DELETE'])
 def delete_countries(code):
     return delete_country(code)
+
+@app.route('/teams', methods=['GET'])
+def teams():
+    return get_teams()
+
+@app.route('/teams', methods=['POST'])
+def create_teams():
+    return new_teams()
+
+@app.route('/teams/<string:team_code>', methods=['DELETE'])
+def delete_team_route(team_code):
+    return delete_team(team_code)
+
+
+@app.route('/teams/<string:team_code>', methods=['PATCH'])
+def update_team_route(team_code):
+    return update_team(team_code)
+
 
 @app.route('/team_athlete', methods=['GET'])
 def get_teams_athlete():
