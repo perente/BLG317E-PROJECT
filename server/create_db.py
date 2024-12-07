@@ -84,20 +84,6 @@ try:
                     print(f"Error inserting row {row}: {e}")
                     continue
         ins.commit()
-    command = """INSERT INTO Country (gold_medal,silver_medal,bronze_medal,country_code,country_name,country_long) VALUES (%s,%s,%s,%s,%s,%s)"""
-    insertData('country', command)
-    command = """INSERT INTO Discipline (name,discipline_code,id) VALUES (%s,%s, %s)"""
-    insertData('discipline', command)
-    command = """INSERT INTO Events (events_code,event_name,url,discipline_code,sport_name) VALUES (%s,%s,%s,%s,%s)"""
-    insertData('events', command)
-    command = """INSERT INTO Schedule (start_date,end_date,status,discipline_code,event_name,phase,gender,venue,event_code,url) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
-    insertData('schedule', command)
-    command = """INSERT INTO Athlete (athlete_code,name,gender,country_code,nationality,birth_date) VALUES (%s,%s,%s,%s,%s,%s)  """
-    insertData('athlete', command)
-    command = """INSERT INTO Teams (team_code,team_name,team_gender,country_code, discipline_code,num_athletes) VALUES (%s, %s, %s, %s, %s, %s)"""
-    insertData('teams_simplified', command)
-    command = """INSERT INTO Medallist (medal_date, medal_code, gender,country_code,team_gender,discipline,event,code_athlete,code_team,id)  VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
-    insertDataMedallist('medallist_updated', command)
 
     def insertData_JoinTable(filename, command):
         with open('./Data/Tables/{}.csv'.format(filename), 'r') as open_file:
@@ -123,10 +109,7 @@ try:
                     # print(f"Error processing line {line}: {e}")
                     continue
         ins.commit()
-    command = """INSERT INTO Team_Athlete (team_code,athlete_code) VALUES (%s,%s)"""
-    insertData_JoinTable('teams_athlete', command)
-    command = """INSERT INTO Team_Coach (team_code,coach_code) VALUES (%s,%s)"""
-    insertData_JoinTable('teams_coach', command)
+
 
     def insertDataCoach(filename, command):
         with open('./Data/Tables/{}.csv'.format(filename), 'r') as open_file:
@@ -153,9 +136,6 @@ try:
             # Commit the transaction after all rows are processed
             ins.commit()
     
-    command = """INSERT INTO Coach (coach_code,name,gender,`function`,country_code,disciplines,birth_date) VALUES (%s,%s,%s,%s,%s,%s,%s) """
-    insertDataCoach('coach', command)
-    
     def insertDataAthlete_Disciplines(filename, command):
         with open('./Data/Tables/{}.csv'.format(filename), 'r') as open_file:
             csv_file = csv.reader(open_file, delimiter=',') 
@@ -178,9 +158,28 @@ try:
                     continue
         ins.commit()
     
+    command = """INSERT INTO Country (gold_medal,silver_medal,bronze_medal,country_code,country_name,country_long) VALUES (%s,%s,%s,%s,%s,%s)"""
+    insertData('country', command)
+    command = """INSERT INTO Discipline (name,discipline_code,id) VALUES (%s,%s, %s)"""
+    insertData('discipline', command)
+    command = """INSERT INTO Events (events_code,event_name,url,discipline_code,sport_name) VALUES (%s,%s,%s,%s,%s)"""
+    insertData('events', command)
+    command = """INSERT INTO Schedule (start_date,end_date,status,discipline_code,event_name,phase,gender,venue,event_code,url) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+    insertData('schedule', command)
+    command = """INSERT INTO Teams (team_code,team_name,team_gender,country_code, discipline_code,num_athletes) VALUES (%s, %s, %s, %s, %s, %s)"""
+    insertData('teams_simplified', command)
+    command = """INSERT INTO Athlete (athlete_code,name,gender,country_code,nationality,birth_date) VALUES (%s,%s,%s,%s,%s,%s)  """
+    insertData('athlete', command)
+    command = """INSERT INTO Coach (coach_code,name,gender,`function`,country_code,disciplines,birth_date) VALUES (%s,%s,%s,%s,%s,%s,%s) """
+    insertDataCoach('coach', command)
+    command = """INSERT INTO Medallist (medal_date, medal_code, gender,country_code,team_gender,discipline,event,code_athlete,code_team,id)  VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+    insertDataMedallist('medallist_updated', command)
     command = """INSERT INTO Athlete_Disciplines (athlete_code, discipline) VALUES (%s,%s) """
     insertDataAthlete_Disciplines('athlete_discipline',command)
-
+    command = """INSERT INTO Team_Athlete (team_code,athlete_code) VALUES (%s,%s)"""
+    insertData_JoinTable('teams_athlete', command)
+    command = """INSERT INTO Team_Coach (team_code,coach_code) VALUES (%s,%s)"""
+    insertData_JoinTable('teams_coach', command)
 
 except Exception as err:
     print("There was an error creating the database: ", err)
