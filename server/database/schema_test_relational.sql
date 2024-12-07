@@ -59,7 +59,7 @@ CREATE TABLE `Schedule` (
 CREATE TABLE `Teams` (
     `team_code` VARCHAR(255) PRIMARY KEY,
     `team_name` VARCHAR(255),
-    `team_gender` ENUM('M', 'W', 'X') NOT NULL
+    `team_gender` ENUM('M','O', 'W', 'X') NOT NULL,
     `country_code` CHAR(3),
     `discipline_code` CHAR(50),
     `num_athletes` INT,
