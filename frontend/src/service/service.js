@@ -60,6 +60,20 @@ export const updateSchedule = async function (id, data) {
     }
 }
 
+export const getMedallists = async function () {
+    return await axios({
+        method: "get",
+        url: API_ROUTE.medallists,
+    });
+}
+
+export const deleteMedallist = async function (id) {
+    return await axios({
+        method: "delete",
+        url: `${API_ROUTE.medallists}/${id}`,
+    });
+}
+
 export const getDisciplines = async function () {
     return await axios({
         method: "get",

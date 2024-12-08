@@ -6,6 +6,7 @@ from settings import db_user,db_password, db_port, db_host,db_name
 from schedules import get_schedules, new_schedules, delete_schedules, update_schedule
 from disciplines import  get_disciplines, delete_disciplines, create_discipline, update_discipline
 from countries import get_countries, delete_country, update_country, create_country
+from medallist import get_medallists, new_medallists
 from teams import get_teams, new_teams, delete_team, update_team
 
 connection = mysql.connector.connect(host=db_host, database=db_name, port = db_port, user=db_user, password=db_password)    
@@ -175,29 +176,12 @@ def get_teams_coach():
             connection.close()
 
 @app.route('/medallists', methods=['GET'])
-def get_medallists():
-    try:
-        # Establish database connection
-        connection = db_connection()
+def get_medallist():
+    return get_medallists()
 
-        if connection.is_connected():
-            cursor = connection.cursor(dictionary=True)
-            cursor.execute("SELECT * FROM Medallist")
-            medallists = cursor.fetchall()
-
-            # Return data as JSON
-            return jsonify(medallists), 200
-        else:
-            return jsonify({'error': 'Failed to connect to the database'}), 500
-
-    except Error as e:
-        return jsonify({'error': str(e)}), 500
-
-    finally:
-        # Close the connection
-        if 'connection' in locals() and connection.is_connected():
-            cursor.close()
-            connection.close()
+@app.route('/medallists', methods=['POST'])
+def create_medallist():
+    return new_medallists()
 
 @app.route('/athlete', methods=['GET'])
 def get_athlete():
