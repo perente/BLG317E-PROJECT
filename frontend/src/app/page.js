@@ -104,7 +104,7 @@ const sports = [
               color="#81154C"
               bgLight="#BC5D85"
               icon={<FaMedal className="scale-150" />}
-              onClick={() => routerPush("/medals")}>Medals</CustomButton>
+              onClick={() => routerPush("/medallists")}>Medallists</CustomButton>
             <CustomButton
               size="lg"
               color="#8C5B45"
