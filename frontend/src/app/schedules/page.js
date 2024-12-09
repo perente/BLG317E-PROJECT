@@ -120,11 +120,11 @@ function Schedules() {
     router.replace(`${pathname}${query}`)
   };
 
-  function updateSearchParamForCurrentPage({key, value}) {
-    const {replace} = useRouter();
-    const newUrl = updateSearchParam({key, value})
+  function updateSearchParamForCurrentPage({ key, value }) {
+    const { replace } = useRouter();
+    const newUrl = updateSearchParam({ key, value })
     replace(newUrl)
-}
+  }
 
 
   const orderSchedules = (orderBy) => {
@@ -163,7 +163,7 @@ function Schedules() {
     <div className="container m-auto">
       <div className="flex items-center justify-between my-4">
         <h1 className="text-3xl">Schedules</h1>
-        <Button onClick={()=>setNewScheduleModal({update: handleGetSchedules, events: events, disciplines: disciplines})} className="">
+        <Button onClick={() => setNewScheduleModal({ update: handleGetSchedules, events: events, disciplines: disciplines })} className="">
           Create New Schedule
         </Button>
       </div>
@@ -447,7 +447,7 @@ function Schedules() {
                     <div className="cursor-pointer" onClick={() => { handleDeleteSchedule(schedule.schedule_code) }}>
                       <MdDelete className="w-6 h-6" />
                     </div>
-                    <div className="cursor-pointer" onClick={() => {setNewScheduleModal({update: handleGetSchedules, schedule: schedule, edit: true, events: events, disciplines: disciplines})}}
+                    <div className="cursor-pointer" onClick={() => { setNewScheduleModal({ update: handleGetSchedules, schedule: schedule, edit: true, events: events, disciplines: disciplines }) }}
                     >
                       <FaEdit className="w-6 h-6" />
                     </div>

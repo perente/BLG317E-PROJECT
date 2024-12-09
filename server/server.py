@@ -5,6 +5,7 @@ from settings import db_user,db_password,db_host,db_name
 from flask_cors import CORS, cross_origin
 from schedules import get_schedules, new_schedules, delete_schedules, update_schedule
 from disciplines import  get_disciplines, delete_disciplines, create_discipline, update_discipline
+from athletes import get_athletes
 
 connection = mysql.connector.connect(host=db_host, database=db_name, user=db_user, password=db_password)    
 
@@ -177,30 +178,9 @@ def get_medallists():
             cursor.close()
             connection.close()
 
-@app.route('/athlete', methods=['GET'])
-def get_athlete():
-    try:
-        # Establish database connection
-        connection = db_connection()
-
-        if connection.is_connected():
-            cursor = connection.cursor(dictionary=True)
-            cursor.execute("SELECT * FROM Athlete")
-            athlete = cursor.fetchall()
-
-            # Return data as JSON
-            return jsonify(athlete), 200
-        else:
-            return jsonify({'error': 'Failed to connect to the database'}), 500
-
-    except Error as e:
-        return jsonify({'error': str(e)}), 500
-
-    finally:
-        # Close the connection
-        if 'connection' in locals() and connection.is_connected():
-            cursor.close()
-            connection.close()
+@app.route('/athletes', methods=['GET'])
+def athletes():
+    return get_athletes()
 
 @app.route('/coach', methods=['GET'])
 def get_coach():

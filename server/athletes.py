@@ -38,7 +38,7 @@ def get_athletes():
 
             # Base query
             query = """
-                SELECT * FROM Athletes
+                SELECT * FROM Athlete
                 LEFT JOIN Country ON Athlete.country_code = Country.country_code
             """
 
@@ -63,8 +63,8 @@ def get_athletes():
                 params.append(country_code)  
 
             if nationality:
-                filters.append("Athlete.nationality = %s")
-                params.append(nationality)  
+                filters.append("Athlete.nationality LIKE %s")
+                params.append(f"%{nationality}%")  
 
             if birth_date:
                 filters.append("Athlete.birth_date >= %s")
@@ -78,6 +78,11 @@ def get_athletes():
             # Order by clause
             if order_by:
                 query += f" ORDER BY {order_by} {order or 'ASC'}"
+            
+            print("Query:", query)
+            print("Params:", params)
+
+            
             # Execute query with parameters
             cursor.execute(query, params)
             athletes = cursor.fetchall()

@@ -210,7 +210,7 @@ export const updateCountry = async function (id, data) {
 export const getAthletes = async function (filters = {}) {
     const queryParams = new URLSearchParams(filters).toString();
     return await axios({
-        method: "get",
+        method: "GET",
         url: `${API_ROUTE.athletes}?${queryParams}`,
     });
 };

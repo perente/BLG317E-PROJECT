@@ -1,4 +1,4 @@
-export const Button = ({ children, onClick, size="md", className, ...props }) => {
+export const Button = ({ children, onClick, size = "md", className, ...props }) => {
 
   const buttonSize = {
     sm: "px-2 py-1 text-sm",
@@ -11,7 +11,7 @@ export const Button = ({ children, onClick, size="md", className, ...props }) =>
   return (
     <button
       {...props}
-      className={"bg-blue-600 text-white rounded-lg duration-300 " + buttonSize+ " focus:outline-none " + className + (props.disabled ? " opacity-50 cursor-not-allowed" : " hover:bg-blue-800")}
+      className={"bg-blue-600 text-white rounded-lg duration-300 " + buttonSize + " focus:outline-none " + className + (props.disabled ? " opacity-50 cursor-not-allowed" : " hover:bg-blue-800")}
       onClick={onClick}
     >
       {children}
