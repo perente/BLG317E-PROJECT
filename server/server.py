@@ -5,13 +5,10 @@ from mysql.connector import Error
 from settings import db_user,db_password, db_port, db_host,db_name  
 from schedules import get_schedules, new_schedules, delete_schedules, update_schedule
 from disciplines import  get_disciplines, delete_disciplines, create_discipline, update_discipline
-<<<<<<< HEAD
 from athletes import get_athletes
-=======
 from countries import get_countries, delete_country, update_country, create_country
 from medallist import get_medallists, new_medallists
 from teams import get_teams, new_teams, delete_team, update_team
->>>>>>> 3c00edeed37ea016b16ad895408687fd1259d6ec
 
 connection = mysql.connector.connect(host=db_host, database=db_name, port = db_port, user=db_user, password=db_password)    
 
