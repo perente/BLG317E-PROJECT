@@ -1,13 +1,19 @@
 from flask import Flask, jsonify
+from flask_cors import CORS, cross_origin
 import mysql.connector
 from mysql.connector import Error
-from settings import db_user,db_password,db_host,db_name  
-from flask_cors import CORS, cross_origin
+from settings import db_user,db_password, db_port, db_host,db_name  
 from schedules import get_schedules, new_schedules, delete_schedules, update_schedule
 from disciplines import  get_disciplines, delete_disciplines, create_discipline, update_discipline
+<<<<<<< HEAD
 from athletes import get_athletes
+=======
+from countries import get_countries, delete_country, update_country, create_country
+from medallist import get_medallists, new_medallists
+from teams import get_teams, new_teams, delete_team, update_team
+>>>>>>> 3c00edeed37ea016b16ad895408687fd1259d6ec
 
-connection = mysql.connector.connect(host=db_host, database=db_name, user=db_user, password=db_password)    
+connection = mysql.connector.connect(host=db_host, database=db_name, port = db_port, user=db_user, password=db_password)    
 
 
 app = Flask(__name__)
@@ -15,7 +21,7 @@ CORS(app, support_credentials=True)
 
 
 def db_connection():
-    connection = mysql.connector.connect(host=db_host, database=db_name, user=db_user, password=db_password)
+    connection = mysql.connector.connect(host=db_host, database=db_name, port = db_port, user=db_user, password=db_password)
     return connection
 
 
@@ -50,8 +56,6 @@ def new_discipline():
 @app.route('/disciplines/<int:discipline_id>', methods=['PATCH'])
 def updateDiscipline(discipline_id):
     return update_discipline(discipline_id)
-
-
 
 @app.route('/events', methods=['GET'])
 def get_events():
@@ -102,6 +106,28 @@ def get_countries():
         if 'connection' in locals() and connection.is_connected():
             cursor.close()
             connection.close()
+
+@app.route('/countries/<string:code>', methods=['DELETE'])
+def delete_countries(code):
+    return delete_country(code)
+
+@app.route('/teams', methods=['GET'])
+def teams():
+    return get_teams()
+
+@app.route('/teams', methods=['POST'])
+def create_teams():
+    return new_teams()
+
+@app.route('/teams/<string:team_code>', methods=['DELETE'])
+def delete_team_route(team_code):
+    return delete_team(team_code)
+
+
+@app.route('/teams/<string:team_code>', methods=['PATCH'])
+def update_team_route(team_code):
+    return update_team(team_code)
+
 
 @app.route('/team_athlete', methods=['GET'])
 def get_teams_athlete():
@@ -154,29 +180,12 @@ def get_teams_coach():
             connection.close()
 
 @app.route('/medallists', methods=['GET'])
-def get_medallists():
-    try:
-        # Establish database connection
-        connection = db_connection()
+def get_medallist():
+    return get_medallists()
 
-        if connection.is_connected():
-            cursor = connection.cursor(dictionary=True)
-            cursor.execute("SELECT * FROM Medallist")
-            medallists = cursor.fetchall()
-
-            # Return data as JSON
-            return jsonify(medallists), 200
-        else:
-            return jsonify({'error': 'Failed to connect to the database'}), 500
-
-    except Error as e:
-        return jsonify({'error': str(e)}), 500
-
-    finally:
-        # Close the connection
-        if 'connection' in locals() and connection.is_connected():
-            cursor.close()
-            connection.close()
+@app.route('/medallists', methods=['POST'])
+def create_medallist():
+    return new_medallists()
 
 @app.route('/athletes', methods=['GET'])
 def athletes():

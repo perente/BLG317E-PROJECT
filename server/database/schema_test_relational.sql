@@ -35,8 +35,8 @@ CREATE TABLE `Events` (
 -- Create Schedule Table
 CREATE TABLE `Schedule` (
     `schedule_code` INT NOT NULL AUTO_INCREMENT,
-    `start_date` VARCHAR(255) NOT NULL,
-    `end_date` VARCHAR(255) NOT NULL,
+    `start_date` DATETIME NOT NULL,
+    `end_date` DATETIME NOT NULL,
     `status` VARCHAR(255),
     `discipline_code` VARCHAR(50), 
     `event_name` VARCHAR(255),
@@ -59,7 +59,7 @@ CREATE TABLE `Schedule` (
 CREATE TABLE `Teams` (
     `team_code` VARCHAR(255) PRIMARY KEY,
     `team_name` VARCHAR(255),
-    `team_gender` CHAR(1) NOT NULL,
+    `team_gender` ENUM('M','O', 'W', 'X') NOT NULL,
     `country_code` CHAR(3),
     `discipline_code` CHAR(50),
     `num_athletes` INT,
@@ -125,12 +125,16 @@ CREATE TABLE `Athlete_Disciplines` (
 
 CREATE TABLE `Team_Athlete` (
     `team_code` VARCHAR(255),
-    `athlete_code` VARCHAR(255),
-    PRIMARY KEY (`team_code`, `athlete_code`)
+    `athlete_code` INT,
+    PRIMARY KEY (`team_code`, `athlete_code`),
+    FOREIGN KEY (`team_code`) REFERENCES Teams(`team_code`) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (`athlete_code`) REFERENCES Athlete(`athlete_code`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci AUTO_INCREMENT = 0;
 
 CREATE TABLE `Team_Coach` (
     `team_code` VARCHAR(255),
     `coach_code` INT,
-    PRIMARY KEY (`team_code`, `coach_code`)
+    PRIMARY KEY (`team_code`, `coach_code`),
+    FOREIGN KEY (`team_code`) REFERENCES Teams(`team_code`) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (`coach_code`) REFERENCES Coach(`coach_code`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci AUTO_INCREMENT = 0;
