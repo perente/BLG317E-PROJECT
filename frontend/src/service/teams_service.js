@@ -28,16 +28,13 @@ const customAxios = async function (config) {
 
 export default customAxios;
 
-export const getTeams = async () => {
-    try {
-      const response = await axios.get(`${API_ROUTE.teams}`);
-      console.log("API Response Data:", response.data);
-      return response.data;
-    } catch (error) {
-      console.error("Error fetching teams:", error);
-      throw error; 
-    }
-  };
+export const getTeams = async function (filters = {}) {
+    const queryParams = new URLSearchParams(filters).toString();
+    return await axios({
+        method: "get",
+        url: `${API_ROUTE.teams}?${queryParams}`,
+    });
+};
 
 // Delete a Team
 export const deleteTeam = async (teamCode) => {

@@ -24,6 +24,7 @@ def get_teams():
         team_gender = request.args.get('team_gender')
         country_code = request.args.get('country_code')
         discipline_code = request.args.get('discipline_code')
+        num_athletes = request.args.get('num_athletes')
         order_by = request.args.get('order_by')
         order = request.args.get('order')
 
@@ -53,6 +54,10 @@ def get_teams():
         if discipline_code:
             filters.append("Teams.discipline_code = %s")
             params.append(discipline_code)
+
+        if num_athletes:
+            filters.append("Teams.num_athletes = %s")
+            params.append(num_athletes)
 
         if filters:
             query += " WHERE " + " AND ".join(filters)
