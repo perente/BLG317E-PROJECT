@@ -5,8 +5,9 @@ from mysql.connector import Error
 from settings import db_user,db_password, db_port, db_host,db_name  
 from schedules import get_schedules, new_schedules, delete_schedules, update_schedule
 from disciplines import  get_disciplines, delete_disciplines, create_discipline, update_discipline
+from events import get_events, delete_event, update_events, new_events
 from athletes import get_athletes
-from countries import get_countries, delete_country, update_country, create_country
+from countries import get_countries, delete_country, update_countries, new_countries
 from medallist import get_medallists, new_medallists
 from teams import get_teams, new_teams, delete_team, update_team
 
@@ -20,7 +21,6 @@ CORS(app, support_credentials=True)
 def db_connection():
     connection = mysql.connector.connect(host=db_host, database=db_name, port = db_port, user=db_user, password=db_password)
     return connection
-
 
 # example get request
 @app.route('/schedules', methods=['GET'])
@@ -54,59 +54,37 @@ def new_discipline():
 def updateDiscipline(discipline_id):
     return update_discipline(discipline_id)
 
-@app.route('/events', methods=['GET'])
-def get_events():
-    try:
-        # Establish database connection
-        connection = db_connection()
-
-        if connection.is_connected():
-            cursor = connection.cursor(dictionary=True)
-            cursor.execute("SELECT * FROM Events")
-            events = cursor.fetchall()
-
-            # Return data as JSON
-            return jsonify(events), 200
-        else:
-            return jsonify({'error': 'Failed to connect to the database'}), 500
-
-    except Error as e:
-        return jsonify({'error': str(e)}), 500
-
-    finally:
-        # Close the connection
-        if 'connection' in locals() and connection.is_connected():
-            cursor.close()
-            connection.close()
-
 @app.route('/countries', methods=['GET'])
-def get_countries():
-    try:
-        # Establish database connection
-        connection = db_connection()
-
-        if connection.is_connected():
-            cursor = connection.cursor(dictionary=True)
-            cursor.execute("SELECT * FROM Country")
-            countries = cursor.fetchall()
-
-            # Return data as JSON
-            return jsonify(countries), 200
-        else:
-            return jsonify({'error': 'Failed to connect to the database'}), 500
-
-    except Error as e:
-        return jsonify({'error': str(e)}), 500
-
-    finally:
-        # Close the connection
-        if 'connection' in locals() and connection.is_connected():
-            cursor.close()
-            connection.close()
+def countries():
+    return get_countries()
 
 @app.route('/countries/<string:code>', methods=['DELETE'])
 def delete_countries(code):
     return delete_country(code)
+
+@app.route('/countries', methods=['POST'])
+def new_country():
+    return new_countries()
+
+@app.route('/countries/<string:code>', methods=['PATCH'])
+def update_country(code):
+    return update_countries(code)
+
+@app.route('/events', methods=['GET'])
+def events():
+    return get_events()
+
+@app.route('/events/<int:events_code>', methods=['DELETE'])
+def delete_events(events_code):
+    return delete_event(events_code)
+
+@app.route('/countries', methods=['POST'])
+def new_event():
+    return new_events()
+
+@app.route('/events/<int:events_code>', methods=['PATCH'])
+def update_event(events_code):
+    return update_events(events_code)
 
 @app.route('/teams', methods=['GET'])
 def teams():

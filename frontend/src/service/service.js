@@ -151,18 +151,18 @@ export const createNewEvent = async function (data) {
     }
 }
 
-export const deleteEvent = async function (id) {
+export const deleteEvent = async function (events_code) {
     return await axios({
         method: "DELETE",
-        url: `${API_ROUTE.events}/${id}`,
+        url: `${API_ROUTE.countries}/${events_code}`,
     });
 }
 
-export const updateEvent = async function (id, data) {
+export const updateEvent = async function (events_code, data) {
     try {
         const response = await axios({
             method: "PATCH",
-            url: `${API_ROUTE.events}/${id}`,
+            url: `${API_ROUTE.countries}/${events_code}`,
             data: data,
         });
         return response;
@@ -186,12 +186,19 @@ export const getCountries = async function (filters = {}) {
     }
 }
 
-export const createNewCountry = async function (data) {
+export const createNewCountry = async function ({country_code, country_name, country_long, gold_medal, silver_medal, bronze_medal}) {
     try {
         const response = await axios({
             method: "POST",
             url: API_ROUTE.countries,
-            data: data,
+            data: {
+                country_code, 
+                country_name,
+                country_long,
+                gold_medal,
+                silver_medal,
+                bronze_medal,
+            }
         });
         return response;
     }
@@ -207,12 +214,19 @@ export const deleteCountry = async function (country_code) {
     });
 }
 
-export const updateCountry = async function (country_code, data) {
+export const updateCountry = async function ({country_code, country_name, country_long, gold_medal, silver_medal, bronze_medal}) {
     try {
         const response = await axios({
             method: "PATCH",
-            url: `${API_ROUTE.countries}/${id}`,
-            data: data,
+            url: `${API_ROUTE.countries}/${country_code}`,
+            data: {
+                country_code,
+                country_name,
+                country_long,
+                gold_medal,
+                silver_medal, 
+                bronze_medal
+            }
         });
         return response;
     }

@@ -35,29 +35,29 @@ def get_countries():
             cursor.close()
             connection.close()
 
-def update_country(country_code):
+def update_countries(country_code):
     try:
         data = request.get_json()
         if not data:
             return jsonify({'error': 'Invalid input: No JSON payload provided'}), 400
 
         # Extract values from JSON payload
+
+        country_code = data.get('code')
+        country_name = data.get('country_name')
+        country_long = data.get('country_long')
         gold_medal = data.get('gold_medal')
         silver_medal = data.get('silver_medal')
         bronze_medal = data.get('bronze_medal')
 
         # Validate required fields
-        if not any([gold_medal is not None, silver_medal is not None, bronze_medal is not None]):
-            return jsonify({'error': 'No medal values provided for update'}), 400
+        if not all([country_code, country_name, country_long, gold_medal, silver_medal, bronze_medal]):
+            return jsonify({'error': 'Missing required fields'}), 400
 
         connection = db_connection()
         if connection.is_connected():
             with connection.cursor(dictionary=True) as cursor:
-                query = """
-                    UPDATE Country 
-                    SET gold_medal = %s, silver_medal = %s, bronze_medal = %s 
-                    WHERE code = %s
-                """
+                query = "UPDATE Country SET gold_medal = %s, silver_medal = %s, bronze_medal = %s WHERE country_code = %s"
                 cursor.execute(query, (gold_medal, silver_medal, bronze_medal, country_code))
                 connection.commit()
                 # Return success message
@@ -72,14 +72,14 @@ def update_country(country_code):
             cursor.close()
             connection.close()
 
-def create_country():
+def new_countries():
     try:
         data = request.get_json()
         if not data:
             return jsonify({'error': 'Invalid input: No JSON payload provided'}), 400
 
         # Extract values from JSON payload
-        code = data.get('code')
+        country_code = data.get('country_code')
         country_name = data.get('country_name')
         country_long = data.get('country_long')
         gold_medal = data.get('gold_medal', 0)
@@ -87,14 +87,14 @@ def create_country():
         bronze_medal = data.get('bronze_medal', 0)
 
         # Validate required fields
-        if not all([code, country_name, country_long]):
+        if not all([country_code, country_name, country_long, gold_medal, silver_medal, bronze_medal]):
             return jsonify({'error': 'Missing required fields'}), 400
         
         connection = db_connection()
         if connection.is_connected():
             with connection.cursor(dictionary=True) as cursor:
-                query = "INSERT INTO Country (code, country_name, country_long, gold_medal, silver_medal, bronze_medal) VALUES (%s, %s, %s, %s, %s, %s)"
-                cursor.execute(query, (code, country_name, country_long, gold_medal, silver_medal, bronze_medal))
+                query = "INSERT INTO Country (country_code, country_name, country_long, gold_medal, silver_medal, bronze_medal) VALUES (%s, %s, %s, %s, %s, %s)"
+                cursor.execute(query, (country_code, country_name, country_long, gold_medal, silver_medal, bronze_medal))
                 connection.commit()
                 # Return success message
                 return jsonify({'message': 'Country created successfully'}), 201
@@ -126,6 +126,5 @@ def delete_country(country_code):
         if 'connection' in locals() and connection.is_connected():
             cursor.close()
             connection.close()
-
 
 
