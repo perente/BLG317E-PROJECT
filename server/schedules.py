@@ -33,15 +33,31 @@ def get_schedules():
             status = request.args.get('status')
             gender = request.args.get('gender')
             order_by = request.args.get('order_by')
-            order = request.args.get('order')
+            order = request.args.get('order', 'ASC').upper()
 
             print(discipline_code, start_date, end_date,
                   venue, phase, status, gender)
 
+            # Validate `order` value
+            if order not in ['ASC', 'DESC']:
+                order = 'ASC'
+
             # Base query
             query = """
-                SELECT * FROM Schedule
-                LEFT JOIN Discipline ON Schedule.discipline_code = Discipline.discipline_code
+                SELECT
+                    Events.sport_name AS name,
+                    Events.event_name,
+                    Schedule.start_date,
+                    Schedule.end_date,
+                    Schedule.status,
+                    Schedule.phase,
+                    Schedule.gender,
+                    Schedule.venue,
+                    Schedule.event_code,
+                    Schedule.schedule_code,
+                    Schedule.url
+                FROM Schedule
+                LEFT JOIN Events ON Schedule.event_code = Events.events_code
             """
 
             # Where clause conditions
@@ -49,7 +65,7 @@ def get_schedules():
             params = []
 
             if discipline_code:
-                filters.append("Schedule.discipline_code = %s")
+                filters.append("Events.discipline_code = %s")
                 params.append(discipline_code)
 
             if start_date:
@@ -86,7 +102,10 @@ def get_schedules():
 
             # Order by clause
             if order_by:
-                query += f" ORDER BY {order_by} {order or 'ASC'}"
+                query += f" ORDER BY {order_by} {order}"
+            else:
+                query += " ORDER BY Schedule.start_date ASC"
+
             # Execute query with parameters
             cursor.execute(query, params)
             schedules = cursor.fetchall()
@@ -150,9 +169,9 @@ def new_schedules():
         if connection.is_connected():
             with connection.cursor(dictionary=True) as cursor:
                 # Insert schedule into the database
-                query = """INSERT INTO Schedule (start_date,end_date,status,discipline_code,event_name,phase,gender,venue,event_code,url) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
-                values = (start_date, end_date, status, event_data['discipline_code'], event_data
-                          ['event_name'], phase, gender, venue, event_data['events_code'], event_data['url'])
+                query = """INSERT INTO Schedule (start_date,end_date,status,phase,gender,venue,event_code,url) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+                values = (start_date, end_date, status, phase, gender,
+                          venue, event_data['events_code'], event_data['url'])
                 cursor.execute(query, values)
                 connection.commit()
 
@@ -229,7 +248,7 @@ def update_schedule(scheduleID):
 
         # Establish database connection
         connection = db_connection()
-    
+
         event_data = ""
         if connection.is_connected():
             with connection.cursor(dictionary=True) as cursor:
@@ -250,9 +269,9 @@ def update_schedule(scheduleID):
         if connection.is_connected():
             with connection.cursor(dictionary=True) as cursor:
                 # Update schedule in the database
-                query = """UPDATE Schedule SET start_date = %s, end_date = %s, phase = %s, venue = %s, event_code = %s, gender = %s, status = %s , event_name = %s , discipline_code = %s , url = %s WHERE schedule_code = %s"""
+                query = """UPDATE Schedule SET start_date = %s, end_date = %s, phase = %s, venue = %s, event_code = %s, gender = %s, status = %s , url = %s WHERE schedule_code = %s"""
                 values = (start_date, end_date, phase, venue,
-                          eventID, gender, status, event_data['event_name'], event_data['discipline_code'], event_data['url'], scheduleID)
+                          eventID, gender, status, event_data['url'], scheduleID)
                 cursor.execute(query, values)
                 connection.commit()
 

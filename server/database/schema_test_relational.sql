@@ -38,8 +38,8 @@ CREATE TABLE `Schedule` (
     `start_date` DATETIME NOT NULL,
     `end_date` DATETIME NOT NULL,
     `status` VARCHAR(255),
-    `discipline_code` VARCHAR(50), 
-    `event_name` VARCHAR(255),
+    -- `discipline_code` VARCHAR(50), 
+    -- `event_name` VARCHAR(255),
     `phase` VARCHAR(255),
     `gender` CHAR(1),
     `venue` VARCHAR(255),
@@ -47,9 +47,6 @@ CREATE TABLE `Schedule` (
     `url` VARCHAR(255) NULL,
     PRIMARY KEY (`schedule_code`),
     FOREIGN KEY (`event_code`) REFERENCES `Events`(`events_code`) ON DELETE
-    SET
-        NULL ON UPDATE CASCADE,
-        FOREIGN KEY (`discipline_code`) REFERENCES `Discipline`(`discipline_code`) ON DELETE
     SET
         NULL ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;

@@ -164,7 +164,7 @@ try:
     insertData('discipline', command)
     command = """INSERT INTO Events (events_code,event_name,url,discipline_code,sport_name) VALUES (%s,%s,%s,%s,%s)"""
     insertData('events', command)
-    command = """INSERT INTO Schedule (start_date,end_date,status,discipline_code,event_name,phase,gender,venue,event_code,url) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+    command = """INSERT INTO Schedule (start_date,end_date,status,phase,gender,venue,event_code,url) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"""
     insertData('schedule', command)
     command = """INSERT INTO Teams (team_code,team_name,team_gender,country_code, discipline_code,num_athletes) VALUES (%s, %s, %s, %s, %s, %s)"""
     insertData('teams_simplified', command)

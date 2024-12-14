@@ -8,6 +8,9 @@ dependencies:
   axios:
     specifier: ^1.7.7
     version: 1.7.8
+  cookies-next:
+    specifier: ^5.0.2
+    version: 5.0.2(next@15.0.3)
   next:
     specifier: 15.0.3
     version: 15.0.3(react-dom@18.3.1)(react@18.3.1)
@@ -535,6 +538,20 @@ packages:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
     engines: {node: '>= 6'}
     dev: true
+
+  /cookie@1.0.2:
+    resolution: {integrity: sha512-9Kr/j4O16ISv8zBBhJoi4bXOYNTkFLOqSL3UDB0njXxCXNezjeyVrJyGOWtgfs/q2km1gwBcfH8q1yEGoMYunA==}
+    engines: {node: '>=18'}
+    dev: false
+
+  /cookies-next@5.0.2(next@15.0.3):
+    resolution: {integrity: sha512-Ft5yXMbN6wMfgLiL5TMyPnxsjkW6UEjZw0YMoDMiF3F6iYdFPjiJEMugx/sivUr8G+0xPG80lBYqI2b+VquSuw==}
+    peerDependencies:
+      next: '>=15.0.0'
+    dependencies:
+      cookie: 1.0.2
+      next: 15.0.3(react-dom@18.3.1)(react@18.3.1)
+    dev: false
 
   /cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
