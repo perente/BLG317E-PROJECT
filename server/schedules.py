@@ -169,7 +169,7 @@ def new_schedules():
         if connection.is_connected():
             with connection.cursor(dictionary=True) as cursor:
                 # Insert schedule into the database
-                query = """INSERT INTO Schedule (start_date,end_date,status,phase,gender,venue,event_code,url) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+                query = """INSERT INTO Schedule (start_date,end_date,status,phase,gender,venue,event_code,url) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"""
                 values = (start_date, end_date, status, phase, gender,
                           venue, event_data['events_code'], event_data['url'])
                 cursor.execute(query, values)

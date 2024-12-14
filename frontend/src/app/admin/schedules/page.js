@@ -160,7 +160,7 @@ function Schedules() {
   }
 
   return (
-    <div className="container m-auto">
+    <div className="container mx-auto pb-4">
       <div className="flex items-center justify-between my-4">
         <h1 className="text-3xl">Schedules</h1>
         <Button onClick={() => setNewScheduleModal({ update: handleGetSchedules, events: events, disciplines: disciplines })} className="">
