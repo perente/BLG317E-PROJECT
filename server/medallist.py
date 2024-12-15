@@ -158,7 +158,7 @@ def new_medallists():
             connection.close()
 
 
-def delete_medallist(ID):
+def delete_medallists(ID):
     try:
         # Validate required fields
         if not ID:

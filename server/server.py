@@ -8,7 +8,7 @@ from disciplines import  get_disciplines, delete_disciplines, create_discipline,
 from events import get_events, delete_event, update_events, new_events
 from athletes import get_athletes
 from countries import get_countries, delete_country, update_countries, new_countries
-from medallist import get_medallists, new_medallists
+from medallist import get_medallists, new_medallists, delete_medallists
 from teams import get_teams, new_teams, delete_team, update_team
 
 connection = mysql.connector.connect(host=db_host, database=db_name, port = db_port, user=db_user, password=db_password)    
@@ -161,6 +161,10 @@ def get_medallist():
 @app.route('/medallists', methods=['POST'])
 def create_medallist():
     return new_medallists()
+
+@app.route('/medallists/<int:medallist_id>', methods=['DELETE'])
+def delete_medallist(medallist_id):
+    return delete_medallists(medallist_id)
 
 @app.route('/athletes', methods=['GET'])
 def athletes():
