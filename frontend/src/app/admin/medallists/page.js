@@ -7,6 +7,7 @@ import { Suspense, useEffect, useState } from "react";
 import { TiArrowSortedDown } from "react-icons/ti";
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
+import {useModalStore} from "@/lib/store";
 
 function Medallists() {
   const [medallists, setMedallists] = useState([]);
@@ -26,6 +27,8 @@ function Medallists() {
   const [country_code, setCountryCode] = useState(params.get("country_code") ?? "");
   const [order, setOrder] = useState(params.get("order") ?? "");
   const [orderBy, setOrderBy] = useState(params.get("order_by") ?? "");
+
+  const setNewMedallistModalData = useModalStore((state) => state.setNewMedallistModalData);
 
   useEffect(() => {
     handleGetMedallists();
@@ -134,7 +137,7 @@ function Medallists() {
     <div className="container m-auto">
       <div className="flex items-center justify-between my-4">
         <h1 className="text-3xl">Medallists</h1>
-        <Button onClick={() => setNewMedallistModal({ update: handleGetMedallists })}>
+        <Button onClick={() => setNewMedallistModalData({ update: handleGetMedallists })}>
           Create New Medallist
         </Button>
       </div>
@@ -284,7 +287,7 @@ function Medallists() {
                     <div
                       className="cursor-pointer"
                       onClick={() =>
-                        setNewMedallistModal({
+                        setNewMedallistModalData({
                           update: handleGetMedallists,
                           medallist: medallist,
                           edit: true,
