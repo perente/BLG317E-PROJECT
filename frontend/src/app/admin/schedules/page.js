@@ -89,6 +89,7 @@ function Schedules() {
   const currentItems = schedules.slice(indexOfFirstItem, indexOfLastItem);
 
   const setNewScheduleModal = useModalStore((state) => state.setNewScheduleModal);
+  const setUpdateScheduleGroupModal = useModalStore((state) => state.setUpdateScheduleGroupModal);
 
   // Generate page numbers
   const pageNumbers = [];
@@ -163,9 +164,14 @@ function Schedules() {
     <div className="container mx-auto pb-4">
       <div className="flex items-center justify-between my-4">
         <h1 className="text-3xl">Schedules</h1>
-        <Button onClick={() => setNewScheduleModal({ update: handleGetSchedules, events: events, disciplines: disciplines })} className="">
-          Create New Schedule
-        </Button>
+        <div className="flex gap-x-2">
+          <Button onClick={() => setUpdateScheduleGroupModal({ update: handleGetSchedules, events: events, disciplines: disciplines })} className="">
+            Update Schedule Group
+          </Button>
+          <Button onClick={() => setNewScheduleModal({ update: handleGetSchedules, events: events, disciplines: disciplines })} className="">
+            Create New Schedule
+          </Button>
+        </div>
       </div>
       <div>
         <h3 className="text-xl font-semibold inline-block mr-4">Filters</h3>
@@ -438,7 +444,7 @@ function Schedules() {
                 <td className="border border-gray-400 px-2 py-1 cursor-pointer">
                   <div className="flex gap-1">
                     <a
-                      href={schedule.url.startsWith("http") ? schedule.url : ("https://olympics.com" + schedule.url)} 
+                      href={schedule.url.startsWith("http") ? schedule.url : ("https://olympics.com" + schedule.url)}
                       target="_blank"
                       rel="noopener noreferrer"
                     >

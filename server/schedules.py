@@ -290,3 +290,97 @@ def update_schedule(scheduleID):
         # Ensure the connection is closed properly
         if 'connection' in locals() and connection.is_connected():
             connection.close()
+
+
+def update_schedules():
+    try:
+
+        data = request.get_json() if request.is_json else request.args
+
+        if not data:
+            return jsonify({'error': 'Invalid input: No parameters provided'}), 400
+
+        start_date = data.get('start_date')
+        end_date = data.get('end_date')
+        delay_days = data.get('delay_days')
+        venue = data.get('venue')
+        phase = data.get('phase')
+        event_code = data.get('event_code')
+        status = data.get('status')
+        gender = data.get('gender')
+        new_gender = data.get('new_gender')
+        new_status = data.get('new_status')
+        new_phase = data.get('new_phase')
+        new_venue = data.get('new_venue')
+        new_event_code = data.get('new_event_code')
+
+        # Convert delay_days to int if provided
+        if delay_days is not None and delay_days != "":
+            try:
+                delay_days = int(delay_days)
+            except ValueError:
+                return jsonify({'error': 'delay_days must be an integer'}), 400
+        else:
+            delay_days = None
+
+        filter_clauses = []
+
+        if start_date != "":
+            filter_clauses.append(f"start_date >= '{start_date}'")
+        if end_date != "":
+            filter_clauses.append(f"end_date <= '{end_date}'")
+        if venue != "":
+            filter_clauses.append(f"venue = '{venue}'")
+        if phase != "":
+            filter_clauses.append(f"phase = '{phase}'")
+        if event_code != "":
+            filter_clauses.append(f"event_code = '{event_code}'")
+        if status != "":
+            filter_clauses.append(f"status = '{status}'")
+        if gender != "":
+            filter_clauses.append(f"gender = '{gender}'")
+
+        set_clauses = []
+
+        if delay_days != "":
+            set_clauses.append(
+                f"start_date = DATE_ADD(start_date, INTERVAL {delay_days} DAY)")
+            set_clauses.append(
+                f"end_date = DATE_ADD(end_date, INTERVAL {delay_days} DAY)")
+        if new_gender != "":
+            set_clauses.append(f"gender = '{new_gender}'")
+        if new_status != "":
+            set_clauses.append(f"status = '{new_status}'")
+        if new_phase != "":
+            set_clauses.append(f"phase = '{new_phase}'")
+        if new_venue != "":
+            set_clauses.append(f"venue = '{new_venue}'")
+        if new_event_code != "":
+            set_clauses.append(f"event_code = '{new_event_code}'")
+
+        if not set_clauses:
+            return jsonify({'error': 'No fields to update'}), 400
+        
+        query = "UPDATE Schedule SET " + ", ".join(set_clauses)
+
+        if filter_clauses:
+            query += " WHERE " + " AND ".join(filter_clauses)
+
+        connection = db_connection()
+        if not connection.is_connected():
+            return jsonify({'error': 'Failed to connect to the database'}), 500
+
+        with connection.cursor(dictionary=True) as cursor:
+            cursor.execute(query)
+            connection.commit()
+            affected_rows = cursor.rowcount
+
+            return jsonify({'message': 'Schedules updated successfully', 'affected_rows': affected_rows}), 200
+
+    except mysql.connector.Error as e:
+        return jsonify({'error': f'Database error: {str(e)}'}), 500
+    except Exception as e:
+        return jsonify({'error': f'Unexpected error: {str(e)}'}), 500
+    finally:
+        if 'connection' in locals() and connection.is_connected():
+            connection.close()

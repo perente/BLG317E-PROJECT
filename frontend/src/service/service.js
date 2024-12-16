@@ -186,13 +186,13 @@ export const getCountries = async function (filters = {}) {
     }
 }
 
-export const createNewCountry = async function ({country_code, country_name, country_long, gold_medal, silver_medal, bronze_medal}) {
+export const createNewCountry = async function ({ country_code, country_name, country_long, gold_medal, silver_medal, bronze_medal }) {
     try {
         const response = await axios({
             method: "POST",
             url: API_ROUTE.countries,
             data: {
-                country_code, 
+                country_code,
                 country_name,
                 country_long,
                 gold_medal,
@@ -214,7 +214,7 @@ export const deleteCountry = async function (country_code) {
     });
 }
 
-export const updateCountry = async function ({country_code, country_name, country_long, gold_medal, silver_medal, bronze_medal}) {
+export const updateCountry = async function ({ country_code, country_name, country_long, gold_medal, silver_medal, bronze_medal }) {
     try {
         const response = await axios({
             method: "PATCH",
@@ -224,7 +224,7 @@ export const updateCountry = async function ({country_code, country_name, countr
                 country_name,
                 country_long,
                 gold_medal,
-                silver_medal, 
+                silver_medal,
                 bronze_medal
             }
         });
@@ -242,3 +242,46 @@ export const getAthletes = async function (filters = {}) {
         url: `${API_ROUTE.athletes}?${queryParams}`,
     });
 };
+
+
+export const update_schedule_group = async function ({
+    start_date,
+    end_date,
+    venue,
+    phase,
+    event_code,
+    status,
+    gender,
+    delay_days,
+    new_gender,
+    new_status,
+    new_phase,
+    new_venue,
+    new_event_code
+}) {
+    try {
+        const response = await axios({
+            method: "PATCH",
+            url: API_ROUTE.update_schedule_group,
+            data: {
+                start_date,
+                end_date,
+                venue,
+                phase,
+                event_code,
+                status,
+                gender,
+                delay_days,
+                new_gender,
+                new_status,
+                new_phase,
+                new_venue,
+                new_event_code
+            }
+        });
+        return response;
+    }
+    catch (error) {
+        throw error;
+    }
+}

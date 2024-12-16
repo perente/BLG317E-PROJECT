@@ -6,6 +6,7 @@ import NewDisciplineModal from "@/components/modals/newDisciplineModal";
 import { Toaster } from "react-hot-toast";
 import { Button } from "@/components/button";
 import { deleteCookie } from "cookies-next";
+import UpdateScheduleGroupModal from "@/components/modals/updateScheduleGroupModal";
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
       <Toaster />
       <NewScheduleModal />
       <NewDisciplineModal />
+      <UpdateScheduleGroupModal />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

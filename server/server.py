@@ -3,7 +3,7 @@ from flask_cors import CORS, cross_origin
 import mysql.connector
 from mysql.connector import Error
 from settings import db_user,db_password, db_port, db_host,db_name  
-from schedules import get_schedules, new_schedules, delete_schedules, update_schedule
+from schedules import get_schedules, new_schedules, delete_schedules, update_schedule, update_schedules
 from disciplines import  get_disciplines, delete_disciplines, create_discipline, update_discipline
 from events import get_events, delete_event, update_events, new_events
 from athletes import get_athletes
@@ -37,6 +37,11 @@ def updateSchedule(schedule_id):
 @app.route('/schedules/<int:schedule_id>', methods=['DELETE'])
 def delete_schedule(schedule_id):
     return delete_schedules(schedule_id)
+
+@app.route('/update_schedule_group', methods=['PATCH'])
+def update_schedule_group():
+    return update_schedules()
+
 
 @app.route('/disciplines', methods=['GET'])
 def disciplines():

@@ -17,5 +17,6 @@ export const API_ROUTE = {
     countries: BASE_URL + 'countries',
     athletes: BASE_URL + 'athletes',
     teams: BASE_URL + '/teams',
-    medallists: BASE_URL + '/medallists'
+    medallists: BASE_URL + '/medallists',
+    update_schedule_group: BASE_URL + 'update_schedule_group',
 }
