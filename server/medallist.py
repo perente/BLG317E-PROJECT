@@ -115,7 +115,7 @@ def new_medallists():
             code_athlete = int(data.get('code_athlete'))
         except (ValueError, TypeError) as e:
             return jsonify({'error': f'Invalid data type: {str(e)}'}), 400
-        print("Incoming medal code Data:", medal_code) # Debug log
+        #print("Incoming medal code Data:", medal_code) # Debug log
 
         # Extract values from JSON payload
         medal_date = data.get('medal_date')
