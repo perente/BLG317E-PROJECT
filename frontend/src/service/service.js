@@ -74,6 +74,16 @@ export const deleteMedallist = async function (id) {
     });
 }
 
+export const newMedallist = async function (input_data) {
+    return await axios({
+        method: "post",
+        url: API_ROUTE.medallists,
+        data: {
+            input_data
+        }
+    });
+}
+
 export const getDisciplines = async function () {
     return await axios({
         method: "get",

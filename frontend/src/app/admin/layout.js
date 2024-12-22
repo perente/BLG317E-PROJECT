@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "../globals.css";
 import NewScheduleModal from "@/components/modals/newScheduleModal";
 import NewDisciplineModal from "@/components/modals/newDisciplineModal";
+import NewMedallistModal from "@/components/modals/newMedallistModal";
 import { Toaster } from "react-hot-toast";
 import { Button } from "@/components/button";
 import { deleteCookie } from "cookies-next";
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
       <Toaster />
       <NewScheduleModal />
       <NewDisciplineModal />
+      <NewMedallistModal />
       <UpdateScheduleGroupModal />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
