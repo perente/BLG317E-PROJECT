@@ -3,7 +3,7 @@ import { useModalStore } from "@/lib/store";
 import ModalSkeleton from "./modalSkeleton";
 import { useEffect, useState } from "react";
 import { Button } from "../button";
-import { createCountry, updateCountry } from "@/service/service";
+import { createNewCountry, updateCountry } from "@/service/service";
 
 const NewCountryModal = () => {
   const newCountryModalData = useModalStore((state) => state.newCountryModalData);
@@ -59,7 +59,7 @@ const NewCountryModal = () => {
           alert("Error updating country: " + error.message);
         });
     } else {
-      createCountry(countryData)
+      createNewCountry(countryData)
         .then(() => {
           setNewCountryModalData(null);
           newCountryModalData.update();
