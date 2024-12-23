@@ -1,9 +1,9 @@
-"use client"
+"use client";
 import {useModalStore} from "@/lib/store";
 import ModalSkeleton from "./modalSkeleton";
 import {useEffect, useState} from "react";
 import {Button} from "../button";
-import {createMedallist, updateMedallist} from "@/service/service";
+import {newMedallist, updateMedallist} from "@/service/service";
 
 const NewMedallistModal = () => {
     const newMedallistModalData = useModalStore((state) => state.newMedallistModalData);
@@ -11,30 +11,28 @@ const NewMedallistModal = () => {
 
     const [medalDate, setMedalDate] = useState("");
     const [medalCode, setMedalCode] = useState("");
-    const [name, setName] = useState("");
     const [gender, setGender] = useState("M");
     const [countryCode, setCountryCode] = useState("");
-    const [teamGender, setTeamGender] = useState("");
     const [discipline, setDiscipline] = useState("");
     const [event, setEvent] = useState("");
-    const [codeAthlete, setCodeAthlete] = useState("");
+    const [codeAthlete, setCodeAthlete] = useState(""); // Athlete Code field
+    const [withTeam, setWithTeam] = useState(false); // State to toggle team-related fields
+    const [teamGender, setTeamGender] = useState("");
     const [codeTeam, setCodeTeam] = useState("");
-    const [isMedallist, setIsMedallist] = useState(false);
 
     useEffect(() => {
         if (newMedallistModalData?.editMode) {
             const {medallist} = newMedallistModalData;
             setMedalDate(medallist.medal_date || "");
             setMedalCode(medallist.medal_code || "");
-            setName(medallist.name || "");
             setGender(medallist.gender || "M");
             setCountryCode(medallist.country_code || "");
-            setTeamGender(medallist.team_gender || "");
             setDiscipline(medallist.discipline || "");
             setEvent(medallist.event || "");
             setCodeAthlete(medallist.code_athlete || "");
+            setWithTeam(!!medallist.team_gender || !!medallist.code_team);
+            setTeamGender(medallist.team_gender || "");
             setCodeTeam(medallist.code_team || "");
-            setIsMedallist(medallist.is_medallist || false);
         } else {
             resetFields();
         }
@@ -43,30 +41,27 @@ const NewMedallistModal = () => {
     const resetFields = () => {
         setMedalDate("");
         setMedalCode("");
-        setName("");
         setGender("M");
         setCountryCode("");
-        setTeamGender("");
         setDiscipline("");
         setEvent("");
         setCodeAthlete("");
+        setWithTeam(false);
+        setTeamGender("");
         setCodeTeam("");
-        setIsMedallist(false);
     };
 
     const handleSaveMedallist = () => {
         const medallistData = {
             medal_date: medalDate,
             medal_code: medalCode,
-            name,
             gender,
             country_code: countryCode,
-            team_gender: teamGender,
             discipline,
             event,
             code_athlete: codeAthlete,
-            code_team: codeTeam,
-            is_medallist: isMedallist,
+            team_gender: withTeam ? teamGender : null,
+            code_team: withTeam ? codeTeam : null,
         };
 
         if (newMedallistModalData?.editMode) {
@@ -79,7 +74,7 @@ const NewMedallistModal = () => {
                     alert("Error updating medallist: " + error.message);
                 });
         } else {
-            createMedallist(medallistData)
+            newMedallist(medallistData)
                 .then(() => {
                     setNewMedallistModalData(null);
                     newMedallistModalData.update();
@@ -120,16 +115,6 @@ const NewMedallistModal = () => {
                         />
                     </div>
                     <div>
-                        <label className="block font-semibold">Name:</label>
-                        <input
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            className="border border-gray-400 rounded-md p-2 w-full"
-                            placeholder="Enter medallist's name"
-                        />
-                    </div>
-                    <div>
                         <label className="block font-semibold">Gender:</label>
                         <select
                             value={gender}
@@ -149,18 +134,6 @@ const NewMedallistModal = () => {
                             className="border border-gray-400 rounded-md p-2 w-full"
                             placeholder="Enter country code"
                         />
-                    </div>
-                    <div>
-                        <label className="block font-semibold">Team Gender:</label>
-                        <select
-                            value={teamGender}
-                            onChange={(e) => setTeamGender(e.target.value)}
-                            className="border border-gray-400 rounded-md p-2 w-full"
-                        >
-                            <option value="M">Male</option>
-                            <option value="F">Female</option>
-                            <option value="Mixed">Mixed</option>
-                        </select>
                     </div>
                     <div>
                         <label className="block font-semibold">Discipline:</label>
@@ -192,25 +165,42 @@ const NewMedallistModal = () => {
                             placeholder="Enter athlete code"
                         />
                     </div>
-                    <div>
-                        <label className="block font-semibold">Team Code:</label>
-                        <input
-                            type="text"
-                            value={codeTeam}
-                            onChange={(e) => setCodeTeam(e.target.value)}
-                            className="border border-gray-400 rounded-md p-2 w-full"
-                            placeholder="Enter team code (if any)"
-                        />
-                    </div>
-                    <div>
-                        <label className="block font-semibold">Is Medallist:</label>
+                    <div className="flex items-center gap-2">
+                        <label className="font-semibold">Is this a team event?</label>
                         <input
                             type="checkbox"
-                            checked={isMedallist}
-                            onChange={(e) => setIsMedallist(e.target.checked)}
-                            className="border border-gray-400 rounded-md"
+                            checked={withTeam}
+                            onChange={() => setWithTeam((prev) => !prev)}
+                            className="w-5 h-5"
                         />
                     </div>
+                    {withTeam && (
+                        <>
+                            <div>
+                                <label className="block font-semibold">Team Gender:</label>
+                                <select
+                                    value={teamGender}
+                                    onChange={(e) => setTeamGender(e.target.value)}
+                                    className="border border-gray-400 rounded-md p-2 w-full"
+                                >
+                                    <option value="">Select Team Gender</option>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                    <option value="Mixed">Mixed</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label className="block font-semibold">Team Code:</label>
+                                <input
+                                    type="text"
+                                    value={codeTeam}
+                                    onChange={(e) => setCodeTeam(e.target.value)}
+                                    className="border border-gray-400 rounded-md p-2 w-full"
+                                    placeholder="Enter team code"
+                                />
+                            </div>
+                        </>
+                    )}
                 </div>
                 <div className="flex justify-end gap-4 mt-4">
                     <Button onClick={() => setNewMedallistModalData(null)}>Cancel</Button>

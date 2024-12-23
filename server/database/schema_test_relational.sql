@@ -94,7 +94,7 @@ CREATE TABLE  `Coach` (
 
 -- Create Medallist Table
 CREATE TABLE `Medallist` (
-    `id` INT NOT NULL PRIMARY KEY,
+    `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `medal_date` DATE NOT NULL,
     `medal_code` INT NOT NULL,
     `gender` ENUM('M', 'F') NOT NULL,

@@ -78,8 +78,9 @@ def new_countries():
         if not data:
             return jsonify({'error': 'Invalid input: No JSON payload provided'}), 400
 
+        data = data.get('country_data')
         # Extract values from JSON payload
-        country_code = data.get('country_code')
+        country_code = data.get('code')
         country_name = data.get('country_name')
         country_long = data.get('country_long')
         gold_medal = data.get('gold_medal', 0)
@@ -126,5 +127,3 @@ def delete_country(country_code):
         if 'connection' in locals() and connection.is_connected():
             cursor.close()
             connection.close()
-
-

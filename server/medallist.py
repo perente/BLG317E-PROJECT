@@ -24,7 +24,6 @@ def get_medallists():
 
             # Get query parameters
             id = request.args.get('id')
-            name = request.args.get('name')
             medal_date = request.args.get('medal_date')
             medal_code = request.args.get('medal_code')
             gender = request.args.get('gender')
@@ -46,10 +45,6 @@ def get_medallists():
             if id:
                 filters.append("id = %s")
                 params.append(id)
-
-            if name:
-                filters.append("name = %s")
-                params.append(name)
 
             if medal_date:
                 filters.append("medal_date = %s")
@@ -108,36 +103,87 @@ def new_medallists():
     try:
         # Get data from POST request
         data = request.get_json()
-        event_data = ""
-
         if not data:
             return jsonify({'error': 'Invalid input: No JSON payload provided'}), 400
 
+        # Extract the nested input_data
+        data = data['input_data']
+
+        try:
+            # Convert medal_code and code_athlete to integers
+            medal_code = int(data.get('medal_code'))
+            code_athlete = int(data.get('code_athlete'))
+        except (ValueError, TypeError) as e:
+            return jsonify({'error': f'Invalid data type: {str(e)}'}), 400
+        #print("Incoming medal code Data:", medal_code) # Debug log
+
         # Extract values from JSON payload
-        id = data.get('id')
-        name = data.get('name')
         medal_date = data.get('medal_date')
-        medal_code = data.get('medal_code')
         gender = data.get('gender')
         country_code = data.get('country_code')
+        team_gender = data.get('team_gender')
         code_team = data.get('code_team')
-        code_athlete = data.get('code_athlete')
         discipline = data.get('discipline')
         event = data.get('event')
 
         # Validate required fields
-        if not all([id, name, medal_date, medal_code, gender, country_code, code_athlete, discipline, event]):
+        if not all([medal_date, medal_code, gender, country_code, code_athlete, discipline, event]):
+            if not medal_date:
+                return jsonify({'error': 'Missing required field: medal_date'}), 400
+            if not medal_code:
+                return jsonify({'error': 'Missing required field: medal_code'}), 400
+            if not gender:
+                return jsonify({'error': 'Missing required field: gender'}), 400
+            if not country_code:
+                return jsonify({'error': 'Missing required field: country_code'}), 400
+            if not code_athlete:
+                return jsonify({'error': 'Missing required field: code_athlete'}), 400
+            if not discipline:
+                return jsonify({'error': 'Missing required field: discipline'}), 400
+            if not event:
+                return jsonify({'error': 'Missing required field: event'}), 400
             return jsonify({'error': 'Missing required fields'}), 400
+
+        # Validate medal_code
+        if medal_code not in [1, 2, 3]:
+            return jsonify({'error': 'Invalid medal_code. It must be 1, 2, or 3.'}), 400
+
+        print("Incoming JSON Data:", data)  # Debug log
 
         # Establish database connection
         connection = db_connection()
 
         if connection.is_connected():
             with connection.cursor(dictionary=True) as cursor:
+                # Validate country_code
+                cursor.execute("SELECT 1 FROM Country WHERE country_code = %s", (country_code,))
+                if cursor.fetchone() is None:
+                    return jsonify({'error': 'Invalid country_code. It does not exist in the Country table.'}), 400
+
+                # Validate code_athlete
+                cursor.execute("SELECT 1 FROM Athlete WHERE athlete_code = %s", (code_athlete,))
+                if cursor.fetchone() is None:
+                    return jsonify({'error': 'Invalid code_athlete. It does not exist in the Athlete table.'}), 400
+
+                # Validate code_team if this is a team event
+                if code_team:
+                    cursor.execute("SELECT 1 FROM Teams WHERE team_code = %s", (code_team,))
+                    if cursor.fetchone() is None:
+                        return jsonify({'error': 'Invalid code_team. It does not exist in the Team table.'}), 400
+
+                # Validate discipline
+                cursor.execute("SELECT 1 FROM Discipline WHERE name = %s", (discipline,))
+                if cursor.fetchone() is None:
+                    return jsonify({'error': 'Invalid discipline. It does not exist in the Discipline table.'}), 400
+
                 # Insert medallist into the database
-                query = """INSERT INTO Medallist (id, name, medal_date, medal_code, gender, country_code, code_team, code_athlete, discipline, event) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+                query = """
+                    INSERT INTO Medallist (medal_date, medal_code, gender, team_gender, country_code, code_team, code_athlete, discipline, event)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+                """
                 values = (
-                id, name, medal_date, medal_code, gender, country_code, code_team, code_athlete, discipline, event)
+                    medal_date, medal_code, gender, team_gender, country_code, code_team, code_athlete, discipline, event
+                )
                 cursor.execute(query, values)
                 connection.commit()
 

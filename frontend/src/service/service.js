@@ -11,9 +11,9 @@ const axios = async function () {
         }
         return res;
     } catch (error) {
-        console.log(error)
-        alert(error)
-        throw error
+        console.log(error);
+        alert(error);
+        throw error;
     }
 };
 
@@ -30,63 +30,71 @@ export const createNewSchedule = async function (data) {
         const response = await axios({
             method: "POST",
             url: API_ROUTE.schedules,
-            data: data
+            data: data,
         });
         return response;
+    } catch (error) {
+        throw error;
     }
-    catch (error) {
-        throw error
-    }
-}
+};
 
 export const deleteSchedule = async function (id) {
     return await axios({
         method: "delete",
         url: `${API_ROUTE.schedules}/${id}`,
     });
-}
+};
 
 export const updateSchedule = async function (id, data) {
     try {
         const response = await axios({
             method: "patch",
             url: `${API_ROUTE.schedules}/${id}`,
-            data: data
+            data: data,
         });
         return response;
+    } catch (error) {
+        throw error;
     }
-    catch (error) {
-        throw error
-    }
-}
+};
 
 export const getMedallists = async function () {
     return await axios({
         method: "get",
         url: API_ROUTE.medallists,
     });
-}
+};
 
 export const deleteMedallist = async function (id) {
     return await axios({
         method: "delete",
         url: `${API_ROUTE.medallists}/${id}`,
     });
-}
+};
+
+export const newMedallist = async function (input_data) {
+    return await axios({
+        method: "post",
+        url: API_ROUTE.medallists,
+        data: {
+            input_data,
+        },
+    });
+};
 
 export const getDisciplines = async function () {
     return await axios({
         method: "get",
         url: API_ROUTE.disciplines,
     });
-}
+};
 
 export const deleteDiscipline = async function (id) {
     return await axios({
         method: "delete",
         url: `${API_ROUTE.disciplines}/${id}`,
     });
-}
+};
 
 export const newDiscipline = async function ({ discipline_code, name }) {
     try {
@@ -95,16 +103,14 @@ export const newDiscipline = async function ({ discipline_code, name }) {
             url: API_ROUTE.disciplines,
             data: {
                 discipline_code,
-                name
-            }
+                name,
+            },
         });
         return response;
+    } catch (error) {
+        throw error;
     }
-    catch (error) {
-        throw error
-
-    }
-}
+};
 
 export const updateDiscipline = async function ({ discipline_code, name, id }) {
     try {
@@ -113,15 +119,14 @@ export const updateDiscipline = async function ({ discipline_code, name, id }) {
             url: `${API_ROUTE.disciplines}/${id}`,
             data: {
                 discipline_code,
-                name
-            }
+                name,
+            },
         });
         return response;
+    } catch (error) {
+        throw error;
     }
-    catch (error) {
-        throw error
-    }
-}
+};
 
 export const getEvents = async function (filters = {}) {
     const queryParams = new URLSearchParams(filters).toString();
@@ -131,11 +136,10 @@ export const getEvents = async function (filters = {}) {
             url: `${API_ROUTE.events}?${queryParams}`,
         });
         return response;
-    }
-    catch (error) {
+    } catch (error) {
         throw error;
     }
-}
+};
 
 export const createNewEvent = async function (data) {
     try {
@@ -145,32 +149,30 @@ export const createNewEvent = async function (data) {
             data: data,
         });
         return response;
-    }
-    catch (error) {
+    } catch (error) {
         throw error;
     }
-}
+};
 
 export const deleteEvent = async function (events_code) {
     return await axios({
         method: "DELETE",
-        url: `${API_ROUTE.countries}/${events_code}`,
+        url: `${API_ROUTE.events}/${events_code}`,
     });
-}
+};
 
 export const updateEvent = async function (events_code, data) {
     try {
         const response = await axios({
             method: "PATCH",
-            url: `${API_ROUTE.countries}/${events_code}`,
+            url: `${API_ROUTE.events}/${events_code}`,
             data: data,
         });
         return response;
-    }
-    catch (error) {
+    } catch (error) {
         throw error;
     }
-}
+};
 
 export const getCountries = async function (filters = {}) {
     const queryParams = new URLSearchParams(filters).toString();
@@ -180,41 +182,41 @@ export const getCountries = async function (filters = {}) {
             url: `${API_ROUTE.countries}?${queryParams}`,
         });
         return response;
-    }
-    catch (error) {
+    } catch (error) {
         throw error;
     }
-}
+};
 
-export const createNewCountry = async function ({ country_code, country_name, country_long, gold_medal, silver_medal, bronze_medal }) {
+export const createNewCountry = async function (country_data) {
     try {
         const response = await axios({
             method: "POST",
             url: API_ROUTE.countries,
             data: {
-                country_code,
-                country_name,
-                country_long,
-                gold_medal,
-                silver_medal,
-                bronze_medal,
-            }
+                country_data,
+            },
         });
         return response;
-    }
-    catch (error) {
+    } catch (error) {
         throw error;
     }
-}
+};
 
 export const deleteCountry = async function (country_code) {
     return await axios({
         method: "DELETE",
         url: `${API_ROUTE.countries}/${country_code}`,
     });
-}
+};
 
-export const updateCountry = async function ({ country_code, country_name, country_long, gold_medal, silver_medal, bronze_medal }) {
+export const updateCountry = async function ({
+    country_code,
+    country_name,
+    country_long,
+    gold_medal,
+    silver_medal,
+    bronze_medal,
+}) {
     try {
         const response = await axios({
             method: "PATCH",
@@ -225,15 +227,14 @@ export const updateCountry = async function ({ country_code, country_name, count
                 country_long,
                 gold_medal,
                 silver_medal,
-                bronze_medal
-            }
+                bronze_medal,
+            },
         });
         return response;
-    }
-    catch (error) {
+    } catch (error) {
         throw error;
     }
-}
+};
 
 export const getAthletes = async function (filters = {}) {
     const queryParams = new URLSearchParams(filters).toString();
@@ -264,7 +265,7 @@ export const update_schedule_group = async function ({
     new_status,
     new_phase,
     new_venue,
-    new_event_code
+    new_event_code,
 }) {
     try {
         const response = await axios({
@@ -283,12 +284,11 @@ export const update_schedule_group = async function ({
                 new_status,
                 new_phase,
                 new_venue,
-                new_event_code
-            }
+                new_event_code,
+            },
         });
         return response;
-    }
-    catch (error) {
+    } catch (error) {
         throw error;
     }
-}
+};
