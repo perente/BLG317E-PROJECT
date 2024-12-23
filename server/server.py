@@ -9,7 +9,7 @@ from events import get_events, delete_event, update_events, new_events
 from athletes import get_athletes, delete_athletes
 from countries import get_countries, delete_country, update_countries, new_countries
 from medallist import get_medallists, new_medallists, delete_medallists
-from teams import get_teams, delete_team, update_team , delete_teams_athlete, update_team_athletes, get_teams_athletes, new_teams_with_athletes
+from teams import new_team, get_teams, delete_team, update_team , delete_TeamsAthlete, get_TeamsAthlete
 
 connection = mysql.connector.connect(host=db_host, database=db_name, port = db_port, user=db_user, password=db_password)    
 
@@ -97,7 +97,7 @@ def teams():
 
 @app.route('/teams', methods=['POST'])
 def create_teams():
-    return new_teams_with_athletes()
+    return new_team()
 
 @app.route('/teams/<string:team_code>', methods=['DELETE'])
 def delete_team_route(team_code):
@@ -107,32 +107,6 @@ def delete_team_route(team_code):
 @app.route('/teams/<string:team_code>', methods=['PATCH'])
 def update_team_route(team_code):
     return update_team(team_code)
-
-
-@app.route('/team_athlete', methods=['GET'])
-def get_teams_athlete():
-    try:
-        # Establish database connection
-        connection = db_connection()
-
-        if connection.is_connected():
-            cursor = connection.cursor(dictionary=True)
-            cursor.execute("SELECT * FROM Team_Athlete")
-            team_athlete = cursor.fetchall()
-
-            # Return data as JSON
-            return jsonify(team_athlete), 200
-        else:
-            return jsonify({'error': 'Failed to connect to the database'}), 500
-
-    except Error as e:
-        return jsonify({'error': str(e)}), 500
-
-    finally:
-        # Close the connection
-        if 'connection' in locals() and connection.is_connected():
-            cursor.close()
-            connection.close()
 
 @app.route('/team_coach', methods=['GET'])
 def get_teams_coach():
@@ -205,22 +179,13 @@ def get_coach():
             connection.close()
 
 
-@app.route('/teams_athletes', methods=['GET'])
+@app.route('/teams_athlete', methods=['GET'])
 def get_team_athletes_route():
-    return get_teams_athletes()
-
-"""
-@app.route('/teams_athlete', methods=['POST'])
-def create_teams_athlete_route():
-    return new_teams_athlete()
-"""
-@app.route('/teams_athlete', methods=['PUT'])
-def update_team_athletes_route():
-    return update_team_athletes()
+    return get_TeamsAthlete()
 
 @app.route('/teams_athlete', methods=['DELETE'])
 def delete_teams_athlete_route():
-    return delete_teams_athlete()
+    return delete_TeamsAthlete()
 
 
 if __name__ == '__main__':
