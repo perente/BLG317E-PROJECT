@@ -243,6 +243,13 @@ export const getAthletes = async function (filters = {}) {
     });
 };
 
+export const deleteAthlete = async function (id) {
+    return await axios({
+        method: "DELETE",
+        url: `${API_ROUTE.athletes}/${id}`,
+    });
+}
+
 
 export const update_schedule_group = async function ({
     start_date,

@@ -6,7 +6,7 @@ from settings import db_user,db_password, db_port, db_host,db_name
 from schedules import get_schedules, new_schedules, delete_schedules, update_schedule, update_schedules
 from disciplines import  get_disciplines, delete_disciplines, create_discipline, update_discipline
 from events import get_events, delete_event, update_events, new_events
-from athletes import get_athletes
+from athletes import get_athletes, delete_athletes
 from countries import get_countries, delete_country, update_countries, new_countries
 from medallist import get_medallists, new_medallists, delete_medallists
 from teams import get_teams, new_teams, delete_team, update_team
@@ -174,6 +174,10 @@ def delete_medallist(medallist_id):
 @app.route('/athletes', methods=['GET'])
 def athletes():
     return get_athletes()
+
+@app.route('/athletes/<int:athlete_id>', methods=['DELETE'])
+def delete_athlete(athlete_id):
+    return delete_athletes(athlete_id)
 
 @app.route('/coach', methods=['GET'])
 def get_coach():

@@ -1,7 +1,7 @@
 'use client'
 import { Button } from "@/components/button";
 import { useModalStore } from "@/lib/store";
-import { getAthletes, getCountries } from "@/service/service";
+import { getAthletes, getCountries, deleteAthlete } from "@/service/service";
 import { useParams, usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
@@ -57,6 +57,8 @@ const Athletes = () => {
         if (params.get("nationality")) filter.nationality = params.get("nationality");
         if (params.get("gender")) filter.gender = params.get("gender");
         if (params.get("birth_date")) filter.birth_date = params.get("birth_date");
+        if (params.get("order")) filter.order = params.get("order");
+        if (params.get("order_by")) filter.order_by = params.get("order_by");
 
         setLoading(true);
         getAthletes(filter) // This function fetches athlete data
@@ -82,6 +84,18 @@ const Athletes = () => {
     const pageNumbers = [];
     for (let i = 1; i <= totalPages; i++) {
         pageNumbers.push(i);
+    }
+
+    const handleDeleteAthlete = async (id) => {
+        deleteAthlete(id).then((res) => {
+            if (res.status === 200) {
+                setAthletes(athletes.filter((athlete) => athlete.athlete_code !== id));
+            }
+        }).catch((error) => {
+            alert(error);
+        }).finally(() => {
+            handleGetAthletes();
+        });
     }
 
     const onChange = ({ event, name }) => {
@@ -279,14 +293,14 @@ const Athletes = () => {
                             </th>
 
                             <th
-                                onClick={() => orderAthletes("country")}
+                                onClick={() => orderAthletes("country_name")}
                                 className="border border-gray-400 px-2 py-1 cursor-pointer">
                                 <div className="flex items-center justify-center">
                                     <span>Country</span>
                                     <div className="opcity-10 flex items-center justify-center flex-col">
-                                        <TiArrowSortedDown className={"w-5 h-5 mt-[6px] " + (orderBy === "country" && order === "asc" ? "opacity-100" : "opacity-30")}
+                                        <TiArrowSortedDown className={"w-5 h-5 mt-[6px] " + (orderBy === "country_name" && order === "asc" ? "opacity-100" : "opacity-30")}
                                             style={{ rotate: "180deg" }} />
-                                        <TiArrowSortedDown className={"w-5 h-5 mt-[-10px] " + (orderBy === "country" && order === "desc" ? "opacity-100" : "opacity-30")}
+                                        <TiArrowSortedDown className={"w-5 h-5 mt-[-10px] " + (orderBy === "country_name" && order === "desc" ? "opacity-100" : "opacity-30")}
                                             style={{ rotate: "0deg" }} />
                                     </div>
                                 </div>
@@ -330,7 +344,7 @@ const Athletes = () => {
                                 </td>
                                 <td className="border border-gray-400 px-2 py-1 cursor-pointer">
                                     <div className="flex gap-1">
-                                        <div className="cursor-pointer" onClick={() => { }}>
+                                        <div className="cursor-pointer" onClick={() => { handleDeleteAthlete(athlete.athlete_code) }}>
                                             <MdDelete className="w-6 h-6" />
                                         </div>
                                         <div className="cursor-pointer" onClick={() => { }}
@@ -345,6 +359,39 @@ const Athletes = () => {
                     </tbody>
 
                 </table>}
+
+            {/* Pagination Controls */}
+            <div className="flex justify-center mt-4 items-center">
+                <button
+                    onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                    disabled={currentPage === 1}
+                    className="px-3 py-1 bg-gray-300 rounded-l disabled:opacity-50"
+                >
+                    Previous
+                </button>
+
+                <select
+                    value={currentPage}
+                    onChange={(e) => setCurrentPage(Number(e.target.value))}
+                    className="mx-2 px-3 py-1 bg-gray-200 text-black"
+                >
+                    {pageNumbers.map((number) => (
+                        <option key={number} value={number}>
+                            Page {number}
+                        </option>
+                    ))}
+                </select>
+
+                <button
+                    onClick={() =>
+                        setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                    }
+                    disabled={currentPage === totalPages}
+                    className="px-3 py-1 bg-gray-300 rounded-r disabled:opacity-50"
+                >
+                    Next
+                </button>
+            </div>
 
         </div >
 

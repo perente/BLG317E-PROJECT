@@ -102,3 +102,34 @@ def get_athletes():
             connection.close()
 
 
+def delete_athletes(athleteID):
+    try:
+        # Validate required fields
+        if not athleteID:
+            return jsonify({'error': 'Missing required fields'}), 400
+
+        # Establish database connection
+        connection = db_connection()  # Ensure this function is defined elsewhere
+
+        if connection.is_connected():
+            with connection.cursor(dictionary=True) as cursor:
+                # Query to delete ATHLETE by athleteID
+                query = "DELETE FROM Athlete WHERE athlete_code = %s"
+                cursor.execute(query, (athleteID,))
+                connection.commit()
+
+                return jsonify({'message': 'Athlete deleted successfully'}), 200
+
+        else:
+            return jsonify({'error': 'Failed to connect to the database'}), 500
+
+    except mysql.connector.Error as e:
+        return jsonify({'error': f'Database error: {str(e)}'}), 500
+
+    except Exception as e:
+        return jsonify({'error': f'Unexpected error: {str(e)}'}), 500
+
+    finally:
+        # Ensure the connection is closed properly
+        if 'connection' in locals() and connection.is_connected():
+            connection.close()
