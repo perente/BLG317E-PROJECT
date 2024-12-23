@@ -170,7 +170,7 @@ try:
     insertData('teams_simplified', command)
     command = """INSERT INTO Athlete (athlete_code,name,gender,country_code,nationality,birth_date) VALUES (%s,%s,%s,%s,%s,%s)  """
     insertData('athlete', command)
-    command = """INSERT INTO Coach (coach_code,name,gender,`function`,country_code,disciplines,birth_date) VALUES (%s,%s,%s,%s,%s,%s,%s) """
+    command = """INSERT INTO Coach (coach_code,name,gender,coach_function,country_code,disciplines,birth_date) VALUES (%s,%s,%s,%s,%s,%s,%s) """
     insertDataCoach('coach', command)
     command = """INSERT INTO Medallist (medal_date, medal_code, gender,country_code,team_gender,discipline,event,code_athlete,code_team,id)  VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
     insertDataMedallist('medallist_updated', command)

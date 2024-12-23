@@ -1,7 +1,7 @@
 'use client'
 import { Button } from "@/components/button";
 import { useModalStore } from "@/lib/store";
-import { getAthletes, getCountries, deleteAthlete } from "@/service/service";
+import { getCoaches, getCountries, deleteCoaches, getDisciplines } from "@/service/service";
 import { useParams, usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
@@ -9,8 +9,8 @@ import { FaEdit, FaExternalLinkSquareAlt } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { TiArrowSortedDown } from "react-icons/ti";
 
-const Athletes = () => {
-    const [athletes, setAthletes] = useState([]);
+const Coaches = () => {
+    const [coaches, setCoaches] = useState([]);
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1); // State for current page
     const itemsPerPage = 10; // Number of items per page
@@ -20,50 +20,59 @@ const Athletes = () => {
 
     const [birth_date, setBirthDate] = useState(params.get("birth_date") ?? "");
     const [gender, setGender] = useState(params.get("gender") ?? "");
-    const [nationality, setNationality] = useState(params.get("nationality") ?? "");
+    const [coach_function, setCoachFunction] = useState(params.get("coach_function") ?? "");
     const [country_code, setCountryCode] = useState(params.get("country_code") ?? "");
     const [name, setName] = useState(params.get("name") ?? "");
+    const [disciplines, setDisciplines] = useState(params.get("disciplines") ?? "");
 
 
     const [order, setOrder] = useState(params.get("order") ?? "");
     const [orderBy, setOrderBy] = useState(params.get("order_by") ?? "");
     const [countries, setCountries] = useState([]);
+    const [all_disciplines, setAllDisciplines] = useState([]);
 
 
 
     useEffect(() => {
-        handleGetAthletes();
+        handleGetCoaches();
         getCountries().then((res) => {
             setCountries(res.data);
+        }).catch((error) => {
+            alert(error);
+        });
+        getDisciplines().then((res) => {
+            setAllDisciplines(res.data);
         }).catch((error) => {
             alert(error);
         });
         setCurrentPage(1);
         setBirthDate(params.get("birth_date") ?? "");
         setGender(params.get("gender") ?? "");
-        setNationality(params.get("nationality") ?? "");
+        setCoachFunction(params.get("coach_function") ?? "");
         setCountryCode(params.get("country_code") ?? "");
         setName(params.get("name") ?? "");
+        setDisciplines(params.get("disciplines") ?? "");
         setOrder(params.get("order") ?? "");
         setOrderBy(params.get("order_by") ?? "");
     }, [params]);
 
 
-    const handleGetAthletes = async () => {
+    const handleGetCoaches = async () => {
         let filter = {};
-        if (params.get("athlete_code")) filter.athlete_code = params.get("athlete_code");
+        if (params.get("coach_code")) filter.coach_code = params.get("coach_code");
         if (params.get("name")) filter.name = params.get("name");
         if (params.get("country_code")) filter.country_code = params.get("country_code");
-        if (params.get("nationality")) filter.nationality = params.get("nationality");
+        if (params.get("coach_function")) filter.coach_function = params.get("coach_function");
         if (params.get("gender")) filter.gender = params.get("gender");
         if (params.get("birth_date")) filter.birth_date = params.get("birth_date");
+        if (params.get("disciplines")) filter.disciplines = params.get("disciplines");
         if (params.get("order")) filter.order = params.get("order");
         if (params.get("order_by")) filter.order_by = params.get("order_by");
 
         setLoading(true);
-        getAthletes(filter) // This function fetches athlete data
+        getCoaches(filter) // This function fetches coach data
             .then((res) => {
-                setAthletes(res.data); // Assuming res.data contains the athletes
+                setCoaches(res.data); // Assuming res.data contains the coaches
             })
             .finally(() => {
                 setLoading(false);
@@ -71,14 +80,14 @@ const Athletes = () => {
     };
 
     // Calculate total pages
-    const totalPages = Math.ceil(athletes.length / itemsPerPage);
+    const totalPages = Math.ceil(coaches.length / itemsPerPage);
 
     // Get current items
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = athletes.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = coaches.slice(indexOfFirstItem, indexOfLastItem);
 
-    const setNewAthleteModal = useModalStore((state) => state.setNewAthleteModal);
+    const setNewCoachModal = useModalStore((state) => state.setNewCoachModal);
 
     // Generate page numbers
     const pageNumbers = [];
@@ -86,15 +95,15 @@ const Athletes = () => {
         pageNumbers.push(i);
     }
 
-    const handleDeleteAthlete = async (id) => {
-        deleteAthlete(id).then((res) => {
+    const handleDeleteCoach = async (id) => {
+        deleteCoaches(id).then((res) => {
             if (res.status === 200) {
-                setAthletes(athletes.filter((athlete) => athlete.athlete_code !== id));
+                setCoaches(coaches.filter((coach) => coach.coach_code !== id));
             }
         }).catch((error) => {
             alert(error);
         }).finally(() => {
-            handleGetAthletes();
+            handleGetCoaches();
         });
     }
 
@@ -121,7 +130,7 @@ const Athletes = () => {
     }
 
 
-    const orderAthletes = (orderBy) => {
+    const orderCoaches = (orderBy) => {
         const current = new URLSearchParams(Array.from(params.entries())); // -> has to use this form
         const value = orderBy;
         if (!value) {
@@ -154,10 +163,7 @@ const Athletes = () => {
     return (
         <div className="container mx-auto pb-4">
             <div className="flex items-center justify-between my-4">
-                <h1 className="text-3xl">Athletes</h1>
-                <Button onClick={() => { }} className="">
-                    Create New Athlete
-                </Button>
+                <h1 className="text-3xl">Coaches</h1>
             </div>
             <div>
                 <h3 className="text-xl font-semibold inline-block mr-4">Filters</h3>
@@ -214,16 +220,35 @@ const Athletes = () => {
                             }
                         </select>
                     </div>
+
                     <div className="flex flex-col">
-                        <label htmlFor="nationality" className="mr-1">Nationality:</label>
+                        <label htmlFor="disciplines" className="mr-1">Disciplines:</label>
+                        <select className="border border-gray-400 rounded-md p-1 h-[34px] w-full"
+                            value={disciplines}
+                            onChange={(e) => {
+                                setDisciplines(e.target.value);
+                                onChange({ event: e, name: "disciplines" });
+                            }}
+                        >
+                            <option value="">All</option>
+                            {all_disciplines.
+                                map((discipline) => (
+                                    <option key={discipline.discipline_code} value={discipline.name}>{discipline.name}</option>
+                                ))
+                            }
+                        </select>
+                    </div>
+
+                    <div className="flex flex-col">
+                        <label htmlFor="coach_function" className="mr-1">Function:</label>
                         <input
                             type="text"
-                            name="nationality"
+                            name="coach_function"
                             className="border border-gray-400 rounded-md p-1 h-[34px]"
-                            value={nationality}
+                            value={coach_function}
                             onChange={(e) => {
-                                setNationality(e.target.value);
-                                onChange({ event: e, name: "nationality" });
+                                setCoachFunction(e.target.value);
+                                onChange({ event: e, name: "coach_function" });
                             }}
                         />
                     </div>
@@ -245,15 +270,15 @@ const Athletes = () => {
             </div>
 
             {/* Table Content */}
-            {athletes.length === 0 ?
+            {coaches.length === 0 ?
 
-                <p className="text-lg font-semibold mt-4">No athletes found</p>
+                <p className="text-lg font-semibold mt-4">No coaches found</p>
 
                 : <table className="table-auto w-full border-collapse border border-gray-400 mt-4">
                     <thead>
                         <tr className="bg-gray-200">
                             <th
-                                onClick={() => orderAthletes("name")}
+                                onClick={() => orderCoaches("name")}
                                 className="border border-gray-400 px-2 py-1 cursor-pointer">
                                 <div className="flex items-center justify-center">
                                     <span>Name</span>
@@ -266,7 +291,7 @@ const Athletes = () => {
                                 </div>
                             </th>
                             <th
-                                onClick={() => orderAthletes("birth_date")}
+                                onClick={() => orderCoaches("birth_date")}
                                 className="border border-gray-400 px-2 py-1 cursor-pointer">
                                 <div className="flex items-center justify-center">
                                     <span>Birth Date</span>
@@ -279,7 +304,7 @@ const Athletes = () => {
                                 </div>
                             </th>
                             <th
-                                onClick={() => orderAthletes("gender")}
+                                onClick={() => orderCoaches("gender")}
                                 className="border border-gray-400 px-2 py-1 cursor-pointer">
                                 <div className="flex items-center justify-center">
                                     <span>Gender</span>
@@ -293,7 +318,7 @@ const Athletes = () => {
                             </th>
 
                             <th
-                                onClick={() => orderAthletes("country_name")}
+                                onClick={() => orderCoaches("country_name")}
                                 className="border border-gray-400 px-2 py-1 cursor-pointer">
                                 <div className="flex items-center justify-center">
                                     <span>Country</span>
@@ -306,54 +331,59 @@ const Athletes = () => {
                                 </div>
                             </th>
                             <th
-                                onClick={() => orderAthletes("nationality")}
+                                onClick={() => orderCoaches("coach_function")}
                                 className="border border-gray-400 px-2 py-1 cursor-pointer">
                                 <div className="flex items-center justify-center">
-                                    <span>Nationality</span>
+                                    <span>Function</span>
                                     <div className="opcity-10 flex items-center justify-center flex-col">
-                                        <TiArrowSortedDown className={"w-5 h-5 mt-[6px] " + (orderBy === "nationality" && order === "asc" ? "opacity-100" : "opacity-30")}
+                                        <TiArrowSortedDown className={"w-5 h-5 mt-[6px] " + (orderBy === "coach_function" && order === "asc" ? "opacity-100" : "opacity-30")}
                                             style={{ rotate: "180deg" }} />
-                                        <TiArrowSortedDown className={"w-5 h-5 mt-[-10px] " + (orderBy === "nationality" && order === "desc" ? "opacity-100" : "opacity-30")}
+                                        <TiArrowSortedDown className={"w-5 h-5 mt-[-10px] " + (orderBy === "coach_function" && order === "desc" ? "opacity-100" : "opacity-30")}
+                                            style={{ rotate: "0deg" }} />
+                                    </div>
+                                </div>
+                            </th>
+
+                            <th
+                                onClick={() => orderCoaches("disciplines")}
+                                className="border border-gray-400 px-2 py-1 cursor-pointer">
+                                <div className="flex items-center justify-center">
+                                    <span>Disciplines</span>
+                                    <div className="opcity-10 flex items-center justify-center flex-col">
+                                        <TiArrowSortedDown className={"w-5 h-5 mt-[6px] " + (orderBy === "disciplines" && order === "asc" ? "opacity-100" : "opacity-30")}
+                                            style={{ rotate: "180deg" }} />
+                                        <TiArrowSortedDown className={"w-5 h-5 mt-[-10px] " + (orderBy === "disciplines" && order === "desc" ? "opacity-100" : "opacity-30")}
                                             style={{ rotate: "0deg" }} />
                                     </div>
                                 </div>
                             </th>
 
 
-                            <th className="border border-gray-400 px-2 py-1 cursor-pointer"></th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        {currentItems.map((athlete) => (
-                            <tr key={athlete.athlete_code} className="border-b">
+                        {currentItems.map((coach) => (
+                            <tr key={coach.coach_code} className="border-b">
                                 <td className="border border-gray-400 px-2 py-1 cursor-pointer">
-                                    {athlete.name}
+                                    {coach.name}
                                 </td>
                                 <td className="border border-gray-400 px-2 py-1 cursor-pointer">
-                                    {athlete.birth_date}
+                                    {coach.birth_date}
                                 </td>
                                 <td className="border border-gray-400 px-2 py-1 cursor-pointer">
-                                    {athlete.gender}
+                                    {coach.gender}
                                 </td>
                                 <td className="border border-gray-400 px-2 py-1 cursor-pointer">
-                                    {athlete.country_name}
+                                    {coach.country_name}
                                 </td>
                                 <td className="border border-gray-400 px-2 py-1 cursor-pointer">
-                                    {athlete.nationality}
+                                    {coach.coach_function}
                                 </td>
                                 <td className="border border-gray-400 px-2 py-1 cursor-pointer">
-                                    <div className="flex gap-1">
-                                        <div className="cursor-pointer" onClick={() => { handleDeleteAthlete(athlete.athlete_code) }}>
-                                            <MdDelete className="w-6 h-6" />
-                                        </div>
-                                        <div className="cursor-pointer" onClick={() => { }}
-                                        >
-                                            <FaEdit className="w-6 h-6" />
-                                        </div>
+                                    {coach.disciplines}
+                                </td>
 
-                                    </div>
-                                </td>
                             </tr>
                         ))}
                     </tbody>
@@ -402,7 +432,7 @@ const Athletes = () => {
 export default function Page() {
     return (
         <Suspense fallback={<div>Loading...</div>}>
-            <Athletes />
+            <Coaches />
         </Suspense>
     )
 }

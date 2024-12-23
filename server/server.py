@@ -7,6 +7,7 @@ from schedules import get_schedules, new_schedules, delete_schedules, update_sch
 from disciplines import  get_disciplines, delete_disciplines, create_discipline, update_discipline
 from events import get_events, delete_event, update_events, new_events
 from athletes import get_athletes, delete_athletes
+from coaches import get_coaches, delete_coaches
 from countries import get_countries, delete_country, update_countries, new_countries
 from medallist import get_medallists, new_medallists, delete_medallists
 from teams import get_teams, new_teams, delete_team, update_team
@@ -179,30 +180,13 @@ def athletes():
 def delete_athlete(athlete_id):
     return delete_athletes(athlete_id)
 
-@app.route('/coach', methods=['GET'])
-def get_coach():
-    try:
-        # Establish database connection
-        connection = db_connection()
+@app.route('/coaches', methods=['GET'])
+def coaches():
+    return get_coaches()
 
-        if connection.is_connected():
-            cursor = connection.cursor(dictionary=True)
-            cursor.execute("SELECT * FROM Coach")
-            coach = cursor.fetchall()
-
-            # Return data as JSON
-            return jsonify(coach), 200
-        else:
-            return jsonify({'error': 'Failed to connect to the database'}), 500
-
-    except Error as e:
-        return jsonify({'error': str(e)}), 500
-
-    finally:
-        # Close the connection
-        if 'connection' in locals() and connection.is_connected():
-            cursor.close()
-            connection.close()
+@app.route('/coaches/<int:coach_id>', methods=['DELETE'])
+def delete_coach(coach_id):
+    return delete_coaches(coach_id)
 
 
 if __name__ == '__main__':

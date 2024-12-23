@@ -43,7 +43,7 @@ export default function RootLayout({ children }) {
         <UpdateScheduleGroupModal />
         <div className="w-full h-[100vh] flex flex-col">
           <header className="bg-slate-700 sticky top-0 z-50">
-            <div className="container relative m-auto flex items-center justify-center min-h-28">
+            <div className="container relativer m-auto flex items-center justify-center min-h-28">
               <a
                 className="text-4xl font-paris text-white cursor-pointer"
                 href="/admin"
@@ -76,6 +76,12 @@ export default function RootLayout({ children }) {
                   className="text-white hover:tracking-wider duration-300 px-4 box-border"
                 >
                   Athletes
+                </a>
+                <a
+                  href="/admin/coaches"
+                  className="text-white hover:tracking-wider duration-300 px-4 box-border"
+                >
+                  Coaches
                 </a>
                 <a
                   href="/admin/medallists"

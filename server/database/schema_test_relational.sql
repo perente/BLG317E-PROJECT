@@ -83,7 +83,7 @@ CREATE TABLE  `Coach` (
     `coach_code` INT PRIMARY KEY,
     `name` VARCHAR(100) NOT NULL,
     `gender` CHAR(1) NOT NULL,
-    `function` VARCHAR(20) NOT NULL,
+    `coach_function` VARCHAR(20) NOT NULL,
     `birth_date` DATE,
     `country_code` VARCHAR(3),
     `disciplines` VARCHAR(50),

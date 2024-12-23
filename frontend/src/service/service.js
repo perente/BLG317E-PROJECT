@@ -251,6 +251,21 @@ export const deleteAthlete = async function (id) {
     });
 }
 
+export const getCoaches = async function (filters = {}) {
+    const queryParams = new URLSearchParams(filters).toString();
+    return await axios({
+        method: "GET",
+        url: `${API_ROUTE.coaches}?${queryParams}`,
+    });
+};
+
+export const deleteCoaches = async function (id) {
+    return await axios({
+        method: "DELETE",
+        url: `${API_ROUTE.coaches}/${id}`,
+    });
+}
+
 
 export const update_schedule_group = async function ({
     start_date,

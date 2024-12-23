@@ -12,6 +12,8 @@ import { RiTeamFill } from "react-icons/ri";
 import { MdLeaderboard } from "react-icons/md";
 import { MdOutlineSportsBaseball } from "react-icons/md";
 import { BsFillFlagFill } from "react-icons/bs";
+import { GiWhistle } from "react-icons/gi";
+
 
 export default function Home() {
   const router = useRouter();
@@ -30,53 +32,53 @@ export default function Home() {
     router.push(path);
   };
 
-const sports = [
-  "Archery",
-  "Artistic Gymnastics",
-  "Artistic Swimming",
-  "Athletics",
-  "Badminton",
-  "Basketball",
-  "Basketball 3x3",
-  "Beach Volleyball",
-  "Boxing",
-  "Breaking",
-  "Canoe Slalom",
-  "Canoe Sprint",
-  "Cycling BMX Freestyle",
-  "Cycling BMX Racing",
-  "Cycling Mountain Bike",
-  "Cycling Road",
-  "Cycling Track",
-  "Diving",
-  "Equestrian",
-  "Fencing",
-  "Football",
-  "Golf",
-  "Handball",
-  "Hockey",
-  "Judo",
-  "Marathon Swimming",
-  "Modern Pentathlon",
-  "Rhythmic Gymnastics",
-  "Rowing",
-  "Rugby Sevens",
-  "Sailing",
-  "Shooting",
-  "Skateboarding",
-  "Sport Climbing",
-  "Surfing",
-  "Swimming",
-  "Table Tennis",
-  "Taekwondo",
-  "Tennis",
-  "Trampoline",
-  "Triathlon",
-  "Volleyball",
-  "Water Polo",
-  "Weightlifting",
-  "Wrestling"
-];
+  const sports = [
+    "Archery",
+    "Artistic Gymnastics",
+    "Artistic Swimming",
+    "Athletics",
+    "Badminton",
+    "Basketball",
+    "Basketball 3x3",
+    "Beach Volleyball",
+    "Boxing",
+    "Breaking",
+    "Canoe Slalom",
+    "Canoe Sprint",
+    "Cycling BMX Freestyle",
+    "Cycling BMX Racing",
+    "Cycling Mountain Bike",
+    "Cycling Road",
+    "Cycling Track",
+    "Diving",
+    "Equestrian",
+    "Fencing",
+    "Football",
+    "Golf",
+    "Handball",
+    "Hockey",
+    "Judo",
+    "Marathon Swimming",
+    "Modern Pentathlon",
+    "Rhythmic Gymnastics",
+    "Rowing",
+    "Rugby Sevens",
+    "Sailing",
+    "Shooting",
+    "Skateboarding",
+    "Sport Climbing",
+    "Surfing",
+    "Swimming",
+    "Table Tennis",
+    "Taekwondo",
+    "Tennis",
+    "Trampoline",
+    "Triathlon",
+    "Volleyball",
+    "Water Polo",
+    "Weightlifting",
+    "Wrestling"
+  ];
 
 
   return (
@@ -85,8 +87,8 @@ const sports = [
       <main className="w-full flex-1 flex flex-col items-center z-10 mt-16">
         <img className="max-w-[240px] mb-12" src="img/logo.png" />
         <h1 className="text-3xl mb-6 font-paris font-semibold text-black ">Welcome to The Olympic Games</h1>
-        <div>
-          <ul className="grid grid-cols-4 gap-3">
+        <div className="" >
+          <ul className="grid grid-cols-3 gap-3">
             <CustomButton
               color="#54458C"
               bgLight="#877FB3"
@@ -131,10 +133,17 @@ const sports = [
               onClick={() => routerPush("/disciplines")}>Disciplines</CustomButton>
             <CustomButton
               size="lg"
+              color="#fcb22c"
+              bgLight="#ffce71"
+              icon={<GiWhistle className="scale-150" />}
+              onClick={() => routerPush("/coaches")}>Coaches</CustomButton>
+            <CustomButton
+              size="lg"
               color="#045B70"
               bgLight="#3A8799"
               icon={<BsFillFlagFill className="scale-150" />}
               onClick={() => routerPush("/countries")}>Countries</CustomButton>
+
           </ul>
         </div>
       </main>
