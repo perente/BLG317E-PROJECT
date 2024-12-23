@@ -9,7 +9,7 @@ from events import get_events, delete_event, update_events, new_events
 from athletes import get_athletes, delete_athletes
 from countries import get_countries, delete_country, update_countries, new_countries
 from medallist import get_medallists, new_medallists, delete_medallists
-from teams import get_teams, new_teams, delete_team, update_team
+from teams import get_teams, delete_team, update_team , delete_teams_athlete, update_team_athletes, get_teams_athletes, new_teams_with_athletes
 
 connection = mysql.connector.connect(host=db_host, database=db_name, port = db_port, user=db_user, password=db_password)    
 
@@ -97,7 +97,7 @@ def teams():
 
 @app.route('/teams', methods=['POST'])
 def create_teams():
-    return new_teams()
+    return new_teams_with_athletes()
 
 @app.route('/teams/<string:team_code>', methods=['DELETE'])
 def delete_team_route(team_code):
@@ -203,6 +203,24 @@ def get_coach():
         if 'connection' in locals() and connection.is_connected():
             cursor.close()
             connection.close()
+
+
+@app.route('/teams_athletes', methods=['GET'])
+def get_team_athletes_route():
+    return get_teams_athletes()
+
+"""
+@app.route('/teams_athlete', methods=['POST'])
+def create_teams_athlete_route():
+    return new_teams_athlete()
+"""
+@app.route('/teams_athlete', methods=['PUT'])
+def update_team_athletes_route():
+    return update_team_athletes()
+
+@app.route('/teams_athlete', methods=['DELETE'])
+def delete_teams_athlete_route():
+    return delete_teams_athlete()
 
 
 if __name__ == '__main__':

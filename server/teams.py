@@ -81,43 +81,76 @@ def get_teams():
             connection.close()
 
 
-def new_teams():
+def new_teams_with_athletes():
     try:
         connection = db_connection()
         cursor = connection.cursor(dictionary=True)
 
+        # JSON verilerini al
         data = request.json
-        team_code = data.get('team_code')
         team_name = data.get('team_name')
         team_gender = data.get('team_gender')
         country_code = data.get('country_code')
         discipline_code = data.get('discipline_code')
         num_athletes = data.get('num_athletes')
+        athlete_codes = data.get('athlete_codes')  # Atlet kodları listesi
 
-        if not team_code or not team_name or not team_gender:
-            return jsonify({'error': 'team_code, team_name, and team_gender are required'}), 400
+        if not team_name or not team_gender:
+            return jsonify({'error': 'team_name and team_gender are required'}), 400
 
-        cursor.execute("SELECT * FROM Teams WHERE team_code = %s", (team_code,))
-        if cursor.fetchone():
-            return jsonify({'error': f'Team with code {team_code} already exists'}), 409
+        if not discipline_code or not num_athletes or not country_code:
+            return jsonify({'error': 'discipline_code, num_athletes, and country_code are required'}), 400
 
-        query = """
+        if not athlete_codes or not isinstance(athlete_codes, list):
+            return jsonify({'error': 'athlete_codes must be a non-empty list'}), 400
+
+        cursor.execute("START TRANSACTION")
+
+        # Generate team_code manually
+        cursor.execute("""
+            SELECT LPAD(
+                MAX(CAST(SUBSTRING(team_code, LENGTH(CONCAT(%s, 'TEAM', %s, '---', %s)) + 1) AS UNSIGNED)) + 1,
+                1,
+                '1'
+            ) AS next_code
+            FROM Teams
+            WHERE team_code LIKE CONCAT(%s, 'TEAM', %s, '---', %s, '%')
+        """, (discipline_code, num_athletes, country_code, discipline_code, num_athletes, country_code))
+        result = cursor.fetchone()
+        next_code = result['next_code'] if result['next_code'] else '1'
+
+        team_code = f"{discipline_code}TEAM{num_athletes}---{country_code}{next_code}"
+
+        # Insert team
+        cursor.execute("""
             INSERT INTO Teams (team_code, team_name, team_gender, country_code, discipline_code, num_athletes)
             VALUES (%s, %s, %s, %s, %s, %s)
-        """
-        cursor.execute(query, (team_code, team_name, team_gender, country_code, discipline_code, num_athletes))
+        """, (team_code, team_name, team_gender, country_code, discipline_code, num_athletes))
+
         connection.commit()
 
-        return jsonify({'message': 'Team created successfully'}), 201
+        # Insert athletes into Team_Athlete
+        athlete_query = "INSERT INTO Team_Athlete (team_code, athlete_code) VALUES (%s, %s)"
+        for athlete_code in athlete_codes:
+            cursor.execute(athlete_query, (team_code, athlete_code))
+            print("Inserted",athlete_code)
 
-    except Error as e:
-        return jsonify({'error': str(e)}), 500
+        connection.commit()
+
+        return jsonify({'message': 'Team and athletes added successfully', 'team_code': team_code}), 201
+
+    except mysql.connector.Error as e:
+        connection.rollback()
+        return jsonify({'error': f'Database error: {str(e)}'}), 500
+
+    except Exception as e:
+        connection.rollback()
+        return jsonify({'error': f'Unexpected error: {str(e)}'}), 500
 
     finally:
         if connection.is_connected():
             cursor.close()
             connection.close()
-
 
 def delete_team(team_code):
     try:
@@ -185,3 +218,141 @@ def update_team():
         if connection.is_connected():
             cursor.close()
             connection.close()
+
+def get_teams_athletes():
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+
+        team_code = request.args.get('team_code')
+
+        # Check if the team exists
+        cursor.execute("SELECT * FROM Teams WHERE team_code = %s", (team_code,))
+        team = cursor.fetchone()
+        if not team:
+            return jsonify({'error': f'Team with code {team_code} does not exist'}), 404
+
+        query = """
+            SELECT A.athlete_code, A.name, A.gender, A.birth_date, A.nationality, A.country_code
+            FROM Athlete A
+            INNER JOIN Team_Athlete TA ON A.athlete_code = TA.athlete_code
+            WHERE TA.team_code = %s
+        """
+        cursor.execute(query, (team_code,))
+        athletes = cursor.fetchall()
+
+        return jsonify({
+            'team_code': team_code,
+            'team_name': team['team_name'],
+            'athletes': athletes
+        }), 200
+
+    except mysql.connector.Error as e:
+        return jsonify({'error': f'Database error: {str(e)}'}), 500
+
+    except Exception as e:
+        return jsonify({'error': f'Unexpected error: {str(e)}'}), 500
+
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
+
+
+#update teams athletes
+def update_team_athletes():
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+
+
+        data = request.json
+        team_code = data.get('team_code')
+        athlete_codes = data.get('athlete_codes')  # List of athlete codes
+
+        if not athlete_codes or not isinstance(athlete_codes, list):
+            return jsonify({'error': 'athlete_codes must be a non-empty list'}), 400
+
+        # Check if the team exists
+        cursor.execute("SELECT * FROM Teams WHERE team_code = %s", (team_code,))
+        team = cursor.fetchone()
+        if not team:
+            return jsonify({'error': f'Team with code {team_code} does not exist'}), 404
+
+        for athlete_code in athlete_codes:
+            cursor.execute("SELECT * FROM Athlete WHERE athlete_code = %s", (athlete_code,))
+            athlete = cursor.fetchone()
+            if not athlete:
+                return jsonify({'error': f'Athlete with code {athlete_code} does not exist'}), 404
+
+        # Remove all existing athletes from the team
+        cursor.execute("DELETE FROM Team_Athlete WHERE team_code = %s", (team_code,))
+
+        # Add new athletes to the team
+        for athlete_code in athlete_codes:
+            cursor.execute("INSERT INTO Team_Athlete (team_code, athlete_code) VALUES (%s, %s)", (team_code, athlete_code))
+
+        connection.commit()
+
+        return jsonify({'message': f'Athletes updated successfully for team {team_code}'}), 200
+
+    except mysql.connector.Error as e:
+        return jsonify({'error': f'Database error: {str(e)}'}), 500
+
+    except Exception as e:
+        return jsonify({'error': f'Unexpected error: {str(e)}'}), 500
+
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
+
+#delete spesific athlete from a team
+def delete_teams_athlete():
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+
+        data = request.json
+        team_code = data.get('team_code')
+        athlete_code = data.get('athlete_code')
+
+        if not team_code or not athlete_code:
+            return jsonify({'error': 'Both team_code and athlete_code are required'}), 400
+
+        # Check if the team exists
+        cursor.execute("SELECT * FROM Teams WHERE team_code = %s", (team_code,))
+        team = cursor.fetchone()
+        if not team:
+            return jsonify({'error': f'Team with code {team_code} does not exist'}), 404
+
+        # Check if the athlete exists in the team
+        cursor.execute(
+            "SELECT * FROM Team_Athlete WHERE team_code = %s AND athlete_code = %s",
+            (team_code, athlete_code)
+        )
+        team_athlete = cursor.fetchone()
+        if not team_athlete:
+            return jsonify({'error': f'Athlete with code {athlete_code} is not part of team {team_code}'}), 404
+
+        # Remove the athlete from the team
+        cursor.execute(
+            "DELETE FROM Team_Athlete WHERE team_code = %s AND athlete_code = %s",
+            (team_code, athlete_code)
+        )
+        connection.commit()
+
+        return jsonify({'message': f'Athlete with code {athlete_code} removed from team {team_code} successfully'}), 200
+
+    except mysql.connector.Error as e:
+        return jsonify({'error': f'Database error: {str(e)}'}), 500
+
+    except Exception as e:
+        return jsonify({'error': f'Unexpected error: {str(e)}'}), 500
+
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
+
