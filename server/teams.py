@@ -80,7 +80,6 @@ def get_teams():
             cursor.close()
             connection.close()
 
-
 def new_team():
     try:
         connection = db_connection()
@@ -91,21 +90,28 @@ def new_team():
         team_gender = data.get('team_gender')
         country_code = data.get('country_code')
         discipline_code = data.get('discipline_code')
-        num_athletes = data.get('num_athletes')
         athlete_codes = data.get('athlete_codes')
-        coach_codes = data.get('coach_codes')  
+        coach_codes = data.get('coach_codes')
 
         if not team_name or not team_gender:
             return jsonify({'error': 'team_name and team_gender are required'}), 400
 
-        if not discipline_code or not num_athletes or not country_code:
-            return jsonify({'error': 'discipline_code, num_athletes, and country_code are required'}), 400
+        if not discipline_code or not country_code:
+            return jsonify({'error': 'discipline_code and country_code are required'}), 400
 
         if not athlete_codes or not isinstance(athlete_codes, list):
             return jsonify({'error': 'athlete_codes must be a non-empty list'}), 400
 
         if not coach_codes or not isinstance(coach_codes, list):
             return jsonify({'error': 'coach_codes must be a non-empty list'}), 400
+
+        # Automatically remove duplicate athlete code
+        athlete_codes = list(set(athlete_codes))
+
+        coach_codes = list(set(coach_codes))
+
+        # Calculate num_athletes dynamically
+        num_athletes = len(athlete_codes)
 
         cursor.execute("START TRANSACTION")
 
@@ -129,8 +135,6 @@ def new_team():
             INSERT INTO Teams (team_code, team_name, team_gender, country_code, discipline_code, num_athletes)
             VALUES (%s, %s, %s, %s, %s, %s)
         """, (team_code, team_name, team_gender, country_code, discipline_code, num_athletes))
-
-        connection.commit()
 
         # Insert athletes into Team_Athlete
         athlete_query = "INSERT INTO Team_Athlete (team_code, athlete_code) VALUES (%s, %s)"
@@ -196,8 +200,7 @@ def update_team(team_code):
         cursor = connection.cursor(dictionary=True)
 
         data = request.json
-        team_name = data.get('team_name')
-        num_athletes = data.get('num_athletes')  # Allow updating only num_athletes and team_name
+        team_name = data.get('team_name')  # Allow updating team_name
         athlete_codes = data.get('athlete_codes')  # List of athlete codes
         coach_codes = data.get('coach_codes')  # List of coach codes (optional)
 
@@ -217,25 +220,14 @@ def update_team(team_code):
             cursor.execute("ROLLBACK")
             return jsonify({'error': f'Team with code {team_code} not found'}), 404
 
-        # Update only allowed fields
-        if team_name or num_athletes:
-            update_fields = []
-            update_values = []
-            if team_name:
-                update_fields.append("team_name = %s")
-                update_values.append(team_name)
-            if num_athletes:
-                update_fields.append("num_athletes = %s")
-                update_values.append(num_athletes)
-
-            update_values.append(team_code)
-
-            query = f"""
+        # Update team name if provided
+        if team_name:
+            query = """
                 UPDATE Teams
-                SET {', '.join(update_fields)}
+                SET team_name = %s
                 WHERE team_code = %s
             """
-            cursor.execute(query, update_values)
+            cursor.execute(query, (team_name, team_code))
 
         # Fetch all results before proceeding with another query
         if cursor.with_rows:
@@ -272,9 +264,19 @@ def update_team(team_code):
             for athlete_code in athletes_to_remove:
                 cursor.execute("DELETE FROM Team_Athlete WHERE team_code = %s AND athlete_code = %s", (team_code, athlete_code))
 
-        # Fetch all results before proceeding with another query
-        if cursor.with_rows:
-            cursor.fetchall()
+        # Automatically update num_athletes based on the count of athletes
+        cursor.execute("""
+            SELECT COUNT(*) AS num_athletes
+            FROM Team_Athlete
+            WHERE team_code = %s
+        """, (team_code,))
+        num_athletes = cursor.fetchone()['num_athletes']
+
+        cursor.execute("""
+            UPDATE Teams
+            SET num_athletes = %s
+            WHERE team_code = %s
+        """, (num_athletes, team_code))
 
         # Update coaches if coach_codes are provided
         if coach_codes is not None:
@@ -330,6 +332,7 @@ def update_team(team_code):
         if connection.is_connected():
             cursor.close()
             connection.close()
+
 
 
 #Get all the athletes of the team
