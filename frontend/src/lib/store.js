@@ -17,6 +17,9 @@ export const useModalStore = create(
 
     updateScheduleGroupModal: null,
     setUpdateScheduleGroupModal: (data) => set({ updateScheduleGroupModal: data }),
+
+    newTeamModal: null,
+    setNewTeamModal: (data) => set({ newTeamModal: data }),
   }),
   { name: 'modalStore' }
 );

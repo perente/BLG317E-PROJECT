@@ -307,3 +307,35 @@ export const update_schedule_group = async function ({
         throw error;
     }
 };
+
+
+export const createNewTeam = async function ({
+    team_name,
+    team_gender,
+    country_code,
+    discipline_code,
+    athlete_codes,
+    coach_codes,
+}) {
+    let num = 5;
+    try {
+        const response = await axios({
+            method: "POST",
+            url: API_ROUTE.teams,
+            data: {
+                team_name,
+                team_gender,
+                country_code,
+                discipline_code,
+                num_athletes : num,
+                athlete_codes,
+                coach_codes,
+            },
+        });
+        return response;
+    }
+    catch (error) {
+        throw error;
+    }
+}
+

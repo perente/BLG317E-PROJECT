@@ -8,6 +8,7 @@ import { Button } from "@/components/button";
 import { deleteCookie } from "cookies-next";
 import UpdateScheduleGroupModal from "@/components/modals/updateScheduleGroupModal";
 import NewCountryModal from "@/components/modals/newCountryModal";
+import NewTeamModal from "@/components/modals/newTeamModal";
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -32,15 +33,16 @@ export default function RootLayout({ children }) {
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
         <Toaster />
         <NewScheduleModal />
         <NewDisciplineModal />
         <NewMedallistModal />
         <NewCountryModal />
         <UpdateScheduleGroupModal />
+        <NewTeamModal />
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <div className="w-full h-[100vh] flex flex-col">
           <header className="bg-slate-700 sticky top-0 z-50">
             <div className="container relativer m-auto flex items-center justify-center min-h-28">
@@ -98,7 +100,7 @@ export default function RootLayout({ children }) {
               </nav>
             </div>
           </header>
-          <main>{children}</main>
+          <main className="">{children}</main>
         </div>
       </body>
     </html>
