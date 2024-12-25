@@ -110,31 +110,6 @@ def delete_team_route(team_code):
 def update_team_route(team_code):
     return update_team(team_code)
 
-@app.route('/team_coach', methods=['GET'])
-def get_teams_coach():
-    try:
-        # Establish database connection
-        connection = db_connection()
-
-        if connection.is_connected():
-            cursor = connection.cursor(dictionary=True)
-            cursor.execute("SELECT * FROM Team_Coach")
-            team_coach = cursor.fetchall()
-
-            # Return data as JSON
-            return jsonify(team_coach), 200
-        else:
-            return jsonify({'error': 'Failed to connect to the database'}), 500
-
-    except Error as e:
-        return jsonify({'error': str(e)}), 500
-
-    finally:
-        # Close the connection
-        if 'connection' in locals() and connection.is_connected():
-            cursor.close()
-            connection.close()
-
 @app.route('/medallists', methods=['GET'])
 def get_medallist():
     return get_medallists()
@@ -182,7 +157,9 @@ def leaderboard_country(country_code):
     return get_country_medals_on_disciplines(country_code)
 
 
-
+@app.route('/teams_coach', methods=['GET'])
+def get_team_coaches_route():
+    return get_TeamsCoach()
 
 
 if __name__ == '__main__':

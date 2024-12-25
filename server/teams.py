@@ -424,3 +424,42 @@ def delete_TeamsAthlete():
             cursor.close()
             connection.close()
 
+#Get all the coach of the team
+def get_TeamsCoach():
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+
+        team_code = request.args.get('team_code')
+
+        # Check if the team exists
+        cursor.execute("SELECT * FROM Teams WHERE team_code = %s", (team_code,))
+        team = cursor.fetchone()
+        if not team:
+            return jsonify({'error': f'Team with code {team_code} does not exist'}), 404
+
+        query = """
+            SELECT C.coach_code, C.name, C.gender, C.country_code
+            FROM Coach C
+            INNER JOIN Team_Coach TC ON C.coach_code = TC.coach_code
+            WHERE TC.team_code = %s
+        """
+        cursor.execute(query, (team_code,))
+        coaches = cursor.fetchall()
+
+        return jsonify({
+            'team_code': team_code,
+            'team_name': team['team_name'],
+            'coaches': coaches
+        }), 200
+
+    except mysql.connector.Error as e:
+        return jsonify({'error': f'Database error: {str(e)}'}), 500
+
+    except Exception as e:
+        return jsonify({'error': f'Unexpected error: {str(e)}'}), 500
+
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
