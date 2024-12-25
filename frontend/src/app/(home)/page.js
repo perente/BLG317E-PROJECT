@@ -82,7 +82,7 @@ export default function Home() {
 
 
   return (
-    <div className="flex py-12 flex-1 bg-[#f5f5f5]">
+    <div className="py-12 flex-1 bg-[#f5f5f5]">
       <Script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js" />
       <main className="w-full flex-1 flex flex-col items-center z-10 mt-16">
         <img className="max-w-[240px] mb-12" src="img/logo.png" />

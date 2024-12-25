@@ -11,6 +11,7 @@ from coaches import get_coaches, delete_coaches
 from countries import get_countries, delete_country, update_countries, new_countries
 from medallist import get_medallists, new_medallists, delete_medallists
 from teams import new_team, get_teams, delete_team, update_team , delete_TeamsAthlete, get_TeamsAthlete
+from leaderboard import get_leaderboard, get_country_medals_on_disciplines
 
 connection = mysql.connector.connect(host=db_host, database=db_name, port = db_port, user=db_user, password=db_password)    
 
@@ -170,6 +171,18 @@ def get_team_athletes_route():
 @app.route('/teams_athlete', methods=['DELETE'])
 def delete_teams_athlete_route():
     return delete_TeamsAthlete()
+
+
+@app.route('/leaderboard', methods=['GET'])
+def leaderboard():
+    return get_leaderboard()
+
+@app.route('/leaderboard/<string:country_code>', methods=['GET'])
+def leaderboard_country(country_code):
+    return get_country_medals_on_disciplines(country_code)
+
+
+
 
 
 if __name__ == '__main__':

@@ -34,7 +34,13 @@ export default function RootLayout({ children }) {
                 Olympic Games 2024
               </a>
               <img className="w-20 absolute left-1/2 -translate-x-1/2" src="https://olympics.com/_pr/topic-assets/paris-2024/emblem-oly.svg" />
-              <img className="w-20" src="	https://olympics.com/images/static/b2p-images/logo_color.svg" />
+              <div className="flex gap-4 items-center justify-center">
+                <img className="w-20" src="	https://olympics.com/images/static/b2p-images/logo_color.svg" />
+                <div className="flex justify-end">
+                  <a href="/login" className=" text-lg text-white bg-black px-4 py-2 rounded-full"
+                  >Login</a>
+                </div>
+              </div>
             </div>
             {<div className="container m-auto">
               <nav className="flex space-x-4 h-10 justify-center items-center">

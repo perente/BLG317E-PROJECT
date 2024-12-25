@@ -339,3 +339,15 @@ export const createNewTeam = async function ({
     }
 }
 
+export const getLeaderboard = async function () {
+    return await axios({
+        method: "GET",
+        url: API_ROUTE.leaderboard,
+    });
+}
+export const getCountryLeaderboard = async function (country_code) {
+    return await axios({
+        method: "GET",
+        url: API_ROUTE.leaderboard + `/${country_code}`,
+    });
+}
