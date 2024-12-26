@@ -1,9 +1,8 @@
 
 
+-- DROP DATABASE IF EXISTS `Olympics`;
 
-DROP DATABASE IF EXISTS `Olympics`;
-
-CREATE DATABASE `Olympics`;
+-- CREATE DATABASE `Olympics`;
 
 USE `Olympics`;
 -- Create Country Table
