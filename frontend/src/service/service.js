@@ -251,6 +251,32 @@ export const deleteAthlete = async function (id) {
     });
 }
 
+export const createNewAthlete = async function (data) {
+    try {
+        const response = await axios({
+            method: "POST",
+            url: API_ROUTE.athletes,
+            data: data,
+        });
+        return response;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const updateAthlete = async function (id, data) {
+    try {
+        const response = await axios({
+            method: "PATCH",
+            url: `${API_ROUTE.athletes}/${id}`,
+            data: data,
+        });
+        return response;
+    } catch (error) {
+        throw error;
+    }
+};
+
 export const getCoaches = async function (filters = {}) {
     const queryParams = new URLSearchParams(filters).toString();
     return await axios({
@@ -264,7 +290,33 @@ export const deleteCoaches = async function (id) {
         method: "DELETE",
         url: `${API_ROUTE.coaches}/${id}`,
     });
-}
+};
+
+export const createNewCoach = async function (data) {
+    try {
+        const response = await axios({
+            method: "POST",
+            url: API_ROUTE.coaches,
+            data: data,
+        });
+        return response;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const updateCoach = async function (id, data) {
+    try {
+        const response = await axios({
+            method: "PATCH",
+            url: `${API_ROUTE.coaches}/${id}`,
+            data: data,
+        });
+        return response;
+    } catch (error) {
+        throw error;
+    }
+};
 
 
 export const update_schedule_group = async function ({
@@ -327,7 +379,7 @@ export const createNewTeam = async function ({
                 team_gender,
                 country_code,
                 discipline_code,
-                num_athletes : num,
+                num_athletes: num,
                 athlete_codes,
                 coach_codes,
             },

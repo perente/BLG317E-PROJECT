@@ -9,6 +9,8 @@ import { deleteCookie } from "cookies-next";
 import UpdateScheduleGroupModal from "@/components/modals/updateScheduleGroupModal";
 import NewCountryModal from "@/components/modals/newCountryModal";
 import NewTeamModal from "@/components/modals/newTeamModal";
+import NewAthleteModal from "@/components/modals/newAthleteModal";
+import NewCoachModal from "@/components/modals/newCoachModal";
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -33,13 +35,15 @@ export default function RootLayout({ children }) {
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
       </head>
-        <Toaster />
-        <NewScheduleModal />
-        <NewDisciplineModal />
-        <NewMedallistModal />
-        <NewCountryModal />
-        <UpdateScheduleGroupModal />
-        <NewTeamModal />
+      <Toaster />
+      <NewScheduleModal />
+      <NewDisciplineModal />
+      <NewMedallistModal />
+      <NewCountryModal />
+      <UpdateScheduleGroupModal />
+      <NewTeamModal />
+      <NewAthleteModal />
+      <NewCoachModal />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

@@ -20,6 +20,12 @@ export const useModalStore = create(
 
     newTeamModal: null,
     setNewTeamModal: (data) => set({ newTeamModal: data }),
+
+    newAthleteModal: null,
+    setNewAthleteModal: (data) => set({ newAthleteModal: data }),
+
+    newCoachModal: null,
+    setNewCoachModal: (data) => set({ newCoachModal: data }),
   }),
   { name: 'modalStore' }
 );

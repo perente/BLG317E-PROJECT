@@ -6,8 +6,8 @@ from settings import db_user,db_password, db_port, db_host,db_name
 from schedules import get_schedules, new_schedules, delete_schedules, update_schedule, update_schedules
 from disciplines import  get_disciplines, delete_disciplines, create_discipline, update_discipline
 from events import get_events, delete_event, update_events, new_events
-from athletes import get_athletes, delete_athletes
-from coaches import get_coaches, delete_coaches
+from athletes import get_athletes, delete_athletes, new_athletes, update_athlete
+from coaches import get_coaches, delete_coaches, new_coaches, update_coach
 from countries import get_countries, delete_country, update_countries, new_countries
 from medallist import get_medallists, new_medallists, delete_medallists
 from teams import new_team, get_teams, delete_team, update_team , delete_TeamsAthlete, get_TeamsAthlete
@@ -155,6 +155,14 @@ def athletes():
 def delete_athlete(athlete_id):
     return delete_athletes(athlete_id)
 
+@app.route('/athletes', methods=['POST'])
+def create_athlete():
+    return new_athletes()
+
+@app.route('/athletes/<int:athlete_id>', methods=['PATCH'])
+def updateAthlete(athlete_id):
+    return update_athlete(athlete_id)
+
 @app.route('/coaches', methods=['GET'])
 def coaches():
     return get_coaches()
@@ -163,6 +171,13 @@ def coaches():
 def delete_coach(coach_id):
     return delete_coaches(coach_id)
 
+@app.route('/coaches', methods=['POST'])
+def create_coach():
+    return new_coaches()
+
+@app.route('/coaches/<int:coach_id>', methods=['PATCH'])
+def updateCoach(coach_id):
+    return update_coach(coach_id)
 
 @app.route('/teams_athlete', methods=['GET'])
 def get_team_athletes_route():

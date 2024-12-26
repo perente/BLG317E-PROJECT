@@ -14,6 +14,8 @@ import { MdOutlineSportsBaseball } from "react-icons/md";
 import { BsFillFlagFill } from "react-icons/bs";
 import { Button } from "@/components/button";
 import { deleteCookie } from "cookies-next";
+import confetti from "canvas-confetti";
+
 
 export default function Home() {
   const router = useRouter();

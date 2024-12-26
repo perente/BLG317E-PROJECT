@@ -164,7 +164,7 @@ const Coaches = () => {
         <div className="container mx-auto pb-4">
             <div className="flex items-center justify-between my-4">
                 <h1 className="text-3xl">Coaches</h1>
-                <Button onClick={() => { }} className="">
+                <Button onClick={() => { setNewCoachModal({ update: handleGetCoaches, countries: countries, all_disciplines: all_disciplines }) }} className="">
                     Create New Coach
                 </Button>
             </div>
@@ -392,7 +392,7 @@ const Coaches = () => {
                                         <div className="cursor-pointer" onClick={() => { handleDeleteCoach(coach.coach_code) }}>
                                             <MdDelete className="w-6 h-6" />
                                         </div>
-                                        <div className="cursor-pointer" onClick={() => { }}
+                                        <div className="cursor-pointer" onClick={() => { setNewCoachModal({ update: handleGetCoaches, edit: true, coach: coach, countries: countries, all_disciplines: all_disciplines }) }}
                                         >
                                             <FaEdit className="w-6 h-6" />
                                         </div>
