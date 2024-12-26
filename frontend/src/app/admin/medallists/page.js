@@ -27,6 +27,7 @@ function Medallists() {
   const [country_code, setCountryCode] = useState(params.get("country_code") ?? "");
   const [order, setOrder] = useState(params.get("order") ?? "");
   const [orderBy, setOrderBy] = useState(params.get("order_by") ?? "");
+  const [athlete_name, setAthleteName] = useState(params.get("athlete_name") ?? "");
 
   const setNewMedallistModalData = useModalStore((state) => state.setNewMedallistModalData);
 
@@ -54,6 +55,7 @@ function Medallists() {
     if (params.get("country_code")) filter.country_code = params.get("country_code");
     if (params.get("order")) filter.order = params.get("order");
     if (params.get("order_by")) filter.order_by = params.get("order_by");
+    if (params.get("athlete_name")) filter.athlete_name = params.get("athlete_name");
 
     setLoading(true);
     getMedallists(filter)
@@ -99,25 +101,21 @@ function Medallists() {
       });
   };
 
-  const orderMedallists = (col) => {
+  const orderMedallists = (orderBy) => {
     const current = new URLSearchParams(Array.from(params.entries()));
-    if (!col) {
+    const value = orderBy;
+    if (!value) {
       current.delete("order_by");
       current.delete("order");
     } else {
-      if (orderBy === col) {
-        // If same column clicked, switch order asc -> desc -> none
-        if (order === "asc") {
-          current.set("order", "desc");
-        } else if (order === "desc") {
-          current.delete("order_by");
-          current.delete("order");
-        } else {
-          current.set("order", "asc");
-        }
+       if (order === "asc") {
+        setOrderBy("");
+        setOrder("");
+        current.delete("order_by");
+        current.delete("order");
       } else {
-        current.set("order_by", col);
-        current.set("order", "desc"); // default start as descending or ascending as per need
+        current.set("order_by", orderBy);
+        current.set("order", order === "" ? "desc" : order === "desc" ? "asc" : "");
       }
     }
     const search = current.toString();
@@ -149,6 +147,19 @@ function Medallists() {
         </Button>
         <div className="flex flex-wrap gap-2 items-center">
           <div>
+            <label className="mr-1">Name:</label>
+            <input
+              type="text"
+              className="border border-gray-400 rounded-md p-1 h-[34px]"
+              value={athlete_name}
+              onChange={(e) => {
+                setAthleteName(e.target.value);
+                onChange({event: e, name: "athlete_name"});
+              }
+              }
+            />
+          </div>
+          <div>
             <label className="mr-1">Medal Date:</label>
             <input
               type="date"
@@ -156,7 +167,7 @@ function Medallists() {
               value={medal_date}
               onChange={(e) => {
                 setMedalDate(e.target.value);
-                onChange({ event: e, name: "medal_date" });
+                onChange({event: e, name: "medal_date"});
               }}
             />
           </div>
@@ -168,7 +179,7 @@ function Medallists() {
               value={medal_code}
               onChange={(e) => {
                 setMedalCode(e.target.value);
-                onChange({ event: e, name: "medal_code" });
+                onChange({event: e, name: "medal_code"});
               }}
             />
           </div>
@@ -179,12 +190,12 @@ function Medallists() {
               value={gender}
               onChange={(e) => {
                 setGender(e.target.value);
-                onChange({ event: e, name: "gender" });
+                onChange({event: e, name: "gender"});
               }}
             >
               <option value="">All</option>
               <option value="m">Male</option>
-              <option value="w">Female</option>
+              <option value="f">Female</option>
               <option value="x">Mixed</option>
             </select>
           </div>
@@ -196,7 +207,7 @@ function Medallists() {
               value={discipline}
               onChange={(e) => {
                 setDiscipline(e.target.value);
-                onChange({ event: e, name: "discipline" });
+                onChange({event: e, name: "discipline"});
               }}
             />
           </div>
@@ -208,7 +219,7 @@ function Medallists() {
               value={event}
               onChange={(e) => {
                 setEvent(e.target.value);
-                onChange({ event: e, name: "event" });
+                onChange({event: e, name: "event"});
               }}
             />
           </div>
@@ -220,7 +231,7 @@ function Medallists() {
               value={country_code}
               onChange={(e) => {
                 setCountryCode(e.target.value);
-                onChange({ event: e, name: "country_code" });
+                onChange({event: e, name: "country_code"});
               }}
             />
           </div>
@@ -248,7 +259,7 @@ function Medallists() {
                 onClick={orderMedallists}
               />
               <SortableHeader
-                title="Medal Code"
+                title="Medal"
                 column="medal_code"
                 orderBy={orderBy}
                 order={order}
@@ -281,15 +292,16 @@ function Medallists() {
           <tbody>
             {currentItems.map((medallist) => (
               <tr key={medallist.id} className="border-b">
-                <td className="border border-gray-400 px-2 py-1">{medallist.medal_date}</td>
-                <td className="border border-gray-400 px-2 py-1">{medallist.medal_code}</td>
+                <td className="border border-gray-400 px-2 py-1">{medallist.athlete_name}</td>
+                <td className="border border-gray-400 px-2 py-1">{new Date(medallist.medal_date).toDateString()}</td>
+                <td className="border border-gray-400 px-2 py-1 text-3xl">{medallist.medal_code === 1 ? "🥇" : (medallist.medal_code === 2 ? "🥈" : "🥉")}</td>
                 <td className="border border-gray-400 px-2 py-1">{medallist.gender}</td>
                 <td className="border border-gray-400 px-2 py-1">{medallist.discipline}</td>
                 <td className="border border-gray-400 px-2 py-1">{medallist.event}</td>
                 <td className="border border-gray-400 px-2 py-1">
                   <div className="flex gap-1">
                     <div className="cursor-pointer" onClick={() => handleDeleteMedallist(medallist.id)}>
-                      <MdDelete className="w-6 h-6" />
+                      <MdDelete className="w-6 h-6"/>
                     </div>
                     <div
                       className="cursor-pointer"
@@ -301,7 +313,7 @@ function Medallists() {
                         })
                       }
                     >
-                      <FaEdit className="w-6 h-6" />
+                      <FaEdit className="w-6 h-6"/>
                     </div>
                   </div>
                 </td>

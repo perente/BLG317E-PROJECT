@@ -48,36 +48,40 @@ def get_medallists():
             params = []
 
             if id:
-                filters.append("id = %s")
+                filters.append("Medallist.id = %s")
                 params.append(id)
 
             if medal_date:
-                filters.append("medal_date = %s")
+                filters.append("Medallist.medal_date = %s")
                 params.append(medal_date)
 
             if medal_code:
-                filters.append("medal_code = %s")
+                filters.append("Medallist.medal_code = %s")
                 params.append(medal_code)
 
             if gender:
-                filters.append("gender = %s")
-                params.append(medal_code)
+                filters.append("Medallist.gender = %s")
+                params.append(gender)
 
             if country_code:
-                filters.append("country_code = %s")
+                filters.append("Medallist.country_code = %s")
                 params.append(country_code)
 
             if code_team:
-                filters.append("code_team = %s")
+                filters.append("Medallist.code_team = %s")
                 params.append(code_team)
 
             if code_athlete:
-                filters.append("code_athlete = %s")
+                filters.append("Medallist.code_athlete = %s")
                 params.append(code_athlete)
 
             if discipline:
-                filters.append("discipline = %s")
+                filters.append("Medallist.discipline = %s")
                 params.append(discipline)
+
+            if athlete_name:  # Filter for athlete name
+                filters.append("Athlete.name LIKE %s")
+                params.append(f"%{athlete_name}%")
 
             if filters:
                 query += " WHERE " + " AND ".join(filters)
@@ -102,7 +106,6 @@ def get_medallists():
         if 'connection' in locals() and connection.is_connected():
             cursor.close()
             connection.close()
-
 
 def new_medallists():
     try:
