@@ -36,7 +36,7 @@ export default function Home() {
 
 
   return (
-    <div className="flex flex-col py-12 flex-1 bg-[#f5f5f5]">
+    <div className="flex h-full flex-col py-12 flex-1 bg-[#f5f5f5]">
       <div className="flex justify-end container mx-auto">
         <Button
           type="error"

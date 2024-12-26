@@ -13,7 +13,7 @@ try:
 
     mycursor = mydb.cursor()
 
-    mycursor.execute(f"CREATE DATABASE {db_name}")
+    # mycursor.execute(f"CREATE DATABASE {db_name}")
     print(f"Database {db_name} created")
     if (mydb.is_connected()):
         mycursor.close()
