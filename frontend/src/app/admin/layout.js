@@ -11,6 +11,7 @@ import NewCountryModal from "@/components/modals/newCountryModal";
 import NewTeamModal from "@/components/modals/newTeamModal";
 import NewAthleteModal from "@/components/modals/newAthleteModal";
 import NewCoachModal from "@/components/modals/newCoachModal";
+import NewEventModal from "@/components/modals/newEventModal";
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
