@@ -45,6 +45,7 @@ export default function RootLayout({ children }) {
       <NewTeamModal />
       <NewAthleteModal />
       <NewCoachModal />
+      <NewEventModal />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

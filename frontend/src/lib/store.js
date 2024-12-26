@@ -12,8 +12,8 @@ export const useModalStore = create(
     newCountryModalData: null,
     setNewCountryModalData: (data) => set({ newCountryModalData: data }),
 
-    newEventModalData: null,
-    setNewEventModalData: (data) => set({ newEventModalData: data }),
+    newEventModal: null,
+    setNewEventModal: (data) => set({ newEventModal: data }),
 
     newMedallistModalData: null,
     setNewMedallistModalData: (data) => set({ newMedallistModalData: data }),
