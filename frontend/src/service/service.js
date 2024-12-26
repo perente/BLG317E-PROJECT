@@ -58,10 +58,10 @@ export const updateSchedule = async function (id, data) {
     }
 };
 
-export const getMedallists = async function () {
+export const getMedallists = async function (filters = {}) {
     return await axios({
         method: "get",
-        url: API_ROUTE.medallists,
+        url: API_ROUTE.medallists + "?" + new URLSearchParams(filters).toString(),
     });
 };
 

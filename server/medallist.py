@@ -31,12 +31,17 @@ def get_medallists():
             code_team = request.args.get('code_team')
             code_athlete = request.args.get('code_athlete')
             discipline = request.args.get('discipline')
+            athlete_name = request.args.get('athlete_name')  # New filter for athlete name
             order_by = request.args.get('order_by')
             order = request.args.get('order')
 
-            # Base query
+            # Base query with JOIN
             query = """
-                SELECT * FROM Medallist
+                SELECT 
+                    Medallist.*, 
+                    Athlete.name AS athlete_name 
+                FROM Medallist
+                LEFT JOIN Athlete ON Medallist.code_athlete = Athlete.athlete_code
             """
 
             filters = []

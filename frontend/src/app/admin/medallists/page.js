@@ -234,6 +234,13 @@ function Medallists() {
           <thead>
             <tr className="bg-gray-200">
               <SortableHeader
+                title="Name"
+                column="name"
+                orderBy={orderBy}
+                order={order}
+                onClick={orderMedallists}
+              />
+              <SortableHeader
                 title="Medal Date"
                 column="medal_date"
                 orderBy={orderBy}
