@@ -1,7 +1,6 @@
 "use client";
 import { Button } from "@/components/button";
-import { useModalStore } from "@/lib/store";
-import { deleteEvent, getDisciplines, getEvents } from "@/service/service";
+import { getDisciplines, getEvents } from "@/service/service";
 import { useSearchParams, usePathname, useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
@@ -56,7 +55,6 @@ function Events() {
       .then((res) => {
         setEvents(res.data);
       })
-      .catch((err) => alert(err))
       .finally(() => { 
         setLoading(false)
       });
@@ -67,23 +65,9 @@ function Events() {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = events.slice(indexOfFirstItem, indexOfLastItem);
 
-  const setNewEventModal = useModalStore((state) => state.setNewEventModal);
-
   const pageNumbers = [];
   for(let i = 1; i <= totalPages; i++) {
     pageNumbers.push(i);
-  }
-
-  const handleDeleteEvent = async (id) => {
-    deleteEvent(id).then((res) => {
-      if(res.status === 200) {
-        setEvents(events.filter((event) => event.events_code !== id));
-      }
-    }).catch((error) => {
-      alert(error);
-    }).finally(() => {
-      handleGetEvents();
-    });
   }
 
   const onChange = (e, name) => {
@@ -130,14 +114,6 @@ function Events() {
     <div className="container mx-auto pb-4">
       <div className="flex items-center justify-between my-4">
         <h1 className="text-3xl">Events</h1>
-        <div className="flex gap-x-2">
-          <Button onClick={() => setUpdateEventModal({ update: handleGetEvents, disciplines: disciplines })} className="">
-            Update Event
-          </Button>
-          <Button onClick={() => setNewEventModal({ update: handleGetEvents, disciplines: disciplines })} className="">
-            Create New Event
-          </Button>
-        </div>
       </div>
       <div>
         <h3 className="text-xl font-semibold inline-block mr-4">Filters</h3>
