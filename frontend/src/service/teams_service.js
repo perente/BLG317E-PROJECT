@@ -49,3 +49,17 @@ export const deleteTeam = async (teamCode) => {
         throw error;
     }
 };
+
+export const updateTeam = async function (teamCode, data) {
+    try {
+        const response = await customAxios({
+            method: "PATCH",
+            url: `${API_ROUTE.teams}/${teamCode}`,
+            data: data,
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error updating team:", error);
+        throw error;
+    }
+}
