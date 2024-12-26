@@ -1,13 +1,14 @@
 "use client";
 
 import { Button } from "@/components/button";
-import { getMedallists, deleteMedallist } from "@/service/service";
+import { getMedallists, getDisciplines, getEvents, deleteMedallist } from "@/service/service";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import { TiArrowSortedDown } from "react-icons/ti";
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import {useModalStore} from "@/lib/store";
+import {log} from "next/dist/server/typescript/utils";
 
 function Medallists() {
   const [medallists, setMedallists] = useState([]);
@@ -22,12 +23,16 @@ function Medallists() {
   const [medal_date, setMedalDate] = useState(params.get("medal_date") ?? "");
   const [medal_code, setMedalCode] = useState(params.get("medal_code") ?? "");
   const [gender, setGender] = useState(params.get("gender") ?? "");
-  const [discipline, setDiscipline] = useState(params.get("discipline") ?? "");
-  const [event, setEvent] = useState(params.get("event") ?? "");
   const [country_code, setCountryCode] = useState(params.get("country_code") ?? "");
+  const [athlete_name, setAthleteName] = useState(params.get("athlete_name") ?? "");
   const [order, setOrder] = useState(params.get("order") ?? "");
   const [orderBy, setOrderBy] = useState(params.get("order_by") ?? "");
-  const [athlete_name, setAthleteName] = useState(params.get("athlete_name") ?? "");
+
+  // New discipline and event filters
+  const [discipline, setDiscipline] = useState(params.get("discipline") ?? "");
+  const [event, setEvent] = useState(params.get("event") ?? "");
+  const [disciplines, setDisciplines] = useState([]);
+  const [events, setEvents] = useState([]);
 
   const setNewMedallistModalData = useModalStore((state) => state.setNewMedallistModalData);
 
@@ -43,7 +48,18 @@ function Medallists() {
     setCountryCode(params.get("country_code") ?? "");
     setOrder(params.get("order") ?? "");
     setOrderBy(params.get("order_by") ?? "");
+    fetchDisciplinesAndEvents();
   }, [params]);
+
+  const fetchDisciplinesAndEvents = async () => {
+    try {
+      const [disciplinesData, eventsData] = await Promise.all([getDisciplines(), getEvents()]);
+      setDisciplines(disciplinesData.data);
+      setEvents(eventsData.data);
+    } catch (error) {
+      alert("Failed to fetch disciplines or events.");
+    }
+  };
 
   const handleGetMedallists = async () => {
     let filter = {};
@@ -53,25 +69,21 @@ function Medallists() {
     if (params.get("discipline")) filter.discipline = params.get("discipline");
     if (params.get("event")) filter.event = params.get("event");
     if (params.get("country_code")) filter.country_code = params.get("country_code");
+    if (params.get("athlete_name")) filter.athlete_name = params.get("athlete_name");
     if (params.get("order")) filter.order = params.get("order");
     if (params.get("order_by")) filter.order_by = params.get("order_by");
-    if (params.get("athlete_name")) filter.athlete_name = params.get("athlete_name");
 
     setLoading(true);
-    getMedallists(filter)
-      .then((res) => {
-        setMedallists(res.data);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    console.log(filter);
+    try {
+      const res = await getMedallists(filter);
+      setMedallists(res.data);
+    } finally {
+      setLoading(false);
+    }
   };
 
   // Pagination
-  const totalPages = Math.ceil(medallists.length / itemsPerPage);
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = medallists.slice(indexOfFirstItem, indexOfLastItem);
 
   const onChange = ({ event, name }) => {
     const current = new URLSearchParams(Array.from(params.entries()));
@@ -123,13 +135,10 @@ function Medallists() {
     router.replace(`${pathname}${query}`);
   };
 
-  if (loading && params.size === 0) {
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <p className="text-lg font-semibold">Loading...</p>
-      </div>
-    );
-  }
+  const totalPages = Math.ceil(medallists.length / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = medallists.slice(indexOfFirstItem, indexOfLastItem);
 
   return (
     <div className="container m-auto">
@@ -145,9 +154,10 @@ function Medallists() {
         <Button size="xs" onClick={() => router.push(pathname)} className="mb-4 inline-block text-xs px-2 py-1">
           Clear Filters
         </Button>
-        <div className="flex flex-wrap gap-2 items-center">
+        <div className="flex flex-wrap gap-2">
+          {/* Existing Filters */}
           <div>
-            <label className="mr-1">Name:</label>
+            <label>Name:</label>
             <input
               type="text"
               className="border border-gray-400 rounded-md p-1 h-[34px]"
@@ -155,12 +165,11 @@ function Medallists() {
               onChange={(e) => {
                 setAthleteName(e.target.value);
                 onChange({event: e, name: "athlete_name"});
-              }
-              }
+              }}
             />
           </div>
           <div>
-            <label className="mr-1">Medal Date:</label>
+            <label>Medal Date:</label>
             <input
               type="date"
               className="border border-gray-400 rounded-md p-1 h-[34px]"
@@ -172,19 +181,25 @@ function Medallists() {
             />
           </div>
           <div>
-            <label className="mr-1">Medal Code:</label>
-            <input
-              type="text"
+            <label>Medal:</label>
+            <select
               className="border border-gray-400 rounded-md p-1 h-[34px]"
               value={medal_code}
               onChange={(e) => {
                 setMedalCode(e.target.value);
                 onChange({event: e, name: "medal_code"});
               }}
-            />
+            >
+              <option value="">All</option>
+              {["Gold", "Silver", "Bronze"].map((medal, index) => (
+                <option key={index} value={index + 1}>
+                  {medal}
+                </option>
+              ))}
+            </select>
           </div>
           <div>
-            <label className="mr-1">Gender:</label>
+            <label>Gender:</label>
             <select
               className="border border-gray-400 rounded-md p-1 h-[34px]"
               value={gender}
@@ -200,31 +215,7 @@ function Medallists() {
             </select>
           </div>
           <div>
-            <label className="mr-1">Discipline:</label>
-            <input
-              type="text"
-              className="border border-gray-400 rounded-md p-1 h-[34px]"
-              value={discipline}
-              onChange={(e) => {
-                setDiscipline(e.target.value);
-                onChange({event: e, name: "discipline"});
-              }}
-            />
-          </div>
-          <div>
-            <label className="mr-1">Event:</label>
-            <input
-              type="text"
-              className="border border-gray-400 rounded-md p-1 h-[34px]"
-              value={event}
-              onChange={(e) => {
-                setEvent(e.target.value);
-                onChange({event: e, name: "event"});
-              }}
-            />
-          </div>
-          <div>
-            <label className="mr-1">Country Code:</label>
+            <label>Country Code:</label>
             <input
               type="text"
               className="border border-gray-400 rounded-md p-1 h-[34px]"
@@ -235,25 +226,69 @@ function Medallists() {
               }}
             />
           </div>
+          {/* New Discipline and Event Filters */}
+          <div>
+            <label>Discipline:</label>
+            <select
+              className="border border-gray-400 rounded-md p-1 h-[34px]"
+              value={discipline}
+              onChange={(e) => {
+                setDiscipline(e.target.value);
+                setEvent(""); // Reset event when discipline changes
+                onChange({event: e, name: "discipline"});
+              }}
+            >
+              <option value="">All</option>
+              {disciplines.map((d) => (
+                <option key={d.discipline_code} value={d.name}>
+                  {d.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div onClick={() => console.log(events)}>
+            <label>Event:</label>
+            <select
+              className="border border-gray-400 rounded-md p-1 h-[34px]"
+              value={event}
+              onChange={(e) => {
+                setEvent(e.target.value);
+                onChange({event: e, name: "event"});
+              }}
+            >
+              <option value="">All</option>
+              {events
+                .filter((e) => !discipline || (e.sport_name === discipline))
+                .map((e) => {
+                  return (
+                    <option key={e.event_name} value={e.event_name}>
+                      {e.event_name}
+                    </option>
+                  )
+                })}
+            </select>
+          </div>
         </div>
       </div>
 
-      {medallists.length === 0 ? (
+      {loading ? (
+        <p className="text-lg font-semibold mt-4">Loading...</p>
+      ) : medallists.length === 0 ? (
         <p className="text-lg font-semibold mt-4">No medallists found</p>
       ) : (
         <table className="table-auto w-full border-collapse border border-gray-400 mt-4">
           <thead>
-            <tr className="bg-gray-200">
-              <SortableHeader
-                title="Name"
-                column="name"
-                orderBy={orderBy}
-                order={order}
-                onClick={orderMedallists}
-              />
-              <SortableHeader
-                title="Medal Date"
-                column="medal_date"
+          <tr className="bg-gray-200">
+            <SortableHeader
+              title="Name"
+              column="name"
+              orderBy={orderBy}
+              order={order}
+              onClick={orderMedallists}
+            />
+            <SortableHeader
+              title="Medal Date"
+              column="medal_date"
                 orderBy={orderBy}
                 order={order}
                 onClick={orderMedallists}
@@ -323,7 +358,6 @@ function Medallists() {
         </table>
       )}
 
-      {/* Pagination Controls */}
       {medallists.length > itemsPerPage && (
         <div className="flex justify-center mt-4 items-center">
           <button
@@ -333,7 +367,6 @@ function Medallists() {
           >
             Previous
           </button>
-
           <select
             value={currentPage}
             onChange={(e) => setCurrentPage(Number(e.target.value))}
@@ -345,7 +378,6 @@ function Medallists() {
               </option>
             ))}
           </select>
-
           <button
             onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
             disabled={currentPage === totalPages}

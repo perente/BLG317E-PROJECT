@@ -34,6 +34,7 @@ def get_medallists():
             athlete_name = request.args.get('athlete_name')  # New filter for athlete name
             order_by = request.args.get('order_by')
             order = request.args.get('order')
+            event = request.args.get('event')
 
             # Base query with JOIN
             query = """
@@ -78,6 +79,10 @@ def get_medallists():
             if discipline:
                 filters.append("Medallist.discipline = %s")
                 params.append(discipline)
+
+            if event:
+                filters.append("Medallist.event = %s")
+                params.append(event)
 
             if athlete_name:  # Filter for athlete name
                 filters.append("Athlete.name LIKE %s")
