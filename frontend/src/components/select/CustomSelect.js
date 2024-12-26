@@ -8,7 +8,9 @@ const ReactSelect = ({
   value,
   onChange,
   placeholder,
-  isMulti = false
+  disabled = false,
+  isMulti = false,
+  defaultValue
 }) => {
   return (
     <Select
@@ -16,7 +18,8 @@ const ReactSelect = ({
       value={value && [value]}
       onChange={onChange}
       isMulti = {isMulti}
-      isDisabled={options.length === 0}
+      defaultValue={defaultValue}
+      isDisabled={options.length === 0 || disabled} 
       classNamePrefix="react-select"
       placeholder={placeholder}
       components={{

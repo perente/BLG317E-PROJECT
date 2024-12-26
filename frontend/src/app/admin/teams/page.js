@@ -346,7 +346,8 @@ function Teams() {
                 <td className="border border-gray-400 px-2 py-1">{team.num_athletes}</td>
                 <td className="border border-gray-400 px-2 py-1">
                   <div className="flex gap-1">
-                    <div className="cursor-pointer">
+                    <div onClick={()=>{setNewTeamModal({update: handleGetTeams, team: team, isEdit: true})}}
+                     className="cursor-pointer">
                       <FaEdit className="w-6 h-6" />
                     </div>
                     <div className="cursor-pointer" onClick={() => handleDeleteTeam(team.team_code)}>

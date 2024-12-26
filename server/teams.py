@@ -19,6 +19,7 @@ def get_teams():
         connection = db_connection()
         cursor = connection.cursor(dictionary=True)
 
+        # Extract query parameters
         team_code = request.args.get('team_code')
         team_name = request.args.get('team_name')
         team_gender = request.args.get('team_gender')
@@ -28,6 +29,7 @@ def get_teams():
         order_by = request.args.get('order_by')
         order = request.args.get('order')
 
+        # Base query
         query = """
             SELECT Teams.*, Country.country_name, Discipline.name AS discipline_name
             FROM Teams
@@ -35,13 +37,13 @@ def get_teams():
             LEFT JOIN Discipline ON Teams.discipline_code = Discipline.discipline_code
         """
 
+        # Filters and parameters
         filters = []
         params = []
 
         if team_code:
             filters.append("Teams.team_code = %s")
             params.append(team_code)
-            print("Teams:", team_code)
         if team_name:
             filters.append("Teams.team_name LIKE %s")
             params.append(f"%{team_name}%")
@@ -54,7 +56,6 @@ def get_teams():
         if discipline_code:
             filters.append("Teams.discipline_code = %s")
             params.append(discipline_code)
-
         if num_athletes:
             filters.append("Teams.num_athletes = %s")
             params.append(num_athletes)
@@ -68,17 +69,38 @@ def get_teams():
         cursor.execute(query, params)
         teams = cursor.fetchall()
 
-        #print("Query Result:", teams)
+        # Fetch related athletes and coaches for each team
+        for team in teams:
+            team_code = team['team_code']
+
+            # Fetch athletes
+            cursor.execute("""
+                SELECT A.athlete_code, A.name, A.gender, A.birth_date, A.nationality, A.country_code
+                FROM Athlete A
+                INNER JOIN Team_Athlete TA ON A.athlete_code = TA.athlete_code
+                WHERE TA.team_code = %s
+            """, (team_code,))
+            team['athlete_list'] = cursor.fetchall()
+
+            # Fetch coaches
+            cursor.execute("""
+                SELECT C.coach_code, C.name, C.gender, C.country_code
+                FROM Coach C
+                INNER JOIN Team_Coach TC ON C.coach_code = TC.coach_code
+                WHERE TC.team_code = %s
+            """, (team_code,))
+            team['coach_list'] = cursor.fetchall()
 
         return jsonify(teams), 200
 
-    except Error as e:
+    except mysql.connector.Error as e:
         return jsonify({'error': str(e)}), 500
 
     finally:
         if connection.is_connected():
             cursor.close()
             connection.close()
+
 
 def new_team():
     try:
@@ -102,7 +124,7 @@ def new_team():
         if not athlete_codes or not isinstance(athlete_codes, list):
             return jsonify({'error': 'athlete_codes must be a non-empty list'}), 400
 
-        if not coach_codes or not isinstance(coach_codes, list):
+        if  not isinstance(coach_codes, list):
             return jsonify({'error': 'coach_codes must be a non-empty list'}), 400
 
         # Automatically remove duplicate athlete code
@@ -279,7 +301,7 @@ def update_team(team_code):
         """, (num_athletes, team_code))
 
         # Update coaches if coach_codes are provided
-        if coach_codes is not None:
+        if len(coach_codes) > 0 :
             if not isinstance(coach_codes, list):
                 return jsonify({'error': 'coach_codes must be a list or omitted'}), 400
 
