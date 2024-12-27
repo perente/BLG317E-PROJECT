@@ -211,7 +211,7 @@ const NewTeamModal = () => {
                   className="basic-multi-select"
                   classNamePrefix="select"
                   onChange={(value) => setTeamCountry(value)}
-                  placeholder={"Select Choaches"}
+                  placeholder={"Select Country"}
                 />
               </div>
               <div className="text-lg mt-4 flex-1">
@@ -226,7 +226,7 @@ const NewTeamModal = () => {
                   classNamePrefix="select"
                   value={teamGender}
                   onChange={(value) => setTeamGender(value)}
-                  placeholder={"Select Choaches"}
+                  placeholder={"Select Gender"}
                 />
               </div>
             </div>
@@ -267,10 +267,10 @@ const NewTeamModal = () => {
             </div>
             <div className="text-lg mt-4">
               <h3>
-                Select Choaches
+                Select Coaches
               </h3>
               <ReactSelect
-                name="Choaches"
+                name="Coaches"
                 options={coaches}
                 isMulti
                 value={newTeamModal?.isEdit ? undefined : selectedCoaches}
@@ -281,7 +281,7 @@ const NewTeamModal = () => {
                   setSelectedCoaches(value.value);
                   setCoachList(value);
                 }}
-                placeholder={"Select Choaches"}
+                placeholder={"Select Coaches"}
               />
             </div>
             <div className="text-lg mt-4">

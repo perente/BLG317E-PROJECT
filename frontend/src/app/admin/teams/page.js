@@ -155,7 +155,7 @@ function Teams() {
   }
 
   return (
-    <div className="container m-auto">
+    <div className="container mx-auto pb-4">
       <div className="flex items-center justify-between my-4">
         <h1 className="text-3xl">Teams</h1>
         <Button
@@ -173,9 +173,9 @@ function Teams() {
         <Button size="xs" onClick={() => router.push(pathname)} className="mb-4 inline-block text-xs px-2 py-1">
           Clear Filters
         </Button>
-        <div className="flex gap-2 items-center">
+        <div className="flex items-center gap-4 flex-wrap">
           {/* Filter Inputs */}
-          <div>
+          <div className="flex items-center" >
             <label htmlFor="" className="mr-1">Team Name:</label>
             <input
               type="text"
@@ -189,7 +189,7 @@ function Teams() {
               }}
             />
           </div>
-          <div className="flex flex-col">
+          <div className="flex items-center">
                         <label htmlFor="country" className="mr-1">Country:</label>
                         <select className="border border-gray-400 rounded-md p-1 h-[34px] w-full"
                             value={country_code}
@@ -206,7 +206,7 @@ function Teams() {
                             }
                         </select>
                     </div>
-          <div className="">
+          <div className="flex items-center">
             <label htmlFor="discipline" className="mr-1">Discipline:</label>
             <select className="border border-gray-400 rounded-md p-1 h-[34px] w-full"
               value={discipline}
