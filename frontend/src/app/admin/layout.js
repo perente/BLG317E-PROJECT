@@ -12,6 +12,7 @@ import NewTeamModal from "@/components/modals/newTeamModal";
 import NewAthleteModal from "@/components/modals/newAthleteModal";
 import NewCoachModal from "@/components/modals/newCoachModal";
 import NewEventModal from "@/components/modals/newEventModal";
+import UpdateMedalsModal from "@/components/modals/updateMedalsModal";
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -46,6 +47,7 @@ export default function RootLayout({ children }) {
       <NewAthleteModal />
       <NewCoachModal />
       <NewEventModal />
+      <UpdateMedalsModal />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

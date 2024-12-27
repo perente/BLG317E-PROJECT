@@ -91,7 +91,7 @@ const Events = () => {
 
     const search = current.toString();
     const query = search ? `?${search}` : "";
-    router.replace(`${pathname}${query}`)
+    router.push(`${pathname}${query}`);
   };
 
   function updateSearchParamForCurrentPage({ key, value }) {
@@ -196,7 +196,7 @@ const Events = () => {
             <select className="border border-gray-400 rounded-md p-1 h-[34px] w-full"
               value={discipline_code}
               onChange={(e) => {
-                setDiscipline(e.target.value);
+                setDisciplineCode(e.target.value);
                 onChange({ event: e, name: "discipline_code" });
               }}
             >
@@ -272,10 +272,33 @@ const Events = () => {
                   {event.sport_name}
                 </td>
                 <td className="border border-gray-400 px-2 py-1 cursor-pointer">
-                  {event.discipline_code}
+                  <div className="flex items-center gap-5">
+                    <span>{event.discipline_code}</span>
+                    <div className="flex justify-center">
+                      <img
+                        className="w-10 h-10"
+                        src={`https://gstatic.olympics.com/s1/t_original/static/light/pictograms-paris-2024/olympics/${event.discipline_code}_small.svg`}
+                        onError={(e) => {
+                          e.target.src = "https://olympics.com/images/static/b2p-images/logo_color.svg";
+                        }}
+                        alt={`${event.discipline_code} icon`}
+                      />
+                    </div>
+                  </div>
                 </td>
                 <td className="border border-gray-400 px-2 py-1 cursor-pointer">
                   <div className="flex gap-1">
+                    {event?.url ? (
+                      <a
+                        href={event?.url.startsWith("http") ? event?.url : "https://olympics.com" + event.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FaExternalLinkSquareAlt className="w-5 h-5 mt-[2px]" />
+                      </a>
+                    ) : (
+                      "No URL"
+                    )}
                     <div className="cursor-pointer" onClick={() => { handleDeleteEvent(event.events_code) }}>
                       <MdDelete className="w-6 h-6" />
                     </div>
@@ -332,4 +355,4 @@ export default function Page() {
       <Events />
     </Suspense>
   );
-}
+} 

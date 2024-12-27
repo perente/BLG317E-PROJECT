@@ -50,7 +50,7 @@ def get_events():
                 params.append(f"%{event_name}%")
 
             if discipline_code:
-                filters.append("Events.disciplines = %s")
+                filters.append("Events.discipline_code = %s")
                 params.append(discipline_code)
 
             if sport_name:
@@ -63,7 +63,8 @@ def get_events():
 
             # Order by clause
             if order_by:
-                query += f" ORDER BY {order_by} {order or 'ASC'}"
+                query += f" ORDER BY Events.{order_by} {order or 'ASC'}"
+
 
             print("Query:", query)
             print("Params:", params)
@@ -120,67 +121,50 @@ def delete_event(event_code):
 
 def new_events():
     try:
-        # Get data from POST request
         data = request.get_json()
-        discipline_data = ""
-
         if not data:
-            return jsonify({'error': 'Invalid input: No JSON payload provided'}), 400
+            return jsonify({'error': 'No JSON payload provided'}), 400
 
-        # Extract values from JSON payload
-        event_code = data.get('events_code')
         event_name = data.get('event_name')
         discipline_code = data.get('discipline_code')
-        url = data.get('url')
         sport_name = data.get('sport_name')
+        url = None
 
-        # Validate required fields
-        if not all([event_code, event_name, discipline_code, url, sport_name]):
+        if not all([event_name, discipline_code, sport_name]):
             return jsonify({'error': 'Missing required fields'}), 400
 
-        # Establish database connection
         connection = db_connection()
-
         if connection.is_connected():
             with connection.cursor(dictionary=True) as cursor:
-                # Check if discipline_code exists
+                # Confirm discipline exists
                 query = "SELECT * FROM Discipline WHERE discipline_code = %s"
                 cursor.execute(query, (discipline_code,))
                 discipline_data = cursor.fetchone()
 
-                if discipline_data:
-                    pass
-                else:
+                if not discipline_data:
                     return jsonify({'error': f'Discipline code {discipline_code} does not exist'}), 400
-        else:
-            return jsonify({'error': 'Failed to connect to the database'}), 500
-        
-        if connection.is_connected():
+
             with connection.cursor(dictionary=True) as cursor:
-                # Insert event into the database
+                # We do NOT insert events_code because it's AUTO_INCREMENT
                 query = """
-                    INSERT INTO Events (events_code, event_name, discipline_code, url, sport_name)
-                    VALUES (%s, %s, %s, %s, %s)
+                    INSERT INTO Events (event_name, discipline_code, url, sport_name)
+                    VALUES (%s, %s, %s, %s)
                 """
-                values = (event_code, event_name, discipline_data['discipline_code'], url, sport_name)
+                values = (event_name, discipline_code, url, sport_name)
                 cursor.execute(query, values)
                 connection.commit()
 
                 return jsonify({'message': 'Event created successfully'}), 201
 
-        else:
-            return jsonify({'error': 'Failed to connect to the database'}), 500
-
+        return jsonify({'error': 'Failed to connect to the database'}), 500
     except mysql.connector.Error as e:
         return jsonify({'error': f'Database error: {str(e)}'}), 500
-
     except Exception as e:
         return jsonify({'error': f'Unexpected error: {str(e)}'}), 500
-
     finally:
-        # Ensure the connection is closed properly
         if 'connection' in locals() and connection.is_connected():
             connection.close()
+
 
 def update_events(event_code):
     try:

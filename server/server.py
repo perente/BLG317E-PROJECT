@@ -44,7 +44,6 @@ def delete_schedule(schedule_id):
 def update_schedule_group():
     return update_schedules()
 
-
 @app.route('/disciplines', methods=['GET'])
 def disciplines():
     return get_disciplines()
@@ -85,7 +84,7 @@ def events():
 def delete_events(events_code):
     return delete_event(events_code)
 
-@app.route('/countries', methods=['POST'])
+@app.route('/events', methods=['POST'])
 def new_event():
     return new_events()
 

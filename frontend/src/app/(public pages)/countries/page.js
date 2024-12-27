@@ -1,11 +1,55 @@
 "use client";
 import { useEffect, useState } from "react";
 import { getCountries } from "@/service/service";
+import { Button } from "@/components/button";
+import { useRouter } from "next/navigation";
+import { FaMedal } from "react-icons/fa";
 import toast from "react-hot-toast";
+
+const Modal = ({ isOpen, onClose, country }) => {
+  if (!isOpen) return null;
+
+  const totalMedals = (country?.gold_medal || 0) + (country?.silver_medal || 0) + (country?.bronze_medal || 0);
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <div
+        className="bg-white p-6 rounded-lg"
+        style={{
+          width: "25%",
+          minHeight: "25%",
+          maxWidth: "90%",
+          maxHeight: "90%",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <h2 className="text-2xl font-bold mb-4 text-center">{country?.country_name || "Unknown Country"}</h2>
+        <p className="flex items-center gap-2 mb-2">
+          <FaMedal className="text-yellow-500" /> Gold Medals: {country?.gold_medal || 0}
+        </p>
+        <p className="flex items-center gap-2 mb-2">
+          <FaMedal className="text-gray-400" /> Silver Medals: {country?.silver_medal || 0}
+        </p>
+        <p className="flex items-center gap-2 mb-4">
+          <FaMedal className="text-amber-700" /> Bronze Medals: {country?.bronze_medal || 0}
+        </p>
+        <p className="mb-4 font-semibold text-xl">Total Medals: {totalMedals}</p>
+        <div className="flex justify-center mt-auto">
+          <Button onClick={onClose} size="md">
+            Close
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default function CountriesPage() {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     handleGetCountries();
@@ -24,10 +68,8 @@ export default function CountriesPage() {
   };
 
   const showCountryDetails = (country) => {
-    alert(`Country: ${country?.country_name || "Unknown"}
-Gold Medals: ${country?.gold_medal || 0}
-Silver Medals: ${country?.silver_medal || 0}
-Bronze Medals: ${country?.bronze_medal || 0}`);
+    setSelectedCountry(country);
+    setIsModalOpen(true);
   };
 
   if (loading) {
@@ -76,6 +118,11 @@ Bronze Medals: ${country?.bronze_medal || 0}`);
           ))
         )}
       </div>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        country={selectedCountry}
+      />
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { useModalStore } from "@/lib/store";
 import ModalSkeleton from "./modalSkeleton";
 import { useEffect, useState } from "react";
 import { Button } from "../button";
-import { createNewCountry, updateCountry } from "@/service/service";
+import { createNewCountry } from "@/service/service";
 
 const NewCountryModal = () => {
   const newCountryModalData = useModalStore((state) => state.newCountryModalData);
@@ -17,17 +17,7 @@ const NewCountryModal = () => {
   const [bronzeMedal, setBronzeMedal] = useState(0);
 
   useEffect(() => {
-    if (newCountryModalData?.editMode) {
-      const { country } = newCountryModalData;
-      setCode(country.code || "");
-      setCountryName(country.country_name || "");
-      setCountryLong(country.country_long || "");
-      setGoldMedal(country.gold_medal || 0);
-      setSilverMedal(country.silver_medal || 0);
-      setBronzeMedal(country.bronze_medal || 0);
-    } else {
-      resetFields();
-    }
+    resetFields();
   }, [newCountryModalData]);
 
   const resetFields = () => {
@@ -49,25 +39,14 @@ const NewCountryModal = () => {
       bronze_medal: bronzeMedal,
     };
 
-    if (newCountryModalData?.editMode) {
-      updateCountry(newCountryModalData.country.code, countryData)
-        .then(() => {
-          setNewCountryModalData(null);
-          newCountryModalData.update();
-        })
-        .catch((error) => {
-          alert("Error updating country: " + error.message);
-        });
-    } else {
-      createNewCountry(countryData)
-        .then(() => {
-          setNewCountryModalData(null);
-          newCountryModalData.update();
-        })
-        .catch((error) => {
-          alert("Error creating country: " + error.message);
-        });
-    }
+    createNewCountry(countryData)
+      .then(() => {
+        setNewCountryModalData(null);
+        newCountryModalData.update();
+      })
+      .catch((error) => {
+        alert("Error creating country: " + error.message);
+      });
   };
 
   return (
@@ -77,7 +56,7 @@ const NewCountryModal = () => {
     >
       <div>
         <h5 className="font-semibold text-lg text-center mb-4">
-          {newCountryModalData?.editMode ? "Edit" : "Create"} Country
+          Create New Country
         </h5>
         <div className="grid grid-cols-1 gap-4">
           <div>
@@ -142,9 +121,7 @@ const NewCountryModal = () => {
         </div>
         <div className="flex justify-end gap-4 mt-4">
           <Button onClick={() => setNewCountryModalData(null)}>Cancel</Button>
-          <Button onClick={handleSaveCountry}>
-            {newCountryModalData?.editMode ? "Save Changes" : "Create Country"}
-          </Button>
+          <Button onClick={handleSaveCountry}>Create Country</Button>
         </div>
       </div>
     </ModalSkeleton>

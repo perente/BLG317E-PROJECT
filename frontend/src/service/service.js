@@ -209,26 +209,12 @@ export const deleteCountry = async function (country_code) {
     });
 };
 
-export const updateCountry = async function ({
-    country_code,
-    country_name,
-    country_long,
-    gold_medal,
-    silver_medal,
-    bronze_medal,
-}) {
+export const updateCountry = async function (country_code, data) {
     try {
         const response = await axios({
             method: "PATCH",
             url: `${API_ROUTE.countries}/${country_code}`,
-            data: {
-                country_code,
-                country_name,
-                country_long,
-                gold_medal,
-                silver_medal,
-                bronze_medal,
-            },
+            data: data,
         });
         return response;
     } catch (error) {

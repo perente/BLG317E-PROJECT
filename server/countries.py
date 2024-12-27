@@ -37,39 +37,51 @@ def get_countries():
 
 def update_countries(country_code):
     try:
+        # Validate JSON payload
         data = request.get_json()
         if not data:
             return jsonify({'error': 'Invalid input: No JSON payload provided'}), 400
 
-        # Extract values from JSON payload
-
-        country_code = data.get('code')
-        country_name = data.get('country_name')
-        country_long = data.get('country_long')
+        # Extract and validate values
         gold_medal = data.get('gold_medal')
         silver_medal = data.get('silver_medal')
         bronze_medal = data.get('bronze_medal')
 
-        # Validate required fields
-        if not all([country_code, country_name, country_long, gold_medal, silver_medal, bronze_medal]):
-            return jsonify({'error': 'Missing required fields'}), 400
+        if gold_medal is None or silver_medal is None or bronze_medal is None:
+            return jsonify({'error': 'Missing medal fields'}), 400
 
+        if not isinstance(gold_medal, int) or not isinstance(silver_medal, int) or not isinstance(bronze_medal, int):
+            return jsonify({'error': 'Medal values must be integers'}), 400
+
+        if gold_medal < 0 or silver_medal < 0 or bronze_medal < 0:
+            return jsonify({'error': 'Medal counts cannot be negative'}), 400
+
+        # Connect to the database
         connection = db_connection()
         if connection.is_connected():
             with connection.cursor(dictionary=True) as cursor:
-                query = "UPDATE Country SET gold_medal = %s, silver_medal = %s, bronze_medal = %s WHERE country_code = %s"
+                query = """
+                    UPDATE Country
+                    SET gold_medal = %s, silver_medal = %s, bronze_medal = %s
+                    WHERE country_code = %s
+                """
                 cursor.execute(query, (gold_medal, silver_medal, bronze_medal, country_code))
                 connection.commit()
-                # Return success message
+
+                # Check if any rows were updated
+                if cursor.rowcount == 0:
+                    return jsonify({'error': f"No country found with country code '{country_code}'"}), 404
+
                 return jsonify({'message': f"Country with country code '{country_code}' updated successfully"}), 200
         else:
             return jsonify({'error': 'Failed to connect to the database'}), 500
+
     except Error as e:
         return jsonify({'error': str(e)}), 500
-    
+
     finally:
+        # Ensure connection is closed
         if 'connection' in locals() and connection.is_connected():
-            cursor.close()
             connection.close()
 
 def new_countries():
@@ -88,8 +100,11 @@ def new_countries():
         bronze_medal = data.get('bronze_medal', 0)
 
         # Validate required fields
-        if not all([country_code, country_name, country_long, gold_medal, silver_medal, bronze_medal]):
+        if not all([country_code, country_name]):
             return jsonify({'error': 'Missing required fields'}), 400
+        
+        if gold_medal < 0 or silver_medal < 0 or bronze_medal < 0:
+            return jsonify({'error': 'Medal counts cannot be negative'}), 400
         
         connection = db_connection()
         if connection.is_connected():

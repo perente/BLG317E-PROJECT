@@ -16,10 +16,9 @@ function Events() {
   const params = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const [events_code, setEventsCode] = useState(params.get("events_code") ?? "");
   const [event_name, setEventName] = useState(params.get("event_name") ?? "");
   const [sport_name, setSportName] = useState(params.get("sport_name") ?? "");
-  const [discipline, setDiscipline] = useState(params.get("discipline") ?? "");
+  const [discipline_code, setDisciplineCode] = useState(params.get("discipline_code") ?? "");
   const [order, setOrder] = useState(params.get("order") ?? "");
   const [orderBy, setOrderBy] = useState(params.get("order_by") ?? "");
   const [disciplines, setDisciplines] = useState([]);
@@ -33,20 +32,18 @@ function Events() {
       alert(error);
     });
     setCurrentPage(1);
-    setEventsCode(params.get("events_code") ?? "");
     setEventName(params.get("event_name") ?? "");
     setSportName(params.get("sport_name") ?? "");
-    setDiscipline(params.get("discipline") ?? "");
+    setDisciplineCode(params.get("discipline_code") ?? "");
     setOrder(params.get("order") ?? "");
     setOrderBy(params.get("order_by") ?? "");
   }, [params]);
 
   const handleGetEvents = async () => {
     let filter = {};
-    if (params.get("events_code")) filter.events_code = params.get("events_code");
     if (params.get("event_name")) filter.event_name = params.get("event_name");
     if (params.get("sport_name")) filter.sport_name = params.get("sport_name");
-    if (params.get("discipline")) filter.discipline_code = params.get("discipline");
+    if (params.get("discipline_code")) filter.discipline_code = params.get("discipline_code");
     if (params.get("order")) filter.order = params.get("order");
     if (params.get("order_by")) filter.order_by = params.get("order_by");
     
@@ -70,14 +67,22 @@ function Events() {
     pageNumbers.push(i);
   }
 
-  const onChange = (e, name) => {
+  const onChange = ({ event, name }) => {
     const current = new URLSearchParams(Array.from(params.entries()));
-    const value = e.target.value.trim();
+    const value = event.target.value.trim();
     if (!value) current.delete(name);
-    else current.set(name, value);
+    else current.set(name, event.target.value);
 
-    router.replace(`${pathname}?${current.toString()}`);
+    const search = current.toString();
+    const query = search ? `?${search}` : "";
+    router.replace(`${pathname}${query}`)
   };
+
+  function updateSearchParamForCurrentPage({ key, value }) {
+    const { replace } = useRouter();
+    const newUrl = updateSearchParam({ key, value })
+    replace(newUrl)
+}
 
   const orderEvents = (orderBy) => {
     const current = new URLSearchParams(Array.from(params.entries()));
@@ -129,7 +134,7 @@ function Events() {
               value={event_name}
               onChange={(e) => {
                 setEventName(e.target.value);
-                onChange(e, "event_name");
+                onChange({ event: e, name: "event_name" });
               }}
             >
               <option value="">All</option>
@@ -151,7 +156,7 @@ function Events() {
               value={sport_name}
               onChange={(e) => {
                 setSportName(e.target.value);
-                onChange(e, "sport_name");
+                onChange({ event: e, name: "sport_name" });
               }}
             >
               <option value="">All</option>
@@ -168,10 +173,10 @@ function Events() {
           <div className="">
             <label htmlFor="discipline" className="mr-1">Discipline Code:</label>
             <select className="border border-gray-400 rounded-md p-1 h-[34px] w-full"
-              value={discipline}
+              value={discipline_code}
               onChange={(e) => {
-                setDiscipline(e.target.value);
-                onChange(e, "discipline");
+                setDisciplineCode(e.target.value);
+                onChange({ event: e, name: "discipline_code" });
               }}
             >
               <option value="">All</option>
@@ -194,19 +199,6 @@ function Events() {
         : <table className="table-auto w-full border-collapse border border-gray-400 mt-4">
           <thead>
             <tr className="bg-gray-200">
-              <th
-                onClick={() => orderEvents("events_code")}
-                className="border border-gray-400 px-2 py-1 cursor-pointer">
-                <div className="flex items-center justify-center">
-                  <span>Event Code</span>
-                  <div className="opcity-10 flex items-center justify-center flex-col ">
-                    <TiArrowSortedDown className={"w-5 h-5 mt-[6px] " + (orderBy === "events_code" && order === "asc" ? "opacity-100" : "opacity-30")}
-                      style={{ rotate: "180deg" }} />
-                    <TiArrowSortedDown className={"w-5 h-5 mt-[-10px] " + (orderBy === "events_code" && order === "desc" ? "opacity-100" : "opacity-30")}
-                      style={{ rotate: "0deg" }} />
-                  </div>
-                </div>
-              </th>
               <th
                 onClick={() => orderEvents("event_name")}
                 className="border border-gray-400 px-2 py-1 cursor-pointer">
@@ -253,34 +245,39 @@ function Events() {
             {currentItems.map((event) => (
               <tr key={event.events_code} className="border-b">
                 <td className="border border-gray-400 px-2 py-1 cursor-pointer">
-                  {event.events_code}
-                </td>
-                <td className="border border-gray-400 px-2 py-1 cursor-pointer">
                   {event.event_name}
                 </td>
                 <td className="border border-gray-400 px-2 py-1 cursor-pointer">
                   {event.sport_name}
                 </td>
                 <td className="border border-gray-400 px-2 py-1 cursor-pointer">
-                  {event.discipline_code}
+                  <div className="flex items-center gap-5">
+                    <span>{event.discipline_code}</span>
+                    <div className="flex justify-center">
+                      <img
+                        className="w-10 h-10"
+                        src={`https://gstatic.olympics.com/s1/t_original/static/light/pictograms-paris-2024/olympics/${event.discipline_code}_small.svg`}
+                        onError={(e) => {
+                          e.target.src = "https://olympics.com/images/static/b2p-images/logo_color.svg";
+                        }}
+                        alt={`${event.discipline_code} icon`}
+                      />
+                    </div>
+                  </div>
                 </td>
                 <td className="border border-gray-400 px-2 py-1 cursor-pointer">
                   <div className="flex gap-1">
-                    <a
-                      href={event.url.startsWith("http") ? event.url : ("https://olympics.com" + event.url)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <FaExternalLinkSquareAlt className="w-5 h-5 mt-[2px] " />
-                    </a>
-                    <div className="cursor-pointer" onClick={() => { handleDeleteEvent(event.events_code) }}>
-                      <MdDelete className="w-6 h-6" />
-                    </div>
-                    <div className="cursor-pointer" onClick={() => { setNewEventModal({ update: handleGetEvents, event: event, edit: true, disciplines: disciplines }) }}
-                    >
-                      <FaEdit className="w-6 h-6" />
-                    </div>
-
+                    {event?.url ? (
+                      <a
+                        href={event?.url.startsWith("http") ? event?.url : "https://olympics.com" + event.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FaExternalLinkSquareAlt className="w-5 h-5 mt-[2px]" />
+                      </a>
+                    ) : (
+                      "No URL"
+                    )}
                   </div>
                 </td>
               </tr>

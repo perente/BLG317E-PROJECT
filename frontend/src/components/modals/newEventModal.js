@@ -60,22 +60,20 @@ const NewEventModal = () => {
       return
     } else {
       createNewEvent({
-        events_code: events_code,
-        event_name: event_name,
-        sport_name: sport_name,
-        discipline_code: discipline_code
+        event_name,
+        sport_name,
+        discipline_code,
       })
-      .then((res) => {
-        toast.success("New Event Created")
-        newEventModal?.update()
-        setNewEventModal(null)
-      })
-      .catch((error) => {
-        console.log(error)
-        toast.error(error)
-      })
-      .finally(() => {
-      })
+        .then((res) => {
+          toast.success("New Event Created");
+          newEventModal?.update();
+          setNewEventModal(null);
+        })
+        .catch((error) => {
+          console.error("Error creating event:", error);
+          toast.error("Failed to create event");
+        });
+      
     }
   };
 
@@ -133,7 +131,7 @@ const NewEventModal = () => {
         <div className="flex justify-end gap-4 mt-4">
           <Button onClick={() => { setNewEventModal(null)} }>Cancel</Button>
           <Button 
-          disabled={events_code === "" || event_name === "" || sport_name === "" || discipline_code === ""}
+          disabled={event_name === "" || sport_name === "" || discipline_code === ""}
           onClick={handleNewEvent}>
             {newEventModal?.editMode ? "Save Changes" : "Create Event"}
           </Button>
