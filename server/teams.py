@@ -140,17 +140,17 @@ def new_team():
         # Generate team_code manually
         cursor.execute("""
             SELECT LPAD(
-                MAX(CAST(SUBSTRING(team_code, LENGTH(CONCAT(%s, 'TEAM', %s, '---', %s)) + 1) AS UNSIGNED)) + 1,
+                MAX(CAST(SUBSTRING(team_code, LENGTH(CONCAT(%s, %s,'TEAM', '---', %s)) + 1) AS UNSIGNED)) + 1,
                 1,
                 '1'
             ) AS next_code
             FROM Teams
-            WHERE team_code LIKE CONCAT(%s, 'TEAM', %s, '---', %s, '%')
-        """, (discipline_code, num_athletes, country_code, discipline_code, num_athletes, country_code))
+            WHERE team_code LIKE CONCAT(%s,%s, 'TEAM', '---', %s, '%')
+        """, (discipline_code,team_gender, country_code, discipline_code, team_gender, country_code))
         result = cursor.fetchone()
         next_code = result['next_code'] if result['next_code'] else '1'
 
-        team_code = f"{discipline_code}TEAM{num_athletes}---{country_code}{next_code}"
+        team_code = f"{discipline_code}{team_gender}TEAM---{country_code}{next_code}"
 
         # Insert team
         cursor.execute("""
