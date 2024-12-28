@@ -26,7 +26,7 @@ def get_medallists():
             id = request.args.get('id')
             medal_date = request.args.get('medal_date')
             medal_code = request.args.get('medal_code')
-            gender = request.args.get('gender')
+            athlete_gender = request.args.get('athlete_gender')
             country_code = request.args.get('country_code')
             code_team = request.args.get('code_team')
             code_athlete = request.args.get('code_athlete')
@@ -40,7 +40,8 @@ def get_medallists():
             query = """
                 SELECT 
                     Medallist.*, 
-                    Athlete.name AS athlete_name 
+                    Athlete.name AS athlete_name,
+                    Athlete.gender AS athlete_gender
                 FROM Medallist
                 LEFT JOIN Athlete ON Medallist.code_athlete = Athlete.athlete_code
             """
@@ -59,10 +60,6 @@ def get_medallists():
             if medal_code:
                 filters.append("Medallist.medal_code = %s")
                 params.append(medal_code)
-
-            if gender:
-                filters.append("Medallist.gender = %s")
-                params.append(gender)
 
             if country_code:
                 filters.append("Medallist.country_code = %s")
@@ -87,6 +84,10 @@ def get_medallists():
             if athlete_name:  # Filter for athlete name
                 filters.append("Athlete.name LIKE %s")
                 params.append(f"%{athlete_name}%")
+
+            if athlete_gender:
+                filters.append("Athlete.gender LIKE %s")
+                params.append(f"%{athlete_gender}%")
 
             if filters:
                 query += " WHERE " + " AND ".join(filters)
@@ -140,13 +141,11 @@ def new_medallists():
         event = data.get('event')
 
         # Validate required fields
-        if not all([medal_date, medal_code, gender, country_code, code_athlete, discipline, event]):
+        if not all([medal_date, medal_code, country_code, code_athlete, discipline, event]):
             if not medal_date:
                 return jsonify({'error': 'Missing required field: medal_date'}), 400
             if not medal_code:
                 return jsonify({'error': 'Missing required field: medal_code'}), 400
-            if not gender:
-                return jsonify({'error': 'Missing required field: gender'}), 400
             if not country_code:
                 return jsonify({'error': 'Missing required field: country_code'}), 400
             if not code_athlete:
@@ -191,11 +190,11 @@ def new_medallists():
 
                 # Insert medallist into the database
                 query = """
-                    INSERT INTO Medallist (medal_date, medal_code, gender, team_gender, country_code, code_team, code_athlete, discipline, event)
-                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    INSERT INTO Medallist (medal_date, medal_code, team_gender, country_code, code_team, code_athlete, discipline, event)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                 """
                 values = (
-                    medal_date, medal_code, gender, team_gender, country_code, code_team, code_athlete, discipline, event
+                    medal_date, medal_code, country_code, code_team, code_athlete, discipline, event
                 )
                 cursor.execute(query, values)
                 connection.commit()

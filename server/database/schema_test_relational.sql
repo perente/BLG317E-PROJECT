@@ -95,7 +95,6 @@ CREATE TABLE `Medallist` (
     `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `medal_date` DATE NOT NULL,
     `medal_code` INT NOT NULL,
-    `gender` ENUM('M', 'F') NOT NULL,
     `country_code` CHAR(3),
     `team_gender` ENUM('M', 'W', 'Mixed', 'No Team') default 'No Team',
     `discipline` VARCHAR(50),

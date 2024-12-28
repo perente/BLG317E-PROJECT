@@ -73,8 +73,8 @@ try:
             header = next(csv_file)  # Read the header row
             # assign null for empty team_code
             for row in csv_file:
-                if row[8] == '':
-                    row[8] = None
+                if row[7] == '':
+                    row[7] = None
                 try:
                     # Execute the query with row values
                     cursor.execute(command, row)
@@ -87,19 +87,19 @@ try:
 
     def insertData_JoinTable(filename, command):
         with open('./Data/Tables/{}.csv'.format(filename), 'r') as open_file:
-            csv_file = csv.reader(open_file, delimiter=',') 
-            header = next(csv_file) 
+            csv_file = csv.reader(open_file, delimiter=',')
+            header = next(csv_file)
 
             for line in csv_file:
                 try:
-                    team_code = line[0].strip() 
-                    coach_codes = line[1].strip() if len(line) > 1 else ""  
-                    
-                   
+                    team_code = line[0].strip()
+                    coach_codes = line[1].strip() if len(line) > 1 else ""
+
+
                     if not coach_codes:
                         # print(f"Skipping line for team {team_code} as second column is empty.")
                         continue
-                    
+
                     coaches = ast.literal_eval(coach_codes) if coach_codes else []
 
                     for coach_code in coaches:
@@ -123,30 +123,30 @@ try:
                     if not row[birth_date_index]:  # If birth_date is empty
                         row[birth_date_index] = None  # Set it to NULL for MySQL
                         # Alternatively, if NULL is not allowed, use a placeholder like '0000-00-00':
-                    
+
                     # Execute the query with row values
                     cursor.execute(command, row)
-                    
+
                 except Exception as e:
                     print(command)
                     print(row)
                     print(f"Error inserting row {row}: {e}")
                     continue
-                    
+
             # Commit the transaction after all rows are processed
             ins.commit()
-    
+
     def insertDataAthlete_Disciplines(filename, command):
         with open('./Data/Tables/{}.csv'.format(filename), 'r') as open_file:
-            csv_file = csv.reader(open_file, delimiter=',') 
-            header = next(csv_file) 
+            csv_file = csv.reader(open_file, delimiter=',')
+            header = next(csv_file)
 
             for line in csv_file:
                 try:
-                    athlete_code = line[0].strip() 
-                    disciplineList = line[1].strip() if len(line) > 1 else "" 
-                    
-                   
+                    athlete_code = line[0].strip()
+                    disciplineList = line[1].strip() if len(line) > 1 else ""
+
+
                     disciplines = ast.literal_eval(disciplineList) if disciplineList else []
 
                     for discipline in disciplines:
@@ -157,7 +157,7 @@ try:
                     print(f"Error processing line {line}: {e}")
                     continue
         ins.commit()
-    
+
     command = """INSERT INTO Country (gold_medal,silver_medal,bronze_medal,country_code,country_name,country_long) VALUES (%s,%s,%s,%s,%s,%s)"""
     insertData('country', command)
     command = """INSERT INTO Discipline (name,discipline_code,id) VALUES (%s,%s, %s)"""
@@ -172,7 +172,7 @@ try:
     insertData('athlete', command)
     command = """INSERT INTO Coach (coach_code,name,gender,coach_function,country_code,disciplines,birth_date) VALUES (%s,%s,%s,%s,%s,%s,%s) """
     insertDataCoach('coach', command)
-    command = """INSERT INTO Medallist (medal_date, medal_code, gender,country_code,team_gender,discipline,event,code_athlete,code_team,id)  VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+    command = """INSERT INTO Medallist (medal_date, medal_code,country_code,team_gender,discipline,event,code_athlete,code_team)  VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"""
     insertDataMedallist('medallist_updated', command)
     command = """INSERT INTO Athlete_Disciplines (athlete_code, discipline) VALUES (%s,%s) """
     insertDataAthlete_Disciplines('athlete_discipline',command)
