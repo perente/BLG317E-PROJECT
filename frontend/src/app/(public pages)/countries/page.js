@@ -1,8 +1,10 @@
 "use client";
-import { useEffect, useState } from "react";
-import { getCountries, getCountriesAboveAverage, getTopCountries } from "@/service/service";
 import { Button } from "@/components/button";
+import { useModalStore } from "@/lib/store";
+import { getCountries, getCountriesAboveAverage, getTopCountries } from "@/service/service";
+import { useSearchParams, usePathname, useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
 import { FaMedal } from "react-icons/fa";
 import toast from "react-hot-toast";
 
@@ -45,26 +47,119 @@ const Modal = ({ isOpen, onClose, country }) => {
   );
 };
 
-export default function CountriesPage() {
+const TopNModal = ({
+  isOpen,
+  onClose,
+  onSubmit, 
+}) => {
+  const [topN, setTopN] = useState("3");
+
+  if (!isOpen) return null;
+
+  const handleSubmit = () => {
+    onSubmit(parseInt(topN, 10) || 3);
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <div
+        className="bg-white p-6 rounded-lg"
+        style={{ width: "25%", maxWidth: "90%", minHeight: "20%" }}
+      >
+        <h2 className="text-xl font-bold mb-4 text-center">
+          Get Top N Countries
+        </h2>
+        <div className="mb-4">
+          <label htmlFor="topN" className="block mb-2">
+            Enter a number:
+          </label>
+          <input
+            id="topN"
+            type="number"
+            className="border border-gray-300 rounded-md px-2 py-1 w-full"
+            value={topN}
+            onChange={(e) => setTopN(e.target.value)}
+          />
+        </div>
+        <div className="flex justify-center gap-2">
+          <Button onClick={onClose} size="md" variant="secondary">
+            Cancel
+          </Button>
+          <Button onClick={handleSubmit} size="md">
+            Find
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Countries = () => {
   const [countries, setCountries] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const router = useRouter();
+  const params = useSearchParams();
+  const pathname = usePathname();
+  const [countryName, setCountryName] = useState("");
+  const [countryCode, setCountryCode] = useState("");
+  const [countryLong, setCountryLong] = useState("");
+  const [goldMedal, setGoldMedal] = useState("");
+  const [silverMedal, setSilverMedal] = useState("");
+  const [bronzeMedal, setBronzeMedal] = useState("");
+  const [total, setTotal] = useState("");
   const [selectedCountry, setSelectedCountry] = useState(null);
+  const [order, setOrder] = useState(params.get("order") ?? "");
+  const [orderBy, setOrderBy] = useState(params.get("order_by") ?? "");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isTopNModalOpen, setIsTopNModalOpen] = useState(false);
 
   useEffect(() => {
     handleGetCountries();
-  }, []);
+    setCountryName(params.get("country_name") ?? "");
+    setCountryCode(params.get("country_code") ?? "");
+    setCountryLong(params.get("country_long") ?? "");
+    setGoldMedal(params.get("gold_medal") ?? "");
+    setSilverMedal(params.get("silver_medal") ?? "");
+    setBronzeMedal(params.get("bronze_medal") ?? "");
+    setTotal(params.get("total") ?? "");
+    setOrder(params.get("order") ?? "");
+    setOrderBy(params.get("order_by") ?? "");
+  }, [params]);
 
   const handleGetCountries = async () => {
     setLoading(true);
-    try {
-      const res = await getCountries();
-      setCountries(res.data);
-    } catch (error) {
-      toast.error("Failed to fetch countries: " + error.message);
-    } finally {
-      setLoading(false);
-    }
+    const filter = {};
+      if (params.get("country_name")) {
+        filter.country_name = params.get("country_name");
+      }
+      if (params.get("country_code")) {
+        filter.country_code = params.get("country_code");
+      }
+      if (params.get("country_long")) {
+        filter.country_long = params.get("country_long");
+      }
+      if (params.get("gold_medal")) {
+        filter.gold_medal = params.get("gold_medal");
+      }
+      if (params.get("silver_medal")) {
+        filter.silver_medal = params.get("silver_medal");
+      }
+      if (params.get("bronze_medal")) {
+        filter.bronze_medal = params.get("bronze_medal");
+      }
+      if (params.get("total")) {
+        filter.total = params.get("total");
+      }
+        
+    setLoading(true);
+      getCountries(filter)
+        .then((res) => {
+          setCountries(res.data);
+        })
+        .catch((err) => alert(err))
+        .finally(() => { 
+          setLoading(false)
+        });
   };
 
   const showCountryDetails = (country) => {
@@ -85,22 +180,68 @@ export default function CountriesPage() {
     }
   };
 
-  const handleGetTopCountries = async () => {
-    const n = prompt("Number of top countries to display:", "3");
-    if (!n) return;
+  const openTopNModal = () => {
+    setIsTopNModalOpen(true);
+  };
+  const closeTopNModal = () => {
+    setIsTopNModalOpen(false);
+  };
+
+  const handleGetTopCountries = async (n) => {
     setLoading(true);
     try {
-      const res = await getTopCountries(n); 
+      const res = await getTopCountries(n);
       setCountries(res.data);
       toast.success(`Top ${n} Countries are Found`);
     } catch (error) {
       toast.error("Failed to find top countries: " + error.message);
     } finally {
       setLoading(false);
+      setIsTopNModalOpen(false); 
     }
   };
 
-  if (loading) {
+  const onChange = ({ country, name }) => {
+    const current = new URLSearchParams(Array.from(params.entries()));
+    const value = country.target.value.trim();
+    if (!value) current.delete(name);
+    else current.set(name, country.target.value);
+
+    const search = current.toString();
+    const query = search ? `?${search}` : "";
+    router.push(`${pathname}${query}`);
+  };
+
+  function updateSearchParamForCurrentPage({ key, value }) {
+    const { replace } = useRouter();
+    const newUrl = updateSearchParamForCurrentPage({ key, value })
+    replace(newUrl)
+}
+  
+  const orderCountries = (orderBy) => {
+    const current = new URLSearchParams(Array.from(params.entries()));
+    const value = orderBy;
+    if(!value) {
+      current.delete("order_by");
+      current.delete("order");
+    } else {
+      if(order === "asc") {
+        setOrderBy("");
+        setOrder("");
+        current.delete("order_by");
+        current.delete("order");
+      } else {
+        current.set("order_by", orderBy);
+        current.set("order", order === "" ? "desc" : order === "desc" ? "asc" : "");
+      }
+    }
+    
+    const search = current.toString();
+    const query = search ? `?${search}` : "";
+    router.push(`${pathname}${query}`);
+  };
+
+  if (loading && params.size === 0) {
     return (
       <div className="flex items-center justify-center h-screen">
         <p className="text-lg font-semibold">Loading...</p>
@@ -109,16 +250,16 @@ export default function CountriesPage() {
   }
 
   return (
-    <div className="container ml-20">
+    <div className="container m-auto">
       <h1 className="text-3xl my-4">Countries</h1>
-      <div className="flex gap-5 mb-4">
+      <div className="flex gap-5 mb-8">
         <Button 
           onClick={handleGetCountries}
         >
           All Countries
         </Button>
         <Button 
-          onClick={handleGetTopCountries}
+          onClick={openTopNModal}
         >
           Top N Countries
         </Button>
@@ -128,8 +269,131 @@ export default function CountriesPage() {
           Above Avg Countries
         </Button>
       </div>
-      <div>
-        <div className="grid grid-cols-4 gap-4 my-4">
+      <div className="mb-4">
+        <h3 className="text-xl font-semibold inline-block mr-4">Filters</h3>
+        <Button
+          size="xs"
+          onClick={() => router.push(pathname)} 
+          className="mb-4 inline-block text-xs px-2 py-1"
+        >
+          Clear Filters
+        </Button>
+        <div className="flex gap-2 items-center mt-2 mb-6 flex-wrap">
+          <div className="flex flex-col">
+            <label htmlFor="filterName" className="mr-1">
+              Country Name:
+            </label>
+            <input
+              id="filterName"
+              type="text"
+              className="border border-gray-400 rounded-md p-1"
+              placeholder="e.g. United States"
+              value={countryName}
+              onChange={(e) => {
+                setCountryName(e.target.value);
+                onChange({ country: e, name: "country_name" });
+              }}
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="filterCode" className="mr-1">
+              Country Code:
+            </label>
+            <input
+              id="filterCode"
+              type="text"
+              className="border border-gray-400 rounded-md p-1"
+              placeholder="e.g. USA"
+              value={countryCode}
+              onChange={(e) => {
+                setCountryCode(e.target.value);
+                onChange({ country: e, name: "country_code" });
+              }}
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="filterLong" className="mr-1">
+              Country Long:
+            </label>
+            <input
+              id="filterLong"
+              type="text"
+              className="border border-gray-400 rounded-md p-1"
+              placeholder="e.g. United States of America"
+              value={countryLong}
+              onChange={(e) => {
+                setCountryLong(e.target.value);
+                onChange({ country: e, name: "country_long" });
+              }}
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="filterGold" className="mr-1">
+              Gold Medals:
+            </label>
+            <input
+              id="filterGold"
+              type="number"
+              className="border border-gray-400 rounded-md p-1"
+              placeholder="e.g. 3"
+              value={goldMedal}
+              onChange={(e) => {
+                setGoldMedal(e.target.value);
+                onChange({ country: e, name: "gold_medal" });
+              }}
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="filterSilver" className="mr-1">
+              Silver Medals:
+            </label>
+            <input
+              id="filterSilver"
+              type="number"
+              className="border border-gray-400 rounded-md p-1"
+              placeholder="e.g. 4"
+              value={silverMedal}
+              onChange={(e) => {
+                setSilverMedal(e.target.value);
+                onChange({ country: e, name: "silver_medal" });
+              }}
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="filterBronze" className="mr-1">
+              Bronze Medals:
+            </label>
+            <input
+              id="filterBronze"
+              type="number"
+              className="border border-gray-400 rounded-md p-1"
+              placeholder="e.g. 5"
+              value={bronzeMedal}
+              onChange={(e) => {
+                setBronzeMedal(e.target.value);
+                onChange({ country: e, name: "bronze_medal" });
+              }}
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="filterTotal" className="mr-1">
+              Total Medals:
+            </label>
+            <input
+              id="filterTotal"
+              type="number"
+              className="border border-gray-400 rounded-md p-1"
+              placeholder="e.g. 12"
+              value={total}
+              onChange={(e) => {
+                setTotal(e.target.value);
+                onChange({ country: e, name: "total" });
+              }}
+            />
+          </div>
+        </div>
+      </div>
+      <div className="grid grid-cols-4 gap-4 my-4">
         {countries.length === 0 ? (
           <p className="text-lg text-center font-semibold">No countries available.</p>
         ) : (
@@ -164,12 +428,24 @@ export default function CountriesPage() {
           ))
         )}
       </div>
-      </div>
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         country={selectedCountry}
       />
+      <TopNModal
+        isOpen={isTopNModalOpen}
+        onClose={closeTopNModal}
+        onSubmit={handleGetTopCountries}
+      />
     </div>
   );
 }
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Countries />
+    </Suspense>
+  );
+} 

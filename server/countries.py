@@ -20,15 +20,76 @@ def get_countries():
         connection = db_connection()
         if connection.is_connected():
             cursor = connection.cursor(dictionary=True)
-            cursor.execute("SELECT * FROM Country")
+
+            # Get query parameters
+            country_name = request.args.get('country_name')
+            country_code = request.args.get('country_code')
+            country_long = request.args.get('country_long')
+            gold_medal = request.args.get('gold_medal')
+            silver_medal = request.args.get('silver_medal')
+            bronze_medal = request.args.get('bronze_medal')
+            total = request.args.get('total')
+            order_by = request.args.get('order_by')
+            order = request.args.get('order')
+
+            print(country_name, country_code, country_long, gold_medal, silver_medal, bronze_medal, total)
+
+            # Base query
+            query = "SELECT * FROM Country"
+
+            # Where clause conditions
+            filters = []
+            params = []
+
+            if country_name:
+                filters.append("Country.country_name LIKE %s")
+                params.append(f"%{country_name}%")
+
+            if country_code:
+                filters.append("Country.country_code LIKE %s")
+                params.append(f"%{country_code}%")
+
+            if country_long:
+                filters.append("Country.country_long LIKE %s")
+                params.append(f"%{country_long}%")
+            
+            if gold_medal:
+                filters.append("Country.gold_medal LIKE %s")
+                params.append(f"%{gold_medal}%")
+
+            if silver_medal:
+                filters.append("Country.silver_medal LIKE %s")
+                params.append(f"%{silver_medal}%")
+            
+            if bronze_medal:
+                filters.append("Country.bronze_medal LIKE %s")
+                params.append(f"%{bronze_medal}%")
+            
+            if total:
+                filters.append("Country.total LIKE %s")
+                params.append(f"%{total}%")
+
+            # Add filters to query
+            if filters:
+                query += " WHERE " + " AND ".join(filters)
+
+            if order_by:
+                query += f" ORDER BY Country.{order_by} {order or 'ASC'}"
+
+            print("Query:", query)
+            print("Params:", params)
+
+            # Execute query with parameters
+            cursor.execute(query, params)
             countries = cursor.fetchall()
+
             # Return data as JSON
             return jsonify(countries), 200
         else:
             return jsonify({'error': 'Failed to connect to the database'}), 500
+
     except Error as e:
         return jsonify({'error': str(e)}), 500
-    
     finally:
         # Close the connection
         if 'connection' in locals() and connection.is_connected():
