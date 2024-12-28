@@ -137,7 +137,7 @@ def new_team():
 
         cursor.execute("START TRANSACTION")
 
-        # Generate team_code manually
+        
         cursor.execute("""
             SELECT LPAD(
                 MAX(CAST(SUBSTRING(team_code, LENGTH(CONCAT(%s, %s,'TEAM', '---', %s)) + 1) AS UNSIGNED)) + 1,

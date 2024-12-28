@@ -8,6 +8,7 @@ import { Suspense, useEffect, useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { TiArrowSortedDown } from "react-icons/ti";
+import { BiDetail } from "react-icons/bi";
 
 function Teams() {
   const [teams, setTeams] = useState([]);
@@ -27,6 +28,7 @@ function Teams() {
   const [numAthletes, setNumAthletes] = useState(params.get("num_athletes") ?? "");
   const [order, setOrder] = useState(params.get("order") ?? "");
   const [orderBy, setOrderBy] = useState(params.get("order_by") ?? "");
+  const setTeamDetailsModalData = useModalStore((state) => state.setTeamDetailsModalData);
 
   const [disciplines, setDisciplines] = useState([]);
   const [countries, setCountries] = useState([]);
@@ -352,6 +354,9 @@ function Teams() {
                     </div>
                     <div className="cursor-pointer" onClick={() => handleDeleteTeam(team.team_code)}>
                       <MdDelete className="w-6 h-6" />
+                    </div>
+                    <div className="cursor-pointer" onClick={() => setTeamDetailsModalData(team)}>
+                      <BiDetail className="w-6 h-6" />
                     </div>
                   </div>
                 </td>

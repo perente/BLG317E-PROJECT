@@ -6,6 +6,8 @@ import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { TiArrowSortedDown } from "react-icons/ti";
+import { useModalStore } from "@/lib/store";
+import { BiDetail } from "react-icons/bi";
 
 function Teams() {
   const [teams, setTeams] = useState([]);
@@ -28,6 +30,7 @@ function Teams() {
 
   const [disciplines, setDisciplines] = useState([]);
   const [countries, setCountries] = useState([]);
+  const setTeamDetailsModalData = useModalStore((state) => state.setTeamDetailsModalData);
 
   useEffect(() => {
     handleGetTeams();
@@ -359,7 +362,7 @@ function Teams() {
       className="border border-gray-400 px-2 py-1 cursor-pointer"
     >
       <div className="flex items-center justify-center">
-        <span># of Athletes</span>
+        <span>Number of Athletes</span>
         <div className="opacity-10 flex items-center justify-center flex-col">
           <TiArrowSortedDown
             className={
@@ -382,6 +385,7 @@ function Teams() {
         </div>
       </div>
     </th>
+    <th className="border border-gray-400 px-2 py-1"></th>
   </tr>
 </thead>
 <tbody>
@@ -392,6 +396,14 @@ function Teams() {
       <td className="border border-gray-400 px-2 py-1">{team.discipline_name}</td>
       <td className="border border-gray-400 px-2 py-1">{team.team_gender}</td>
       <td className="border border-gray-400 px-2 py-1">{team.num_athletes}</td>
+      <td className="border border-gray-400 px-2 py-1">
+        <div
+          onClick={() => setTeamDetailsModalData(team)}
+          className="px-2 py-1"
+        >
+           <BiDetail className="w-6 h-6" />
+        </div>
+      </td>
     </tr>
   ))}
 </tbody>

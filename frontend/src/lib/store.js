@@ -32,6 +32,9 @@ export const useModalStore = create(
 
     newCoachModal: null,
     setNewCoachModal: (data) => set({ newCoachModal: data }),
+    
+    teamDetailsModalData: null,
+    setTeamDetailsModalData: (data) => set({ teamDetailsModalData: data }),
   }),
   { name: 'modalStore' }
 );
