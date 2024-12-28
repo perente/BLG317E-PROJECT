@@ -220,7 +220,7 @@ function Teams() {
             </select>
           </div>
           <div className="flex items-center">
-  <label htmlFor="num_athletes" className="mr-2 w-20"># of Athletes:</label>
+  <label htmlFor="num_athletes" className="mr-2 w-20">Number of Athletes:</label>
   <input
     type="number"
     id="num_athletes"

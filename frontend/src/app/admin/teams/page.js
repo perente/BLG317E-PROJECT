@@ -242,7 +242,7 @@ function Teams() {
             </select>
           </div>
           <div>
-  <label htmlFor="num_athletes" className="mr-1"># of Athletes:</label>
+  <label htmlFor="num_athletes" className="mr-1">Number of Athletes:</label>
   <input
     type="number"
     id="num_athletes"
@@ -326,7 +326,7 @@ function Teams() {
                 className="border border-gray-400 px-2 py-1 cursor-pointer"
               >
                 <div className="flex items-center justify-center">
-                  <span> # of Athletes </span>
+                  <span> Number of Athletes </span>
                   <div className="opcity-10 flex items-center justify-center flex-col">
                     <TiArrowSortedDown className={"w-5 h-5 mt-[6px] " + (orderBy === "num_athletes" && order === "asc" ? "opacity-100" : "opacity-30")}
                       style={{ rotate: "180deg" }} />
