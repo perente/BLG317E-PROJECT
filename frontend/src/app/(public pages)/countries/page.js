@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 const Modal = ({ isOpen, onClose, country }) => {
   if (!isOpen) return null;
 
-  const totalMedals = (country?.gold_medal || 0) + (country?.silver_medal || 0) + (country?.bronze_medal || 0);
+  const totalMedals = country?.total || 0;
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
@@ -34,7 +34,7 @@ const Modal = ({ isOpen, onClose, country }) => {
         <p className="flex items-center gap-2 mb-4">
           <FaMedal className="text-amber-700" /> Bronze Medals: {country?.bronze_medal || 0}
         </p>
-        <p className="mb-4 font-semibold text-xl">Total Medals: {totalMedals}</p>
+        <p className="mb-4 font-semibold text-xl">Total Medals: {country?.total || 0}</p>
         <div className="flex justify-center mt-auto">
           <Button onClick={onClose} size="md">
             Close
