@@ -142,3 +142,68 @@ def delete_country(country_code):
         if 'connection' in locals() and connection.is_connected():
             cursor.close()
             connection.close()
+
+def get_top_countries():
+    try:
+        connection = db_connection()
+        if connection.is_connected():
+            # Read n from query param, if no n provided it will be 3
+            n = request.args.get('n', default=3, type=int)
+            query = """
+                SELECT
+                    country_code,
+                    country_name,
+                    gold_medal,
+                    silver_medal,
+                    bronze_medal,
+                    total
+                FROM Country
+                ORDER BY total DESC
+                LIMIT %s
+            """
+            with connection.cursor(dictionary=True) as cursor:
+                cursor.execute(query, (n,))
+                result = cursor.fetchall()
+                return jsonify(result), 200
+        else:
+            return jsonify({'error': 'Failed to connect to the database'}), 500
+
+    except Error as e:
+        return jsonify({'error': str(e)}), 500
+
+    finally:
+        if 'connection' in locals() and connection.is_connected():
+            connection.close()
+
+def get_countries_above_average():
+    try:
+        connection = db_connection()
+        if connection.is_connected():
+            #find countries that their total medal count is above the average
+            query = """
+                SELECT
+                    country_code,
+                    country_name,
+                    gold_medal,
+                    silver_medal,
+                    bronze_medal,
+                    total
+                FROM Country
+                WHERE total > (
+                    SELECT AVG(total) FROM Country
+                )
+                ORDER BY total DESC
+            """
+            with connection.cursor(dictionary=True) as cursor:
+                cursor.execute(query)
+                result = cursor.fetchall()
+                return jsonify(result), 200
+        else:
+            return jsonify({'error': 'Failed to connect to the database'}), 500
+
+    except Error as e:
+        return jsonify({'error': str(e)}), 500
+
+    finally:
+        if 'connection' in locals() and connection.is_connected():
+            connection.close()

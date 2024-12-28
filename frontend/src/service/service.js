@@ -209,6 +209,31 @@ export const deleteCountry = async function (country_code) {
     });
 };
 
+export const getTopCountries = async function (n) {
+    try {
+      const response = await axios({
+        method: "GET",
+        url: `${API_ROUTE.countries}/top`,
+        params: { n },
+      });
+      return response;
+    } catch (error) {
+      throw error;
+    }
+};
+  
+export const getCountriesAboveAverage = async function () {
+    try {
+      const response = await axios({
+        method: "GET",
+        url: `${API_ROUTE.countries}/above-average`,
+      });
+      return response;
+    } catch (error) {
+      throw error;
+    }
+};
+
 export const updateCountry = async function (country_code, data) {
     try {
         const response = await axios({

@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/button";
 import { useModalStore } from "@/lib/store";
-import { deleteCountry, getCountries } from "@/service/service";
+import { deleteCountry, getCountries, getCountriesAboveAverage, getTopCountries } from "@/service/service";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaEdit } from "react-icons/fa";
@@ -91,6 +91,34 @@ export default function CountriesPage() {
     setIsModalOpen(true);
   };
 
+  const handleGetCountriesAboveAverage = async () => {
+    setLoading(true);
+    try {
+      const res = await getCountriesAboveAverage();
+      setCountries(res.data);
+      toast.success("Countries Above Average are Found");
+    } catch (error) {
+      toast.error("Failed to find countries above average: " + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGetTopCountries = async () => {
+    const n = prompt("Number of top countries to display:", "3");
+    if (!n) return;
+    setLoading(true);
+    try {
+      const res = await getTopCountries(n); 
+      setCountries(res.data);
+      toast.success(`Top ${n} Countries are Found`);
+    } catch (error) {
+      toast.error("Failed to find top countries: " + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -102,14 +130,30 @@ export default function CountriesPage() {
   return (
     <div className="container m-auto">
       <h1 className="text-3xl my-4">Countries</h1>
-      <Button
-        onClick={() => {
-          setNewCountryModalData({ update: handleGetCountries });
-        }}
-        className="mb-4"
-      >
-        Create New Country
-      </Button>
+      <div className="flex gap-5 mb-4">
+        <Button
+          onClick={() => {
+            setNewCountryModalData({ update: handleGetCountries });
+          }}
+        >
+          Create New Country
+        </Button>
+        <Button 
+          onClick={handleGetCountries}
+        >
+          All Countries
+        </Button>
+        <Button 
+          onClick={handleGetTopCountries}
+        >
+          Top N Countries
+        </Button>
+        <Button 
+          onClick={handleGetCountriesAboveAverage}
+        >
+          Above Avg Countries
+        </Button>
+      </div>
       <div className="grid grid-cols-4 gap-4 my-4">
         {countries.length === 0 ? (
           <p className="text-lg text-center font-semibold">No countries available.</p>
