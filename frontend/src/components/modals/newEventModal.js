@@ -133,7 +133,7 @@ const NewEventModal = () => {
           <Button 
           disabled={event_name === "" || sport_name === "" || discipline_code === ""}
           onClick={handleNewEvent}>
-            {newEventModal?.editMode ? "Save Changes" : "Create Event"}
+            {newEventModal?.edit ? "Save Changes" : "Create Event"}
           </Button>
         </div>
       </div>
