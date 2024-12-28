@@ -54,20 +54,20 @@ def get_countries():
                 params.append(f"%{country_long}%")
             
             if gold_medal:
-                filters.append("Country.gold_medal LIKE %s")
-                params.append(f"%{gold_medal}%")
+                filters.append("Country.gold_medal = %s")
+                params.append(gold_medal)
 
             if silver_medal:
-                filters.append("Country.silver_medal LIKE %s")
-                params.append(f"%{silver_medal}%")
+                filters.append("Country.silver_medal = %s")
+                params.append(silver_medal)
             
             if bronze_medal:
-                filters.append("Country.bronze_medal LIKE %s")
-                params.append(f"%{bronze_medal}%")
+                filters.append("Country.bronze_medal = %s")
+                params.append(bronze_medal)
             
             if total:
-                filters.append("Country.total LIKE %s")
-                params.append(f"%{total}%")
+                filters.append("Country.total = %s")
+                params.append(total)
 
             # Add filters to query
             if filters:
