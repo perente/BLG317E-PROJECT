@@ -22,7 +22,7 @@ function Medallists() {
   // Filters & Sorting
   const [medal_date, setMedalDate] = useState(params.get("medal_date") ?? "");
   const [medal_code, setMedalCode] = useState(params.get("medal_code") ?? "");
-  const [gender, setGender] = useState(params.get("gender") ?? "");
+  const [athlete_gender, setAthleteGender] = useState(params.get("athlete_gender") ?? "");
   const [country_code, setCountryCode] = useState(params.get("country_code") ?? "");
   const [athlete_name, setAthleteName] = useState(params.get("athlete_name") ?? "");
   const [order, setOrder] = useState(params.get("order") ?? "");
@@ -42,7 +42,7 @@ function Medallists() {
     setCurrentPage(1);
     setMedalDate(params.get("medal_date") ?? "");
     setMedalCode(params.get("medal_code") ?? "");
-    setGender(params.get("gender") ?? "");
+    setAthleteGender(params.get("athlete_gender") ?? "");
     setDiscipline(params.get("discipline") ?? "");
     setEvent(params.get("event") ?? "");
     setCountryCode(params.get("country_code") ?? "");
@@ -52,20 +52,27 @@ function Medallists() {
   }, [params]);
 
   const fetchDisciplinesAndEvents = async () => {
-    try {
-      const [disciplinesData, eventsData] = await Promise.all([getDisciplines(), getEvents()]);
-      setDisciplines(disciplinesData.data);
+  try {
+    const disciplinesData = await getDisciplines();
+    setDisciplines(disciplinesData.data);
+
+    // Fetch events only if a discipline is selected
+    if (discipline) {
+      const eventsData = await getEvents();
       setEvents(eventsData.data);
-    } catch (error) {
-      alert("Failed to fetch disciplines or events.");
+    } else {
+      setEvents([]); // Clear events when no discipline is selected
     }
-  };
+  } catch (error) {
+    alert("Failed to fetch disciplines or events.");
+  }
+};
 
   const handleGetMedallists = async () => {
     let filter = {};
     if (params.get("medal_date")) filter.medal_date = params.get("medal_date");
     if (params.get("medal_code")) filter.medal_code = params.get("medal_code");
-    if (params.get("gender")) filter.gender = params.get("gender");
+    if (params.get("athlete_gender")) filter.athlete_gender = params.get("athlete_gender");
     if (params.get("discipline")) filter.discipline = params.get("discipline");
     if (params.get("event")) filter.event = params.get("event");
     if (params.get("country_code")) filter.country_code = params.get("country_code");
@@ -159,143 +166,143 @@ function Medallists() {
           <div>
             <label>Name:</label>
             <input
-              type="text"
-              className="border border-gray-400 rounded-md p-1 h-[34px]"
-              value={athlete_name}
-              onChange={(e) => {
-                setAthleteName(e.target.value);
-                onChange({event: e, name: "athlete_name"});
-              }}
+                type="text"
+                className="border border-gray-400 rounded-md p-1 h-[34px]"
+                value={athlete_name}
+                onChange={(e) => {
+                  setAthleteName(e.target.value);
+                  onChange({event: e, name: "athlete_name"});
+                }}
             />
           </div>
           <div>
             <label>Medal Date:</label>
             <input
-              type="date"
-              className="border border-gray-400 rounded-md p-1 h-[34px]"
-              value={medal_date}
-              onChange={(e) => {
-                setMedalDate(e.target.value);
-                onChange({event: e, name: "medal_date"});
-              }}
+                type="date"
+                className="border border-gray-400 rounded-md p-1 h-[34px]"
+                value={medal_date}
+                onChange={(e) => {
+                  setMedalDate(e.target.value);
+                  onChange({event: e, name: "medal_date"});
+                }}
             />
           </div>
           <div>
             <label>Medal:</label>
             <select
-              className="border border-gray-400 rounded-md p-1 h-[34px]"
-              value={medal_code}
-              onChange={(e) => {
-                setMedalCode(e.target.value);
-                onChange({event: e, name: "medal_code"});
-              }}
+                className="border border-gray-400 rounded-md p-1 h-[34px]"
+                value={medal_code}
+                onChange={(e) => {
+                  setMedalCode(e.target.value);
+                  onChange({event: e, name: "medal_code"});
+                }}
             >
               <option value="">All</option>
               {["Gold", "Silver", "Bronze"].map((medal, index) => (
-                <option key={index} value={index + 1}>
-                  {medal}
-                </option>
+                  <option key={index} value={index + 1}>
+                    {medal}
+                  </option>
               ))}
             </select>
           </div>
           <div>
             <label>Gender:</label>
             <select
-              className="border border-gray-400 rounded-md p-1 h-[34px]"
-              value={gender}
-              onChange={(e) => {
-                setGender(e.target.value);
-                onChange({event: e, name: "gender"});
-              }}
+                className="border border-gray-400 rounded-md p-1 h-[34px]"
+                value={athlete_gender}
+                onChange={(e) => {
+                  setAthleteGender(e.target.value);
+                  onChange({event: e, name: "athlete_gender"});
+                }}
             >
               <option value="">All</option>
               <option value="m">Male</option>
               <option value="f">Female</option>
-              <option value="x">Mixed</option>
             </select>
           </div>
           <div>
             <label>Country Code:</label>
             <input
-              type="text"
-              className="border border-gray-400 rounded-md p-1 h-[34px]"
-              value={country_code}
-              onChange={(e) => {
-                setCountryCode(e.target.value);
-                onChange({event: e, name: "country_code"});
-              }}
+                type="text"
+                className="border border-gray-400 rounded-md p-1 h-[34px]"
+                value={country_code}
+                onChange={(e) => {
+                  setCountryCode(e.target.value);
+                  onChange({event: e, name: "country_code"});
+                }}
             />
           </div>
           {/* New Discipline and Event Filters */}
           <div>
             <label>Discipline:</label>
             <select
-              className="border border-gray-400 rounded-md p-1 h-[34px]"
-              value={discipline}
-              onChange={(e) => {
-                setDiscipline(e.target.value);
-                setEvent(""); // Reset event when discipline changes
-                onChange({event: e, name: "discipline"});
-              }}
+                className="border border-gray-400 rounded-md p-1 h-[34px]"
+                value={discipline}
+                onChange={(e) => {
+                  setDiscipline(e.target.value);
+                  setEvent(""); // Reset event when discipline changes
+                  onChange({event: e, name: "discipline"});
+                }}
             >
               <option value="">All</option>
               {disciplines.map((d) => (
-                <option key={d.discipline_code} value={d.name}>
-                  {d.name}
-                </option>
+                  <option key={d.discipline_code} value={d.name}>
+                    {d.name}
+                  </option>
               ))}
             </select>
           </div>
-          <div onClick={() => console.log(events)}>
+          <div>
             <label>Event:</label>
             <select
-              className="border border-gray-400 rounded-md p-1 h-[34px]"
-              value={event}
-              onChange={(e) => {
-                setEvent(e.target.value);
-                onChange({event: e, name: "event"});
-              }}
+                className="border border-gray-400 rounded-md p-1 h-[34px]"
+                value={event}
+                onChange={(e) => {
+                  setEvent(e.target.value);
+                  onChange({event: e, name: "event"});
+                }}
             >
               <option value="">All</option>
               {events
-                .filter((e) => !discipline || (e.sport_name === discipline))
-                .map((e) => {
-                  return (
-                    <option key={e.event_name} value={e.event_name}>
-                      {e.event_name}
-                    </option>
-                  )
-                })}
+                  .filter((e) => !discipline || e.sport_name === discipline)
+                  .map((e) => {
+                    return (
+                        // Combine discipline and event_name to ensure uniqueness
+                        <option key={`${e.sport_name}-${e.event_name}`} value={e.event_name}>
+                          {e.event_name}
+                        </option>
+                    );
+                  })}
             </select>
           </div>
         </div>
       </div>
 
       {loading ? (
-        <p className="text-lg font-semibold mt-4">Loading...</p>
+          <p className="text-lg font-semibold mt-4">Loading...</p>
       ) : medallists.length === 0 ? (
-        <p className="text-lg font-semibold mt-4">No medallists found</p>
+          <p className="text-lg font-semibold mt-4">No medallists found</p>
       ) : (
-        <table className="table-auto w-full border-collapse border border-gray-400 mt-4">
-          <thead>
-          <tr className="bg-gray-200">
-            <SortableHeader
-              title="Name"
-              column="name"
-              orderBy={orderBy}
-              order={order}
-              onClick={orderMedallists}
-            />
-            <SortableHeader
-              title="Medal Date"
-              column="medal_date"
-                orderBy={orderBy}
-                order={order}
-                onClick={orderMedallists}
+          <table className="table-auto w-full border-collapse border border-gray-400 mt-4">
+            <thead>
+            <tr className="bg-gray-200">
+              <SortableHeader
+                  title="Name"
+                  column="name"
+                  orderBy={orderBy}
+                  order={order}
+                  onClick={orderMedallists}
               />
               <SortableHeader
-                title="Medal"
-                column="medal_code"
+                  title="Medal Date"
+                  column="medal_date"
+                  orderBy={orderBy}
+                  order={order}
+                  onClick={orderMedallists}
+              />
+              <SortableHeader
+                  title="Medal"
+                  column="medal_code"
                 orderBy={orderBy}
                 order={order}
                 onClick={orderMedallists}
@@ -330,7 +337,7 @@ function Medallists() {
                 <td className="border border-gray-400 px-2 py-1">{medallist.athlete_name}</td>
                 <td className="border border-gray-400 px-2 py-1">{new Date(medallist.medal_date).toDateString()}</td>
                 <td className="border border-gray-400 px-2 py-1 text-3xl">{medallist.medal_code === 1 ? "🥇" : (medallist.medal_code === 2 ? "🥈" : "🥉")}</td>
-                <td className="border border-gray-400 px-2 py-1">{medallist.gender}</td>
+                <td className="border border-gray-400 px-2 py-1">{medallist.athlete_gender}</td>
                 <td className="border border-gray-400 px-2 py-1">{medallist.discipline}</td>
                 <td className="border border-gray-400 px-2 py-1">{medallist.event}</td>
                 <td className="border border-gray-400 px-2 py-1">
