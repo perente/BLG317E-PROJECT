@@ -19,6 +19,8 @@ const NewAthleteModal = () => {
     const [nationality, setNationality] = useState("")
     const [birth_date, setBirthDate] = useState("")
     const [countryList, setCountryList] = useState([])
+    const [disciplines, setDisciplines] = useState([]);
+    const [selectedDisciplines, setSelectedDisciplines] = useState([]);
 
 
     useEffect(() => {
@@ -29,8 +31,11 @@ const NewAthleteModal = () => {
             setNationality(newAthleteModal?.athlete?.nationality)
             setGender(newAthleteModal?.athlete?.gender)
             setCountryCode(newAthleteModal?.athlete?.country_code)
+            setSelectedDisciplines(newAthleteModal?.athlete?.disciplines || []);
+
         }
         setCountryList(newAthleteModal?.countries)
+        setDisciplines(newAthleteModal?.all_disciplines)
         if (!newAthleteModal) {
             setAthleteCode("")
             setBirthDate("")
@@ -39,6 +44,11 @@ const NewAthleteModal = () => {
             setGender("")
             setCountryCode("")
             setCountryList([])
+            setDisciplines([])
+        }
+        if (!newAthleteModal?.edit) {
+            setSelectedDisciplines([])
+
         }
 
     }, [newAthleteModal])
@@ -52,7 +62,8 @@ const NewAthleteModal = () => {
                 nationality: nationality,
                 birth_date: birth_date,
                 country_code: country_code,
-                gender: gender
+                gender: gender,
+                disciplines: selectedDisciplines, // Include disciplines
             }).then((res) => {
                 toast.success("Athlete Updated")
                 newAthleteModal?.update()
@@ -71,7 +82,9 @@ const NewAthleteModal = () => {
                 nationality: nationality,
                 birth_date: birth_date,
                 country_code: country_code,
-                gender: gender
+                gender: gender,
+                disciplines: selectedDisciplines,
+
             }).then((res) => {
                 toast.success("New Athlete Created")
                 newAthleteModal?.update()
@@ -83,6 +96,19 @@ const NewAthleteModal = () => {
             })
         }
     }
+
+    const handleDisciplineChange = (e) => {
+        const value = e.target.value; // Get the value of the clicked option
+        setSelectedDisciplines((prev) => {
+            if (prev.includes(value)) {
+                // Remove if already selected
+                return prev.filter((discipline) => discipline !== value);
+            } else {
+                // Add if not already selected
+                return [...prev, value];
+            }
+        });
+    };
 
     return (
         <ModalSkeleton
@@ -165,6 +191,31 @@ const NewAthleteModal = () => {
                                 <option key={country.country_code} value={country.country_code}>{country.country_name}</option>
                             ))}
                         </select>
+                    </div>
+
+                    <div className="flex flex-col gap-2 col-span-2">
+                        <div>
+                            <div>
+                                {selectedDisciplines.map((discipline, index) => (
+                                    <div className=" inline-block border-2 bg-gray-200 rounded-xl p-2 m-1 text-gray-600" key={index}>{discipline}</div>
+                                ))}
+                            </div>
+                        </div>
+                        <h3 className="">Discipline:</h3>
+                        <select
+                            className="border border-gray-400 rounded-lg p-2 w-full h-40 overflow-y-auto "
+                            multiple
+                            value={selectedDisciplines}
+                            onChange={(e) => {
+                                handleDisciplineChange(e)
+                            }
+                            }>
+                            {disciplines.map(d => <option className="p-1 hover:bg-gray-200 cursor-pointer"
+
+                                key={d.id} value={d.name}   >{d.name}</option>)}
+
+                        </select>
+
                     </div>
 
                 </div>

@@ -32,15 +32,28 @@ def get_athletes():
             birth_date = request.args.get('birth_date')
             order_by = request.args.get('order_by')
             order = request.args.get('order')
+            discipline = request.args.get('discipline')
+
             
 
             print(athlete_code,name,gender,country_code,nationality,birth_date)
 
             # Base query
-            query = """
-                SELECT * FROM Athlete
-                LEFT JOIN Country ON Athlete.country_code = Country.country_code
-            """
+            query =""" SELECT Athlete.*, 
+                            Country.country_name, 
+                            GROUP_CONCAT(Athlete_Disciplines.discipline) AS disciplines
+                        FROM Athlete
+                        LEFT JOIN Country ON Athlete.country_code = Country.country_code
+                        LEFT JOIN Athlete_Disciplines ON Athlete.athlete_code = Athlete_Disciplines.athlete_code
+                        """
+
+            
+           #"""
+           #     SELECT * FROM Athlete
+           #     LEFT JOIN Country ON Athlete.country_code = Country.country_code
+          #      LEFT JOIN Athlete_Disciplines ON Athlete.athlete_code = Athlete_Disciplines.athlete_code
+            #    GROUP BY Athlete.athlete_code
+            #"""
 
             # Where clause conditions
             filters = []
@@ -70,10 +83,18 @@ def get_athletes():
                 filters.append("Athlete.birth_date >= %s")
                 params.append(birth_date)
 
+            if discipline:
+                #filters.append("Athlete_Disciplines.discipline = %s")
+                filters.append("Athlete.athlete_code IN (SELECT athlete_code FROM Athlete_Disciplines WHERE discipline = %s)")
+                params.append(discipline)
 
             # Add filters to query
             if filters:
                 query += " WHERE " + " AND ".join(filters)
+
+            query += """
+                    GROUP BY Athlete.athlete_code, Country.country_name
+                """
 
             # Order by clause
             if order_by:
@@ -150,6 +171,8 @@ def new_athletes():
         country_code = data.get('country_code')
         nationality = data.get('nationality')
         birth_date = data.get('birth_date')
+        disciplines = data.get('disciplines', [])
+
 
         # Validate required fields
         if not all([athlete_code,gender, name, country_code, nationality,birth_date]):
@@ -181,6 +204,13 @@ def new_athletes():
                 values = (athlete_code, name, gender, country_data['country_code'], nationality,
                           birth_date)
                 cursor.execute(query, values)
+
+                # Insert disciplines into the Athlete_Disciplines table
+                if disciplines:
+                    for discipline in disciplines:
+                        cursor.execute("INSERT INTO Athlete_Disciplines (athlete_code, discipline) VALUES (%s, %s)",
+                                       (athlete_code, discipline))
+
                 connection.commit()
 
                 return jsonify({'message': 'Athlete created successfully'}), 201
@@ -215,6 +245,8 @@ def update_athlete(athleteID):
         country_code = data.get('country_code')
         nationality = data.get('nationality')
         birth_date = data.get('birth_date')
+        disciplines = data.get('disciplines', [])
+
 
         # Validate required fields
         if not athleteID:
@@ -247,6 +279,14 @@ def update_athlete(athleteID):
                 values = (name, gender, country_code,
                           nationality, birth_date,athleteID)
                 cursor.execute(query, values)
+
+                # Update disciplines
+                cursor.execute("DELETE FROM Athlete_Disciplines WHERE athlete_code = %s", (athleteID,))
+                for discipline in disciplines:
+                    cursor.execute("INSERT INTO Athlete_Disciplines (athlete_code, discipline) VALUES (%s, %s)", (athleteID, discipline))
+
+
+
                 connection.commit()
 
                 return jsonify({'message': 'Athlete updated successfully'}), 200

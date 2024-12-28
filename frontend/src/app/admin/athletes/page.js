@@ -1,7 +1,7 @@
 'use client'
 import { Button } from "@/components/button";
 import { useModalStore } from "@/lib/store";
-import { getAthletes, getCountries, deleteAthlete } from "@/service/service";
+import { getAthletes, getCountries, deleteAthlete, getDisciplines } from "@/service/service";
 import { useParams, usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
@@ -28,6 +28,9 @@ const Athletes = () => {
     const [order, setOrder] = useState(params.get("order") ?? "");
     const [orderBy, setOrderBy] = useState(params.get("order_by") ?? "");
     const [countries, setCountries] = useState([]);
+    const [all_disciplines, setAllDisciplines] = useState([]);
+    const [selectedDiscipline, setSelectedDiscipline] = useState("");
+
 
 
 
@@ -35,6 +38,11 @@ const Athletes = () => {
         handleGetAthletes();
         getCountries().then((res) => {
             setCountries(res.data);
+        }).catch((error) => {
+            alert(error);
+        });
+        getDisciplines().then((res) => {
+            setAllDisciplines(res.data);
         }).catch((error) => {
             alert(error);
         });
@@ -46,6 +54,7 @@ const Athletes = () => {
         setName(params.get("name") ?? "");
         setOrder(params.get("order") ?? "");
         setOrderBy(params.get("order_by") ?? "");
+        setSelectedDiscipline(params.get("discipline") ?? "");
     }, [params]);
 
 
@@ -59,11 +68,17 @@ const Athletes = () => {
         if (params.get("birth_date")) filter.birth_date = params.get("birth_date");
         if (params.get("order")) filter.order = params.get("order");
         if (params.get("order_by")) filter.order_by = params.get("order_by");
+        if (params.get("discipline")) filter.discipline = params.get("discipline");
+
 
         setLoading(true);
         getAthletes(filter) // This function fetches athlete data
             .then((res) => {
-                setAthletes(res.data); // Assuming res.data contains the athletes
+                //setAthletes(res.data); // Assuming res.data contains the athletes
+                setAthletes(res.data.map(athlete => ({
+                    ...athlete,
+                    disciplines: athlete.disciplines ? athlete.disciplines.split(',') : []
+                })));
             })
             .finally(() => {
                 setLoading(false);
@@ -151,11 +166,26 @@ const Athletes = () => {
         );
     }
 
+    const handleDisciplineFilterChange = (e) => {
+        const value = e.target.value;
+        setSelectedDiscipline(value);
+
+        const current = new URLSearchParams(Array.from(params.entries()));
+        if (!value) {
+            current.delete("discipline");
+        } else {
+            current.set("discipline", value);
+        }
+        const search = current.toString();
+        const query = search ? `?${search}` : "";
+        router.push(`${pathname}${query}`);
+    };
+
     return (
         <div className="container mx-auto pb-4">
             <div className="flex items-center justify-between my-4">
                 <h1 className="text-3xl">Athletes</h1>
-                <Button onClick={() => setNewAthleteModal({ update: handleGetAthletes, countries: countries })} className="">
+                <Button onClick={() => setNewAthleteModal({ update: handleGetAthletes, countries: countries, all_disciplines: all_disciplines })} className="">
                     Create New Athlete
                 </Button>
             </div>
@@ -214,6 +244,21 @@ const Athletes = () => {
                             }
                         </select>
                     </div>
+
+                    <div className="flex flex-col">
+                        <label htmlFor="discipline" className="mr-1">Discipline:</label>
+                        <select
+                            value={selectedDiscipline}
+                            onChange={handleDisciplineFilterChange}
+                            className="border border-gray-400 rounded-md p-1 h-[34px] w-full"
+                        >
+                            <option value="">All</option>
+                            {all_disciplines.map((discipline) => (
+                                <option key={discipline.id} value={discipline.name}>{discipline.name}</option>
+                            ))}
+                        </select>
+                    </div>
+
                     <div className="flex flex-col">
                         <label htmlFor="nationality" className="mr-1">Nationality:</label>
                         <input
@@ -241,6 +286,8 @@ const Athletes = () => {
                             }}
                         />
                     </div>
+
+
                 </div>
             </div>
 
@@ -318,8 +365,19 @@ const Athletes = () => {
                                     </div>
                                 </div>
                             </th>
-
-
+                            <th
+                                onClick={() => orderAthletes("disciplines")}
+                                className="border border-gray-400 px-2 py-1 cursor-pointer">
+                                <div className="flex items-center justify-center">
+                                    <span>Disciplines</span>
+                                    <div className="opcity-10 flex items-center justify-center flex-col">
+                                        <TiArrowSortedDown className={"w-5 h-5 mt-[6px] " + (orderBy === "nationality" && order === "asc" ? "opacity-100" : "opacity-30")}
+                                            style={{ rotate: "180deg" }} />
+                                        <TiArrowSortedDown className={"w-5 h-5 mt-[-10px] " + (orderBy === "nationality" && order === "desc" ? "opacity-100" : "opacity-30")}
+                                            style={{ rotate: "0deg" }} />
+                                    </div>
+                                </div>
+                            </th>
                             <th className="border border-gray-400 px-2 py-1 cursor-pointer"></th>
                         </tr>
                     </thead>
@@ -343,11 +401,17 @@ const Athletes = () => {
                                     {athlete.nationality}
                                 </td>
                                 <td className="border border-gray-400 px-2 py-1 cursor-pointer">
+                                    {athlete.disciplines && athlete.disciplines.length > 0
+                                        ? athlete.disciplines.join(", ")
+                                        : "No Disciplines"}
+                                </td>
+
+                                <td className="border border-gray-400 px-2 py-1 cursor-pointer">
                                     <div className="flex gap-1">
                                         <div className="cursor-pointer" onClick={() => { handleDeleteAthlete(athlete.athlete_code) }}>
                                             <MdDelete className="w-6 h-6" />
                                         </div>
-                                        <div className="cursor-pointer" onClick={() => { setNewAthleteModal({ update: handleGetAthletes, athlete: athlete, edit: true, countries: countries }) }}
+                                        <div className="cursor-pointer" onClick={() => { setNewAthleteModal({ update: handleGetAthletes, athlete: athlete, edit: true, countries: countries, all_disciplines: all_disciplines }) }}
                                         >
                                             <FaEdit className="w-6 h-6" />
                                         </div>
@@ -398,6 +462,8 @@ const Athletes = () => {
 
     );
 };
+
+
 
 export default function Page() {
     return (
