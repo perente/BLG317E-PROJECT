@@ -28,7 +28,6 @@ function Events() {
 
   useEffect(() => {
     handleGetEvents();
-    handleGetTopSports(); 
     getDisciplines().then((res) => {
       setDisciplines(res.data);
     }).catch((error) => {
@@ -131,7 +130,7 @@ function Events() {
   return (
     <div className="container mx-auto pb-4">
       <div className="flex justify-end my-4">
-        <Button onClick={handleGetTopSports} className="px-4 py-2 rounded">
+        <Button onClick={()=>{handleGetTopSports()}} className="px-4 py-2 rounded">
           Display Top Sports
         </Button>
       </div>
