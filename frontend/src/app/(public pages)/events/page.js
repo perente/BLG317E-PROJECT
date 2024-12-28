@@ -4,8 +4,8 @@ import { getDisciplines, getEvents, getTopSports } from "@/service/service";
 import { useSearchParams, usePathname, useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
-import { FaEdit, FaExternalLinkSquareAlt } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
+import { FaExternalLinkSquareAlt } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import { TiArrowSortedDown } from "react-icons/ti";
 
 function Events() {
@@ -135,27 +135,38 @@ function Events() {
         </Button>
       </div>
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 w-96">
-            <h2 className="text-2xl font-bold mb-4">Top Sports</h2>
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg shadow-lg p-8 w-96">
+            <h2 className="text-2xl font-bold mb-6 text-gray-800 pb-3 text-center flex items-center justify-center gap-3">
+            <FaStar className="text-yellow-500" />
+              Top Sports
+            <FaStar className="text-yellow-500" />
+            </h2>
             {topSports.length > 0 ? (
-              <ul className="list-disc pl-5">
+              <ul className="divide-y divide-gray-200">
                 {topSports.map((sport, index) => (
-                  <li key={index} className="mb-1">
-                    {sport.sport_name} - {sport.event_count} events
+                  <li key={index} className="py-2">
+                    <div className="flex justify-between items-center">
+                      <span className="text-lg font-medium text-gray-700">
+                        {sport.sport_name}
+                      </span>
+                      <span className="text-md text-gray-600">
+                        {sport.event_count} events
+                      </span>
+                    </div>
                   </li>
                 ))}
               </ul>
             ) : (
-              <p>No top sports found.</p>
+              <p className="text-gray-500 text-center">No top sports found.</p>
             )}
-            <div className="flex justify-end mt-4">
-              <Button
+            <div className="flex justify-end mt-6">
+              <button
                 onClick={() => setIsModalOpen(false)}
-                className="bg-red-500 text-white px-4 py-2 rounded"
+                className="px-5 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-200"
               >
                 Close
-              </Button>
+              </button>
             </div>
           </div>
         </div>

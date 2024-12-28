@@ -76,6 +76,12 @@ export default function RootLayout({ children }) {
                   Disciplines
                 </a>
                 <a
+                  href="/admin/countries"
+                  className="text-white hover:tracking-wider duration-300 px-4 box-border"
+                >
+                  Countries
+                </a>
+                <a
                   href="/admin/events"
                   className="text-white hover:tracking-wider duration-300 px-4 box-border"
                 >
