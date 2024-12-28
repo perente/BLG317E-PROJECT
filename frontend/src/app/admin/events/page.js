@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/button";
 import { useModalStore } from "@/lib/store";
-import { deleteEvent, getDisciplines, getEvents } from "@/service/service";
+import { deleteEvent, getDisciplines, getEvents, getTopSports } from "@/service/service";
 import { useSearchParams, usePathname, useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
@@ -11,6 +11,8 @@ import { TiArrowSortedDown } from "react-icons/ti";
 
 const Events = () => {
   const [events, setEvents] = useState([]);
+  const [topSports, setTopSports] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
@@ -27,6 +29,7 @@ const Events = () => {
 
   useEffect(() => {
     handleGetEvents();
+    handleGetTopSports(); 
     getDisciplines().then((res) => {
       setDisciplines(res.data);
     }).catch((error) => {
@@ -57,6 +60,16 @@ const Events = () => {
       .finally(() => { 
         setLoading(false)
       });
+  }
+
+  const handleGetTopSports = async () => {
+    try {
+      const res = await getTopSports();
+      setTopSports(res.data);
+      setIsModalOpen(true);
+    } catch (error) {
+      alert("Failed to find top sports: " + error.message);
+    }
   }
 
   const totalPages = Math.ceil(events.length / itemsPerPage);
@@ -133,6 +146,37 @@ const Events = () => {
 
   return (
     <div className="container mx-auto pb-4">
+      <div className="flex justify-end my-4">
+        <Button onClick={handleGetTopSports} className="px-4 py-2 rounded">
+          Display Top Sports
+        </Button>
+      </div>
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 w-96">
+            <h2 className="text-2xl font-bold mb-4">Top Sports</h2>
+            {topSports.length > 0 ? (
+              <ul className="list-disc pl-5">
+                {topSports.map((sport, index) => (
+                  <li key={index} className="mb-1">
+                    {sport.sport_name} - {sport.event_count} events
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No top sports found.</p>
+            )}
+            <div className="flex justify-end mt-4">
+              <Button
+                onClick={() => setIsModalOpen(false)}
+                className="bg-red-500 text-white px-4 py-2 rounded"
+              >
+                Close
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="flex items-center justify-between my-4">
         <h1 className="text-3xl">Events</h1>
         <div className="flex gap-x-2">

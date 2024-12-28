@@ -165,6 +165,44 @@ def new_events():
         if 'connection' in locals() and connection.is_connected():
             connection.close()
 
+def get_top_sports():
+    try:
+        # Establish database connection
+        connection = db_connection()
+
+        if connection.is_connected():
+            cursor = connection.cursor(dictionary=True)
+
+            # SQL query to fetch the top 3 sports with the most events
+            query = """
+                SELECT e.sport_name, COUNT(s.schedule_code) AS event_count
+                FROM Events e
+                LEFT JOIN Schedule s ON e.events_code = s.event_code
+                GROUP BY e.sport_name
+                ORDER BY event_count DESC
+                LIMIT 10;
+            """
+
+            # Execute query
+            cursor.execute(query)
+            result = cursor.fetchall()
+
+            # Return data as JSON
+            return jsonify(result), 200
+        else:
+            return jsonify({'error': 'Failed to connect to the database'}), 500
+
+    except mysql.connector.Error as e:
+        return jsonify({'error': f'Database error: {str(e)}'}), 500
+
+    except Exception as e:
+        return jsonify({'error': f'Unexpected error: {str(e)}'}), 500
+
+    finally:
+        # Close the connection
+        if 'connection' in locals() and connection.is_connected():
+            cursor.close()
+            connection.close()
 
 def update_events(event_code):
     try:

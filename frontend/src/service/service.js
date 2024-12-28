@@ -141,6 +141,18 @@ export const getEvents = async function (filters = {}) {
     }
 };
 
+export const getTopSports = async function () {
+    try {
+        const response = await axios({
+            method: "GET",
+            url: `${API_ROUTE.events}/top-sports`,
+        });
+        return response;
+    } catch (error) {
+        throw error;
+    }
+};
+
 export const createNewEvent = async function (data) {
     try {
         const response = await axios({

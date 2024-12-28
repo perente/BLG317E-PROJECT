@@ -5,7 +5,7 @@ from mysql.connector import Error
 from settings import db_user,db_password, db_port, db_host,db_name  
 from schedules import get_schedules, new_schedules, delete_schedules, update_schedule, update_schedules
 from disciplines import  get_disciplines, delete_disciplines, create_discipline, update_discipline
-from events import get_events, delete_event, update_events, new_events
+from events import get_events, delete_event, update_events, new_events, get_top_sports
 from athletes import get_athletes, delete_athletes, new_athletes, update_athlete
 from coaches import get_coaches, delete_coaches, new_coaches, update_coach
 from countries import get_countries, delete_country, update_countries, new_countries, get_countries_above_average, get_top_countries
@@ -87,6 +87,10 @@ def countries_above_average():
 @app.route('/events', methods=['GET'])
 def events():
     return get_events()
+
+@app.route('/events/top-sports', methods=['GET'])
+def top_sports():
+    return get_top_sports()
 
 @app.route('/events/<int:events_code>', methods=['DELETE'])
 def delete_events(events_code):
