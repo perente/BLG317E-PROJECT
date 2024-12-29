@@ -98,17 +98,3 @@ This project consists of a **frontend** built with Next.js and Tailwind CSS and 
 
 ---
 
-## Contribution
-
-1. Fork the repository.
-2. Create a new branch for your feature:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Commit your changes and push to the branch:
-   ```bash
-   git push origin feature-name
-   ```
-4. Create a pull request.
-
----
