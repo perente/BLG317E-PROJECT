@@ -11,6 +11,7 @@ import { MdSportsHandball } from "react-icons/md";
 import { RiTeamFill } from "react-icons/ri";
 import { MdLeaderboard } from "react-icons/md";
 import { MdOutlineSportsBaseball } from "react-icons/md";
+import { FaHandsHelping } from "react-icons/fa";
 import { BsFillFlagFill } from "react-icons/bs";
 import { GiWhistle } from "react-icons/gi";
 
@@ -88,7 +89,7 @@ export default function Home() {
         <img className="max-w-[240px] mb-12" src="img/logo.png" />
         <h1 className="text-3xl mb-6 font-paris font-semibold text-black ">Welcome to The Olympic Games</h1>
         <div className="" >
-          <ul className="grid grid-cols-3 gap-3">
+          <ul className="grid grid-cols-5 gap-3">
             <CustomButton
               color="#54458C"
               bgLight="#877FB3"
@@ -143,7 +144,12 @@ export default function Home() {
               bgLight="#3A8799"
               icon={<BsFillFlagFill className="scale-150" />}
               onClick={() => routerPush("/countries")}>Countries</CustomButton>
-
+            <CustomButton
+              size="lg"
+              color="#C43D70"
+              bgLight="#F29BB5"
+              icon={<FaHandsHelping className="scale-150" />}
+              onClick={() => routerPush("/contributions")}>Contributions</CustomButton>
           </ul>
         </div>
       </main>
