@@ -346,6 +346,22 @@ def update_medallists(ID):
 
 
 def update_countries(cursor, connection):
-    updateMedalCount = """UPDATE Country SET gold_medal = (SELECT COUNT(*) FROM Medallist WHERE country_code = Country.country_code AND medal_code = 1), silver_medal = (SELECT COUNT(*) FROM Medallist WHERE country_code = Country.country_code AND medal_code = 2), bronze_medal = (SELECT COUNT(*) FROM Medallist WHERE country_code = Country.country_code AND medal_code = 3)"""
+    updateMedalCount = """UPDATE Country
+SET 
+    gold_medal = (
+        SELECT COUNT(DISTINCT CONCAT(event, '-', discipline)) 
+        FROM Medallist 
+        WHERE country_code = Country.country_code AND medal_code = 1
+    ),
+    silver_medal = (
+        SELECT COUNT(DISTINCT CONCAT(event, '-', discipline)) 
+        FROM Medallist 
+        WHERE country_code = Country.country_code AND medal_code = 2
+    ),
+    bronze_medal = (
+        SELECT COUNT(DISTINCT CONCAT(event, '-', discipline)) 
+        FROM Medallist 
+        WHERE country_code = Country.country_code AND medal_code = 3
+    );"""
     cursor.execute(updateMedalCount)
     connection.commit()
