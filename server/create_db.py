@@ -97,7 +97,7 @@ try:
 
 
                     if not coach_codes:
-                        # print(f"Skipping line for team {team_code} as second column is empty.")
+                        #print(f"Skipping line for team {team_code} as second column is empty.")
                         continue
 
                     coaches = ast.literal_eval(coach_codes) if coach_codes else []
@@ -154,7 +154,7 @@ try:
                         cursor.execute(command, (athlete_code, discipline))
 
                 except Exception as e:
-                    print(f"Error processing line {line}: {e}")
+                    #print(f"Error processing line {line}: {e}")
                     continue
         ins.commit()
 
