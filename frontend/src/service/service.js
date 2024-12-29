@@ -1,4 +1,4 @@
-import { API_ROUTE } from "@/lib/routes";
+import {API_ROUTE} from "@/lib/routes";
 import axiosx from "axios";
 
 const axios = async function () {
@@ -80,6 +80,20 @@ export const newMedallist = async function (input_data) {
             input_data,
         },
     });
+};
+
+export const updateMedallist = async function (id, input_data) {
+    try {
+        return await axios({
+            method: "patch",
+            url: `${API_ROUTE.medallists}/${id}`,
+            data: {
+                input_data
+            },
+        });
+    } catch (error) {
+        throw error;
+    }
 };
 
 export const getDisciplines = async function () {
