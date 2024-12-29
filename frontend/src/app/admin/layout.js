@@ -105,7 +105,7 @@ export default function RootLayout({ children }) {
                   href="/admin/medallists"
                   className="text-white hover:tracking-wider duration-300 px-4 box-border"
                 >
-                  Medals
+                  Medallists
                 </a>
                 <a
                   href="/admin/teams"

@@ -4,6 +4,7 @@ import ModalSkeleton from "./modalSkeleton";
 import {useEffect, useState} from "react";
 import {Button} from "../button";
 import {newMedallist, updateMedallist} from "@/service/service";
+import toast from "react-hot-toast";
 
 const NewMedallistModal = () => {
     const newMedallistModalData = useModalStore((state) => state.newMedallistModalData);
@@ -65,6 +66,7 @@ const NewMedallistModal = () => {
                 .then(() => {
                     setNewMedallistModalData(null);
                     newMedallistModalData.update();
+                    toast.success("Medallist Updated");
                 })
                 .catch((error) => {
                 });
@@ -73,6 +75,7 @@ const NewMedallistModal = () => {
                 .then(() => {
                     setNewMedallistModalData(null);
                     newMedallistModalData.update();
+                    toast.success("New Medallist Added");
                 })
                 .catch((error) => {
                 });
