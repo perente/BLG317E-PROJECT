@@ -29,7 +29,7 @@ const NewMedallistModal = () => {
             setDiscipline(newMedallistModalData?.medallist?.discipline);
             setEvent(newMedallistModalData?.medallist?.event);
             setCodeAthlete(newMedallistModalData?.medallist?.code_athlete);
-            setWithTeam(!!medallist.team_gender || !!medallist.code_team);
+            setWithTeam(!!medallist.code_team);
             setTeamGender(medallist.team_gender || "");
             setCodeTeam(medallist.code_team || "");
         } else {
