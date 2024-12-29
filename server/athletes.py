@@ -181,24 +181,22 @@ def new_athletes():
         # Establish database connection
         connection = db_connection()  # Ensure this function is defined elsewhere
 
-        if connection.is_connected():
+        if connection.is_connected():          
             with connection.cursor(dictionary=True) as cursor:
-                # Query to fetch event details by eventID
+                cursor.execute("START TRANSACTION")
+                # Query to fetch country details by countryID
                 query = "SELECT * FROM Country WHERE country_code = %s"
                 cursor.execute(query, (country_code,))
 
-                # Fetch the event data
+                # Fetch the country data
                 country_data = cursor.fetchone()
                 if country_data:
                     pass
                 else:
-                    return jsonify({'error': f'No event found with eventID: {country_code}'}), 404
+                    cursor.execute("ROLLBACK")
+                    return jsonify({'error': f'No country found with countryID: {country_code}'}), 404
 
-        else:
-            return jsonify({'error': 'Failed to connect to the database'}), 500
-
-        if connection.is_connected():
-            with connection.cursor(dictionary=True) as cursor:
+        
                 # Insert athlete into the database
                 query = """INSERT INTO Athlete (athlete_code,name,gender,country_code,nationality,birth_date) VALUES (%s,%s,%s,%s,%s,%s)"""
                 values = (athlete_code, name, gender, country_data['country_code'], nationality,
@@ -219,14 +217,17 @@ def new_athletes():
             return jsonify({'error': 'Failed to connect to the database'}), 500
 
     except mysql.connector.Error as e:
+        connection.rollback()
         return jsonify({'error': f'Database error: {str(e)}'}), 500
 
     except Exception as e:
+        connection.rollback()
         return jsonify({'error': f'Unexpected error: {str(e)}'}), 500
 
     finally:
         # Ensure the connection is closed properly
         if 'connection' in locals() and connection.is_connected():
+            cursor.close()
             connection.close()
 
 
@@ -258,22 +259,20 @@ def update_athlete(athleteID):
         country_data = ""
         if connection.is_connected():
             with connection.cursor(dictionary=True) as cursor:
-                # Query to fetch event details by eventID
+                cursor.execute("START TRANSACTION")
+                # Query to fetch country details by countryID
                 query = "SELECT * FROM Country WHERE country_code = %s"
                 cursor.execute(query, (country_code,))
 
-                # Fetch the event data
+                # Fetch the country data
                 country_data = cursor.fetchone()
                 if country_data:
                     pass
                 else:
-                    return jsonify({'error': f'No event found with country_code: {country_code}'}), 404
+                    cursor.execute("ROLLBACK")
+                    return jsonify({'error': f'No country found with country_code: {country_code}'}), 404
 
-        else:
-            return jsonify({'error': 'Failed to connect to the database'}), 500
 
-        if connection.is_connected():
-            with connection.cursor(dictionary=True) as cursor:
                 # Update athlete in the database
                 query = """UPDATE Athlete SET name = %s, gender = %s, country_code = %s, nationality = %s, birth_date = %s WHERE athlete_code = %s"""
                 values = (name, gender, country_code,
@@ -295,12 +294,15 @@ def update_athlete(athleteID):
             return jsonify({'error': 'Failed to connect to the database'}), 500
 
     except mysql.connector.Error as e:
+        connection.rollback()
         return jsonify({'error': f'Database error: {str(e)}'}), 500
 
     except Exception as e:
+        connection.rollback()
         return jsonify({'error': f'Unexpected error: {str(e)}'}), 500
 
     finally:
         # Ensure the connection is closed properly
         if 'connection' in locals() and connection.is_connected():
+            cursor.close()
             connection.close()

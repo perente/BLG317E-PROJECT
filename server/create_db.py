@@ -106,7 +106,7 @@ try:
                         cursor.execute(command, (team_code, coach_code))
 
                 except Exception as e:
-                    # print(f"Error processing line {line}: {e}")
+                    print(f"Error processing line {line}: {e}")
                     continue
         ins.commit()
 
