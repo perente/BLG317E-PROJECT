@@ -284,162 +284,161 @@ const Athletes = () => {
 
                 : <table className="table-auto w-full border-collapse border border-gray-400 mt-4">
                     <thead>
-                        <tr className="bg-gray-200">
-                            <th
-                                onClick={() => orderAthletes("name")}
-                                className="border border-gray-400 px-2 py-1 cursor-pointer">
-                                <div className="flex items-center justify-center">
-                                    <span>Name</span>
-                                    <div className="opcity-10 flex items-center justify-center flex-col">
-                                        <TiArrowSortedDown
-                                            className={"w-5 h-5 mt-[6px] " + (orderBy === "name" && order === "asc" ? "opacity-100" : "opacity-30")}
-                                            style={{ rotate: "180deg" }} />
-                                        <TiArrowSortedDown
-                                            className={"w-5 h-5 mt-[-10px] " + (orderBy === "name" && order === "desc" ? "opacity-100" : "opacity-30")}
-                                            style={{ rotate: "0deg" }} />
-                                    </div>
+                    <tr className="bg-gray-200">
+                        <th
+                          onClick={() => orderAthletes("name")}
+                          className="border border-gray-400 px-2 py-1 cursor-pointer">
+                            <div className="flex items-center justify-center">
+                                <span>Name</span>
+                                <div className="opcity-10 flex items-center justify-center flex-col">
+                                    <TiArrowSortedDown
+                                      className={"w-5 h-5 mt-[6px] " + (orderBy === "name" && order === "asc" ? "opacity-100" : "opacity-30")}
+                                      style={{rotate: "180deg"}}/>
+                                    <TiArrowSortedDown
+                                      className={"w-5 h-5 mt-[-10px] " + (orderBy === "name" && order === "desc" ? "opacity-100" : "opacity-30")}
+                                      style={{rotate: "0deg"}}/>
                                 </div>
-                            </th>
-                            <th
-                                onClick={() => orderAthletes("birth_date")}
-                                className="border border-gray-400 px-2 py-1 cursor-pointer">
-                                <div className="flex items-center justify-center">
-                                    <span>Birth Date</span>
-                                    <div className="opcity-10 flex items-center justify-center flex-col ">
-                                        <TiArrowSortedDown
-                                            className={"w-5 h-5 mt-[6px] " + (orderBy === "birth_date" && order === "asc" ? "opacity-100" : "opacity-30")}
-                                            style={{ rotate: "180deg" }} />
-                                        <TiArrowSortedDown
-                                            className={"w-5 h-5 mt-[-10px] " + (orderBy === "birth_date" && order === "desc" ? "opacity-100" : "opacity-30")}
-                                            style={{ rotate: "0deg" }} />
-                                    </div>
+                            </div>
+                        </th>
+                        <th
+                          onClick={() => orderAthletes("birth_date")}
+                          className="border border-gray-400 px-2 py-1 cursor-pointer">
+                            <div className="flex items-center justify-center">
+                                <span>Birth Date</span>
+                                <div className="opcity-10 flex items-center justify-center flex-col ">
+                                    <TiArrowSortedDown
+                                      className={"w-5 h-5 mt-[6px] " + (orderBy === "birth_date" && order === "asc" ? "opacity-100" : "opacity-30")}
+                                      style={{rotate: "180deg"}}/>
+                                    <TiArrowSortedDown
+                                      className={"w-5 h-5 mt-[-10px] " + (orderBy === "birth_date" && order === "desc" ? "opacity-100" : "opacity-30")}
+                                      style={{rotate: "0deg"}}/>
                                 </div>
-                            </th>
-                            <th
-                                onClick={() => orderAthletes("gender")}
-                                className="border border-gray-400 px-2 py-1 cursor-pointer">
-                                <div className="flex items-center justify-center">
-                                    <span>Gender</span>
-                                    <div className="opcity-10 flex items-center justify-center flex-col">
-                                        <TiArrowSortedDown
-                                            className={"w-5 h-5 mt-[6px] " + (orderBy === "gender" && order === "asc" ? "opacity-100" : "opacity-30")}
-                                            style={{ rotate: "180deg" }} />
-                                        <TiArrowSortedDown
-                                            className={"w-5 h-5 mt-[-10px] " + (orderBy === "gender" && order === "desc" ? "opacity-100" : "opacity-30")}
-                                            style={{ rotate: "0deg" }} />
-                                    </div>
+                            </div>
+                        </th>
+                        <th
+                          onClick={() => orderAthletes("gender")}
+                          className="border border-gray-400 px-2 py-1 cursor-pointer">
+                            <div className="flex items-center justify-center">
+                                <span>Gender</span>
+                                <div className="opcity-10 flex items-center justify-center flex-col">
+                                    <TiArrowSortedDown
+                                      className={"w-5 h-5 mt-[6px] " + (orderBy === "gender" && order === "asc" ? "opacity-100" : "opacity-30")}
+                                      style={{rotate: "180deg"}}/>
+                                    <TiArrowSortedDown
+                                      className={"w-5 h-5 mt-[-10px] " + (orderBy === "gender" && order === "desc" ? "opacity-100" : "opacity-30")}
+                                      style={{rotate: "0deg"}}/>
                                 </div>
-                            </th>
+                            </div>
+                        </th>
 
-                            <th
-                                onClick={() => orderAthletes("country_name")}
-                                className="border border-gray-400 px-2 py-1 cursor-pointer">
-                                <div className="flex items-center justify-center">
-                                    <span>Country</span>
-                                    <div className="opcity-10 flex items-center justify-center flex-col">
-                                        <TiArrowSortedDown
-                                            className={"w-5 h-5 mt-[6px] " + (orderBy === "country_name" && order === "asc" ? "opacity-100" : "opacity-30")}
-                                            style={{ rotate: "180deg" }} />
-                                        <TiArrowSortedDown
-                                            className={"w-5 h-5 mt-[-10px] " + (orderBy === "country_name" && order === "desc" ? "opacity-100" : "opacity-30")}
-                                            style={{ rotate: "0deg" }} />
-                                    </div>
+                        <th
+                          onClick={() => orderAthletes("country_name")}
+                          className="border border-gray-400 px-2 py-1 cursor-pointer">
+                            <div className="flex items-center justify-center">
+                                <span>Country</span>
+                                <div className="opcity-10 flex items-center justify-center flex-col">
+                                    <TiArrowSortedDown
+                                      className={"w-5 h-5 mt-[6px] " + (orderBy === "country_name" && order === "asc" ? "opacity-100" : "opacity-30")}
+                                      style={{rotate: "180deg"}}/>
+                                    <TiArrowSortedDown
+                                      className={"w-5 h-5 mt-[-10px] " + (orderBy === "country_name" && order === "desc" ? "opacity-100" : "opacity-30")}
+                                      style={{rotate: "0deg"}}/>
                                 </div>
-                            </th>
-                            <th
-                                onClick={() => orderAthletes("nationality")}
-                                className="border border-gray-400 px-2 py-1 cursor-pointer">
-                                <div className="flex items-center justify-center">
-                                    <span>Nationality</span>
-                                    <div className="opcity-10 flex items-center justify-center flex-col">
-                                        <TiArrowSortedDown
-                                            className={"w-5 h-5 mt-[6px] " + (orderBy === "nationality" && order === "asc" ? "opacity-100" : "opacity-30")}
-                                            style={{ rotate: "180deg" }} />
-                                        <TiArrowSortedDown
-                                            className={"w-5 h-5 mt-[-10px] " + (orderBy === "nationality" && order === "desc" ? "opacity-100" : "opacity-30")}
-                                            style={{ rotate: "0deg" }} />
-                                    </div>
+                            </div>
+                        </th>
+                        <th
+                          onClick={() => orderAthletes("nationality")}
+                          className="border border-gray-400 px-2 py-1 cursor-pointer">
+                            <div className="flex items-center justify-center">
+                                <span>Nationality</span>
+                                <div className="opcity-10 flex items-center justify-center flex-col">
+                                    <TiArrowSortedDown
+                                      className={"w-5 h-5 mt-[6px] " + (orderBy === "nationality" && order === "asc" ? "opacity-100" : "opacity-30")}
+                                      style={{rotate: "180deg"}}/>
+                                    <TiArrowSortedDown
+                                      className={"w-5 h-5 mt-[-10px] " + (orderBy === "nationality" && order === "desc" ? "opacity-100" : "opacity-30")}
+                                      style={{rotate: "0deg"}}/>
                                 </div>
-                            </th>
-                            <th
-                                onClick={() => orderAthletes("disciplines")}
-                                className="border border-gray-400 px-2 py-1 cursor-pointer">
-                                <div className="flex items-center justify-center">
-                                    <span>Disciplines</span>
-                                    <div className="opcity-10 flex items-center justify-center flex-col">
-                                        <TiArrowSortedDown
-                                            className={"w-5 h-5 mt-[6px] " + (orderBy === "nationality" && order === "asc" ? "opacity-100" : "opacity-30")}
-                                            style={{ rotate: "180deg" }} />
-                                        <TiArrowSortedDown
-                                            className={"w-5 h-5 mt-[-10px] " + (orderBy === "nationality" && order === "desc" ? "opacity-100" : "opacity-30")}
-                                            style={{ rotate: "0deg" }} />
-                                    </div>
+                            </div>
+                        </th>
+                        <th
+                          onClick={() => orderAthletes("disciplines")}
+                          className="border border-gray-400 px-2 py-1 cursor-pointer">
+                            <div className="flex items-center justify-center">
+                                <span>Disciplines</span>
+                                <div className="opcity-10 flex items-center justify-center flex-col">
+                                    <TiArrowSortedDown
+                                      className={"w-5 h-5 mt-[6px] " + (orderBy === "nationality" && order === "asc" ? "opacity-100" : "opacity-30")}
+                                      style={{rotate: "180deg"}}/>
+                                    <TiArrowSortedDown
+                                      className={"w-5 h-5 mt-[-10px] " + (orderBy === "nationality" && order === "desc" ? "opacity-100" : "opacity-30")}
+                                      style={{rotate: "0deg"}}/>
                                 </div>
-                            </th>
-                            <th
-                                className="border border-gray-400 px-2 py-1">
-                            </th>
-                            <th
-                                onClick={() => orderAthletes("rank_by_age")}
-                                className="border border-gray-400 px-2 py-1 cursor-pointer"
-                            >
-                                <div className="flex items-center justify-center">
-                                    <span>Rank by Age</span>
-                                    <div className="opcity-10 flex items-center justify-center flex-col">
-                                        <TiArrowSortedDown
-                                            className={"w-5 h-5 mt-[6px] " + (orderBy === "rank_by_age" && order === "asc" ? "opacity-100" : "opacity-30")}
-                                            style={{ rotate: "180deg" }} />
-                                        <TiArrowSortedDown
-                                            className={"w-5 h-5 mt-[-10px] " + (orderBy === "rank_by_age" && order === "desc" ? "opacity-100" : "opacity-30")}
-                                            style={{ rotate: "0deg" }} />
-                                    </div>
+                            </div>
+                        </th>
+                        <th
+                          onClick={() => orderAthletes("rank_by_age")}
+                          className="border border-gray-400 px-2 py-1 cursor-pointer"
+                        >
+                            <div className="flex items-center justify-center">
+                                <span>Rank by Age</span>
+                                <div className="opcity-10 flex items-center justify-center flex-col">
+                                    <TiArrowSortedDown
+                                      className={"w-5 h-5 mt-[6px] " + (orderBy === "rank_by_age" && order === "asc" ? "opacity-100" : "opacity-30")}
+                                      style={{rotate: "180deg"}}/>
+                                    <TiArrowSortedDown
+                                      className={"w-5 h-5 mt-[-10px] " + (orderBy === "rank_by_age" && order === "desc" ? "opacity-100" : "opacity-30")}
+                                      style={{rotate: "0deg"}}/>
                                 </div>
-                            </th>
+                            </div>
+                        </th>
+                        <th
+                          className="border border-gray-400 px-2 py-1">
+                        </th>
 
 
-                        </tr>
+                    </tr>
                     </thead>
 
-                    <tbody>
-                        {currentItems.map((athlete) => (
-                            <tr key={athlete.athlete_code} className="border-b">
-                                <td className="border border-gray-400 px-2 py-1 cursor-pointer">
-                                    {athlete.name}
-                                </td>
-                                <td className="border border-gray-400 px-2 py-1 cursor-pointer">
-                                    {athlete.birth_date}
-                                </td>
-                                <td className="border border-gray-400 px-2 py-1 cursor-pointer">
-                                    {athlete.gender}
-                                </td>
-                                <td className="border border-gray-400 px-2 py-1 cursor-pointer">
-                                    {athlete.country_name}
-                                </td>
-                                <td className="border border-gray-400 px-2 py-1 cursor-pointer">
-                                    {athlete.nationality}
-                                </td>
-                                <td className="border border-gray-400 px-2 py-1 cursor-pointer">
-                                    {athlete.disciplines && athlete.disciplines.length > 0
-                                        ? athlete.disciplines.join(", ")
-                                        : "No Disciplines"}
-                                </td>
-                                <td className="border border-gray-400 px-2 py-1 cursor-pointer">
-                                    <div
-                                        onClick={() => setAthleteDetailsModalData(athlete)}
-                                        className="mr-2"
-                                    >
-                                        <BiDetail className="w-6 h-6" />
-                                    </div>
-                                </td>
-                                <td className="border border-gray-400 px-2 py-1 cursor-pointer">
-                                    {athlete.rank_by_age}
-                                </td>
-
-                            </tr>
+                  <tbody>
+                  {currentItems.map((athlete) => (
+                    <tr key={athlete.athlete_code} className="border-b">
+                              <td className="border border-gray-400 px-2 py-1 cursor-pointer">
+                                  {athlete.name}
+                              </td>
+                              <td className="border border-gray-400 px-2 py-1 cursor-pointer">
+                                  {athlete.birth_date}
+                              </td>
+                              <td className="border border-gray-400 px-2 py-1 cursor-pointer">
+                                  {athlete.gender}
+                              </td>
+                              <td className="border border-gray-400 px-2 py-1 cursor-pointer">
+                                  {athlete.country_name}
+                              </td>
+                              <td className="border border-gray-400 px-2 py-1 cursor-pointer">
+                                  {athlete.nationality}
+                              </td>
+                              <td className="border border-gray-400 px-2 py-1 cursor-pointer">
+                                  {athlete.disciplines && athlete.disciplines.length > 0
+                                    ? athlete.disciplines.join(", ")
+                                    : "No Disciplines"}
+                              </td>
+                              <td className="border border-gray-400 px-2 py-1 cursor-pointer">
+                                  {athlete.rank_by_age}
+                              </td>
+                              <td className="border border-gray-400 px-2 py-1 cursor-pointer">
+                                  <div
+                                    onClick={() => setAthleteDetailsModalData(athlete)}
+                                    className="mr-2"
+                                  >
+                                      <BiDetail className="w-6 h-6"/>
+                                  </div>
+                              </td>
+                          </tr>
                         ))}
                     </tbody>
 
-                </table>}
+              </table>}
 
             {/* Pagination Controls */}
             <div className="flex justify-center mt-4 items-center">
