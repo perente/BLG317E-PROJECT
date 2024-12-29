@@ -11,11 +11,10 @@ const NewMedallistModal = () => {
 
     const [medalDate, setMedalDate] = useState("");
     const [medalCode, setMedalCode] = useState("");
-    const [gender, setGender] = useState("M");
     const [countryCode, setCountryCode] = useState("");
     const [discipline, setDiscipline] = useState("");
     const [event, setEvent] = useState("");
-    const [codeAthlete, setCodeAthlete] = useState(""); // Athlete Code field
+    const [codeAthlete, setCodeAthlete] = useState("");
     const [withTeam, setWithTeam] = useState(false); // State to toggle team-related fields
     const [teamGender, setTeamGender] = useState("");
     const [codeTeam, setCodeTeam] = useState("");
@@ -23,13 +22,12 @@ const NewMedallistModal = () => {
     useEffect(() => {
         if (newMedallistModalData?.editMode) {
             const {medallist} = newMedallistModalData;
-            setMedalDate(medallist.medal_date || "");
-            setMedalCode(medallist.medal_code || "");
-            setGender(medallist.gender || "M");
-            setCountryCode(medallist.country_code || "");
-            setDiscipline(medallist.discipline || "");
-            setEvent(medallist.event || "");
-            setCodeAthlete(medallist.code_athlete || "");
+            setMedalDate(new Date(newMedallistModalData?.medallist?.medal_date).toISOString().split('T')[0]);
+            setMedalCode(newMedallistModalData?.medallist?.medal_code);
+            setCountryCode(newMedallistModalData?.medallist?.country_code);
+            setDiscipline(newMedallistModalData?.medallist?.discipline);
+            setEvent(newMedallistModalData?.medallist?.event);
+            setCodeAthlete(newMedallistModalData?.medallist?.code_athlete);
             setWithTeam(!!medallist.team_gender || !!medallist.code_team);
             setTeamGender(medallist.team_gender || "");
             setCodeTeam(medallist.code_team || "");
@@ -41,7 +39,6 @@ const NewMedallistModal = () => {
     const resetFields = () => {
         setMedalDate("");
         setMedalCode("");
-        setGender("M");
         setCountryCode("");
         setDiscipline("");
         setEvent("");
@@ -55,7 +52,6 @@ const NewMedallistModal = () => {
         const medallistData = {
             medal_date: medalDate,
             medal_code: medalCode,
-            gender,
             country_code: countryCode,
             discipline,
             event,
@@ -71,7 +67,6 @@ const NewMedallistModal = () => {
                     newMedallistModalData.update();
                 })
                 .catch((error) => {
-                    alert("Error updating medallist: " + error.message);
                 });
         } else {
             newMedallist(medallistData)
@@ -80,7 +75,6 @@ const NewMedallistModal = () => {
                     newMedallistModalData.update();
                 })
                 .catch((error) => {
-                    alert("Error creating medallist: " + error.message);
                 });
         }
     };
@@ -113,17 +107,6 @@ const NewMedallistModal = () => {
                             className="border border-gray-400 rounded-md p-2 w-full"
                             placeholder="Enter medal code"
                         />
-                    </div>
-                    <div>
-                        <label className="block font-semibold">Gender:</label>
-                        <select
-                            value={gender}
-                            onChange={(e) => setGender(e.target.value)}
-                            className="border border-gray-400 rounded-md p-2 w-full"
-                        >
-                            <option value="M">Male</option>
-                            <option value="F">Female</option>
-                        </select>
                     </div>
                     <div>
                         <label className="block font-semibold">Country Code:</label>

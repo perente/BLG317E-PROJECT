@@ -1,8 +1,6 @@
 from flask import request, jsonify
 import mysql.connector
 from settings import db_user, db_password, db_host, db_name
-from flask import Flask, jsonify
-import mysql.connector
 from mysql.connector import Error
 
 connection = mysql.connector.connect(
@@ -113,6 +111,7 @@ def get_medallists():
             cursor.close()
             connection.close()
 
+
 def new_medallists():
     try:
         # Get data from POST request
@@ -122,18 +121,26 @@ def new_medallists():
 
         # Extract the nested input_data
         data = data['input_data']
-
+        medal_code = data.get('medal_code')
+        if not medal_code:
+            return jsonify({'error': 'Missing required field: Medal Code'}), 400
+        code_athlete = data.get('code_athlete')
+        if not code_athlete:
+            return jsonify({'error': 'Missing required field: Athlete Code'}), 400
         try:
             # Convert medal_code and code_athlete to integers
-            medal_code = int(data.get('medal_code'))
-            code_athlete = int(data.get('code_athlete'))
+            medal_code = int(medal_code)
+            code_athlete = int(code_athlete)
         except (ValueError, TypeError) as e:
             return jsonify({'error': f'Invalid data type: {str(e)}'}), 400
-        #print("Incoming medal code Data:", medal_code) # Debug log
+
+        # Validate medal_code
+        if medal_code not in [1, 2, 3]:
+            return jsonify({'error': 'Invalid medal_code. It must be 1, 2, or 3.'}), 400
+        # print("Incoming medal code Data:", medal_code) # Debug log
 
         # Extract values from JSON payload
         medal_date = data.get('medal_date')
-        gender = data.get('gender')
         country_code = data.get('country_code')
         team_gender = data.get('team_gender')
         code_team = data.get('code_team')
@@ -141,26 +148,16 @@ def new_medallists():
         event = data.get('event')
 
         # Validate required fields
-        if not all([medal_date, medal_code, country_code, code_athlete, discipline, event]):
+        if not all([medal_date, country_code, discipline, event]):
             if not medal_date:
-                return jsonify({'error': 'Missing required field: medal_date'}), 400
-            if not medal_code:
-                return jsonify({'error': 'Missing required field: medal_code'}), 400
+                return jsonify({'error': 'Missing required field: Medal Date'}), 400
             if not country_code:
-                return jsonify({'error': 'Missing required field: country_code'}), 400
-            if not code_athlete:
-                return jsonify({'error': 'Missing required field: code_athlete'}), 400
+                return jsonify({'error': 'Missing required field: Country Code'}), 400
             if not discipline:
-                return jsonify({'error': 'Missing required field: discipline'}), 400
-            if not event:
-                return jsonify({'error': 'Missing required field: event'}), 400
-            return jsonify({'error': 'Missing required fields'}), 400
+                return jsonify({'error': 'Missing required field: Discipline'}), 400
+            return jsonify({'error': 'Missing required field: Event'}), 400
 
-        # Validate medal_code
-        if medal_code not in [1, 2, 3]:
-            return jsonify({'error': 'Invalid medal_code. It must be 1, 2, or 3.'}), 400
-
-        print("Incoming JSON Data:", data)  # Debug log
+        # print("Incoming JSON Data:", data)  # Debug log
 
         # Establish database connection
         connection = db_connection()
@@ -190,11 +187,11 @@ def new_medallists():
 
                 # Insert medallist into the database
                 query = """
-                    INSERT INTO Medallist (medal_date, medal_code, team_gender, country_code, code_team, code_athlete, discipline, event)
-                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    INSERT INTO Medallist (medal_date, medal_code, country_code, team_gender, discipline, event, code_athlete, code_team)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
                 """
                 values = (
-                    medal_date, medal_code, country_code, code_team, code_athlete, discipline, event
+                    medal_date, medal_code, country_code, team_gender, discipline, event, code_athlete, code_team
                 )
                 cursor.execute(query, values)
                 connection.commit()
@@ -233,6 +230,94 @@ def delete_medallists(ID):
                 connection.commit()
 
                 return jsonify({'message': 'Medallist deleted successfully'}), 200
+
+        else:
+            return jsonify({'error': 'Failed to connect to the database'}), 500
+
+    except mysql.connector.Error as e:
+        return jsonify({'error': f'Database error: {str(e)}'}), 500
+
+    except Exception as e:
+        return jsonify({'error': f'Unexpected error: {str(e)}'}), 500
+
+    finally:
+        # Ensure the connection is closed properly
+        if 'connection' in locals() and connection.is_connected():
+            connection.close()
+
+
+def update_medallists(ID):
+    try:
+        # Get data from PATCH request
+        data = request.get_json()
+
+        if not data:
+            return jsonify({'error': 'Invalid input: No JSON payload provided'}), 400
+
+        data = data.get('input_data')
+        # Extract values from JSON payload
+        medal_date = data.get('medal_date')
+        medal_code = data.get('medal_code')
+        code_athlete = data.get('code_athlete')
+        country_code = data.get('country_code')
+        discipline = data.get('discipline')
+        event = data.get('event')
+        team_gender = data.get('team_gender')
+        code_team = data.get('code_team')
+
+        # Validate required fields
+        if not ID or not medal_code or not code_athlete or not country_code or not discipline or not event or not medal_date:
+            return jsonify({'error': 'Missing required fields'}), 400
+        if int(medal_code) not in [1, 2, 3]:
+            return jsonify({'error': 'Invalid medal_code. It must be 1, 2, or 3.'}), 400
+
+        # Establish database connection
+        connection = db_connection()
+
+        if connection.is_connected():
+            with connection.cursor(dictionary=True, buffered=True) as cursor:
+                # Validate country_code
+                cursor.execute("SELECT 1 FROM Country WHERE country_code = %s", (country_code,))
+                if cursor.fetchone() is None:
+                    return jsonify({'error': 'Invalid country_code. It does not exist in the Country table.'}), 400
+
+                # Validate code_athlete
+                cursor.execute("SELECT 1 FROM Athlete WHERE athlete_code = %s", (code_athlete,))
+                if cursor.fetchone() is None:
+                    return jsonify({'error': 'Invalid code_athlete. It does not exist in the Athlete table.'}), 400
+
+                # Validate code_team if this is a team event
+                if code_team:
+                    cursor.execute("SELECT 1 FROM Teams WHERE team_code = %s", (code_team,))
+                    if cursor.fetchone() is None:
+                        return jsonify({'error': 'Invalid code_team. It does not exist in the Team table.'}), 400
+
+                # Validate discipline
+                cursor.execute("SELECT 1 FROM Discipline WHERE name = %s", (discipline,))
+                if cursor.fetchone() is None:
+                    return jsonify({'error': 'Invalid discipline. It does not exist in the Discipline table.'}), 400
+
+                # Validate discipline
+                cursor.execute("SELECT 1 FROM Events WHERE event_name = %s", (event,))
+                if cursor.fetchone() is None:
+                    return jsonify({'error': 'Invalid event. It does not exist in the Events table.'}), 400
+
+                # Check if the medallist exists
+                query = "SELECT * FROM Medallist WHERE id = %s"
+                cursor.execute(query, (ID,))
+                existing_medallist = cursor.fetchone()
+
+                if not existing_medallist:
+                    return jsonify({'error': f'No medallist found with ID: {ID}'}), 404
+
+                # Update medallist in the database
+                query = """UPDATE Medallist SET medal_date = %s, medal_code = %s, code_athlete = %s, country_code = %s, discipline = %s, event = %s, team_gender = %s, code_team = %s WHERE id = %s"""
+                values = (
+                    medal_date, medal_code, code_athlete, country_code, discipline, event, team_gender, code_team, ID)
+                cursor.execute(query, values)
+                connection.commit()
+
+                return jsonify({'message': 'Medallist updated successfully'}), 200
 
         else:
             return jsonify({'error': 'Failed to connect to the database'}), 500

@@ -57,11 +57,11 @@ CREATE TABLE `Schedule` (
 -- Create Teams Table
 CREATE TABLE `Teams` (
     `team_code` VARCHAR(255) PRIMARY KEY,
-    `team_name` VARCHAR(255),
+    `team_name` VARCHAR(255) NOT NULL,
     `team_gender` ENUM('M', 'O', 'W', 'X') NOT NULL,
     `country_code` CHAR(3),
     `discipline_code` CHAR(50),
-    `num_athletes` INT,
+    `num_athletes` INT NOT NULL,
     FOREIGN KEY (`country_code`) REFERENCES Country (`country_code`) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (`discipline_code`) REFERENCES Discipline (`discipline_code`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;

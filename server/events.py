@@ -22,14 +22,13 @@ def get_events():
             cursor = connection.cursor(dictionary=True)
 
             # Get query parameters
-            events_code = request.args.get('events_code')
             event_name = request.args.get('event_name')
             discipline_code = request.args.get('discipline_code')
             sport_name = request.args.get('sport_name')
             order_by = request.args.get('order_by')
             order = request.args.get('order')
 
-            print(events_code, event_name, discipline_code, sport_name)
+            print(event_name, discipline_code, sport_name)
 
             # Base query
             query = """
@@ -40,10 +39,6 @@ def get_events():
             # Where clause conditions
             filters = []
             params = []
-
-            if events_code:
-                filters.append("Events.events_code = %s")
-                params.append(events_code)
 
             if event_name:
                 filters.append("Events.event_name LIKE %s")
@@ -147,10 +142,10 @@ def new_events():
             with connection.cursor(dictionary=True) as cursor:
                 # We do NOT insert events_code because it's AUTO_INCREMENT
                 query = """
-                    INSERT INTO Events (event_name, discipline_code, url, sport_name)
-                    VALUES (%s, %s, %s, %s)
+                    INSERT INTO Events (event_name, discipline_code, sport_name)
+                    VALUES (%s, %s, %s)
                 """
-                values = (event_name, discipline_code, url, sport_name)
+                values = (event_name, discipline_code, sport_name)
                 cursor.execute(query, values)
                 connection.commit()
 

@@ -48,7 +48,7 @@ export default function Home() {
       <main className="w-full flex-1 flex flex-col items-center z-10 mt-16">
         <h1 className="text-3xl mb-6 font-paris font-semibold text-black">Olympic Games Management Panel</h1>
         <div>
-          <ul className="grid grid-cols-4 gap-3">
+          <ul className="grid grid-cols-5 gap-3">
             <Button onClick={() => routerPush("/admin/schedules")}>Schedules</Button>
             <Button onClick={() => routerPush("/admin/events")}>Events</Button>
             <Button onClick={() => routerPush("/admin/medallists")}>Medallists</Button>
@@ -58,6 +58,7 @@ export default function Home() {
             <Button onClick={() => routerPush("/admin/leaderboard")}>Leaderboard</Button>
             <Button onClick={() => routerPush("/admin/disciplines")}>Disciplines</Button>
             <Button onClick={() => routerPush("/admin/countries")}>Countries</Button>
+            <Button onClick={() => routerPush("/admin/contributions")}>Contributions</Button>
           </ul>
         </div>
       </main>

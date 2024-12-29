@@ -9,7 +9,8 @@ from events import get_events, delete_event, update_events, new_events, get_top_
 from athletes import get_athletes, delete_athletes, new_athletes, update_athlete
 from coaches import get_coaches, delete_coaches, new_coaches, update_coach
 from countries import get_countries, delete_country, update_countries, new_countries, get_countries_above_average, get_top_countries
-from medallist import get_medallists, new_medallists, delete_medallists
+from medallist import get_medallists, new_medallists, delete_medallists, update_medallists
+from contributions import get_country_contributions
 from teams import new_team, get_teams, delete_team, update_team , delete_TeamsAthlete, get_TeamsAthlete
 from leaderboard import get_leaderboard, get_country_medals_on_disciplines
 
@@ -104,6 +105,10 @@ def new_event():
 def update_event(events_code):
     return update_events(events_code)
 
+@app.route('/contributions', methods=['GET'])
+def country_contributions():
+    return get_country_contributions()
+
 @app.route('/teams', methods=['GET'])
 def teams():
     return get_teams()
@@ -132,6 +137,10 @@ def create_medallist():
 @app.route('/medallists/<int:medallist_id>', methods=['DELETE'])
 def delete_medallist(medallist_id):
     return delete_medallists(medallist_id)
+
+@app.route('/medallists/<int:medallists_id>', methods=['PATCH'])
+def updateMedallists(medallists_id):
+    return update_medallists(medallists_id)
 
 @app.route('/athletes', methods=['GET'])
 def athletes():

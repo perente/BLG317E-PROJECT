@@ -351,7 +351,7 @@ function Medallists() {
                         setNewMedallistModalData({
                           update: handleGetMedallists,
                           medallist: medallist,
-                          edit: true,
+                          editMode: true,
                         })
                       }
                     >
