@@ -61,6 +61,12 @@ export default function LoginPage() {
         >
           Login
         </button>
+        <div>
+          <p className="text-sm text-gray-600">
+            <span>Username: admin</span>
+            <span className="ml-2">Password: datatataa</span>
+          </p>
+        </div>
       </form>
     </div>
   );
