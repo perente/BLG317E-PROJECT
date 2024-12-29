@@ -44,7 +44,7 @@ CREATE TABLE `Schedule` (
     `schedule_code` INT NOT NULL AUTO_INCREMENT,
     `start_date` DATETIME NOT NULL,
     `end_date` DATETIME NOT NULL,
-    `status` VARCHAR(255),
+    `status` VARCHAR(50),
     `phase` VARCHAR(255),
     `gender` CHAR(1),
     `venue` VARCHAR(255),
