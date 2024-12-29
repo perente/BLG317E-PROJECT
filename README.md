@@ -67,12 +67,12 @@ This project consists of a **frontend** built with Next.js and Tailwind CSS and 
 
 2. Install dependencies:
    ```bash
-   npm install
+   pnpm install
    ```
 
 3. Start the development server:
    ```bash
-   npm run dev
+   pnpm run dev
    ```
    The frontend will be available at `http://localhost:3000`.
 
