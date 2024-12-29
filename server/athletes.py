@@ -34,26 +34,22 @@ def get_athletes():
             order = request.args.get('order')
             discipline = request.args.get('discipline')
 
-            
+            print(athlete_code, name, gender, country_code, nationality, birth_date)
 
-            print(athlete_code,name,gender,country_code,nationality,birth_date)
-
-            # Base query
-            query =""" SELECT Athlete.*, 
-                            Country.country_name, 
-                            GROUP_CONCAT(Athlete_Disciplines.discipline) AS disciplines
-                        FROM Athlete
-                        LEFT JOIN Country ON Athlete.country_code = Country.country_code
-                        LEFT JOIN Athlete_Disciplines ON Athlete.athlete_code = Athlete_Disciplines.athlete_code
-                        """
-
-            
-           #"""
-           #     SELECT * FROM Athlete
-           #     LEFT JOIN Country ON Athlete.country_code = Country.country_code
-          #      LEFT JOIN Athlete_Disciplines ON Athlete.athlete_code = Athlete_Disciplines.athlete_code
-            #    GROUP BY Athlete.athlete_code
-            #"""
+            # Base query with medal count
+            query = """
+                SELECT 
+                    Athlete.*, 
+                    Country.country_name, 
+                    GROUP_CONCAT(Athlete_Disciplines.discipline) AS disciplines,
+                    SUM(CASE WHEN Medallist.medal_code = 'Gold' THEN 1 ELSE 0 END) AS gold_medals,
+                    SUM(CASE WHEN Medallist.medal_code = 'Silver' THEN 1 ELSE 0 END) AS silver_medals,
+                    SUM(CASE WHEN Medallist.medal_code = 'Bronze' THEN 1 ELSE 0 END) AS bronze_medals
+                FROM Athlete
+                LEFT JOIN Country ON Athlete.country_code = Country.country_code
+                LEFT JOIN Athlete_Disciplines ON Athlete.athlete_code = Athlete_Disciplines.athlete_code
+                LEFT JOIN Medallist ON Athlete.athlete_code = Medallist.code_athlete
+            """
 
             # Where clause conditions
             filters = []
@@ -73,18 +69,17 @@ def get_athletes():
 
             if country_code:
                 filters.append("Athlete.country_code = %s")
-                params.append(country_code)  
+                params.append(country_code)
 
             if nationality:
                 filters.append("Athlete.nationality LIKE %s")
-                params.append(f"%{nationality}%")  
+                params.append(f"%{nationality}%")
 
             if birth_date:
                 filters.append("Athlete.birth_date >= %s")
                 params.append(birth_date)
 
             if discipline:
-                #filters.append("Athlete_Disciplines.discipline = %s")
                 filters.append("Athlete.athlete_code IN (SELECT athlete_code FROM Athlete_Disciplines WHERE discipline = %s)")
                 params.append(discipline)
 
@@ -93,17 +88,16 @@ def get_athletes():
                 query += " WHERE " + " AND ".join(filters)
 
             query += """
-                    GROUP BY Athlete.athlete_code, Country.country_name
-                """
+                GROUP BY Athlete.athlete_code, Country.country_name
+            """
 
             # Order by clause
             if order_by:
                 query += f" ORDER BY {order_by} {order or 'ASC'}"
-            
+
             print("Query:", query)
             print("Params:", params)
 
-            
             # Execute query with parameters
             cursor.execute(query, params)
             athletes = cursor.fetchall()

@@ -8,6 +8,7 @@ import { Suspense, useEffect, useState } from "react";
 import { FaEdit, FaExternalLinkSquareAlt } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { TiArrowSortedDown } from "react-icons/ti";
+import {BiDetail} from "react-icons/bi";
 
 const Athletes = () => {
     const [athletes, setAthletes] = useState([]);
@@ -31,6 +32,7 @@ const Athletes = () => {
     const [all_disciplines, setAllDisciplines] = useState([]);
     const [selectedDiscipline, setSelectedDiscipline] = useState("");
 
+    const setAthleteDetailsModalData = useModalStore((state) => state.setAthleteDetailsModalData);
 
 
     useEffect(() => {
@@ -362,6 +364,9 @@ const Athletes = () => {
                                     </div>
                                 </div>
                             </th>
+                            <th
+                                className="border border-gray-400 px-2 py-1">
+                            </th>
 
 
 
@@ -390,6 +395,14 @@ const Athletes = () => {
                                     {athlete.disciplines && athlete.disciplines.length > 0
                                         ? athlete.disciplines.join(", ")
                                         : "No Disciplines"}
+                                </td>
+                                <td>
+                                    <div
+                                        onClick={() => setAthleteDetailsModalData(athlete)}
+                                        className="mr-2"
+                                    >
+                                        <BiDetail className="w-6 h-6" />
+                                    </div>
                                 </td>
                             </tr>
                         ))}
