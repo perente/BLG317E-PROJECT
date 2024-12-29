@@ -4,6 +4,7 @@ from settings import db_user, db_password, db_host, db_name
 from flask import Flask, jsonify
 import mysql.connector
 from mysql.connector import Error
+from medallist import update_countries
 
 connection = mysql.connector.connect(
     host=db_host, database=db_name, user=db_user, password=db_password)
@@ -34,14 +35,17 @@ def get_athletes():
             order = request.args.get('order')
             discipline = request.args.get('discipline')
 
-            print(athlete_code, name, gender, country_code, nationality, birth_date)
-
-            # Base query with medal count
-            query = """
+            # Base query
+            base_query = """
                 SELECT 
-                    Athlete.*, 
+                    Athlete.*,
                     Country.country_name, 
                     GROUP_CONCAT(Athlete_Disciplines.discipline) AS disciplines,
+                    TIMESTAMPDIFF(YEAR, Athlete.birth_date, CURDATE()) AS athlete_age,
+                    DENSE_RANK() OVER (
+                        PARTITION BY Athlete.country_code 
+                        ORDER BY TIMESTAMPDIFF(YEAR, Athlete.birth_date, CURDATE())
+                    ) AS rank_by_age,
                     SUM(CASE WHEN Medallist.medal_code = 1 THEN 1 ELSE 0 END) AS gold_medals,
                     SUM(CASE WHEN Medallist.medal_code = 2 THEN 1 ELSE 0 END) AS silver_medals,
                     SUM(CASE WHEN Medallist.medal_code = 3 THEN 1 ELSE 0 END) AS bronze_medals
@@ -80,26 +84,29 @@ def get_athletes():
                 params.append(birth_date)
 
             if discipline:
-                filters.append("Athlete.athlete_code IN (SELECT athlete_code FROM Athlete_Disciplines WHERE discipline = %s)")
+                filters.append(
+                    "Athlete.athlete_code IN (SELECT athlete_code FROM Athlete_Disciplines WHERE discipline = %s)"
+                )
                 params.append(discipline)
 
-            # Add filters to query
+            # Add filters to the query
             if filters:
-                query += " WHERE " + " AND ".join(filters)
+                base_query += " WHERE " + " AND ".join(filters)
 
-            query += """
+            # Add GROUP BY clause
+            base_query += """
                 GROUP BY Athlete.athlete_code, Country.country_name
             """
 
-            # Order by clause
+            # Add ORDER BY clause
             if order_by:
-                query += f" ORDER BY {order_by} {order or 'ASC'}"
+                base_query += f" ORDER BY {order_by} {order or 'ASC'}"
 
-            print("Query:", query)
+            print("Query:", base_query)
             print("Params:", params)
 
-            # Execute query with parameters
-            cursor.execute(query, params)
+            # Execute the query
+            cursor.execute(base_query, params)
             athletes = cursor.fetchall()
 
             # Return data as JSON
@@ -132,7 +139,7 @@ def delete_athletes(athleteID):
                 query = "DELETE FROM Athlete WHERE athlete_code = %s"
                 cursor.execute(query, (athleteID,))
                 connection.commit()
-
+                update_countries(cursor, connection)
                 return jsonify({'message': 'Athlete deleted successfully'}), 200
 
         else:
@@ -148,6 +155,7 @@ def delete_athletes(athleteID):
         # Ensure the connection is closed properly
         if 'connection' in locals() and connection.is_connected():
             connection.close()
+
 
 def new_athletes():
     try:
@@ -167,15 +175,14 @@ def new_athletes():
         birth_date = data.get('birth_date')
         disciplines = data.get('disciplines', [])
 
-
         # Validate required fields
-        if not all([athlete_code,gender, name, country_code, nationality,birth_date]):
+        if not all([athlete_code, gender, name, country_code, nationality, birth_date]):
             return jsonify({'error': 'Missing required fields'}), 400
 
         # Establish database connection
         connection = db_connection()  # Ensure this function is defined elsewhere
 
-        if connection.is_connected():          
+        if connection.is_connected():
             with connection.cursor(dictionary=True) as cursor:
                 cursor.execute("START TRANSACTION")
                 # Query to fetch country details by countryID
@@ -190,7 +197,6 @@ def new_athletes():
                     cursor.execute("ROLLBACK")
                     return jsonify({'error': f'No country found with countryID: {country_code}'}), 404
 
-        
                 # Insert athlete into the database
                 query = """INSERT INTO Athlete (athlete_code,name,gender,country_code,nationality,birth_date) VALUES (%s,%s,%s,%s,%s,%s)"""
                 values = (athlete_code, name, gender, country_data['country_code'], nationality,
@@ -242,7 +248,6 @@ def update_athlete(athleteID):
         birth_date = data.get('birth_date')
         disciplines = data.get('disciplines', [])
 
-
         # Validate required fields
         if not athleteID:
             return jsonify({'error': 'Missing required fields'}), 400
@@ -266,23 +271,34 @@ def update_athlete(athleteID):
                     cursor.execute("ROLLBACK")
                     return jsonify({'error': f'No country found with country_code: {country_code}'}), 404
 
-
                 # Update athlete in the database
                 query = """UPDATE Athlete SET name = %s, gender = %s, country_code = %s, nationality = %s, birth_date = %s WHERE athlete_code = %s"""
                 values = (name, gender, country_code,
-                          nationality, birth_date,athleteID)
+                          nationality, birth_date, athleteID)
                 cursor.execute(query, values)
 
                 # Update disciplines
-                cursor.execute("DELETE FROM Athlete_Disciplines WHERE athlete_code = %s", (athleteID,))
+                cursor.execute(
+                    "DELETE FROM Athlete_Disciplines WHERE athlete_code = %s", (athleteID,))
                 for discipline in disciplines:
-                    cursor.execute("INSERT INTO Athlete_Disciplines (athlete_code, discipline) VALUES (%s, %s)", (athleteID, discipline))
+                    cursor.execute(
+                        "INSERT INTO Athlete_Disciplines (athlete_code, discipline) VALUES (%s, %s)", (athleteID, discipline))
 
-
+                recalculate_query = """
+                    SELECT 
+                        athlete_code,
+                        DENSE_RANK() OVER (
+                            PARTITION BY country_code 
+                            ORDER BY TIMESTAMPDIFF(YEAR, birth_date, CURDATE())
+                        ) AS rank_by_age
+                    FROM Athlete
+                """
+                cursor.execute(recalculate_query)
+                rank_results = cursor.fetchall()
 
                 connection.commit()
 
-                return jsonify({'message': 'Athlete updated successfully'}), 200
+                return jsonify({'message': 'Athlete updated successfully', 'rank_updates': rank_results}), 200
 
         else:
             return jsonify({'error': 'Failed to connect to the database'}), 500

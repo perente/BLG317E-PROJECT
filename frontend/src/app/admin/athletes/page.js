@@ -378,6 +378,20 @@ const Athletes = () => {
                                     </div>
                                 </div>
                             </th>
+                            <th
+                                onClick={() => orderAthletes("rank_by_age")}
+                                className="border border-gray-400 px-2 py-1 cursor-pointer"
+                            >
+                                <div className="flex items-center justify-center">
+                                    <span>Rank by Age</span>
+                                    <div className="opcity-10 flex items-center justify-center flex-col">
+                                        <TiArrowSortedDown className={"w-5 h-5 mt-[6px] " + (orderBy === "rank_by_age" && order === "asc" ? "opacity-100" : "opacity-30")}
+                                            style={{ rotate: "180deg" }} />
+                                        <TiArrowSortedDown className={"w-5 h-5 mt-[-10px] " + (orderBy === "rank_by_age" && order === "desc" ? "opacity-100" : "opacity-30")}
+                                            style={{ rotate: "0deg" }} />
+                                    </div>
+                                </div>
+                            </th>
                             <th className="border border-gray-400 px-2 py-1 cursor-pointer"></th>
                         </tr>
                     </thead>
@@ -404,6 +418,9 @@ const Athletes = () => {
                                     {athlete.disciplines && athlete.disciplines.length > 0
                                         ? athlete.disciplines.join(", ")
                                         : "No Disciplines"}
+                                </td>
+                                <td className="border border-gray-400 px-2 py-1 cursor-pointer">
+                                    {athlete.rank_by_age}
                                 </td>
 
                                 <td className="border border-gray-400 px-2 py-1 cursor-pointer">

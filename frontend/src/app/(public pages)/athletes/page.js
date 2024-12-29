@@ -8,7 +8,7 @@ import { Suspense, useEffect, useState } from "react";
 import { FaEdit, FaExternalLinkSquareAlt } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { TiArrowSortedDown } from "react-icons/ti";
-import {BiDetail} from "react-icons/bi";
+import { BiDetail } from "react-icons/bi";
 
 const Athletes = () => {
     const [athletes, setAthletes] = useState([]);
@@ -291,9 +291,11 @@ const Athletes = () => {
                                 <div className="flex items-center justify-center">
                                     <span>Name</span>
                                     <div className="opcity-10 flex items-center justify-center flex-col">
-                                        <TiArrowSortedDown className={"w-5 h-5 mt-[6px] " + (orderBy === "name" && order === "asc" ? "opacity-100" : "opacity-30")}
+                                        <TiArrowSortedDown
+                                            className={"w-5 h-5 mt-[6px] " + (orderBy === "name" && order === "asc" ? "opacity-100" : "opacity-30")}
                                             style={{ rotate: "180deg" }} />
-                                        <TiArrowSortedDown className={"w-5 h-5 mt-[-10px] " + (orderBy === "name" && order === "desc" ? "opacity-100" : "opacity-30")}
+                                        <TiArrowSortedDown
+                                            className={"w-5 h-5 mt-[-10px] " + (orderBy === "name" && order === "desc" ? "opacity-100" : "opacity-30")}
                                             style={{ rotate: "0deg" }} />
                                     </div>
                                 </div>
@@ -304,9 +306,11 @@ const Athletes = () => {
                                 <div className="flex items-center justify-center">
                                     <span>Birth Date</span>
                                     <div className="opcity-10 flex items-center justify-center flex-col ">
-                                        <TiArrowSortedDown className={"w-5 h-5 mt-[6px] " + (orderBy === "birth_date" && order === "asc" ? "opacity-100" : "opacity-30")}
+                                        <TiArrowSortedDown
+                                            className={"w-5 h-5 mt-[6px] " + (orderBy === "birth_date" && order === "asc" ? "opacity-100" : "opacity-30")}
                                             style={{ rotate: "180deg" }} />
-                                        <TiArrowSortedDown className={"w-5 h-5 mt-[-10px] " + (orderBy === "birth_date" && order === "desc" ? "opacity-100" : "opacity-30")}
+                                        <TiArrowSortedDown
+                                            className={"w-5 h-5 mt-[-10px] " + (orderBy === "birth_date" && order === "desc" ? "opacity-100" : "opacity-30")}
                                             style={{ rotate: "0deg" }} />
                                     </div>
                                 </div>
@@ -317,9 +321,11 @@ const Athletes = () => {
                                 <div className="flex items-center justify-center">
                                     <span>Gender</span>
                                     <div className="opcity-10 flex items-center justify-center flex-col">
-                                        <TiArrowSortedDown className={"w-5 h-5 mt-[6px] " + (orderBy === "gender" && order === "asc" ? "opacity-100" : "opacity-30")}
+                                        <TiArrowSortedDown
+                                            className={"w-5 h-5 mt-[6px] " + (orderBy === "gender" && order === "asc" ? "opacity-100" : "opacity-30")}
                                             style={{ rotate: "180deg" }} />
-                                        <TiArrowSortedDown className={"w-5 h-5 mt-[-10px] " + (orderBy === "gender" && order === "desc" ? "opacity-100" : "opacity-30")}
+                                        <TiArrowSortedDown
+                                            className={"w-5 h-5 mt-[-10px] " + (orderBy === "gender" && order === "desc" ? "opacity-100" : "opacity-30")}
                                             style={{ rotate: "0deg" }} />
                                     </div>
                                 </div>
@@ -331,9 +337,11 @@ const Athletes = () => {
                                 <div className="flex items-center justify-center">
                                     <span>Country</span>
                                     <div className="opcity-10 flex items-center justify-center flex-col">
-                                        <TiArrowSortedDown className={"w-5 h-5 mt-[6px] " + (orderBy === "country_name" && order === "asc" ? "opacity-100" : "opacity-30")}
+                                        <TiArrowSortedDown
+                                            className={"w-5 h-5 mt-[6px] " + (orderBy === "country_name" && order === "asc" ? "opacity-100" : "opacity-30")}
                                             style={{ rotate: "180deg" }} />
-                                        <TiArrowSortedDown className={"w-5 h-5 mt-[-10px] " + (orderBy === "country_name" && order === "desc" ? "opacity-100" : "opacity-30")}
+                                        <TiArrowSortedDown
+                                            className={"w-5 h-5 mt-[-10px] " + (orderBy === "country_name" && order === "desc" ? "opacity-100" : "opacity-30")}
                                             style={{ rotate: "0deg" }} />
                                     </div>
                                 </div>
@@ -344,9 +352,11 @@ const Athletes = () => {
                                 <div className="flex items-center justify-center">
                                     <span>Nationality</span>
                                     <div className="opcity-10 flex items-center justify-center flex-col">
-                                        <TiArrowSortedDown className={"w-5 h-5 mt-[6px] " + (orderBy === "nationality" && order === "asc" ? "opacity-100" : "opacity-30")}
+                                        <TiArrowSortedDown
+                                            className={"w-5 h-5 mt-[6px] " + (orderBy === "nationality" && order === "asc" ? "opacity-100" : "opacity-30")}
                                             style={{ rotate: "180deg" }} />
-                                        <TiArrowSortedDown className={"w-5 h-5 mt-[-10px] " + (orderBy === "nationality" && order === "desc" ? "opacity-100" : "opacity-30")}
+                                        <TiArrowSortedDown
+                                            className={"w-5 h-5 mt-[-10px] " + (orderBy === "nationality" && order === "desc" ? "opacity-100" : "opacity-30")}
                                             style={{ rotate: "0deg" }} />
                                     </div>
                                 </div>
@@ -357,9 +367,11 @@ const Athletes = () => {
                                 <div className="flex items-center justify-center">
                                     <span>Disciplines</span>
                                     <div className="opcity-10 flex items-center justify-center flex-col">
-                                        <TiArrowSortedDown className={"w-5 h-5 mt-[6px] " + (orderBy === "nationality" && order === "asc" ? "opacity-100" : "opacity-30")}
+                                        <TiArrowSortedDown
+                                            className={"w-5 h-5 mt-[6px] " + (orderBy === "nationality" && order === "asc" ? "opacity-100" : "opacity-30")}
                                             style={{ rotate: "180deg" }} />
-                                        <TiArrowSortedDown className={"w-5 h-5 mt-[-10px] " + (orderBy === "nationality" && order === "desc" ? "opacity-100" : "opacity-30")}
+                                        <TiArrowSortedDown
+                                            className={"w-5 h-5 mt-[-10px] " + (orderBy === "nationality" && order === "desc" ? "opacity-100" : "opacity-30")}
                                             style={{ rotate: "0deg" }} />
                                     </div>
                                 </div>
@@ -367,7 +379,22 @@ const Athletes = () => {
                             <th
                                 className="border border-gray-400 px-2 py-1">
                             </th>
-
+                            <th
+                                onClick={() => orderAthletes("rank_by_age")}
+                                className="border border-gray-400 px-2 py-1 cursor-pointer"
+                            >
+                                <div className="flex items-center justify-center">
+                                    <span>Rank by Age</span>
+                                    <div className="opcity-10 flex items-center justify-center flex-col">
+                                        <TiArrowSortedDown
+                                            className={"w-5 h-5 mt-[6px] " + (orderBy === "rank_by_age" && order === "asc" ? "opacity-100" : "opacity-30")}
+                                            style={{ rotate: "180deg" }} />
+                                        <TiArrowSortedDown
+                                            className={"w-5 h-5 mt-[-10px] " + (orderBy === "rank_by_age" && order === "desc" ? "opacity-100" : "opacity-30")}
+                                            style={{ rotate: "0deg" }} />
+                                    </div>
+                                </div>
+                            </th>
 
 
                         </tr>
@@ -404,6 +431,10 @@ const Athletes = () => {
                                         <BiDetail className="w-6 h-6" />
                                     </div>
                                 </td>
+                                <td className="border border-gray-400 px-2 py-1 cursor-pointer">
+                                    {athlete.rank_by_age}
+                                </td>
+
                             </tr>
                         ))}
                     </tbody>
