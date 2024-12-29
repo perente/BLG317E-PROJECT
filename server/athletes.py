@@ -42,9 +42,9 @@ def get_athletes():
                     Athlete.*, 
                     Country.country_name, 
                     GROUP_CONCAT(Athlete_Disciplines.discipline) AS disciplines,
-                    SUM(CASE WHEN Medallist.medal_code = 'Gold' THEN 1 ELSE 0 END) AS gold_medals,
-                    SUM(CASE WHEN Medallist.medal_code = 'Silver' THEN 1 ELSE 0 END) AS silver_medals,
-                    SUM(CASE WHEN Medallist.medal_code = 'Bronze' THEN 1 ELSE 0 END) AS bronze_medals
+                    SUM(CASE WHEN Medallist.medal_code = 1 THEN 1 ELSE 0 END) AS gold_medals,
+                    SUM(CASE WHEN Medallist.medal_code = 2 THEN 1 ELSE 0 END) AS silver_medals,
+                    SUM(CASE WHEN Medallist.medal_code = 3 THEN 1 ELSE 0 END) AS bronze_medals
                 FROM Athlete
                 LEFT JOIN Country ON Athlete.country_code = Country.country_code
                 LEFT JOIN Athlete_Disciplines ON Athlete.athlete_code = Athlete_Disciplines.athlete_code

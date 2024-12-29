@@ -4,7 +4,7 @@ import NewScheduleModal from "@/components/modals/newScheduleModal";
 import NewDisciplineModal from "@/components/modals/newDisciplineModal";
 import { Toaster } from "react-hot-toast";
 import TeamDetailsModalData from "@/components/modals/teamDetailsModal";
-import AthleteDetailsModalData from "@/components/modals/AthleteDetailsModal";
+import AthleteDetailsModal from "@/components/modals/athleteDetailsModal";
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <TeamDetailsModalData />
-      <AthleteDetailsModalData />
+      <AthleteDetailsModal />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

@@ -7,7 +7,7 @@ const AthleteDetailsModal = () => {
   const athleteDetailsModalData = useModalStore((state) => state.athleteDetailsModalData);
   const setAthleteDetailsModalData = useModalStore((state) => state.setAthleteDetailsModalData);
 
-  const athlete = athleteDetailsModalData?.athlete;
+  const athlete = athleteDetailsModalData;
 
   return (
     <ModalSkeleton show={!!athleteDetailsModalData} outsideClick={() => setAthleteDetailsModalData(null)}>

@@ -396,7 +396,7 @@ const Athletes = () => {
                                         ? athlete.disciplines.join(", ")
                                         : "No Disciplines"}
                                 </td>
-                                <td>
+                                <td className="border border-gray-400 px-2 py-1 cursor-pointer">
                                     <div
                                         onClick={() => setAthleteDetailsModalData(athlete)}
                                         className="mr-2"
