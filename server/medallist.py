@@ -202,6 +202,8 @@ def new_medallists():
                 cursor.execute(query, values)
                 connection.commit()
 
+                update_countries(cursor, connection)
+
                 return jsonify({'message': 'Medallist created successfully'}), 201
 
         else:
@@ -234,6 +236,8 @@ def delete_medallists(ID):
                 query = "DELETE FROM Medallist WHERE id = %s"
                 cursor.execute(query, (ID,))
                 connection.commit()
+
+                update_countries(cursor, connection)
 
                 return jsonify({'message': 'Medallist deleted successfully'}), 200
 
@@ -323,6 +327,7 @@ def update_medallists(ID):
                 cursor.execute(query, values)
                 connection.commit()
 
+                update_countries(cursor, connection)
                 return jsonify({'message': 'Medallist updated successfully'}), 200
 
         else:
@@ -338,3 +343,9 @@ def update_medallists(ID):
         # Ensure the connection is closed properly
         if 'connection' in locals() and connection.is_connected():
             connection.close()
+
+
+def update_countries(cursor, connection):
+    updateMedalCount = """UPDATE Country SET gold_medal = (SELECT COUNT(*) FROM Medallist WHERE country_code = Country.country_code AND medal_code = 1), silver_medal = (SELECT COUNT(*) FROM Medallist WHERE country_code = Country.country_code AND medal_code = 2), bronze_medal = (SELECT COUNT(*) FROM Medallist WHERE country_code = Country.country_code AND medal_code = 3)"""
+    cursor.execute(updateMedalCount)
+    connection.commit()
