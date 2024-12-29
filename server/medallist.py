@@ -178,7 +178,13 @@ def new_medallists():
                 if code_team:
                     cursor.execute("SELECT 1 FROM Teams WHERE team_code = %s", (code_team,))
                     if cursor.fetchone() is None:
-                        return jsonify({'error': 'Invalid code_team. It does not exist in the Team table.'}), 400
+                        return jsonify({'error': 'Invalid team code. It does not exist in the Team table.'}), 400
+                elif code_team is not None:
+                    return jsonify({'error': 'Invalid team code. It does not exist in the Team table.'}), 400
+
+                if team_gender is not None:
+                    return jsonify({'error': 'Invalid team gender.'}), 400
+
 
                 # Validate discipline
                 cursor.execute("SELECT 1 FROM Discipline WHERE name = %s", (discipline,))
