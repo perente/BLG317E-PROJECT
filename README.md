@@ -2,7 +2,7 @@
 # BLG317E Project
 
 ## Project Description
-This project consists of a **frontend** built with Next.js and Tailwind CSS and a **backend** implemented in Python. It allows interaction with data related to Olypics2024.
+This project consists of a **frontend** built with Next.js and Tailwind CSS and a **backend** implemented in Python. It allows interaction with data related to Olympics 2024.
 
 ---
 
